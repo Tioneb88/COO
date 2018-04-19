@@ -1,2 +1,2 @@
 # COO
-Project for the course LSINF 1225
+Project for the course LSINF 1225 coucou
