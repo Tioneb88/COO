@@ -1,3 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Application générale -->
     <string name="app_name">Mini-Poll</string>
+    <string name="app_next">Suivant</string>
+    <string name="app_back">Précédent</string>
+    <string name="app_modification">Modifier</string>
+    <string name="app_confirmation">Confirmer</string>
+    <string name="app_user_username">Identifiant</string>
+    <string name="app_user_password">Mot de passe</string>
+    <string name="app_user_surname">Nom</string>
+    <string name="app_user_firstname">Prénom</string>
+    <string name="app_user_mail">Adresse mail</string>
+    <string name="app_colon"> : </string>
+
+    <!-- Login et connexion -->
+    <string name="login_title">Se connecter</string>
+    <string name="login_create_account">Créer un compte</string>
+    <string name="login_connection">Connexion</string>
+    <string name="login_password_forgotten">Mot de passe oublié ?</string>
+    <string name="login_password_wrong">Votre mot de passe est incorrect</string>
+
+    <string name="newAccount_title">Création d\'un compte</string>
+    <string name="newAccount_confirmation_password">Confirmation du mot de passe</string>
+
+    <!-- Création d'un profil -->
+    <string name="create_title">Création d\'un compte</string>
+    <string name="create_name">Nom*</string>
+    <string name="create_firstname">Prénom*</string>
+    <string name="create_mail">Adresse mail*</string>
+    <string name="create_picture">Photo de profil</string>
+    <string name="create_advice">* champs obligatoires</string>
+
+    <!-- Menu principal (main) -->
+    <string name="main_activity_title">Menu principal</string>
+    <string name="main_activity_welcome_partie1">Bonjour </string>
+    <string name="main_activity_welcome_partie2"> ! Vous avez </string>
+    <string name="main_activity_welcome_partie3"> notifications !</string>
+    <string name="main_activity_profile">Profil </string>
+    <string name="main_activity_manage_friends">Gestion des amis </string>
+    <string name="main_activity_agreement">Accord </string>
+    <string name="main_activity_questionnary">Questionnaire </string>
+    <string name="main_activity_help">Aide à un ami </string>
+    <string name="main_activity_create">Créer un sondage </string>
+
+    <!-- Profil -->
+    <string name="my_profile_title">Mon profil</string>
+    <string name="my_profile_change_username">Changer d\'identifiant ?</string>
+    <string name="my_profile_change_password">Changer de mot de passe ?</string>
+
+    <!-- Modifier l'identifiant -->
+    <string name="change_username_title">Changement de l\'identifiant</string>
+    <string name="change_username_new">Nouvel identifiant</string>
+    <string name="change_username_confirmation">Confirmer avec le mot de passe</string>
+
+    <!-- Modifier le mot de passe -->
+    <string name="change_password_title">Changement du mot de passe</string>
+    <string name="change_password_new">Nouveau mot de passe</string>
+    <string name="change_password_confirmation_new">Confirmer le nouveau mot de passe</string>
+    <string name="change_password_confirmation_old">Confirmer avec l\'ancien mot de passe</string>
+
+    <!-- Gestion des amis -->
+    <string name="friends_manage_title">Gestion des amis</string>
+    <string name="friends_list">Liste d\'amis</string>
+    <string name="friends_find">Trouver un ami</string>
+
+    <string name="friends_manage_delete1">Êtes-vous sûr de vouloir supprimer </string>
+    <string name="friends_manage_delete2"> de votre liste d\'amis ?</string>
+
+    <!-- Gestion générale -->
+    <string name="poll_manage_question_title">Question </string>
+
+    <!-- Gestion des sondages -->
+    <string name="surveys_manage_title">Sondages en cours</string>
+
+    <string name="surveys_manage_answers_title">Propositions </string>
+
+    <string name="surveys_manage_middleresults_title">Résultats intermédiaires</string>
+    <string name="surveys_manage_middleresults_missing_answers">Réponses manquantes </string>
+    <string name="surveys_manage_results_propositions">Proposition </string>
+
+    <string name="surveys_manage_finalresults_title">Résultat final</string>
+
+    <!-- Gestion des questionnaires -->
+    <string name="questionnary_manage_title">Questionnaires en cours</string>
+
+    <string name="questionnary_manage_results_title">Résultats</string>
+    <string name="questionnary_manage_results_message">Vous occupez actuellement la place </string>
+    <string name="questionnary_manage_results_ranking">Classement </string>
+
+    <!-- Gestion des demandes d'aide -->
+    <string name="help_manage_title">Demandes d\'aide en cours</string>
+
+    <string name="help_manage_question_title">Question de ton ami </string>
+    <string name="help_manage_question_description1">Description 1 </string>
+    <string name="help_manage_question_description2">Description 2 </string>
+
+    <string name="help_manage_choice_title">Votre choix</string>
+
+    <!-- Création générale -->
+    <string name="create_main_survey">Sondage pour accord</string>
+    <string name="create_main_questionnary">Questionnaire</string>
+    <string name="create_main_help">Demande d\'aide à un ami</string>
+
+    <string name="create_surveyORquestionnary_friends_title">Amis à sonder</string>
+    <string name="create_help_friends_title">Ami à sonder</string>
+
+    <string name="create_questionnaryORhelp_format_title">Format du sondage</string>
+    <string name="create_questionnaryORhelp_format_picture">Image</string>
+    <string name="create_questionnaryORhelp_format_text">Texte</string>
+
+    <!-- Création de sondages -->
+    <string name="create_survey_choice_title">Choix possibles</string>
+    <string name="create_survey_choice_description">Choix </string>
+
+    <string name="create_survey_choice_specifics_title">Détails du choix </string>
+    <string name="create_survey_choice_specifics_picture">Ajouter une image </string>
+    <string name="create_survey_choice_specifics_description">Description </string>
+
+    <string name="create_survey_choice_order_title">Modifier l\'ordre</string>
+    <string name="create_survey_choice_order_description">Choix </string>
+    <string name="create_survey_choice_order_send">Envoyer le sondage</string>
+
+    <!-- Création de questionnaires -->
+    <string name="create_questionnary_questionsList_title">Liste des questions</string>
+
+    <string name="create_questionnary_numberQuestions_title">Combien de questions voulez-vous poser ?</string>
+
+    <string name="create_questionnary_picture_answers_title">Réponses pour la question </string>
+
+    <string name="create_questionnary_rightAnswer_title">Réponse correcte à la question </string>
+
+    <string name="create_questionnary_question_title">Question </string>
+
+    <string name="create_questionnary_text_questions_list_title">Liste des questions</string>
+
+    <string name="create_questionnary_text_answers_title">Réponse à la question</string>
+    <string name="create_questionnary_text_answers_text">Réponse</string>
+
+    <string name="create_questionnary_order_title">Visualisation de l\'ordre des questions</string>
+
+    <!-- Création de demande d'aide -->
+    <string name="create_help_answers_title">Insérez les deux propositions</string>
+    <string name="create_help_answers_proposal">Proposition</string>
+
+    <string name="create_help_prefer_title">Que préfères-tu ?</string>
+
 </resources>

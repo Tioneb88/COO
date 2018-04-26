@@ -1,4 +1,4 @@
-package be.uclouvain.lsinf1225.musicplayer.activity;
+package lsinf1225.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,16 +13,16 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import be.uclouvain.lsinf1225.musicplayer.MusicPlayerApp;
-import be.uclouvain.lsinf1225.musicplayer.R;
-import be.uclouvain.lsinf1225.musicplayer.model.User;
+import lsinf1225.mini_poll.MiniPollApp;
+import lsinf1225.mini_poll.R;
+import lsinf1225.mini_poll.model.User;
 
 /**
  * Gère l'écran de connexion des utilisateurs à l'application.
  *
  * @author Margaux GERARD, Loïc QUINET, Félix DE PATOUL, Benoît MICHEL, Arnaud CLAES
  * @version 1
- * @date 25 avril 2018
+ * 26 avril 2018
  */
 public class LoginActivity extends Activity implements TextView.OnEditorActionListener {
 
@@ -39,11 +39,11 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
          utiliser la méthode setTitle afin de définir le titre de l'activité (s'il est différent du
          titre de l'application).
          */
-        setTitle(R.string.login_activity_title);
+        setTitle(R.string.login_title);
 
 
         /*
-         * @note La liste des utilisateurs est affichées dans un Spinner, pour en savoir plus lisez
+         * @note La liste des utilisateurs est affichée dans un Spinner, pour en savoir plus lisez
          * http://d.android.com/guide/topics/ui/controls/spinner.html
          */
         userSpinner = findViewById(R.id.login_username);
@@ -94,7 +94,7 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {
-            MusicPlayerApp.notifyShort(R.string.login_wrong_password_msg);
+            MiniPollApp.notifyShort(R.string.login_password_wrong);
         }
     }
 

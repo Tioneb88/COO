@@ -115,7 +115,6 @@ public class User {
         // Récupération du  SQLiteHelper et de la base de données. On ne récupère pas la photo et le
         // meilleur ami de l'utilisateur car ce n'est pas ce qui le caratérise le mieux.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
-
         // Colonnes à récupérer
         String[] colonnes = {COL_ID, COL_NOM, COL_PRENOM, COL_MDP, COL_MAIL, COL_PHOTO, COL_BFF};
 
