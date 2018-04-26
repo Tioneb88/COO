@@ -1,4 +1,4 @@
-package be.uclouvain.lsinf1225.musicplayer;
+package lsinf1225.mini_poll;
 
 import android.content.Context;
 import android.database.Cursor;
@@ -19,8 +19,10 @@ import java.util.regex.Pattern;
  * données (par exemple lors d'une amélioration de votre application), elle mettra à jour celle-ci
  * de manière adéquate.
  *
- * @author Damien Mercier
+ * @author Margaux GERARD, Loïc QUINET, Félix DE PATOUL, Benoît MICHEL, Arnaud CLAES
  * @version 1
+ * @date 25 avril 2018
+ *
  * @see <a href="http://d.android.com/reference/android/database/sqlite/SQLiteOpenHelper.html">SQLiteOpenHelper</a>
  */
 public class MySQLiteHelper extends SQLiteOpenHelper {
@@ -29,11 +31,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      * Nom du fichier sql contenant les instructions de création de la base de données. Le fichier
      * doit être placé dans le dossier assets/
      */
-    private static final String DATABASE_SQL_FILENAME = "database.sql";
+    private static final String BDD_NAME_SQL = "BDD.sql";
     /**
      * Nom du fichier de la base de données.
      */
-    private static final String DATABASE_NAME = "musicplayer_database.sqlite";
+    private static final String BDD_NAME = "BaseDD.sqlite";
 
     /**
      * Version de la base de données (à incrémenter en cas de modification de celle-ci afin que la
@@ -41,7 +43,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      *
      * @note Le numéro de version doit changer de manière monotone.
      */
-    private static final int DATABASE_VERSION = 1;
+    private static final int BDD_VERSION = 1;
 
     /**
      * Instance de notre classe afin de pouvoir y accéder facilement depuis n'importe quel objet.
@@ -54,7 +56,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      * @param context Contexte de l'application.
      */
     private MySQLiteHelper(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, BDD_NAME, null, BDD_VERSION);
         instance = this;
     }
 
@@ -65,7 +67,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      */
     public static MySQLiteHelper get() {
         if (instance == null) {
-            return new MySQLiteHelper(MusicPlayerApp.getContext());
+            return new MySQLiteHelper(MiniPollApp.getContext());
         }
         return instance;
     }
@@ -77,6 +79,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      */
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         initDatabase(db);
     }
 
@@ -119,7 +122,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private void initDatabase(SQLiteDatabase db) {
         try {
             // Ouverture du fichier sql.
-            Scanner scan = new Scanner(MusicPlayerApp.getContext().getAssets().open(DATABASE_SQL_FILENAME));
+            Scanner scan = new Scanner(MiniPollApp.getContext().getAssets().open(BDD_NAME_SQL));
             scan.useDelimiter(Pattern.compile(";"));
             while (scan.hasNext()) {
                 String sqlQuery = scan.next();
@@ -134,7 +137,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                 }
             }
         } catch (IOException e) {
-            throw new RuntimeException("Erreur de lecture du fichier " + DATABASE_SQL_FILENAME + " : " + e.getMessage(), e);
+            throw new RuntimeException("Erreur de lecture du fichier " + BDD_NAME_SQL + " : " + e.getMessage(), e);
         } catch (SQLException e) {
             throw new RuntimeException("Erreur SQL lors de la création de la base de données." +
                     "Vérifiez que chaque instruction SQL est au plus sur une ligne." +

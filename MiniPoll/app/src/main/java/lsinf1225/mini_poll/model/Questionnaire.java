@@ -6,7 +6,7 @@ import android.util.SparseArray;
 
 import java.util.ArrayList;
 
-import be.uclouvain.lsinf1225.musicplayer.MySQLiteHelper;
+import lsinf1225.mini_poll.MySQLiteHelper;
 
 
 /**
@@ -31,84 +31,53 @@ public class Questionnaire {
     private static final String BDD_TABLE = "QUESTIONNAIRE";
 
     /**
-     * Contient les instances déjà existantes des utilisateurs afin d'éviter de créer deux instances
-     * du même utilisateur.
+     * Contient les instances déjà existantes des questionnaires afin d'éviter de créer deux instances
+     * du même questionnaire.
      */
-    private static SparseArray<Questionnaire> userSparseArray = new SparseArray<>();
+    private static SparseArray<Questionnaire> questSparseArray = new SparseArray<>();
 
     /**
      * Identifiant unique de l'utilisateur qui a créé le sondage. Correspond à Identifiant dans la base de données.
      */
-    private final int id;
+    private String id;
     /**
-     * Nom (unique) de l'utilisateur courant. Correspond à Nom dans la base de données.
+     * Numéro du questionnaire qui a été créé. Correspond à Nquestionnaire dans la base de données.
      */
-    private String nom;
+    private final int nquest;
     /**
-     * Mot de passe de l'utilisateur courant. Correspond à MDP dans la base de données.
+     * Description du questionnaire qui a été créé. Correspond à Description dans la base de données.
      */
-    private String password;
+    private String description;
     /**
-     * Prénom de l'utilisateur courant. Correspond à Prénom dans la base de données.
+     * Statut de l'activité (0 ou 1). Correspond à Activité dans la base de données.
      */
-    private String prenom;
-    /**
-     * Addresse e-mail de l'utilisateur courant. Correspond à Mail dans la base de données.
-     */
-    private String mail;
-    /**
-     * Chemin menant à la photo de l'utilisateur courant. Correspond à Photo dans la base de données.
-     */
-    private String photo;
-    /**
-     * Identifiant du meilleur ami de l'utilisateur courant. Correspond à Meilleur_ami dans la base de données.
-     */
-    private String bff;
+    private int activite;
 
     /**
-     * Constructeur de l'utilisateur. Initialise une instance de l'utilisateur présent dans la base
+     * Constructeur du questionnaires. Initialise une instance du questionnaire présent dans la base
      * de données.
      *
      * @note Ce constructeur est privé (donc utilisable uniquement depuis cette classe). Cela permet
-     * d'éviter d'avoir deux instances différentes d'un même utilisateur.
+     * d'éviter d'avoir deux instances différentes d'un même questionnaire.
      */
-    private User(int userId, String userNom, String userPassword, String userPrenom, String userMail, String userPhoto, String userBff) {
+    private Questionnaire(int numQuest, String userId, String qDesc, int qActi) {
 
         this.id = userId;
-        this.nom = userNom;
-        this.password = userPassword;
-        this.prenom = userPrenom;
-        this.mail = userMail;
-        this.photo = userPhoto;
-        this.bff = userBff;
-        User.userSparseArray.put(userId, this);
+        this.nquest = numQuest;
+        this.description = qDesc;
+        this.activite = qActi;
+        Questionnaire.questSparseArray.put(numQuest, this);
     }
 
     /**
-     * Fournit l'utilisateur actuellement connecté.
+     * Fournit la liste des questionnaires.
      */
-    public static User getConnectedUser() {
-
-        return User.connectedUser;
-    }
-
-    /**
-     * Déconnecte l'utilisateur actuellement connecté à l'application.
-     */
-    public static void logout() {
-        User.connectedUser = null;
-    }
-
-    /**
-     * Fournit la liste des utilisateurs.
-     */
-    public static ArrayList<User> getUtilisateurs() {
-        // Récupération du  SQLiteHelper et de la base de données. On ne récupère pas la photo et le
-        // meilleur ami de l'utilisateur car ce n'est pas ce qui le caratérise le mieux.
+    public static ArrayList<Questionnaire> getQuestionnaires() {
+        // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
         // Colonnes à récupérer
-        String[] colonnes = {COL_ID, COL_NOM, COL_PRENOM, COL_MDP, COL_MAIL, COL_PHOTO, COL_BFF};
+        String[] colonnes = {COL_NQUESTIONNAIRE, COL_ID, COL_DESCRIPTION, COL_ACTIVITE};
 
         // Requête de selection (SELECT)
         Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
@@ -116,29 +85,26 @@ public class Questionnaire {
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
 
-        // Initialisation la liste des utilisateurs.
-        ArrayList<User> users = new ArrayList<>();
+        // Initialisation la liste des questionnaires.
+        ArrayList<Questionnaire> questionnaires = new ArrayList<>();
 
         // Tant qu'il y a des lignes.
         while (!cursor.isAfterLast()) {
-            // Récupération des informations de l'utilisateur pour chaque ligne.
-            int userId = cursor.getInt(0);
-            String userNom = cursor.getString(1);
-            String userPrenom = cursor.getString(2);
-            String userPassword = cursor.getString(3);
-            String userMail = cursor.getString(4);
-            String userPhoto = cursor.getString(5);
-            String userBff = cursor.getString(6);
+            // Récupération des informations du questionnaire pour chaque ligne.
+            int numquest = cursor.getInt(0);
+            String userId = cursor.getString(1);
+            String qDesc = cursor.getString(2);
+            int qActi = cursor.getInt(3);
 
-            // Vérification pour savoir s'il y a déjà une instance de cet utilisateur.
-            User user = User.userSparseArray.get(userId);
-            if (user == null) {
+            // Vérification pour savoir s'il y a déjà une instance de ce questionnaire.
+            Questionnaire quest = Questionnaire.questSparseArray.get(numquest);
+            if (quest == null) {
                 // Si pas encore d'instance, création d'une nouvelle instance.
-                user = new User(userId, userNom, userPrenom,userPassword, userMail,userPhoto, userBff);
+                quest = new Questionnaire(numquest, userId, qDesc,qActi);
             }
 
-            // Ajout de l'utilisateur à la liste.
-            users.add(user);
+            // Ajout de le questionnaire à la liste.
+            questionnaires.add(quest);
 
             // Passe à la ligne suivante.
             cursor.moveToNext();
@@ -148,90 +114,47 @@ public class Questionnaire {
         cursor.close();
         db.close();
 
-        return users;
+        return questionnaires;
     }
 
     /**
-     * Fournit l'identifiant de l'utilisateur courant.
+     * Fournit l'identifiant de l'utilisateur courant qui a créé le questionnaire.
      */
-    public int getId() {
+    public String getId() {
 
         return id;
     }
 
     /**
-     * Fournit le nom de l'utilisateur courant.
+     * Fournit le numéro du questionnaire.
      */
-    public String getNom() {
+    public int getNquest() {
 
-        return nom;
+        return nquest;
     }
 
     /**
-     * Fournit le prénom de l'utilisateur courant.
+     * Fournit la description du questionnaire .
      */
-    public String getPrenom() {
+    public String getDescription() {
 
-        return prenom;
+        return description;
     }
 
     /**
-     * Fournit le mot de passe de l'utilisateur courant.
+     * Fournit l'activité du questionnaire pour savoir si il est ouvert ou fermé.
      */
-    public String getPassword() {
+    public int getActivite() {
 
-        return password;
+        return activite;
     }
 
     /**
-     * Fournit le mail de l'utilisateur courant.
-     */
-    public String getMail() {
-
-        return mail;
-    }
-
-    /**
-     * Fournit le chemin de la photo de l'utilisateur courant.
-     */
-    public String getPhoto() {
-
-        return photo;
-    }
-
-    /**
-     * Fournit l'identifiant du meilleur de l'utilisateur courant.
-     */
-    public String getBff() {
-
-        return bff;
-    }
-
-    /**
-     * Connecte l'utilisateur courant.
-     *
-     * @param passwordToTry le mot de passe entré.
-     *
-     * @return Vrai (true) si l'utilisateur à l'autorisation de se connecter, false sinon.
-     */
-    public boolean login(String passwordToTry) {
-        if (this.password.equals(passwordToTry)) {
-            // Si le mot de passe est correct, modification de l'utilisateur connecté.
-            User.connectedUser = this;
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Fournit une représentation textuelle de l'utilisateur courant. (Ici le nom)
-     *
-     * @note Cette méthode est utilisée par l'adaptateur ArrayAdapter afin d'afficher la liste des
-     * utilisateurs. (Voir LoginActivity).
+     * Fournit une représentation textuelle du questionnaire. (Ici la description du questionnaire)
      */
     public String toString() {
 
-        return getNom();
+        return getDescription();
     }
 
 }

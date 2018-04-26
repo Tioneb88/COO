@@ -6,7 +6,7 @@ import android.util.SparseArray;
 
 import java.util.ArrayList;
 
-import be.uclouvain.lsinf1225.musicplayer.MySQLiteHelper;
+import lsinf1225.mini_poll.MySQLiteHelper;
 
 
 /**
@@ -89,6 +89,7 @@ public class User {
         this.photo = userPhoto;
         this.bff = userBff;
         User.userSparseArray.put(userId, this);
+        //User.userSparseArray.put(userMail, this);
     }
 
     /**
@@ -103,6 +104,7 @@ public class User {
      * Déconnecte l'utilisateur actuellement connecté à l'application.
      */
     public static void logout() {
+
         User.connectedUser = null;
     }
 
