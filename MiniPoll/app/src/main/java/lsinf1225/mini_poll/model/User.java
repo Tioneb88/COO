@@ -2,6 +2,7 @@ package lsinf1225.mini_poll.model;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.util.SparseArray;
 
 import java.util.ArrayList;
@@ -46,7 +47,7 @@ public class User {
     /**
      * Identifiant unique de l'utilisateur courant. Correspond à Identifiant dans la base de données.
      */
-    private final int id;
+    private final String id;
     /**
      * Nom (unique) de l'utilisateur courant. Correspond à Nom dans la base de données.
      */
@@ -79,7 +80,7 @@ public class User {
      * @note Ce constructeur est privé (donc utilisable uniquement depuis cette classe). Cela permet
      * d'éviter d'avoir deux instances différentes d'un même utilisateur.
      */
-    private User(int userId, String userNom, String userPassword, String userPrenom, String userMail, String userPhoto, String userBff) {
+    private User(String userId, String userNom, String userPrenom, String userPassword, String userMail, String userPhoto, String userBff) {
 
         this.id = userId;
         this.nom = userNom;
@@ -88,7 +89,7 @@ public class User {
         this.mail = userMail;
         this.photo = userPhoto;
         this.bff = userBff;
-        User.userSparseArray.put(userId, this);
+        //User.userSparseArray.put(userId, this);
         //User.userSparseArray.put(userMail, this);
     }
 
@@ -115,7 +116,6 @@ public class User {
         // Récupération du  SQLiteHelper et de la base de données. On ne récupère pas la photo et le
         // meilleur ami de l'utilisateur car ce n'est pas ce qui le caratérise le mieux.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
-
         // Colonnes à récupérer
         String[] colonnes = {COL_ID, COL_NOM, COL_PRENOM, COL_MDP, COL_MAIL, COL_PHOTO, COL_BFF};
 
@@ -131,7 +131,7 @@ public class User {
         // Tant qu'il y a des lignes.
         while (!cursor.isAfterLast()) {
             // Récupération des informations de l'utilisateur pour chaque ligne.
-            int userId = cursor.getInt(0);
+            String userId = cursor.getString(0);
             String userNom = cursor.getString(1);
             String userPrenom = cursor.getString(2);
             String userPassword = cursor.getString(3);
@@ -140,7 +140,8 @@ public class User {
             String userBff = cursor.getString(6);
 
             // Vérification pour savoir s'il y a déjà une instance de cet utilisateur.
-            User user = User.userSparseArray.get(userId);
+            //User user = User.userSparseArray.get(userId);
+            User user=null;
             if (user == null) {
                 // Si pas encore d'instance, création d'une nouvelle instance.
                 user = new User(userId, userNom, userPrenom,userPassword, userMail,userPhoto, userBff);
@@ -156,14 +157,13 @@ public class User {
         // Fermeture du curseur et de la base de données.
         cursor.close();
         db.close();
-
         return users;
     }
 
     /**
      * Fournit l'identifiant de l'utilisateur courant.
      */
-    public int getId() {
+    public String getId() {
 
         return id;
     }
@@ -240,7 +240,7 @@ public class User {
      */
     public String toString() {
 
-        return getNom();
+        return getId();
     }
 
 }

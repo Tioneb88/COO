@@ -7,6 +7,7 @@ PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
 -- Table : AIDE
+BEGIN TABLE IF EXISTS AIDE;
 create table AIDE 
 (Naide int(50) not null unique primary key,
 Identifiant char(255) not null,
@@ -20,6 +21,7 @@ INSERT INTO AIDE (Naide, Identifiant, Description, Activite) VALUES ('4', 'Hibou
 INSERT INTO AIDE (Naide, Identifiant, Description, Activite) VALUES ('5', 'phephe', 'Je te prends quel type de pain ?', '0');
 
 -- Table : LIKE_LIKE
+BEGIN TABLE IF EXISTS LIKE_LIKE;
 create table LIKE_LIKE
 (NoptionsA int(50) not null,
 Identifiant char(255) not null,
@@ -33,6 +35,7 @@ INSERT INTO LIKE_LIKE (NoptionsA, Identifiant, Like_Like) VALUES ('4', 'gegedu78
 INSERT INTO LIKE_LIKE (NoptionsA, Identifiant, Like_Like) VALUES ('6', 'Moustikman', '1');
 
 -- Table : OPTION
+BEGIN TABLE IF EXISTS OPTION;
 create table OPTION
 (Texte char(255),
 Image char(255),
@@ -82,6 +85,7 @@ INSERT INTO OPTION (Texte, Image, Veracite, Nquestions, Noptions) VALUES ('1m40 
 INSERT INTO OPTION (Texte, Image, Veracite, Nquestions, Noptions) VALUES ('1m50 au garrot', NULL, '1', '5', '40');
 
 -- Table : OPTIONA
+BEGIN TABLE IF EXISTS OPTIONA;
 create table OPTIONA
 (NoptionsA int(50) not null unique primary key,
 Naide int(50) not null,
@@ -100,6 +104,7 @@ INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('9', '5', 'Pain com
 INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('10', '5', 'Pain blanc', painblanc.jpg);
 
 -- Table : PARTICIPANTS_AIDE
+BEGIN TABLE IF EXISTS PARTICIPANTS_AIDE;
 create table PARTICIPANTS_AIDE 
 (Naide int(50) not null,
 Identifiant char(255) not null,
@@ -114,6 +119,7 @@ INSERT INTO PARTICIPANTS_AIDE (Naide, Identifiant) VALUES ('4', 'margauxgerard')
 INSERT INTO PARTICIPANTS_AIDE (Naide, Identifiant) VALUES ('5', 'fel98');
 
 -- Table : PARTICIPANTS_QUESTIONNAIRE
+BEGIN TABLE IF EXISTS PARTICIPANTS_QUESTIONNAIRE;
 create table PARTICIPANTS_QUESTIONNAIRE
 (Identifiant char(255) not null,
 Nquestionnaire int(50) not null,
@@ -132,6 +138,7 @@ INSERT INTO PARTICIPANTS_QUESTIONNAIRE (Identifiant, Nquestionnaire) VALUES ('ge
 INSERT INTO PARTICIPANTS_QUESTIONNAIRE (Identifiant, Nquestionnaire) VALUES ('Hiboule', '1');
 
 -- Table : PARTICIPANTS_SONDAGE
+BEGIN TABLE IF EXISTS PARTICIPANTS_SONDAGE;
 create table PARTICIPANTS_SONDAGE
 (Identifiant char(255) not null,
 Nsondage int (50) not null,
@@ -151,6 +158,7 @@ INSERT INTO PARTICIPANTS_SONDAGE (Identifiant, Nsondage) VALUES ('phephe', '3');
 INSERT INTO PARTICIPANTS_SONDAGE (Identifiant, Nsondage) VALUES ('gegedu78', '3');
 
 -- Table : POSSIBILITE
+BEGIN TABLE IF EXISTS POSSIBILITE;
 create table POSSIBILITE
 (Npossibilites int(50) not null unique primary key,
 Nsondage int (50) not null,
@@ -175,6 +183,7 @@ INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('
 INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('15', '3', 'Etats-Unis', us.jpg, '5');
 
 -- Table : QUESTION
+BEGIN TABLE IF EXISTS QUESTION;
 create table QUESTION
 (Nquestions int(50) not null unique primary key,
 Nquestionnaire int(50) not null,
@@ -193,6 +202,7 @@ INSERT INTO QUESTION (Nquestions, Nquestionnaire, Texte, Ordre) VALUES ('9', '2'
 INSERT INTO QUESTION (Nquestions, Nquestionnaire, Texte, Ordre) VALUES ('10', '2', 'Quelle est la préposition adéquate ?', '5');
 
 -- Table : QUESTIONNAIRE
+BEGIN TABLE IF EXISTS QUESTIONNAIRE;
 create table QUESTIONNAIRE
 (Nquestionnaire int(50) not null unique primary key,
 Identifiant char (255) not null,
@@ -203,6 +213,7 @@ INSERT INTO QUESTIONNAIRE (Nquestionnaire, Identifiant, Description, Activite) V
 INSERT INTO QUESTIONNAIRE (Nquestionnaire, Identifiant, Description, Activite) VALUES ('2', 'Hiboule', 'Vélo', '0');
 
 -- Table : RELATION
+BEGIN TABLE IF EXISTS RELATION;
 create table RELATION
 (Emetteur char(255) not null,
 Recepteur char (255) not null,
@@ -222,6 +233,7 @@ INSERT INTO RELATION (Emetteur, Recepteur, Relation) VALUES ('gegedu78', 'margau
 INSERT INTO RELATION (Emetteur, Recepteur, Relation) VALUES ('Moustikman', 'margauxgerard', '0');
 
 -- Table : REPONSE
+BEGIN TABLE IF EXISTS REPONSE;
 create table REPONSE
 (Identifiant char(255) not null,
 Nquestions int(50) not null,
@@ -235,6 +247,7 @@ INSERT INTO REPONSE (Identifiant, Nquestions, Noptions) VALUES ('Eriko99', '1', 
 INSERT INTO REPONSE (Identifiant, Nquestions, Noptions) VALUES ('margauxgerard', '1', '2');
 
 -- Table : SCORE
+BEGIN TABLE IF EXISTS SCORE;
 create table SCORE
 (Identifiant char(255) not null,
 Npossibilites int (50) not null,
@@ -296,6 +309,7 @@ INSERT INTO SCORE (Identifiant, Npossibilites, Score) VALUES ('gegedu78', '13', 
 INSERT INTO SCORE (Identifiant, Npossibilites, Score) VALUES ('gegedu78', '12', '1');
 
 -- Table : SONDAGE
+BEGIN TABLE IF EXISTS SONDAGE;
 create table SONDAGE 
 (Nsondage int(50) not null unique primary key,
 Identifiant not null unique ,
@@ -308,6 +322,7 @@ INSERT INTO SONDAGE (Nsondage, Identifiant, Nbrechoix, Description, Activite) VA
 INSERT INTO SONDAGE (Nsondage, Identifiant, Nbrechoix, Description, Activite) VALUES ('3', 'Hiboule', '5', 'On part ou en vacances?', '1');
 
 -- Table : UTILISATEUR
+BEGIN TABLE IF EXISTS UTILISATEUR;
 create table UTILISATEUR
 (Identifiant char(255) not null unique primary key, 
 Nom char(255) not null, 
@@ -317,6 +332,7 @@ Mail char(255) not null unique,
 Photo char(255), 
 Meilleur_ami char(255),
 foreign key (Meilleur_ami) references UTILISATEUR);
+<<<<<<< HEAD
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('margauxgerard', 'Gerard', 'Margaux', 'Louvainlaneuve', 'margaux.gerard@student.uclouvain.be', marg.jpg, 'fel98');
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('fel98', 'de Patoul', 'Félix', 'Banane', 'felix.depatoul@student.uclouvain.be', fel.jpg, NULL);
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('Eriko99', 'Vandewerve', 'Eric', 'Fraise45', 'eric.vandewerve@student.uclouvain.be', NULL, 'fel98');
@@ -324,6 +340,9 @@ INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_a
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('gegedu78', 'Chanteux', 'Géraldine', 'touxopharm', 'geraldine.chanteux@student.uclouvain.be', NULL, NULL);
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('phephe', 'Goffinet', 'Ophélie', '#presqueparfaite', 'ophelie.goffinet@student.uclouvain.be', NULL, NULL);
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('Moustikman', 'Dupont', 'Jean', '5140Ligny', 'jean.dupont@student.uclouvain.be', NULL, NULL);
+=======
+
+>>>>>>> 590bf5e33126b5d5c41ce7e07b51acb4dc6f7697
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
