@@ -88,16 +88,16 @@ Naide int(50) not null,
 Texte char(255),
 Image char(255),
 foreign key (Naide) references AIDE);
-INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('1', '1', 'Bleu', NULL);
-INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('2', '1', 'Vert', NULL);
-INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('3', '2', 'Poulet', NULL);
-INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('4', '2', 'Boeuf', NULL);
+INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('1', '1', 'Blanc', blanche.jpg);
+INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('2', '1', 'Vert', verte.jpg);
+INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('3', '2', 'Pizza', pizza.jpg);
+INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('4', '2', 'pâtes', spagetti.jpg);
 INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('5', '3', 'Réussi', NULL);
 INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('6', '3', 'Raté', NULL);
-INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('7', '4', 'En liquide', NULL);
-INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('8', '4', 'Par virement', NULL);
-INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('9', '5', 'Pain complet', NULL);
-INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('10', '5', 'Pain aux céréales', NULL);
+INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('7', '4', 'En liquide', cash.jpg);
+INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('8', '4', 'Par virement',banc.jpg );
+INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('9', '5', 'Pain complet', bruin_0.jpg);
+INSERT INTO OPTIONA (NoptionsA, Naide, Texte, Image) VALUES ('10', '5', 'Pain blanc', painblanc.jpg);
 
 -- Table : PARTICIPANTS_AIDE
 create table PARTICIPANTS_AIDE 
@@ -158,21 +158,21 @@ Texte char(255),
 Image char(255),
 Ordre int(50) not null,
 foreign key (Nsondage) references SONDAGE);
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('1', '1', 'Cinéma', NULL, '1');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('2', '1', 'Piscine', NULL, '2');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('3', '1', 'Resto', NULL, '3');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('4', '1', 'Sport', NULL, '4');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('5', '2', 'Pates carbo', 'patescarbo.png', '1');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('6', '2', 'Spaghetti', NULL, '2');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('7', '2', 'Lasagne', NULL, '3');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('8', '2', 'Wok', NULL, '4');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('9', '2', 'Tartiflette', NULL, '5');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('10', '2', 'Raclette', NULL, '6');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('11', '3', 'Espagne', NULL, '1');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('12', '3', 'Egypte', NULL, '2');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('13', '3', 'Turquie', NULL, '3');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('14', '3', 'Japon', NULL, '4');
-INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('15', '3', 'Etats-Unis', NULL, '5');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('1', '1', 'Cinéma', cine.jpg, '1');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('2', '1', 'Piscine', piscine.jpg, '2');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('3', '1', 'Resto', resto.jpg, '3');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('4', '1', 'Sport', sport.jpg, '4');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('5', '2', 'Pates carbo', patecarbo.jpg, '1');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('6', '2', 'Spaghetti', spaghetti.jpg, '2');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('7', '2', 'Lasagne', lasagne.jpg, '3');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('8', '2', 'Wok', wok.jpg, '4');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('9', '2', 'Tartiflette', tartiflette.jpg, '5');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('10', '2', 'Raclette', raclette.jpg, '6');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('11', '3', 'Espagne', espagne.jpg, '1');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('12', '3', 'Egypte', egypte.jpg, '2');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('13', '3', 'Turquie', turquie.jpg, '3');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('14', '3', 'Japon', drapeau-japonais.gif, '4');
+INSERT INTO POSSIBILITE (Npossibilites, Nsondage, Texte, Image, Ordre) VALUES ('15', '3', 'Etats-Unis', us.jpg, '5');
 
 -- Table : QUESTION
 create table QUESTION
@@ -317,8 +317,8 @@ Mail char(255) not null unique,
 Photo char(255), 
 Meilleur_ami char(255),
 foreign key (Meilleur_ami) references UTILISATEUR);
-INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('margauxgerard', 'Gerard', 'Margaux', 'Louvainlaneuve', 'margaux.gerard@student.uclouvain.be', 'photodeprofil.png', 'fel98');
-INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('fel98', 'de Patoul', 'Félix', 'Banane', 'felix.depatoul@student.uclouvain.be', NULL, NULL);
+INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('margauxgerard', 'Gerard', 'Margaux', 'Louvainlaneuve', 'margaux.gerard@student.uclouvain.be', marg.jpg, 'fel98');
+INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('fel98', 'de Patoul', 'Félix', 'Banane', 'felix.depatoul@student.uclouvain.be', fel.jpg, NULL);
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('Eriko99', 'Vandewerve', 'Eric', 'Fraise45', 'eric.vandewerve@student.uclouvain.be', NULL, 'fel98');
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('Hiboule', 'Neimry', 'Emile', 'Motdepasse', 'emile.neimry@student.uclouvain.be', NULL, NULL);
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('gegedu78', 'Chanteux', 'Géraldine', 'touxopharm', 'geraldine.chanteux@student.uclouvain.be', NULL, NULL);
