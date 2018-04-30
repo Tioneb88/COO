@@ -176,17 +176,29 @@ public class User {
         }
     }
 
+    public static ArrayList<User> getUsers(String selection, String[] selectionArgs) {
+        // Récupération de l'ID de l'utilisateur courant.
+        String userId = User.getConnectedUser().getId();
+
+        // Critère de sélection : appartient à l'utilisateur courant.
+        selection = COL_ID + " = ?";
+        selectionArgs = new String[]{String.valueOf(userId)};
+
+        // Le critère de sélection est passé à la sous-méthode de récupération des éléments.
+        return getUsers(selection, selectionArgs);
+    }
+
     public static ArrayList<User> searchUser(String searchQuery) {
         // Récupération de l'id de l'utilisateur courant.
         String userId = User.getConnectedUser().getId();
 
         // Critères de sélection (partie WHERE) : appartiennent à l'utilisateur courant et ont un nom
         // correspondant à la requête de recherche.
-        String selection = DB_COL_UID + " = ? AND " + DB_COL_TITLE + " LIKE ?";
-        String[] selectionArgs = new String[]{String.valueOf(u_id), "%" + searchQuery + "%"};
+        String selection = COL_ID + " = ? AND " + COL_NOM + " LIKE ?";
+        String[] selectionArgs = new String[]{String.valueOf(userId), "%" + searchQuery + "%"};
 
         // Les critères de selection sont passés à la sous-méthode de récupération des éléments.
-        return getSongs(selection, selectionArgs);
+        return getUsers(selection, selectionArgs);
     }
 
     /**
