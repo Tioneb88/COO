@@ -332,7 +332,6 @@ Mail char(255) not null unique,
 Photo char(255), 
 Meilleur_ami char(255),
 foreign key (Meilleur_ami) references UTILISATEUR);
-<<<<<<< HEAD
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('margauxgerard', 'Gerard', 'Margaux', 'Louvainlaneuve', 'margaux.gerard@student.uclouvain.be', marg.jpg, 'fel98');
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('fel98', 'de Patoul', 'Félix', 'Banane', 'felix.depatoul@student.uclouvain.be', fel.jpg, NULL);
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('Eriko99', 'Vandewerve', 'Eric', 'Fraise45', 'eric.vandewerve@student.uclouvain.be', NULL, 'fel98');
@@ -340,9 +339,7 @@ INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_a
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('gegedu78', 'Chanteux', 'Géraldine', 'touxopharm', 'geraldine.chanteux@student.uclouvain.be', NULL, NULL);
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('phephe', 'Goffinet', 'Ophélie', '#presqueparfaite', 'ophelie.goffinet@student.uclouvain.be', NULL, NULL);
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('Moustikman', 'Dupont', 'Jean', '5140Ligny', 'jean.dupont@student.uclouvain.be', NULL, NULL);
-=======
 
->>>>>>> 590bf5e33126b5d5c41ce7e07b51acb4dc6f7697
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;

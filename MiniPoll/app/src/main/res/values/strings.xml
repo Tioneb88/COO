@@ -43,6 +43,7 @@
     <string name="main_activity_questionnary">Questionnaire </string>
     <string name="main_activity_help">Aide à un ami </string>
     <string name="main_activity_create">Créer un sondage </string>
+    <string name="main_back_button_disable">Pour retournez en arrière, déconnectez-vous.</string>
 
     <!-- Profil -->
     <string name="my_profile_title">Mon profil</string>
