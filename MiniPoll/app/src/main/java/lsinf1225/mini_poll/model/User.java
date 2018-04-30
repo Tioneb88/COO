@@ -45,6 +45,14 @@ public class User {
      */
     private static User connectedUser = null;
     /**
+     * Nom de colonne sur laquelle le tri est effectué
+     */
+    public static String order_by = COL_NOM;
+    /**
+     * Ordre de tri : ASC pour croissant et DESC pour décroissant
+     */
+    public static String order = "ASC";
+    /**
      * Identifiant unique de l'utilisateur courant. Correspond à Identifiant dans la base de données.
      */
     private final String id;
@@ -158,6 +166,27 @@ public class User {
         cursor.close();
         db.close();
         return users;
+    }
+
+    public static void reverseOrder() {
+        if (User.order.equals("ASC")) {
+            User.order = "DESC";
+        } else {
+            User.order = "ASC";
+        }
+    }
+
+    public static ArrayList<User> searchUser(String searchQuery) {
+        // Récupération de l'id de l'utilisateur courant.
+        String userId = User.getConnectedUser().getId();
+
+        // Critères de sélection (partie WHERE) : appartiennent à l'utilisateur courant et ont un nom
+        // correspondant à la requête de recherche.
+        String selection = DB_COL_UID + " = ? AND " + DB_COL_TITLE + " LIKE ?";
+        String[] selectionArgs = new String[]{String.valueOf(u_id), "%" + searchQuery + "%"};
+
+        // Les critères de selection sont passés à la sous-méthode de récupération des éléments.
+        return getSongs(selection, selectionArgs);
     }
 
     /**
