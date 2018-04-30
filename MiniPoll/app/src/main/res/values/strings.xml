@@ -65,6 +65,8 @@
     <string name="friends_manage_title">Gestion des amis</string>
     <string name="friends_list">Liste d\'amis</string>
     <string name="friends_find">Trouver un ami</string>
+    <string name="friends_error_no_item">Trouver un ami</string>
+    <string name="friends_no_result">Trouver un ami</string>
 
     <string name="friends_manage_delete1">Êtes-vous sûr de vouloir supprimer </string>
     <string name="friends_manage_delete2"> de votre liste d\'amis ?</string>
