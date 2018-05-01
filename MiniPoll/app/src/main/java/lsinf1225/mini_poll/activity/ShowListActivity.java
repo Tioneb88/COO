@@ -35,7 +35,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
 
         setContentView(R.layout.activity_show_list);
 
-        // Chargement des éléments à afficher dans la variable de classe songs
+        // Chargement des éléments à afficher dans la variable de classe
         loadSongs();
 
 
@@ -71,7 +71,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         String searchQuery = getIntent().getStringExtra("searchQuery");
 
         if (searchQuery == null) {
-            users = User.getConnectedUser().getId();
+            users = User.getId();
         } else {
             users = User.searchFriends(searchQuery); // A ajouter dans User
         }
@@ -129,25 +129,25 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
     public void change_order(View view) {
         // Détermine si le clic a été fait sur la colonne de nom (name) ou de note (rating).
         switch (view.getId()) {
-            case R.id.show_list_name_title:
-                if (User.order_by.equals(User.DB_COL_TITLE)) {
+            case R.id.show_list_name:
+                if (User.order_by.equals(User.COL_NOM)) {
                     // Si le tri est déjà effectué sur les noms, il faut juste inverser l'ordre.
-                    Song.reverseOrder();
+                    User.reverseOrder();
                 } else {
                     // Sinon il faut indiquer que le tri se fait sur les noms par ordre alphabétique (croissant)
-                    Song.order_by = Song.DB_COL_TITLE;
-                    Song.order = "ASC";
+                    User.order_by = User.COL_NOM;
+                    User.order = "ASC";
                 }
                 break;
-            case R.id.show_list_rating_title:
-                if (Song.order_by.equals(Song.DB_COL_RATING)) {
+            case R.id.show_list_id:
+                if (User.order_by.equals(User.COL_ID)) {
                     // Si le tri est déjà effectué sur les notes, il faut juste inverser l'ordre
-                    Song.reverseOrder();
+                    User.reverseOrder();
                 } else {
                     // Sinon il faut indiquer que le tri se fait sur les notes par ordre décroissant
                     // (la meilleure note d'abord)
-                    Song.order_by = Song.DB_COL_RATING;
-                    Song.order = "DESC";
+                    User.order_by = User.COL_ID;
+                    User.order = "DESC";
                 }
                 break;
         }
@@ -159,7 +159,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         loadSongs();
 
         // Mise à jour de la liste des éléments dans l'adapter pour que l'affichage soit modifié.
-        myListViewAdapter.setSongs(songs);
+        myListViewAdapter.setSongs(users);
     }
 
 
@@ -172,8 +172,8 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
      * et de Song.order_by.
      */
     private void updateDrawableOrder() {
-        TextView ratingTitle = findViewById(R.id.show_list_rating_title);
-        TextView nameTitle = findViewById(R.id.show_list_name_title);
+        TextView ratingTitle = findViewById(R.id.show_list_id);
+        TextView nameTitle = findViewById(R.id.show_list_name);
 
         /*
          * Remise à zéro des images de tri.
@@ -187,7 +187,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
 
         // Détermination de la colonne sur laquelle le tri est effectué.
         TextView orderTitle;
-        boolean orderByRating = Song.order_by.equals(Song.DB_COL_RATING);
+        boolean orderByRating = User.order_by.equals(User.COL_ID);
         if (orderByRating) {
             orderTitle = ratingTitle;
         } else {
@@ -195,7 +195,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         }
 
         // Détermination de l'ordre de tri.
-        boolean orderDesc = Song.order.equals("DESC");
+        boolean orderDesc = User.order.equals("DESC");
 
         // Placement de l'icône en fonction de l'ordre de tri.
         if (orderDesc) {
