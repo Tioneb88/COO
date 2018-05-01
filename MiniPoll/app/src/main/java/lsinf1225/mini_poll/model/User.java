@@ -47,7 +47,7 @@ public class User {
     /**
      * Identifiant unique de l'utilisateur courant. Correspond à Identifiant dans la base de données.
      */
-    private final String id;
+    private  String id;
     /**
      * Nom (unique) de l'utilisateur courant. Correspond à Nom dans la base de données.
      */
@@ -241,6 +241,20 @@ public class User {
     public String toString() {
 
         return getId();
+    }
+
+    /**
+     * change l'identifiant de l'utilisateur courant.
+     */
+    public void setId(String identifiant) {
+        this.id = identifiant;
+    }
+
+    /**
+     * change le password de l'utilisateur courant.
+     */
+    public void setPassword(String pass) {
+        this.password= pass;
     }
 
 }
