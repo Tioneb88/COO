@@ -73,7 +73,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         if (searchQuery == null) {
             users = User.getId();
         } else {
-            users = User.searchFriends(searchQuery); // A ajouter dans User
+            users = User.searchUser(searchQuery); // A ajouter dans User
         }
 
         // S'il n'y a aucun éléments dans la liste, il faut afficher un message. Ce message est différent

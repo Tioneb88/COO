@@ -1,8 +1,13 @@
 package lsinf1225.mini_poll.activity;
 
-/**
- * Created by margauxgerard on 30/04/18.
- */
+import android.app.Activity;
 
-public class ShowDetailsActivity {
+/**
+ * Gère l'affichage des détails d'un élément ainsi que la modification de la note de celui-ci.
+ *
+ * @author Damien Mercier
+ * @version 1
+ */
+public class ShowDetailsActivity extends Activity {
+
 }
