@@ -46,41 +46,43 @@ public class MainActivity extends Activity {
         startActivity(intent);
     }
 
-    public void consulter(View v) {
+    /**
+     * Lance l'activité de consultation et de modification du profil.
+     */
+    public void seeProfile(View v) {
         Intent intent = new Intent(this, ConsulterProfilActivity.class);
         startActivity(intent);
     }
 
-    public void modifier(View v) {
-        Intent intent = new Intent(this, ModifierProfilActivity.class);
+    /**
+     * Lance l'activité de consultation et de modification de la liste d'amis.
+     */
+    public void seeFriends(View v) {
+        Intent intent = new Intent(this, ConsulterProfilActivity.class);
         startActivity(intent);
     }
 
-    public void creer(View v) {
-        Intent intent = new Intent(this, CreationActivity.class);
-        startActivity(intent);
-    }
-
-    public void reponseAide(View v) {
-        Intent intent = new Intent(this, ReponseAideActivity.class);
-        startActivity(intent);
-    }
-
-    public void reponseQuest(View v) {
-        Intent intent = new Intent(this, ReponseQuestActivity.class);
-        startActivity(intent);
-    }
-
-    public void reponseSond(View v) {
+    /**
+     * Lance l'activité de réponse aux sondages par accord.
+     */
+    public void answerAgreement(View v) {
         Intent intent = new Intent(this, ReponseSondageActivity.class);
         startActivity(intent);
     }
 
     /**
-     * Lance l'activité de recherche d'un élément.
+     * Lance l'activité de réponse aux questionnaires.
      */
-    public void search(View v) {
-        Intent intent = new Intent(this, SearchActivity.class);
+    public void answerQuestionnary(View v) {
+        Intent intent = new Intent(this, ReponseQuestActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Lance l'activité de réponse aux demandes d'aide.
+     */
+    public void answerHelp(View v) {
+        Intent intent = new Intent(this, ReponseAideActivity.class);
         startActivity(intent);
     }
 
@@ -91,6 +93,27 @@ public class MainActivity extends Activity {
         User.logout();
         finish();
     }
+
+    /**
+    public void modifier(View v) {
+        Intent intent = new Intent(this, ModifierProfilActivity.class);
+        startActivity(intent);
+    }
+
+    public void creer(View v) {
+        Intent intent = new Intent(this, CreationActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Lance l'activité de recherche d'un élément.
+     */
+    /**
+    public void search(View v) {
+        Intent intent = new Intent(this, SearchActivity.class);
+        startActivity(intent);
+    }
+    */
 
     /**
      * Désactive le bouton de retour. Désactive le retour à l'activité précédente (donc l'écran de

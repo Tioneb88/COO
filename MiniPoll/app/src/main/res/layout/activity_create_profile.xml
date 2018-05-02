@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/createProfileLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="lsinf1225.mini_poll.activity.CreationActivity">
+
+    <EditText
+        android:id="@+id/create_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="90dp"
+        android:ems="10"
+        android:hint="@string/create_name"
+        android:imeActionId="6"
+        android:imeActionLabel="@string/create_name"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/create_firstname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/create_firstname"
+        android:imeActionId="6"
+        android:imeActionLabel="@string/create_firstname"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_name" />
+
+    <EditText
+        android:id="@+id/create_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="@string/create_mail"
+        android:imeActionId="6"
+        android:imeActionLabel="@string/create_mail"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_firstname" />
+
+    <Button
+        android:id="@+id/create_photo_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="30dp"
+        android:onClick="photo"
+        android:text="@string/create_picture"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_confirm" />
+
+    <Button
+        android:id="@+id/create_next_btn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:drawableEnd="@drawable/ic_go"
+        android:drawableRight="@drawable/ic_go"
+        android:layout_marginTop="40dp"
+        android:onClick="create"
+        android:text="@string/app_next"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_photo_btn" />
+
+    <TextView
+        android:id="@+id/create_advice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="10dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:ems="10"
+        android:textColor="#FF0000"
+        android:text="@string/create_advice"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintBottom_toTopOf="parent" />
+
+</android.support.constraint.ConstraintLayout>

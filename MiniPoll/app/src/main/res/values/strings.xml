@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <resources>
 
     <!-- Application générale -->
@@ -39,10 +40,11 @@
     <string name="main_activity_welcome_partie3"> notifications !</string>
     <string name="main_activity_profile">Profil </string>
     <string name="main_activity_manage_friends">Gestion des amis </string>
-    <string name="main_activity_agreement">Accord </string>
+    <string name="main_activity_agreement">Sondage par accord </string>
     <string name="main_activity_questionnary">Questionnaire </string>
     <string name="main_activity_help">Aide à un ami </string>
     <string name="main_activity_create">Créer un sondage </string>
+    <string name="main_activity_offline">Se déconnecter </string>
     <string name="main_back_button_disable">Pour retournez en arrière, déconnectez-vous.</string>
 
     <!-- Profil -->

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,78 +10,97 @@
 
     <TextView
         android:id="@+id/welcomeTxt"
-        android:layout_width="137dp"
-        android:layout_height="29dp"
-        android:text="Bonjour!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.607"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/default_padding"
+        android:text="@string/main_activity_welcome_partie1"
+        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/main_profile_btn"
+        style="@style/main_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="seeProfile"
+        android:text="@string/main_activity_profile"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.012" />
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTxt" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="53dp"
-        android:text="Consulter mon profil"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="107dp" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/main_friends_btn"
+        style="@style/main_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Modifier mon profil"
-        tools:layout_editor_absoluteX="208dp"
-        tools:layout_editor_absoluteY="59dp" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="seeFriends"
+        android:text="@string/main_activity_manage_friends"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_profile_btn" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:id="@+id/main_agreement_btn"
+        style="@style/main_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Création"
-        tools:layout_editor_absoluteX="241dp"
-        tools:layout_editor_absoluteY="177dp" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="1100dp"
+        android:onClick="answerAgreement"
+        android:text="@string/main_activity_agreement"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_friends_btn" />
 
     <Button
-        android:id="@+id/button4"
-        android:layout_width="wrap_content"
+        android:id="@+id/main_questionnary_btn"
+        style="@style/main_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Répondre à un sondage"
-        tools:layout_editor_absoluteX="38dp"
-        tools:layout_editor_absoluteY="251dp" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="answerQuestionnary"
+        android:text="@string/main_activity_questionnary"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_agreement_btn" />
 
     <Button
-        android:id="@+id/button5"
-        android:layout_width="wrap_content"
+        android:id="@+id/main_help_btn"
+        style="@style/main_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Répondre à une aide"
-        tools:layout_editor_absoluteX="218dp"
-        tools:layout_editor_absoluteY="319dp" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="answerHelp"
+        android:text="@string/main_activity_help"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_questionnary_btn" />
 
     <Button
-        android:id="@+id/button6"
-        android:layout_width="wrap_content"
+        android:id="@+id/main_create_btn"
+        style="@style/main_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Répondre à un questionnaire"
-        tools:layout_editor_absoluteX="51dp"
-        tools:layout_editor_absoluteY="382dp" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="show"
+        android:text="@string/main_activity_create"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_help_btn" />
 
     <Button
-        android:id="@+id/button7"
-        android:layout_width="wrap_content"
+        android:id="@+id/main_logout_btn"
+        style="@style/main_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Consulter la liste d'amis"
-        tools:layout_editor_absoluteX="143dp"
-        tools:layout_editor_absoluteY="447dp" />
-
-    <Button
-        android:id="@+id/button8"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Rechercher"
-        tools:layout_editor_absoluteX="24dp"
-        tools:layout_editor_absoluteY="35dp" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="logout"
+        android:text="@string/main_activity_offline"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

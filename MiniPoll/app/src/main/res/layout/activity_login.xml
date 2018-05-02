@@ -1,30 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/relativeLayout"
+    android:id="@+id/loginLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="lsinf1225.mini_poll.activity.LoginActivity">
 
+    <!-- ic_launcher_background = à changer -->
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/ic_launcher_background"
         android:contentDescription="@string/app_name"
-
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- constraintHorizontal_bias = inutile -->
     <Spinner
         android:id="@+id/login_username"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="90dp"
         android:prompt="@string/app_user_username"
         android:spinnerMode="dropdown"
         app:layout_constraintHorizontal_bias="0.0"
@@ -32,12 +34,13 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
+    <!-- constraintHorizontal_bias = inutile
+         imeActionId = à quoi ça sert ?? -->
     <EditText
         android:id="@+id/login_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="48dp"
         android:ems="10"
         android:hint="@string/app_user_password"
         android:imeActionId="6"
@@ -49,7 +52,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_username" />
 
-    <!-- Login et connexion <Button
+    <!-- Bouton de connexion -->
+    <Button
         android:id="@+id/login_btn"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
@@ -58,8 +62,41 @@
         android:drawableEnd="@drawable/ic_go"
         android:drawableRight="@drawable/ic_go"
         android:onClick="login"
-        android:text="@string/login_btn"
+        android:text="@string/login_title"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_password" />
-        -->
+
+    <!-- Mot de passe oublié -->
+    <Button
+        android:id="@+id/login_password_forgotten"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="forgot"
+        android:textSize="18sp"
+        android:textColor="#0000FF"
+        android:textStyle="italic"
+        android:text="@string/login_password_forgotten"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="parent" />
+
+    <!-- Créer un nouveau compte -->
+    <Button
+        android:id="@+id/login_create_account"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="newUser"
+        android:textSize="18sp"
+        android:textColor="#0000FF"
+        android:textStyle="italic"
+        android:text="@string/login_create_account"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/login_password_forgotten" />
+
 </android.support.constraint.ConstraintLayout>
