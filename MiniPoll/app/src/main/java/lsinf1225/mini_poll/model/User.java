@@ -25,25 +25,25 @@ import lsinf1225.mini_poll.MySQLiteHelper;
  */
 public class User {
 
-    private static final String COL_NOM = "Nom";
-    private static final String COL_ID = "Identifiant";
-    private static final String COL_PRENOM = "Prénom";
-    private static final String COL_MDP = "MDP";
-    private static final String COL_MAIL = "Mail";
-    private static final String COL_PHOTO = "Photo";
-    private static final String COL_BFF = "Meilleur_ami";
-    private static final String BDD_TABLE = "UTILISATEUR";
+    public static final String COL_NOM = "Nom";
+    public static final String COL_ID = "Identifiant";
+    public static final String COL_PRENOM = "Prénom";
+    public static final String COL_MDP = "MDP";
+    public static final String COL_MAIL = "Mail";
+    public static final String COL_PHOTO = "Photo";
+    public static final String COL_BFF = "Meilleur_ami";
+    public static final String BDD_TABLE = "UTILISATEUR";
 
     /**
      * Contient les instances déjà existantes des utilisateurs afin d'éviter de créer deux instances
      * du même utilisateur.
      */
-    private static SparseArray<User> userSparseArray = new SparseArray<>();
+    public static SparseArray<User> userSparseArray = new SparseArray<>();
     /**
      * Utilisateur actuellement connecté à l'application. Correspond à null si aucun utilisateur
      * n'est connecté.
      */
-    private static User connectedUser = null;
+    public static User connectedUser = null;
     /**
      * Nom de colonne sur laquelle le tri est effectué
      */
