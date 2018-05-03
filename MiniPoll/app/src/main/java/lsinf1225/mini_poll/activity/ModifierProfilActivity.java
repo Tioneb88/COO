@@ -29,7 +29,7 @@ public class ModifierProfilActivity extends Activity implements TextView.OnEdito
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
-            setContentView(R.layout.activity_login);
+            setContentView(R.layout.activity_modifier_id);
 
         /*
          @note : Le titre de l'activité de lancement donné dans l'AndroidManifest.xml est repris

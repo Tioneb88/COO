@@ -60,7 +60,7 @@ public class MainActivity extends Activity {
      * Lance l'activité de consultation et de modification de la liste d'amis.
      */
     public void seeFriends(View v) {
-        Intent intent = new Intent(this, ConsulterProfilActivity.class);
+        Intent intent = new Intent(this, ShowListActivity.class);
         startActivity(intent);
     }
 

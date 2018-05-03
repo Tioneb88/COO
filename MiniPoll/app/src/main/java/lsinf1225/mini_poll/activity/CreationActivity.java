@@ -11,18 +11,18 @@ import android.widget.TextView;
 
 public class CreationActivity extends Activity {
 
-    public void next(View v) {
-        Intent intent = new Intent(this, CreationActivity.class);
+    public void aide(View v) {
+        Intent intent = new Intent(this, CreationAideActivity.class);
         startActivity(intent);
     }
 
-    public void photo(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void sondage(View v) {
+        Intent intent = new Intent(this, CreationSondageActivity.class);
         startActivity(intent);
     }
 
-    public void create(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
+    public void questionnaire(View v) {
+        Intent intent = new Intent(this, CreationQuestActivity.class);
         startActivity(intent);
     }
 }
