@@ -9,7 +9,11 @@ import android.widget.TextView;
  * Created by margauxgerard on 30/04/18.
  */
 
+<<<<<<< HEAD
 public class CreationActivity extends Activity  {
+=======
+public class CreationActivity extends Activity {
+>>>>>>> cdb6aee8edba2dba96afce10674ad1181c32e750
 
     public void next(View v) {
         Intent intent = new Intent(this, CreationActivity.class);

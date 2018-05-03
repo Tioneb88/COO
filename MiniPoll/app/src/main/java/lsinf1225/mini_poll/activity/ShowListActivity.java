@@ -36,7 +36,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         setContentView(R.layout.activity_show_list);
 
         // Chargement des éléments à afficher dans la variable de classe
-        loadSongs();
+        //loadSongs();
 
 
         ListView myListView = findViewById(R.id.show_listView);
@@ -63,7 +63,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
      * Charge la liste des éléments de la collection de l'utilisateur connecté et si une requête de
      * recherche est passée lors du lancement de l'activité, effectue la recherche et charge la
      * liste des résultats.
-     */
+     *
     private void loadSongs() {
 
         // Récupération de la requête de recherche.
@@ -91,7 +91,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
             finish();
         }
 
-    }
+    }*/
 
     @Override
     public void onResume() {
@@ -99,7 +99,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         // La liste des éléments est ici rechargées car en cas de modification d'un élément, l'ordre
         // a peut-être changé.
 
-        loadSongs();
+        //loadSongs();
 
         myListViewAdapter.setSongs(users);
     }
@@ -156,7 +156,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         updateDrawableOrder();
 
         // Re-chargement de la liste des éléments de collection pour prendre en compte le nouveau tri.
-        loadSongs();
+       // loadSongs();
 
         // Mise à jour de la liste des éléments dans l'adapter pour que l'affichage soit modifié.
         myListViewAdapter.setSongs(users);
