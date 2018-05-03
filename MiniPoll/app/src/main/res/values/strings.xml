@@ -107,6 +107,7 @@
     <string name="create_main_survey">Sondage pour accord</string>
     <string name="create_main_questionnary">Questionnaire</string>
     <string name="create_main_help">Demande d\'aide à un ami</string>
+    <string name="create_main">Création d\'une activité</string>
 
     <string name="create_surveyORquestionnary_friends_title">Amis à sonder</string>
     <string name="create_help_friends_title">Ami à sonder</string>

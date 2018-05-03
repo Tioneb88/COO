@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.activity.adapter.MyListViewAdapter;
+import lsinf1225.mini_poll.model.Ami;
 import lsinf1225.mini_poll.model.User;
 
 /**
@@ -26,7 +27,7 @@ import lsinf1225.mini_poll.model.User;
  */
 public class ShowListActivity extends Activity implements OnItemClickListener {
 
-    private ArrayList<User> users;
+    private ArrayList<Ami> users;
     private MyListViewAdapter myListViewAdapter;
 
     @Override
@@ -57,24 +58,18 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         updateDrawableOrder();
     }
 
-    /**
-     * Charge la liste des éléments de collection dans la variables de classe songs.
+
+     /* Charge la liste des éléments de collection dans la variables de classe songs.
      * <p>
      * Charge la liste des éléments de la collection de l'utilisateur connecté et si une requête de
      * recherche est passée lors du lancement de l'activité, effectue la recherche et charge la
      * liste des résultats.
-     *
-    private void loadSongs() {
+     */
+    private void loadUser() {
 
         // Récupération de la requête de recherche.
         // Si aucune requête n'a été passée lors de la création de l'activité, searchQuery sera null.
         String searchQuery = getIntent().getStringExtra("searchQuery");
-
-        if (searchQuery == null) {
-            users = User.getId();
-        } else {
-            users = User.searchUser(searchQuery); // A ajouter dans User
-        }
 
         // S'il n'y a aucun éléments dans la liste, il faut afficher un message. Ce message est différent
         // s'il y avait une requête de recherche (message du type "Aucun résultat trouvé") ou si
@@ -91,17 +86,6 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
             finish();
         }
 
-    }*/
-
-    @Override
-    public void onResume() {
-        super.onResume();
-        // La liste des éléments est ici rechargées car en cas de modification d'un élément, l'ordre
-        // a peut-être changé.
-
-        //loadSongs();
-
-        myListViewAdapter.setSongs(users);
     }
 
     /**
@@ -112,10 +96,10 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, ShowDetailsActivity.class);
+        Intent intent = new Intent(this, ConsulterProfilActivity.class);
         // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
         // récupérer celui-ci.
-        intent.putExtra("s_id", users.get(position).getId());
+        intent.putExtra("Emetteur", users.get(position).getEmet());
         startActivity(intent);
     }
 
@@ -125,12 +109,12 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
      * Cette méthode est appelée grâce à l'arttribut onClick présent dans le fichier xml de layout.
      *
      * @param view Vue sur laquelle l'utilisateur a cliqué.
-     */
+
     public void change_order(View view) {
         // Détermine si le clic a été fait sur la colonne de nom (name) ou de note (rating).
         switch (view.getId()) {
             case R.id.show_list_name:
-                if (User.order_by.equals(User.COL_NOM)) {
+                if (User.order_by.equals(Ami.COL_EMET)) {
                     // Si le tri est déjà effectué sur les noms, il faut juste inverser l'ordre.
                     User.reverseOrder();
                 } else {
@@ -152,6 +136,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
                 break;
         }
 
+
         // Mise à jour des icônes de tri.
         updateDrawableOrder();
 
@@ -159,9 +144,9 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
        // loadSongs();
 
         // Mise à jour de la liste des éléments dans l'adapter pour que l'affichage soit modifié.
-        myListViewAdapter.setSongs(users);
+        myListViewAdapter.setFriends(users);
     }
-
+     */
 
     /**
      * Met à jour les icônes de tri afin qu'elles correspondent au tri actuellement en cours.

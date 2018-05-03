@@ -13,6 +13,7 @@ import java.util.ArrayList;
 
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.User;
+import lsinf1225.mini_poll.model.Ami;
 
 /**
  * Gère l'affichage personnalisé de notre liste.
@@ -35,7 +36,7 @@ public class MyListViewAdapter extends BaseAdapter {
     /**
      * Liste des éléments de collection à mettr e dans la liste.
      */
-    private ArrayList<User> users;
+    private ArrayList<Ami> users;
 
     /**
      * Constructeur.
@@ -43,7 +44,7 @@ public class MyListViewAdapter extends BaseAdapter {
      * @param context        Contexte de l'application.
      * @param user Liste des éléments de collection à placer dans la liste.
      */
-    public MyListViewAdapter(Context context, ArrayList<User> user) {
+    public MyListViewAdapter(Context context, ArrayList<Ami> user) {
         mInflater = LayoutInflater.from(context);
         this.users = user;
     }
@@ -80,16 +81,16 @@ public class MyListViewAdapter extends BaseAdapter {
 
         if (convertView == null) {
             // Création d'un nouvelle vue avec le layout correspondant au fichier xml
-            convertView = mInflater.inflate(R.layout.collect_item_row, parent, false);
+            convertView = mInflater.inflate(R.layout.activity_show_list, parent, false);
         }
 
         // Récupération des deux éléments de notre vue dans le but d'y placer les données.
         TextView nameTextView = convertView.findViewById(R.id.show_row_name);
-        RatingBar ratingBar = convertView.findViewById(R.id.show_row_rating);
 
         // Récupération et placement des données.
-        User user = users.get(position);
-        nameTextView.setText(user.getPrenom());
+        Ami user = users.get(position);
+        nameTextView.setText(user.getEmet());
+        nameTextView.setText(user.getRecept());
         return convertView;
     }
 
@@ -100,7 +101,7 @@ public class MyListViewAdapter extends BaseAdapter {
      *
      * @param newUser La nouvelle liste des éléments de collection à afficher.
      */
-    public void setSongs(ArrayList<User> newUser) {
+    public void setFriends(ArrayList<Ami> newUser) {
         this.users = newUser;
         notifyDataSetChanged();
     }
