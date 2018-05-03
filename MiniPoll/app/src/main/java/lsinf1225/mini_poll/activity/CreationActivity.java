@@ -9,7 +9,7 @@ import android.widget.TextView;
  * Created by margauxgerard on 30/04/18.
  */
 
-public class CreationActivity extends Activity implements TextView.OnEditorActionListener {
+public class CreationActivity extends Activity  {
 
     public void next(View v) {
         Intent intent = new Intent(this, CreationActivity.class);
