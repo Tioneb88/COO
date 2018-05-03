@@ -33,7 +33,7 @@ public class MyListViewAdapter extends BaseAdapter {
     private final LayoutInflater mInflater;
 
     /**
-     * Liste des éléments de collection à mettre dans la liste.
+     * Liste des éléments de collection à mettr e dans la liste.
      */
     private ArrayList<User> users;
 
@@ -61,9 +61,9 @@ public class MyListViewAdapter extends BaseAdapter {
     }
 
     @Override
-    public int getItemId(int position) {
+    public long getItemId(int position) {
 
-        return users.get(position).getId();
+        return 42;
     }
 
     /**
