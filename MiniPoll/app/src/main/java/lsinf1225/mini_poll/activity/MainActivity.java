@@ -89,7 +89,7 @@ public class MainActivity extends Activity {
     }
 
     /**
-     * Lance l'activité de création de soondage.
+     * Lance l'activité de création de sondage.
      */
     public void create_poll(View v) {
         Intent intent = new Intent(this, CreationActivity.class);
@@ -107,11 +107,6 @@ public class MainActivity extends Activity {
     /**
     public void modifier(View v) {
         Intent intent = new Intent(this, ModifierProfilActivity.class);
-        startActivity(intent);
-    }
-
-    public void creer(View v) {
-        Intent intent = new Intent(this, CreationActivity.class);
         startActivity(intent);
     }
 

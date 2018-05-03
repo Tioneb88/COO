@@ -100,13 +100,12 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
     }
 
     public void newUser(View v) {
-        Intent intent = new Intent(this, CreationActivity.class);
+        Intent intent = new Intent(this, CreationCompteActivity.class);
         startActivity(intent);
     }
 
     public void forgot(View v) {
-        Intent intent = new Intent(this, CreationActivity.class);
-        startActivity(intent);
+        MiniPollApp.notifyShort(R.string.main_back_button_disable);
     }
 
     /**

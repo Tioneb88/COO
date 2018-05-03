@@ -33,7 +33,7 @@
             android:label="@string/my_profile_title" />
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationActivity"
-            android:label="@string/create_main" />
+            android:label="@string/create_main_title" />
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationAideActivity"
             android:label="@string/create_main_help" />

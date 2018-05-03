@@ -11,18 +11,27 @@ import android.widget.TextView;
 
 public class CreationActivity extends Activity {
 
-    public void aide(View v) {
-        Intent intent = new Intent(this, CreationAideActivity.class);
-        startActivity(intent);
-    }
-
-    public void sondage(View v) {
+    /**
+     * Lance l'activité de création de sondage par accord.
+     */
+    public void createAgreement(View v) {
         Intent intent = new Intent(this, CreationSondageActivity.class);
         startActivity(intent);
     }
 
-    public void questionnaire(View v) {
+    /**
+     * Lance l'activité de création de questionnaire.
+     */
+    public void createQuestionnary(View v) {
         Intent intent = new Intent(this, CreationQuestActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Lance l'activité de création de demande d'aide à un ami.
+     */
+    public void createHelp(View v) {
+        Intent intent = new Intent(this, CreationAideActivity.class);
         startActivity(intent);
     }
 }
