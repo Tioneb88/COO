@@ -13,6 +13,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginLeft="10dp"
+        android:layout_marginStart="10dp"
         android:padding="@dimen/default_padding"
         android:text="@string/main_activity_welcome_partie1"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
@@ -48,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginTop="1100dp"
+        android:layout_marginTop="10dp"
         android:onClick="answerAgreement"
         android:text="@string/main_activity_agreement"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -85,6 +87,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginTop="56dp"
         android:onClick="show"
         android:text="@string/main_activity_create"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -101,6 +104,6 @@
         android:text="@string/main_activity_offline"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintBottom_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/main_create_btn" />
 
 </android.support.constraint.ConstraintLayout>
