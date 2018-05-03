@@ -22,8 +22,9 @@ import lsinf1225.mini_poll.model.User;
  * une requête de recherche est passée dans l'Intent, la recherche est effectuée et la liste des
  * éléments affichés sera la liste des résultats.
  *
- * @author Damien Mercier
+ * @author Margaux GERARD, Loïc QUINET, Félix DE PATOUL, Benoît MICHEL, Arnaud CLAES
  * @version 1
+ * 03 mai 2018
  */
 public class ShowListActivity extends Activity implements OnItemClickListener {
 
@@ -45,7 +46,6 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         // Création de l'adapter pour faire la liaison entre les données et
         // l'affichage de chaque ligne de la liste.
         myListViewAdapter = new MyListViewAdapter(this, users);
-        myListView.setAdapter(myListViewAdapter);
 
         // Indique que le clic d'un élément de la liste doit appeler la méthode onItemClick d
         // cette classe (this).
