@@ -4,7 +4,12 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.EditText;
 
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
@@ -38,19 +43,16 @@ public class MainActivity extends Activity {
      * Lire http://developer.android.com/reference/android/R.attr.html#onClick
      */
 
-    /**
-     * Lance l'activité d'affichage de la liste des éléments.
-     */
-    public void show(View v) {
-        Intent intent = new Intent(this, ShowListActivity.class);
-        startActivity(intent);
-    }
+
 
     /**
      * Lance l'activité de consultation et de modification du profil.
      */
     public void seeProfile(View v) {
         Intent intent = new Intent(this, ConsulterProfilActivity.class);
+        // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
+        // récupérer celui-ci.
+        intent.putExtra("s_id", User.getConnectedUser().getId());
         startActivity(intent);
     }
 
@@ -125,5 +127,21 @@ public class MainActivity extends Activity {
         // rien dans cette méthode si ce n'est afficher un message à l'utilisateur.
         MiniPollApp.notifyShort(R.string.main_back_button_disable);
     }
+
+    /**
+     * Lance l'activité de vue des détails d'un élément de collection lors du clic sur un élément de
+     * la liste.
+     *
+     * @param position Position de l'élément dans la liste.
+     */
+    /*
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(this, ConsulterProfilActivity.class);
+        // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
+        // récupérer celui-ci.
+        intent.putExtra("s_id", User.getConnectedUser().getId());
+        startActivity(intent);
+    }
+    */
 
 }

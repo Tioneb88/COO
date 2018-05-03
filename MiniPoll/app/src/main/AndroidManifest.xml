@@ -22,6 +22,9 @@
         <activity
             android:name="lsinf1225.mini_poll.activity.MainActivity"
             android:label="@string/main_activity_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ConsulterProfilActivity"
+            android:label="@string/main_activity_title" />
 
     </application>
 
