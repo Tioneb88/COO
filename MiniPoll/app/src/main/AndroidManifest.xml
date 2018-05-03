@@ -20,11 +20,17 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="lsinf1225.mini_poll.activity.CreationCompteActivity"
+            android:label="@string/newAccount_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationProfilActivity"
+            android:label="@string/create_title" />
+        <activity
             android:name="lsinf1225.mini_poll.activity.MainActivity"
             android:label="@string/main_activity_title" />
         <activity
             android:name="lsinf1225.mini_poll.activity.ConsulterProfilActivity"
-            android:label="@string/main_activity_title" />
+            android:label="@string/my_profile_title" />
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationActivity"
             android:label="@string/create_main" />

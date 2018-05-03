@@ -89,6 +89,14 @@ public class MainActivity extends Activity {
     }
 
     /**
+     * Lance l'activité de création de soondage.
+     */
+    public void create_poll(View v) {
+        Intent intent = new Intent(this, CreationActivity.class);
+        startActivity(intent);
+    }
+
+    /**
      * Déconnecte l'utilisateur actuellement connecté et retourne vers l'écran de connexion.
      */
     public void logout(View v) {

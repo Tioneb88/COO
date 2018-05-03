@@ -26,7 +26,7 @@
     <string name="newAccount_confirmation_password">Confirmation du mot de passe</string>
 
     <!-- Création d'un profil -->
-    <string name="create_title">Création d\'un compte</string>
+    <string name="create_title">Création d\'un profil</string>
     <string name="create_name">Nom*</string>
     <string name="create_firstname">Prénom*</string>
     <string name="create_mail">Adresse mail*</string>
@@ -68,7 +68,7 @@
     <string name="friends_list">Liste d\'amis</string>
     <string name="friends_find">Trouver un ami</string>
     <string name="friends_error_no_item">Aucun ami dans votre liste</string>
-    <string name="friends_no_result">Aucun ami correspondant à votre recherche</string>
+    <string name="friends_no_result">Aucun ami ne correspond à votre recherche</string>
 
     <string name="friends_manage_delete1">Êtes-vous sûr de vouloir supprimer </string>
     <string name="friends_manage_delete2"> de votre liste d\'amis ?</string>
