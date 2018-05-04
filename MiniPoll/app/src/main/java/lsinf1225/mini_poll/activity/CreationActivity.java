@@ -3,7 +3,6 @@ package lsinf1225.mini_poll.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.view.View;
-import android.widget.TextView;
 
 /**
  * Created by margauxgerard on 30/04/18.
