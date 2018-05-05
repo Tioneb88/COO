@@ -3,6 +3,7 @@ package lsinf1225.mini_poll.model;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.SparseArray;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -123,6 +124,56 @@ public class Sondage {
 
         return sondages;
     }
+
+    public static ArrayList<Sondage> getSondagesConnected() {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Colonnes à récupérer
+        String[] colonnes = {COL_NSONDAGE, COL_ID,COL_NBRECHOIX, COL_DESCRIPTION, COL_ACTIVITE};
+
+        // Requête de selection (SELECT)
+        //Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
+        String connectedUser = User.getConnectedUser().getId();
+        Cursor cursor = db.rawQuery("SELECT S.Nsondage, S.Identifiant, S.Nbrechoix, S.Description, S.Activite  FROM PARTICIPANTS_SONDAGE PS, SONDAGE S " + "WHERE S.Nsondage = PS.Nsondage AND PS.Identifiant =\'"+connectedUser+"\' AND Activite=0",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<Sondage> sondages = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            int nSondage = cursor.getInt(0);
+            Log.d("tagCursor",Integer.toString(nSondage));
+            String userId = cursor.getString(1);
+            Log.d("tagCursor",userId);
+            int sNbreChoix = cursor.getInt(2);
+            String sDesc = cursor.getString(3);
+            int sActi = cursor.getInt(4);
+
+            // Vérification pour savoir s'il y a déjà une instance de ce sondage.
+            Sondage sondage = Sondage.sondSparseArray.get(nSondage);
+            if (sondage == null) {
+                // Si pas encore d'instance, création d'une nouvelle instance.
+                sondage = new Sondage(nSondage, userId, sDesc,sNbreChoix, sActi);
+            }
+
+            // Ajout de le questionnaire à la liste.
+            sondages.add(sondage);
+
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return sondages;
+    }
+
 
     /**
      * Fournit l'identifiant de l'utilisateur courant qui a créé le sondage.

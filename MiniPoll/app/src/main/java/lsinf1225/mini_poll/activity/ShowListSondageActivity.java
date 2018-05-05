@@ -59,7 +59,7 @@ public class ShowListSondageActivity extends Activity implements AdapterView.OnI
         String searchQuery = getIntent().getStringExtra("searchQuery");
 
         if (searchQuery == null) {
-            sondages = Sondage.getSondages();
+            sondages = Sondage.getSondagesConnected();
         } else {
            //sondages = Sondage.searchSongs(searchQuery);
         }
