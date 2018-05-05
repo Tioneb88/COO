@@ -45,6 +45,13 @@
             android:name="lsinf1225.mini_poll.activity.ShowListSondageActivity"
             android:label="@string/surveys_manage_title" />
 
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowSondageActivity"
+            android:label="@string/poll_answer_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowResultSondageActivity"
+            android:label="@string/poll_results_title" />
+
     </application>
 
 </manifest>

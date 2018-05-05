@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.util.Log;
 import java.util.ArrayList;
 
 import lsinf1225.mini_poll.MiniPollApp;
@@ -13,7 +14,12 @@ import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.activity.adapter.MySondageListViewAdapter;
 import lsinf1225.mini_poll.model.Sondage;
 
-
+/**
+ * Gère l'affichage des sondages auxquels doit répondre l'utilisateur connecté
+ *
+ * @author Arnaud CLAES
+ * @version 1
+ */
 public class ShowListSondageActivity extends Activity implements AdapterView.OnItemClickListener {
     private ArrayList<Sondage> sondages;
     private MySondageListViewAdapter myListViewAdapter;
@@ -100,11 +106,30 @@ public class ShowListSondageActivity extends Activity implements AdapterView.OnI
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, ShowSondageActivity.class);
-        // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
-        // récupérer celui-ci.
-        intent.putExtra("s_id", sondages.get(position).getNsondage());
-        startActivity(intent);
+        boolean answered = Sondage.isAnswered(sondages.get(position).getNsondage());
+
+        /**
+         * Si l'utilisateur a déjà répondu, il est renvoyé vers les résultats du sondage en cours
+         * Sinon vers l'interface pour répondre au sondage.
+         */
+
+        //if (!answered) {
+            Intent intent = new Intent(this, ShowSondageActivity.class);
+            // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
+            // récupérer celui-ci.
+            intent.putExtra("nSondage", sondages.get(position).getNsondage());
+            startActivity(intent);
+        //}
+        /**
+        else {
+            Intent intent = new Intent(this, ShowResultSondageActivity.class);
+            // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
+            // récupérer celui-ci.
+            intent.putExtra("s_id", sondages.get(position).getNsondage());
+            startActivity(intent);
+        }
+         */
+
     }
 
 }
