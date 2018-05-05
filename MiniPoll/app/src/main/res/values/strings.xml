@@ -75,6 +75,7 @@
 
     <!-- Gestion générale -->
     <string name="poll_manage_question_title">Question </string>
+    <string name="nothing_to_show">Aucun élément à afficher</string>
 
     <!-- Gestion des sondages -->
     <string name="surveys_manage_title">Sondages en cours</string>

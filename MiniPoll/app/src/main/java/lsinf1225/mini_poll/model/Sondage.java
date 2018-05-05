@@ -28,7 +28,7 @@ public class Sondage {
     private static final String COL_ID = "Identifiant";
     private static final String COL_NBRECHOIX = "Nbrechoix";
     private static final String COL_DESCRIPTION = "Description";
-    private static final String COL_ACTIVITE = "Activité";
+    private static final String COL_ACTIVITE = "Activite";
     private static final String BDD_TABLE = "SONDAGE";
 
     /**

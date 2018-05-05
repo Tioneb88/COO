@@ -63,7 +63,7 @@ public class MainActivity extends Activity {
      * Lance l'activité de réponse aux sondages par accord.
      */
     public void answerAgreement(View v) {
-        Intent intent = new Intent(this, ReponseSondageActivity.class);
+        Intent intent = new Intent(this, ShowListSondageActivity.class);
         startActivity(intent);
     }
 
