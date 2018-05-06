@@ -256,7 +256,6 @@ unique(Identifiant,Npossibilites),
 primary key (Identifiant, Npossibilites),
 foreign key (Identifiant, Npossibilites) references POSSIBILITES);
 INSERT INTO SCORE (Identifiant, Npossibilites, Score) VALUES ('fel98', '2', '4');
-INSERT INTO SCORE (Identifiant, Npossibilites, Score) VALUES ('margauxgerard', '4', '4');
 INSERT INTO SCORE (Identifiant, Npossibilites, Score) VALUES ('fel98', '3', '3');
 INSERT INTO SCORE (Identifiant, Npossibilites, Score) VALUES ('margauxgerard', '3', '3');
 INSERT INTO SCORE (Identifiant, Npossibilites, Score) VALUES ('margauxgerard', '1', '2');

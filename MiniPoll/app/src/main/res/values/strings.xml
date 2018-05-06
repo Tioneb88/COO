@@ -89,6 +89,8 @@
     <string name="surveys_manage_results_propositions">Proposition </string>
 
     <string name="surveys_manage_finalresults_title">Résultat final</string>
+    <string name="surveys_manage_save">Enregistrer</string>
+    <string name="surveys_manage_invalid_value">Un score attribué a une valeur incorrecte</string>
 
     <!-- Gestion des questionnaires -->
     <string name="questionnary_manage_title">Questionnaires en cours</string>

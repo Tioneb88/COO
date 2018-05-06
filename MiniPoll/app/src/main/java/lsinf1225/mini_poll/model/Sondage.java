@@ -59,21 +59,41 @@ public class Sondage {
      */
     private int activite;
 
+
     /**
-     * Constructeur du sondage. Initialise une instance du sondage présent dans la base
-     * de données.
+     * Constructeur de notre élément de collection. Initialise une instance de l'élément présent
+     * dans la base de données.
      *
      * @note Ce constructeur est privé (donc utilisable uniquement depuis cette classe). Cela permet
-     * d'éviter d'avoir deux instances différentes d'un même sondage.
+     * d'éviter d'avoir deux instances différentes d'un même élément dans la base de données, nous
+     * utiliserons la méthode statique get(ciId) pour obtenir une instance d'un élément de notre
+     * collection.
      */
-    private Sondage(int nSondage, String userId, String sDesc, int sNbreChoix, int sActi) {
+    private Sondage(int nSondage) {
 
-        this.id = userId;
+        // On enregistre l'id dans la variable d'instance.
         this.nsondage = nSondage;
-        this.description = sDesc;
-        this.activite = sActi;
-        this.nbrechoix= sNbreChoix;
+        // On enregistre l'instance de l'élément de collection courant dans la hashMap.
         Sondage.sondSparseArray.put(nSondage, this);
+
+        // On charge les données depuis la base de données.
+        loadData();
+    }
+
+    /**
+     * Fournit l'instance d'un élément de collection présent dans la base de données. Si l'élément
+     * de collection n'est pas encore instancié, une instance est créée.
+     *
+     * @return L'instance de l'élément de collection.
+     *
+     * @pre L'élément correspondant à l'id donné doit exister dans la base de données.
+     */
+    public static Sondage get(int nSondage) {
+        Sondage s = Sondage.sondSparseArray.get(nSondage);
+        if (s != null) {
+            return s;
+        }
+        return new Sondage(nSondage);
     }
 
     /**
@@ -99,16 +119,16 @@ public class Sondage {
         while (!cursor.isAfterLast()) {
             // Récupération des informations du sondage pour chaque ligne.
             int nSondage = cursor.getInt(0);
-            String userId = cursor.getString(1);
-            int sNbreChoix = cursor.getInt(2);
-            String sDesc = cursor.getString(3);
-            int sActi = cursor.getInt(4);
+            //String userId = cursor.getString(1);
+            //int sNbreChoix = cursor.getInt(2);
+            //String sDesc = cursor.getString(3);
+            //int sActi = cursor.getInt(4);
 
             // Vérification pour savoir s'il y a déjà une instance de ce sondage.
             Sondage sondage = Sondage.sondSparseArray.get(nSondage);
             if (sondage == null) {
                 // Si pas encore d'instance, création d'une nouvelle instance.
-                sondage = new Sondage(nSondage, userId, sDesc,sNbreChoix, sActi);
+                sondage = Sondage.get(nSondage);
             }
 
             // Ajout de le questionnaire à la liste.
@@ -149,16 +169,12 @@ public class Sondage {
         while (!cursor.isAfterLast()) {
             // Récupération des informations du sondage pour chaque ligne.
             int nSondage = cursor.getInt(0);
-            String userId = cursor.getString(1);
-            int sNbreChoix = cursor.getInt(2);
-            String sDesc = cursor.getString(3);
-            int sActi = cursor.getInt(4);
 
             // Vérification pour savoir s'il y a déjà une instance de ce sondage.
             Sondage sondage = Sondage.sondSparseArray.get(nSondage);
             if (sondage == null) {
                 // Si pas encore d'instance, création d'une nouvelle instance.
-                sondage = new Sondage(nSondage, userId, sDesc,sNbreChoix, sActi);
+                sondage = Sondage.get(nSondage);
             }
 
             // Ajout de le questionnaire à la liste.
@@ -207,6 +223,41 @@ public class Sondage {
     }
 
     /**
+     * (Re)charge les informations depuis la base de données.
+     *
+     * @pre L'id de l'élément est indiqué dans this.id et l'élément existe dans la base de données.
+     * @post Les informations de l'élément sont chargées dans les variables d'instance de la
+     * classe.
+     */
+    private void loadData() {
+        // Récupération de la base de données en mode "lecture".
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Colonnes pour lesquelles il nous faut les données.
+        String[] columns = new String[]{COL_ID,COL_NBRECHOIX, COL_DESCRIPTION, COL_ACTIVITE};
+
+        // Critères de sélection de la ligne :
+        String selection = COL_NSONDAGE + " = ? ";
+        String[] selectionArgs = new String[]{String.valueOf(nsondage)};
+
+        // Requête SELECT à la base de données.
+        Cursor c = db.query(BDD_TABLE, columns, selection, selectionArgs, null, null, null);
+
+        // Placement du curseur sur le  premier résultat (ici le seul puisque l'objet est unique).
+        c.moveToFirst();
+
+        // Copie des données de la ligne vers les variables d'instance de l'objet courant.
+        this.id = c.getString(0);
+        this.nbrechoix = c.getInt(1);
+        this.description = c.getString(2);
+        this.activite = c.getInt(3);
+        // Fermeture du curseur
+        c.close();
+
+        }
+
+
+    /**
      * Renvoie les propositions d'un sondage
      */
     public static ArrayList<String> loadPropositions(int nSondage) {
@@ -229,6 +280,41 @@ public class Sondage {
             String prop = cursor.getString(0);
             possibilites.add(prop);
             Log.d("tagText",prop);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return possibilites;
+
+    }
+
+    /**
+     * Renvoie les numéros de propositions d'un sondage
+     */
+    public static ArrayList<Integer> loadNumPropositions(int nSondage) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        Log.d("tagText",Integer.toString(nSondage));
+        Cursor cursor = db.rawQuery("SELECT P.nPossibilites "+
+                "FROM POSSIBILITE P, SONDAGE S "+
+                "WHERE S.nSondage = P.nSondage AND S.nSondage = \'"+nSondage+"\'", null);
+
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<Integer> possibilites = new ArrayList<Integer>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            int prop = cursor.getInt(0);
+            Log.d("createTag",Integer.toString(prop));
+            possibilites.add(prop);
             // Passe à la ligne suivante.
             cursor.moveToNext();
         }
