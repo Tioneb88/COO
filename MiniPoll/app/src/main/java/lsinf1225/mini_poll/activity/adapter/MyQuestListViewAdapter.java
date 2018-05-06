@@ -13,21 +13,13 @@ import java.util.ArrayList;
 
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
-import lsinf1225.mini_poll.model.Sondage;
+import lsinf1225.mini_poll.model.Questionnaire;
 
 /**
- * Gère l'affichage personnalisé de notre liste.
- * <p>
- * Cette classe permet de créer un Adapter personnalisé pour notre liste d'éléments de collection.
- * De cette manière il nous est possible d'utiliser un layout particulier (ici
- * collected_item_row.xml) pour chaque ligne reprenant le nom de l'élément et sa note (rating).
- *
- * @author Damien Mercier
- * @version 1
- * @see <a href="http://d.android.com/reference/android/widget/Adapter.html">Adapter</a>
- * @see <a href="http://d.android.com/reference/android/widget/BaseAdapter.html">BaseAdapter</a>
+ * Created by margauxgerard on 6/05/18.
  */
-public class MySondageListViewAdapter extends BaseAdapter {
+
+public class MyQuestListViewAdapter extends  BaseAdapter{
     /**
      * Permet d'instancier un fichier xml de layout dans une vue.
      */
@@ -36,35 +28,35 @@ public class MySondageListViewAdapter extends BaseAdapter {
     /**
      * Liste des éléments de collection à mettre dans la liste.
      */
-    private ArrayList<Sondage> sondages;
+    private ArrayList<Questionnaire> questionnaires;
 
     /**
      * Constructeur.
      *
      * @param context        Contexte de l'application.
-     * @param sondages Liste des éléments de collection à placer dans la liste.
+     * @param questionnaires Liste des éléments de collection à placer dans la liste.
      */
-    public MySondageListViewAdapter(Context context, ArrayList<Sondage> sondages) {
+    public MyQuestListViewAdapter(Context context, ArrayList<Questionnaire> questionnaires) {
         mInflater = LayoutInflater.from(context);
-        this.sondages = sondages;
+        this.questionnaires = questionnaires;
     }
 
     @Override
     public int getCount() {
 
-        return sondages.size();
+        return questionnaires.size();
     }
 
     @Override
     public Object getItem(int position) {
 
-        return sondages.get(position);
+        return questionnaires.get(position);
     }
 
     @Override
     public long getItemId(int position) {
 
-        return sondages.get(position).getNsondage();
+        return questionnaires.get(position).getNquest();
     }
 
     /**
@@ -79,19 +71,14 @@ public class MySondageListViewAdapter extends BaseAdapter {
         // Android recycle en effet les layout déjà chargés des éléments de la liste (par exemple
         // lors du changement de l'ordre dans la liste.)
 
-        if (convertView == null) {
-            // Création d'un nouvelle vue avec le layout correspondant au fichier xml
-            convertView = mInflater.inflate(R.layout.collected_sondage_row, parent, false);
-        }
-
         // Récupération des deux éléments de notre vue dans le but d'y placer les données.
         TextView nameTextView = convertView.findViewById(R.id.show_row_name);
         TextView authorTextView = convertView.findViewById(R.id.author_name);
 
         // Récupération et placement des données.
-        Sondage sondage = sondages.get(position);
-        nameTextView.setText(sondage.getDescription());
-        authorTextView.setText("De "+sondage.getId());
+        Questionnaire questionnaire = questionnaires.get(position);
+        nameTextView.setText(questionnaire.getDescription());
+        authorTextView.setText("De "+questionnaire.getId());
         //Log.e("MySondageListViewAdapter", "Rating of song " + song.getTitle() + " is " + song.getRating());
         //Log.e("MySondageListViewAdapter", "stepsize " + ratingBar.getStepSize() + " rating " + ratingBar.getRating() + " num " + ratingBar.getNumStars());
 
@@ -103,10 +90,11 @@ public class MySondageListViewAdapter extends BaseAdapter {
      * <p>
      * Permet de changer complètement la liste des éléments affichés dans la liste.
      *
-     * @param newSong La nouvelle liste des éléments de collection à afficher.
+     * @param newQuest nouvelle liste des éléments de collection à afficher.
      */
-    public void setSongs(ArrayList<Sondage> newSong) {
-        this.sondages = newSong;
+    public void setSongs(ArrayList<Questionnaire> newQuest) {
+        this.questionnaires = newQuest;
         notifyDataSetChanged();
     }
 }
+

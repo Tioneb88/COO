@@ -20,10 +20,13 @@
     <string name="login_create_account">Créer un compte</string>
     <string name="login_connection">Connexion</string>
     <string name="login_password_forgotten">Mot de passe oublié ?</string>
+    <string name="login_password_forgotten_notification">Veuillez contacter l\'administrateur de l\'application afin d\'obtenir un nouvel accès à votre compte. </string>
     <string name="login_password_wrong">Votre mot de passe est incorrect</string>
 
     <string name="newAccount_title">Création d\'un compte</string>
     <string name="newAccount_confirmation_password">Confirmation du mot de passe</string>
+    <string name="newAccount_error">Ce nom d\'utilisateur existe déjà! Veuillez en choisir un autre.</string>
+    <string name="newAccount_notification">Le mot de passe n\'a pas été bien confirmé !</string>
 
     <!-- Création d'un profil -->
     <string name="create_title">Création d\'un profil</string>
@@ -51,6 +54,11 @@
     <string name="my_profile_title">Mon profil</string>
     <string name="my_profile_change_username">Changer d\'identifiant ?</string>
     <string name="my_profile_change_password">Changer de mot de passe ?</string>
+    <string name="my_profile_id_id">Identifiant : </string>
+    <string name="my_profile_mdp_mdp">Mot de passe : </string>
+    <string name="my_profile_mail_mail">Mail : </string>
+    <string name="my_profile_nom_nom">Nom : </string>
+    <string name="my_profile_prenom_prenom">Prénom : </string>
 
     <!-- Modifier l'identifiant -->
     <string name="change_username_title">Changement de l\'identifiant</string>

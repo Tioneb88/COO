@@ -75,24 +75,26 @@ public class Ami {
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
 
+
+        // Initialisation la liste des utilisateurs.
+       // ArrayList<Ami> amis = new ArrayList<>();
+        ArrayList<String> listamis = new ArrayList<>();
+
         // Initialisation la liste des sondages.
         ArrayList<Ami> amis = new ArrayList<>();
+
 
         // Tant qu'il y a des lignes.
         while (!cursor.isAfterLast()) {
             // Récupération des informations du sondage pour chaque ligne.
-            int amiRel = cursor.getInt(2);
-            Log.d("tagCursor",Integer.toString(amiRel));
             String amiEmet = cursor.getString(0);
             Log.d("tagCursor",amiEmet);
             String amiRecept = cursor.getString(1);
             Log.d("tagCursor",amiRecept);
+            int amiRel = cursor.getInt(2);
+            Log.d("tagCursor",Integer.toString(amiRel));
             // Vérification pour savoir s'il y a déjà une instance de ce sondage.
             Ami ami = Ami.amiSparseArray.get(amiRel);
-            if (ami == null) {
-                // Si pas encore d'instance, création d'une nouvelle instance.
-                ami = new Ami(amiEmet, amiRecept, amiRel);
-            }
             // Ajout de le questionnaire à la liste.
             amis.add(ami);
             // Passe à la ligne suivante.
@@ -103,6 +105,35 @@ public class Ami {
         db.close();
 
         return amis;
+    }
+
+    public static ArrayList<String> getFriends() {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        String connectedUser = User.getConnectedUser().getId();
+        Cursor cursor = db.rawQuery("SELECT Emetteur AS Amis FROM RELATION WHERE Recepteur =\'"+connectedUser+ "\' AND Relation=1 UNION SELECT Recepteur AS AMIS FROM RELATION WHERE Emetteur =\'" + connectedUser + "\' AND Relation=1",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> friends = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String friend = cursor.getString(0);
+            Log.d("tagCursor",friend);
+            friends.add(friend);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return friends;
     }
 
     public static void reverseOrder() {

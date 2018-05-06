@@ -36,29 +36,29 @@ public class MyListViewAdapter extends BaseAdapter {
     /**
      * Liste des éléments de collection à mettr e dans la liste.
      */
-    private ArrayList<Ami> users;
+    private ArrayList<Ami> amis;
 
     /**
      * Constructeur.
      *
      * @param context        Contexte de l'application.
-     * @param user Liste des éléments de collection à placer dans la liste.
+     * @param ami Liste des éléments de collection à placer dans la liste.
      */
-    public MyListViewAdapter(Context context, ArrayList<Ami> user) {
+    public MyListViewAdapter(Context context, ArrayList<Ami> ami) {
         mInflater = LayoutInflater.from(context);
-        this.users = user;
+        this.amis = ami;
     }
 
     @Override
     public int getCount() {
 
-        return users.size();
+        return amis.size();
     }
 
     @Override
     public Object getItem(int position) {
 
-        return users.get(position);
+        return amis.get(position);
     }
 
     @Override
@@ -88,7 +88,7 @@ public class MyListViewAdapter extends BaseAdapter {
         TextView nameTextView = convertView.findViewById(R.id.show_row_name);
 
         // Récupération et placement des données.
-        Ami user = users.get(position);
+        Ami user = amis.get(position);
         nameTextView.setText(user.getEmet());
         nameTextView.setText(user.getRecept());
         return convertView;
@@ -99,10 +99,10 @@ public class MyListViewAdapter extends BaseAdapter {
      * <p>
      * Permet de changer complètement la liste des éléments affichés dans la liste.
      *
-     * @param newUser La nouvelle liste des éléments de collection à afficher.
+     * @param newAmi La nouvelle liste des éléments de collection à afficher.
      */
-    public void setFriends(ArrayList<Ami> newUser) {
-        this.users = newUser;
+    public void setFriends(ArrayList<Ami> newAmi) {
+        this.amis = newAmi;
         notifyDataSetChanged();
     }
 }

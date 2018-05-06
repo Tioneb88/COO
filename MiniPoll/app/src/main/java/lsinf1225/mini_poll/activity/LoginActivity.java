@@ -98,13 +98,20 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
         }
     }
 
+    /**
+     * Lance l'activité de création d'un nouveau compte.
+     */
     public void newUser(View v) {
         Intent intent = new Intent(this, CreationCompteActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Affiche le message d'information pour l'utilisateur ayant oublié son mot de passe.
+     */
     public void forgot(View v) {
-        MiniPollApp.notifyShort(R.string.main_back_button_disable);
+
+        MiniPollApp.notifyShort(R.string.login_password_forgotten_notification);
     }
 
     /**
