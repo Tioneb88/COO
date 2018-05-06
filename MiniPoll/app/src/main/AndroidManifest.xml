@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="lsinf1225.mini_poll">
 
+    <!-- Options générales relatives à toute l'application -->
     <application
         android:name="lsinf1225.mini_poll.MiniPollApp"
         android:allowBackup="true"
@@ -11,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- Login -->
         <activity
             android:name="lsinf1225.mini_poll.activity.LoginActivity"
             android:label="@string/app_name">
@@ -19,33 +21,39 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Nouvel utilisateur -->
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationCompteActivity"
             android:label="@string/newAccount_title" />
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationProfilActivity"
             android:label="@string/create_title" />
+
+        <!-- Menu principal -->
         <activity
             android:name="lsinf1225.mini_poll.activity.MainActivity"
             android:label="@string/main_activity_title" />
+
+        <!-- Consultation du profil -->
         <activity
             android:name="lsinf1225.mini_poll.activity.ConsulterProfilActivity"
             android:label="@string/my_profile_title" />
+
+        <!-- Modification du profil -->
         <activity
-            android:name="lsinf1225.mini_poll.activity.CreationActivity"
-            android:label="@string/create_main_title" />
+        android:name="lsinf1225.mini_poll.activity.ChangeUsernameActivity"
+        android:label="@string/change_username_title" />
         <activity
-            android:name="lsinf1225.mini_poll.activity.CreationAideActivity"
-            android:label="@string/create_main_help" />
-        <activity
-            android:name="lsinf1225.mini_poll.activity.CreationSondageActivity"
-            android:label="@string/create_main_survey" />
-        <activity
-            android:name="lsinf1225.mini_poll.activity.ShowAideActivity"
-            android:label="@string/create_main_help_title" />
+            android:name="lsinf1225.mini_poll.activity.ChangePasswordActivity"
+            android:label="@string/change_password_title" />
+
+        <!-- Gestion des amis -->
         <activity
             android:name="lsinf1225.mini_poll.activity.ShowListActivity"
             android:label="@string/friends_list" />
+
+        <!-- Réponse à un sondage par accord -->
         <activity
             android:name="lsinf1225.mini_poll.activity.ShowListSondageActivity"
             android:label="@string/surveys_manage_title" />
@@ -55,6 +63,26 @@
         <activity
             android:name="lsinf1225.mini_poll.activity.ShowResultSondageActivity"
             android:label="@string/poll_results_title" />
+
+        <!-- Réponse à une demande d'aide -->
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowAideActivity"
+            android:label="@string/create_main_help_title" />
+
+        <!-- Création générale -->
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationActivity"
+            android:label="@string/create_main_title" />
+
+        <!-- Création d'un sondage par accord -->
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationSondageActivity"
+            android:label="@string/create_main_survey" />
+
+        <!-- Création d'une demande d'aide à un ami -->
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationAideActivity"
+            android:label="@string/create_main_help" />
 
     </application>
 

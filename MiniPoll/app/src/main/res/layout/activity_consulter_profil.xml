@@ -8,13 +8,6 @@
     android:layout_height="match_parent"
     tools:context="lsinf1225.mini_poll.activity.ConsulterProfilActivity">
 
-    <!-- <android.support.constraint.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="464dp" /> -->
-
     <ImageView
         android:id="@+id/picture"
         android:layout_width="196dp"
