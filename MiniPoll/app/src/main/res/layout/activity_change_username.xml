@@ -4,10 +4,52 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/changeUsernameLayout"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
     tools:context="lsinf1225.mini_poll.activity.ChangeUsernameActivity">
 
+    <EditText
+        android:id="@+id/change_username"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="@string/change_username_new"
+        android:imeActionLabel="@string/change_username_new"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
 
+    <EditText
+        android:id="@+id/change_username_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:ems="10"
+        android:hint="@string/change_username_confirmation"
+        android:imeActionLabel="@string/change_username_confirmation"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_username" />
+
+    <Button
+        android:id="@+id/change_username_btn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:drawableEnd="@drawable/ic_go"
+        android:drawableRight="@drawable/ic_go"
+        android:onClick="confirm"
+        android:text="@string/app_confirmation"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/change_username_confirm" />
 
 </android.support.constraint.ConstraintLayout>

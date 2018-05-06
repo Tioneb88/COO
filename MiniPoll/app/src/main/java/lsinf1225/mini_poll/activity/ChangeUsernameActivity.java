@@ -16,7 +16,7 @@ public class ChangeUsernameActivity extends Activity {
     }
 
     public void confirm(View v) {
-        Intent intent = new Intent(this, ConsulterProfilActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
 }
