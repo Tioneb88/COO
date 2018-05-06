@@ -93,7 +93,7 @@ public class MyAideListViewAdapter extends BaseAdapter {
      *
      * @param newAide La nouvelle liste des éléments de collection à afficher.
      */
-    public void setSongs(ArrayList<Aide> newAide) {
+    public void setAide(ArrayList<Aide> newAide) {
         this.aides = newAide;
         notifyDataSetChanged();
     }

@@ -51,16 +51,19 @@ public class MySondageListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+
         return sondages.size();
     }
 
     @Override
     public Object getItem(int position) {
+
         return sondages.get(position);
     }
 
     @Override
     public long getItemId(int position) {
+
         return sondages.get(position).getNsondage();
     }
 

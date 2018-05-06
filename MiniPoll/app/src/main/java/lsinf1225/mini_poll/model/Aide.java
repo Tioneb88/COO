@@ -118,14 +118,45 @@ public class Aide {
         return aides;
     }
 
-
-    public static ArrayList<String> loadOptions(int naide) {
+    /**
+     * Retourne true si l'utilisateur a repondu au sondage, false sinon
+     */
+    public static boolean isAnswered (int naide) {
         // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
-        Log.d("tagText",Integer.toString(naide));
+        String connectedUser = User.getConnectedUser().getId();
+        Cursor cursor = db.rawQuery("SELECT count(S.Npossibilites) "+
+                "FROM OPTIONA P, LIKE_LIKE S "+
+                "WHERE P.Noptionsa = S.Noptionsa AND S.Identifiant=\'"+connectedUser+"\' AND P.Naide = \'"+naide+"\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Tant qu'il y a des lignes.
+        int answers=0;
+        while (!cursor.isAfterLast()) {
+            answers = cursor.getInt(0);
+            cursor.moveToNext();
+        }
+
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        if (answers >0) {
+            return true;
+        }
+        return false;
+
+    }
+
+
+    public static ArrayList<String> loadOptions(int Naide) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        Log.d("tagText",Integer.toString(Naide));
         Cursor cursor = db.rawQuery("SELECT P.Description "+
                 "FROM OPTIONA P, AIDE S "+
-                "WHERE S.nAide = P.nAide AND S.nAide = \'"+naide+"\'", null);
+                "WHERE S.nAide = P.nAide AND S.nAide = \'"+Naide+"\'", null);
 
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();

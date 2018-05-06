@@ -15,6 +15,7 @@ import java.util.ArrayList;
 
 /**
  * Created by margauxgerard on 6/05/18.
+ *  Gère l'affichage de l'interface de participation à une aide pour l'utilisateur connecté
  */
 
 public class ShowAideActivity extends Activity {
