@@ -47,21 +47,21 @@ public class ConsulterProfilActivity extends Activity {
         else{
 
         }*/
-        TextView title = findViewById(R.id.textView);
-        title.setText(identifiant.getId());
+        TextView title = findViewById(R.id.my_profile_id);
+        title.setText("coucou");
 
-        TextView nom = findViewById(R.id.textView10);
+        /*TextView nom = findViewById(R.id.my_profile_nom);
         nom.setText(identifiant.getNom());
 
-        TextView prenom = findViewById(R.id.textView11);
+        TextView prenom = findViewById(R.id.my_profile_prenom);
         prenom.setText(identifiant.getPrenom());
 
         //TextView mdp = findViewById(R.id.textView);
         //mdp.setText(identifiant.getPassword());
 
-        TextView mail = findViewById(R.id.textView12);
+        TextView mail = findViewById(R.id.my_profile_mail);
         mail.setText(identifiant.getMail());
-
+*/
     }
 
 }

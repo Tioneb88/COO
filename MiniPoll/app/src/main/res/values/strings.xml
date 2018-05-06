@@ -54,6 +54,11 @@
     <string name="my_profile_title">Mon profil</string>
     <string name="my_profile_change_username">Changer d\'identifiant ?</string>
     <string name="my_profile_change_password">Changer de mot de passe ?</string>
+    <string name="my_profile_id_id">Identifiant : </string>
+    <string name="my_profile_mdp_mdp">Mot de passe : </string>
+    <string name="my_profile_mail_mail">Mail : </string>
+    <string name="my_profile_nom_nom">Nom : </string>
+    <string name="my_profile_prenom_prenom">Prénom : </string>
 
     <!-- Modifier l'identifiant -->
     <string name="change_username_title">Changement de l\'identifiant</string>
