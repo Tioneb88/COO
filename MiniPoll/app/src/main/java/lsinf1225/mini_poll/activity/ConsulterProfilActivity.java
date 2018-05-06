@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.ImageView;
+import android.graphics.Bitmap;
 
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
@@ -20,7 +22,7 @@ import android.widget.EditText;
 
 public class ConsulterProfilActivity extends Activity {
 
-    private String identifiant;
+    private User identifiant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +35,32 @@ public class ConsulterProfilActivity extends Activity {
         String id = getIntent().getStringExtra("id");
 
         // Récupération du morceau de musique
-        identifiant = id;
+        identifiant = User.get(id);
 
         // Complétition des différents champs avec les donnée.
+
+        /*if(identifiant.getPhoto()!=null){
+            ImageView photo= findViewById(R.id.imageView2);
+            //Bitmap image=(Bitmap) identifiant.getPhoto();
+            photo.setImage(identifiant.getPhoto());
+        }
+        else{
+
+        }*/
         TextView title = findViewById(R.id.textView);
-        title.setText(identifiant);
+        title.setText(identifiant.getId());
+
+        TextView nom = findViewById(R.id.textView10);
+        nom.setText(identifiant.getNom());
+
+        TextView prenom = findViewById(R.id.textView11);
+        prenom.setText(identifiant.getPrenom());
+
+        //TextView mdp = findViewById(R.id.textView);
+        //mdp.setText(identifiant.getPassword());
+
+        TextView mail = findViewById(R.id.textView12);
+        mail.setText(identifiant.getMail());
 
     }
 

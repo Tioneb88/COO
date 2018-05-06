@@ -45,7 +45,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         // Création de l'adapter pour faire la liaison entre les données et
         // l'affichage de chaque ligne de la liste.
         myListViewAdapter = new MyListViewAdapter(this, users);
-        myListView.setAdapter(myListViewAdapter);
+        //myListView.setAdapter(myListViewAdapter);
 
         // Indique que le clic d'un élément de la liste doit appeler la méthode onItemClick d
         // cette classe (this).

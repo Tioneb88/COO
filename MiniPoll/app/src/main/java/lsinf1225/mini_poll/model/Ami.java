@@ -77,7 +77,7 @@ public class Ami {
         cursor.moveToFirst();
 
         // Initialisation la liste des utilisateurs.
-        ArrayList<Ami> amis = new ArrayList<>();
+       // ArrayList<Ami> amis = new ArrayList<>();
         ArrayList<String> listamis = new ArrayList<>();
 
         // Tant qu'il y a des lignes.

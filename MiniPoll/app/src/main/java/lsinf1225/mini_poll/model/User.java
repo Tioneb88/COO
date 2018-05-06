@@ -101,6 +101,17 @@ public class User {
         //User.userSparseArray.put(userMail, this);
     }
 
+     /**
+     * Constructeur de notre élément de collection. Initialise une instance de l'élément présent
+     * dans la base de données.
+     *
+     * @note Ce constructeur est privé (donc utilisable uniquement depuis cette classe). Cela permet
+     * d'éviter d'avoir deux instances différentes d'un même élément dans la base de données, nous
+     * utiliserons la méthode statique get(ciId) pour obtenir une instance d'un élément de notre
+     * collection.
+     */
+
+
     /**
      * Fournit l'utilisateur actuellement connecté.
      */
@@ -166,6 +177,48 @@ public class User {
         cursor.close();
         db.close();
         return users;
+    }
+
+    /**
+     * Fournit l'instance d'un élément de collection présent dans la base de données. Si l'élément
+     * de collection n'est pas encore instancié, une instance est créée.
+     *
+     * @param ciId Id de l'élément de collection.
+     *
+     * @return L'instance de l'élément de collection.
+     *
+     * @pre L'élément correspondant à l'id donné doit exister dans la base de données.
+     */
+    public static User get(String ciId) {
+        /*User ci = User.userSparseArray.get(Integer.parseInt(ciId));
+        if (ci != null) {
+            return ci;
+        }*/
+        String name= searchString(ciId, "Nom");
+        String prenom= searchString(ciId, "Prénom");
+        String mail= searchString(ciId, "Mail");
+        String mdp= searchString(ciId, "MDP");
+        String bff= searchString(ciId, "Meilleur_ami");
+        String photo= searchString(ciId, "Photo");
+        return new User( ciId, name, prenom, mdp, mail, photo ,bff);
+    }
+
+    public static String searchString(String Id, String searchQuery){
+        // Critères de sélection (partie WHERE) : appartiennent à l'utilisateur courant et ont un nom
+        // correspondant à la requête de recherche.
+        String selection = COL_ID + " = ? AND " + COL_NOM + " LIKE ?";
+        String[] selectionArgs = new String[]{String.valueOf(Id), "%" + searchQuery + "%"};
+
+        return getUsersString(Id, selection, selectionArgs);
+    }
+
+    public static String getUsersString( String Id, String selection, String[] selectionArgs) {
+         // Critère de sélection : appartient à l'utilisateur courant.
+        selection = COL_ID + " = ?";
+        selectionArgs = new String[]{String.valueOf(Id)};
+
+        // Le critère de sélection est passé à la sous-méthode de récupération des éléments.
+        return getUsersString(Id, selection, selectionArgs);
     }
 
     public static void reverseOrder() {
