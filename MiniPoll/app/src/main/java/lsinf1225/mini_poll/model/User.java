@@ -87,8 +87,9 @@ public class User {
      *
      * @note Ce constructeur est privé (donc utilisable uniquement depuis cette classe). Cela permet
      * d'éviter d'avoir deux instances différentes d'un même utilisateur.
+     * => modifié pour pouvoir créer des nouveaux utilisateurs.
      */
-    private User(String userId, String userNom, String userPrenom, String userPassword, String userMail, String userPhoto, String userBff) {
+    public User(String userId, String userNom, String userPrenom, String userPassword, String userMail, String userPhoto, String userBff) {
 
         this.id = userId;
         this.nom = userNom;
@@ -180,6 +181,7 @@ public class User {
     }
 
     /**
+
      * Fournit l'instance d'un élément de collection présent dans la base de données. Si l'élément
      * de collection n'est pas encore instancié, une instance est créée.
      *
@@ -220,6 +222,9 @@ public class User {
         // Le critère de sélection est passé à la sous-méthode de récupération des éléments.
         return getUsersString(Id, selection, selectionArgs);
     }
+    /*
+     * Inverse l'ordre de tri (ASC pour ascendant et DESC pour descendant).
+     */
 
     public static void reverseOrder() {
         if (User.order.equals("ASC")) {
@@ -253,6 +258,72 @@ public class User {
         // Les critères de selection sont passés à la sous-méthode de récupération des éléments.
         return getUsers(selection, selectionArgs);
     }
+
+    /**
+     * Renvoie les amis de l'utilisateurs courant.
+     *
+     */
+    public ArrayList<String> getFriends() {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        String currentUser = this.getId();
+        Cursor cursor = db.rawQuery("SELECT Emetteur AS Amis FROM RELATION WHERE Recepteur =\'"+connectedUser+ "\' AND Relation=1 UNION SELECT Recepteur AS AMIS FROM RELATION WHERE Emetteur =\'" + connectedUser + "\' AND Relation=1",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> friends = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String friend = cursor.getString(0);
+            Log.d("tagCursor",friend);
+            friends.add(friend);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return friends;
+    }
+
+    /**
+     * Ajoute un utilisateur et son mot de passe dans la base de données.
+     */
+    public boolean addUser(String id, String mdp) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // On va chercher tous les identifiants de l'application.
+        Cursor cursor = db.rawQuery("SELECT Identifiant FROM UTILISATEUR", null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // On vérifie que l'identifiant n'est pas déjà utilisé.
+        while (!cursor.isAfterLast()) {
+            String identifiant = cursor.getString(0);
+            if(identifiant.equals(id))
+            {
+                cursor.close();
+                db.close();
+                return false;
+            }
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // On ajoute l'identifiant et le mot de passe dans la base de données.
+        db.execSQL("INSERT INTO UTILISATEUR (Identifiant, MDP) VALUES (id, mdp)");
+        cursor.close();
+        db.close();
+        User.connectedUser = this;
+        return true;
+    }
+
 
     /**
      * Fournit l'identifiant de l'utilisateur courant.
@@ -341,6 +412,7 @@ public class User {
      * change l'identifiant de l'utilisateur courant.
      */
     public void setId(String identifiant) {
+
         this.id = identifiant;
     }
 
@@ -348,6 +420,7 @@ public class User {
      * change le password de l'utilisateur courant.
      */
     public void setPassword(String pass) {
+
         this.password= pass;
     }
 

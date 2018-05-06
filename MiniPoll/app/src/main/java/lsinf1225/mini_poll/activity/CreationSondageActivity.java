@@ -17,8 +17,6 @@ import java.util.concurrent.TimeUnit;
  * Created by margauxgerard on 30/04/18.
  */
 
-
-
 /**
  * Gère la création de sondage ainsi que l'affichage la liste des sondages possible
  * @author felix de Patoul

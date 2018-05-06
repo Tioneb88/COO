@@ -11,9 +11,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
-import lsinf1225.mini_poll.model.User;
-import lsinf1225.mini_poll.model.Ami;
+import lsinf1225.mini_poll.model.Sondage;
 
 /**
  * Gère l'affichage personnalisé de notre liste.
@@ -27,44 +27,44 @@ import lsinf1225.mini_poll.model.Ami;
  * @see <a href="http://d.android.com/reference/android/widget/Adapter.html">Adapter</a>
  * @see <a href="http://d.android.com/reference/android/widget/BaseAdapter.html">BaseAdapter</a>
  */
-public class MyListViewAdapter extends BaseAdapter {
+public class MySondageListViewAdapter extends BaseAdapter {
     /**
      * Permet d'instancier un fichier xml de layout dans une vue.
      */
     private final LayoutInflater mInflater;
 
     /**
-     * Liste des éléments de collection à mettr e dans la liste.
+     * Liste des éléments de collection à mettre dans la liste.
      */
-    private ArrayList<Ami> amis;
+    private ArrayList<Sondage> sondages;
 
     /**
      * Constructeur.
      *
      * @param context        Contexte de l'application.
-     * @param ami Liste des éléments de collection à placer dans la liste.
+     * @param sondages Liste des éléments de collection à placer dans la liste.
      */
-    public MyListViewAdapter(Context context, ArrayList<Ami> ami) {
+    public MySondageListViewAdapter(Context context, ArrayList<Sondage> sondages) {
         mInflater = LayoutInflater.from(context);
-        this.amis = ami;
+        this.sondages = sondages;
     }
 
     @Override
     public int getCount() {
 
-        return amis.size();
+        return sondages.size();
     }
 
     @Override
     public Object getItem(int position) {
 
-        return amis.get(position);
+        return sondages.get(position);
     }
 
     @Override
     public long getItemId(int position) {
 
-        return 42;
+        return sondages.get(position).getNsondage();
     }
 
     /**
@@ -81,16 +81,20 @@ public class MyListViewAdapter extends BaseAdapter {
 
         if (convertView == null) {
             // Création d'un nouvelle vue avec le layout correspondant au fichier xml
-            convertView = mInflater.inflate(R.layout.activity_show_list, parent, false);
+            convertView = mInflater.inflate(R.layout.collected_sondage_row, parent, false);
         }
 
         // Récupération des deux éléments de notre vue dans le but d'y placer les données.
         TextView nameTextView = convertView.findViewById(R.id.show_row_name);
+        TextView authorTextView = convertView.findViewById(R.id.author_name);
 
         // Récupération et placement des données.
-        Ami user = amis.get(position);
-        nameTextView.setText(user.getEmet());
-        nameTextView.setText(user.getRecept());
+        Sondage sondage = sondages.get(position);
+        nameTextView.setText(sondage.getDescription());
+        authorTextView.setText("De "+sondage.getId());
+        //Log.e("MySondageListViewAdapter", "Rating of song " + song.getTitle() + " is " + song.getRating());
+        //Log.e("MySondageListViewAdapter", "stepsize " + ratingBar.getStepSize() + " rating " + ratingBar.getRating() + " num " + ratingBar.getNumStars());
+
         return convertView;
     }
 
@@ -99,10 +103,10 @@ public class MyListViewAdapter extends BaseAdapter {
      * <p>
      * Permet de changer complètement la liste des éléments affichés dans la liste.
      *
-     * @param newAmi La nouvelle liste des éléments de collection à afficher.
+     * @param newSong La nouvelle liste des éléments de collection à afficher.
      */
-    public void setFriends(ArrayList<Ami> newAmi) {
-        this.amis = newAmi;
+    public void setSongs(ArrayList<Sondage> newSong) {
+        this.sondages = newSong;
         notifyDataSetChanged();
     }
 }

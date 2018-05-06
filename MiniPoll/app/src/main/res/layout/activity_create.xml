@@ -2,32 +2,44 @@
 
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="lsinf1225.mini_poll.activity.CreationActivity">
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="242dp"
+        android:id="@+id/create_agreement_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Création Sondage"
-        tools:layout_editor_absoluteX="71dp"
-        tools:layout_editor_absoluteY="64dp" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:onClick="createAgreement"
+        android:text="@string/create_main_survey_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="parent" />
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="244dp"
+        android:id="@+id/create_questionnary_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Création Questionnaire"
-        tools:layout_editor_absoluteX="70dp"
-        tools:layout_editor_absoluteY="209dp" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="createQuestionnary"
+        android:text="@string/create_main_survey_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_agreement_btn" />
 
     <Button
-        android:id="@+id/button3"
-        android:layout_width="240dp"
+        android:id="@+id/create_help_btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Création Aide"
-        tools:layout_editor_absoluteX="72dp"
-        tools:layout_editor_absoluteY="353dp" />
+        android:layout_gravity="center_horizontal"
+        android:onClick="createHelp"
+        android:text="@string/create_main_survey_title"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/create_questionnary_btn" />
+
 </android.support.constraint.ConstraintLayout>

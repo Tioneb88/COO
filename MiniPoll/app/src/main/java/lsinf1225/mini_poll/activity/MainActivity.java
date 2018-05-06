@@ -4,12 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.TextView;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.widget.EditText;
 
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
@@ -32,6 +27,7 @@ public class MainActivity extends Activity {
         // Affichage du message de bienvenue.
         TextView welcomeTxt = findViewById(R.id.welcomeTxt);
         welcomeTxt.setText(getString(R.string.main_activity_welcome_partie1) + " " + User.getConnectedUser().getPrenom());
+        
 
     }
 
@@ -68,7 +64,7 @@ public class MainActivity extends Activity {
      * Lance l'activité de réponse aux sondages par accord.
      */
     public void answerAgreement(View v) {
-        Intent intent = new Intent(this, ReponseSondageActivity.class);
+        Intent intent = new Intent(this, ShowListSondageActivity.class);
         startActivity(intent);
     }
 
@@ -84,7 +80,15 @@ public class MainActivity extends Activity {
      * Lance l'activité de réponse aux demandes d'aide.
      */
     public void answerHelp(View v) {
-        Intent intent = new Intent(this, ReponseAideActivity.class);
+        Intent intent = new Intent(this, ShowAideActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Lance l'activité de création de sondage.
+     */
+    public void create_poll(View v) {
+        Intent intent = new Intent(this, CreationActivity.class);
         startActivity(intent);
     }
 
@@ -99,11 +103,6 @@ public class MainActivity extends Activity {
     /**
     public void modifier(View v) {
         Intent intent = new Intent(this, ModifierProfilActivity.class);
-        startActivity(intent);
-    }
-
-    public void creer(View v) {
-        Intent intent = new Intent(this, CreationActivity.class);
         startActivity(intent);
     }
 

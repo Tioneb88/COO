@@ -7,7 +7,7 @@
     android:id="@+id/createAccountLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="lsinf1225.mini_poll.activity.CreationActivity">
+    tools:context="lsinf1225.mini_poll.activity.CreationCompteActivity">
 
     <EditText
         android:id="@+id/create_username"

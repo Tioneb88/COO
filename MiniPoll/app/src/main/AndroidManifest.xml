@@ -20,23 +20,41 @@
             </intent-filter>
         </activity>
         <activity
+            android:name="lsinf1225.mini_poll.activity.CreationCompteActivity"
+            android:label="@string/newAccount_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationProfilActivity"
+            android:label="@string/create_title" />
+        <activity
             android:name="lsinf1225.mini_poll.activity.MainActivity"
             android:label="@string/main_activity_title" />
         <activity
             android:name="lsinf1225.mini_poll.activity.ConsulterProfilActivity"
-            android:label="@string/main_activity_title" />
+            android:label="@string/my_profile_title" />
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationActivity"
-            android:label="@string/create_main" />
+            android:label="@string/create_main_title" />
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationAideActivity"
             android:label="@string/create_main_help" />
         <activity
+            android:name="lsinf1225.mini_poll.activity.CreationSondageActivity"
+            android:label="@string/create_main_survey" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowAideActivity"
+            android:label="@string/create_main_help_title" />
+        <activity
             android:name="lsinf1225.mini_poll.activity.ShowListActivity"
             android:label="@string/friends_list" />
         <activity
-            android:name="lsinf1225.mini_poll.activity.SearchActivity"
-            android:label="@string/friends_find" />
+            android:name="lsinf1225.mini_poll.activity.ShowListSondageActivity"
+            android:label="@string/surveys_manage_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowSondageActivity"
+            android:label="@string/poll_answer_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowResultSondageActivity"
+            android:label="@string/poll_results_title" />
 
     </application>
 

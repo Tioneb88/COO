@@ -20,13 +20,16 @@
     <string name="login_create_account">Créer un compte</string>
     <string name="login_connection">Connexion</string>
     <string name="login_password_forgotten">Mot de passe oublié ?</string>
+    <string name="login_password_forgotten_notification">Veuillez contacter l\'administrateur de l\'application afin d\'obtenir un nouvel accès à votre compte. </string>
     <string name="login_password_wrong">Votre mot de passe est incorrect</string>
 
     <string name="newAccount_title">Création d\'un compte</string>
     <string name="newAccount_confirmation_password">Confirmation du mot de passe</string>
+    <string name="newAccount_error">Ce nom d\'utilisateur existe déjà! Veuillez en choisir un autre.</string>
+    <string name="newAccount_notification">Le mot de passe n\'a pas été bien confirmé !</string>
 
     <!-- Création d'un profil -->
-    <string name="create_title">Création d\'un compte</string>
+    <string name="create_title">Création d\'un profil</string>
     <string name="create_name">Nom*</string>
     <string name="create_firstname">Prénom*</string>
     <string name="create_mail">Adresse mail*</string>
@@ -68,13 +71,16 @@
     <string name="friends_list">Liste d\'amis</string>
     <string name="friends_find">Trouver un ami</string>
     <string name="friends_error_no_item">Aucun ami dans votre liste</string>
-    <string name="friends_no_result">Aucun ami correspondant à votre recherche</string>
+    <string name="friends_no_result">Aucun ami ne correspond à votre recherche</string>
 
     <string name="friends_manage_delete1">Êtes-vous sûr de vouloir supprimer </string>
     <string name="friends_manage_delete2"> de votre liste d\'amis ?</string>
 
     <!-- Gestion générale -->
     <string name="poll_manage_question_title">Question </string>
+    <string name="poll_answer_title">Réponse</string>
+    <string name="poll_results_title">Résultats</string>
+    <string name="nothing_to_show">Aucun élément à afficher</string>
 
     <!-- Gestion des sondages -->
     <string name="surveys_manage_title">Sondages en cours</string>
@@ -104,10 +110,13 @@
     <string name="help_manage_choice_title">Votre choix</string>
 
     <!-- Création générale -->
+    <string name="create_main_survey_title">Création d\'un sondage pour accord</string>
+    <string name="create_main_questionnary_title">Questionnaire</string>
+    <string name="create_main_help_title">Demande d\'aide à un ami</string>
     <string name="create_main_survey">Sondage pour accord</string>
     <string name="create_main_questionnary">Questionnaire</string>
     <string name="create_main_help">Demande d\'aide à un ami</string>
-    <string name="create_main">Création d\'une activité</string>
+    <string name="create_main_title">Création d\'une activité</string>
 
     <string name="create_surveyORquestionnary_friends_title">Amis à sonder</string>
     <string name="create_help_friends_title">Ami à sonder</string>

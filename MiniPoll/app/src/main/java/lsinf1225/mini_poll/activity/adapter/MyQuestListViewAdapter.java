@@ -11,60 +11,52 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
-import lsinf1225.mini_poll.model.User;
-import lsinf1225.mini_poll.model.Ami;
+import lsinf1225.mini_poll.model.Questionnaire;
 
 /**
- * Gère l'affichage personnalisé de notre liste.
- * <p>
- * Cette classe permet de créer un Adapter personnalisé pour notre liste d'éléments de collection.
- * De cette manière il nous est possible d'utiliser un layout particulier (ici
- * collected_item_row.xml) pour chaque ligne reprenant le nom de l'élément et sa note (rating).
- *
- * @author Damien Mercier
- * @version 1
- * @see <a href="http://d.android.com/reference/android/widget/Adapter.html">Adapter</a>
- * @see <a href="http://d.android.com/reference/android/widget/BaseAdapter.html">BaseAdapter</a>
+ * Created by margauxgerard on 6/05/18.
  */
-public class MyListViewAdapter extends BaseAdapter {
+
+public class MyQuestListViewAdapter extends  BaseAdapter{
     /**
      * Permet d'instancier un fichier xml de layout dans une vue.
      */
     private final LayoutInflater mInflater;
 
     /**
-     * Liste des éléments de collection à mettr e dans la liste.
+     * Liste des éléments de collection à mettre dans la liste.
      */
-    private ArrayList<Ami> amis;
+    private ArrayList<Questionnaire> questionnaires;
 
     /**
      * Constructeur.
      *
      * @param context        Contexte de l'application.
-     * @param ami Liste des éléments de collection à placer dans la liste.
+     * @param questionnaires Liste des éléments de collection à placer dans la liste.
      */
-    public MyListViewAdapter(Context context, ArrayList<Ami> ami) {
+    public MyQuestListViewAdapter(Context context, ArrayList<Questionnaire> questionnaires) {
         mInflater = LayoutInflater.from(context);
-        this.amis = ami;
+        this.questionnaires = questionnaires;
     }
 
     @Override
     public int getCount() {
 
-        return amis.size();
+        return questionnaires.size();
     }
 
     @Override
     public Object getItem(int position) {
 
-        return amis.get(position);
+        return questionnaires.get(position);
     }
 
     @Override
     public long getItemId(int position) {
 
-        return 42;
+        return questionnaires.get(position).getNquest();
     }
 
     /**
@@ -79,18 +71,17 @@ public class MyListViewAdapter extends BaseAdapter {
         // Android recycle en effet les layout déjà chargés des éléments de la liste (par exemple
         // lors du changement de l'ordre dans la liste.)
 
-        if (convertView == null) {
-            // Création d'un nouvelle vue avec le layout correspondant au fichier xml
-            convertView = mInflater.inflate(R.layout.activity_show_list, parent, false);
-        }
-
         // Récupération des deux éléments de notre vue dans le but d'y placer les données.
         TextView nameTextView = convertView.findViewById(R.id.show_row_name);
+        TextView authorTextView = convertView.findViewById(R.id.author_name);
 
         // Récupération et placement des données.
-        Ami user = amis.get(position);
-        nameTextView.setText(user.getEmet());
-        nameTextView.setText(user.getRecept());
+        Questionnaire questionnaire = questionnaires.get(position);
+        nameTextView.setText(questionnaire.getDescription());
+        authorTextView.setText("De "+questionnaire.getId());
+        //Log.e("MySondageListViewAdapter", "Rating of song " + song.getTitle() + " is " + song.getRating());
+        //Log.e("MySondageListViewAdapter", "stepsize " + ratingBar.getStepSize() + " rating " + ratingBar.getRating() + " num " + ratingBar.getNumStars());
+
         return convertView;
     }
 
@@ -99,10 +90,11 @@ public class MyListViewAdapter extends BaseAdapter {
      * <p>
      * Permet de changer complètement la liste des éléments affichés dans la liste.
      *
-     * @param newAmi La nouvelle liste des éléments de collection à afficher.
+     * @param newQuest nouvelle liste des éléments de collection à afficher.
      */
-    public void setFriends(ArrayList<Ami> newAmi) {
-        this.amis = newAmi;
+    public void setSongs(ArrayList<Questionnaire> newQuest) {
+        this.questionnaires = newQuest;
         notifyDataSetChanged();
     }
 }
+

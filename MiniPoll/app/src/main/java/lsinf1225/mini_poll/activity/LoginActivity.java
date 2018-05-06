@@ -3,7 +3,6 @@ package lsinf1225.mini_poll.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -99,14 +98,20 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
         }
     }
 
+    /**
+     * Lance l'activité de création d'un nouveau compte.
+     */
     public void newUser(View v) {
-        Intent intent = new Intent(this, CreationActivity.class);
+        Intent intent = new Intent(this, CreationCompteActivity.class);
         startActivity(intent);
     }
 
+    /**
+     * Affiche le message d'information pour l'utilisateur ayant oublié son mot de passe.
+     */
     public void forgot(View v) {
-        Intent intent = new Intent(this, CreationActivity.class);
-        startActivity(intent);
+
+        MiniPollApp.notifyShort(R.string.login_password_forgotten_notification);
     }
 
     /**
