@@ -22,46 +22,52 @@ import android.widget.EditText;
 
 public class ConsulterProfilActivity extends Activity {
 
-    private User identifiant;
+    // private User identifiant;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_profil);
 
-        // Récupération de l'id du morceau de musique ou si rien n'est trouvé, -1 est la valeur
-        // par défaut.
-        // Lire http://d.android.com/training/basics/firstapp/starting-activity.html#ReceiveIntent
-        String id = getIntent().getStringExtra("id");
-
-        // Récupération du morceau de musique
-        identifiant = User.get(id);
-
-        // Complétition des différents champs avec les donnée.
+        // Complétion des différents champs avec les données.
 
         /*if(identifiant.getPhoto()!=null){
             ImageView photo= findViewById(R.id.imageView2);
             //Bitmap image=(Bitmap) identifiant.getPhoto();
             photo.setImage(identifiant.getPhoto());
-        }
-        else{
-
         }*/
-        TextView title = findViewById(R.id.my_profile_id);
-        title.setText("coucou");
 
-        /*TextView nom = findViewById(R.id.my_profile_nom);
-        nom.setText(identifiant.getNom());
+        TextView username = findViewById(R.id.username);
+        username.setText(getString(R.string.app_user_username) + " : " + User.getConnectedUser().getId());
 
-        TextView prenom = findViewById(R.id.my_profile_prenom);
-        prenom.setText(identifiant.getPrenom());
+        TextView surname = findViewById(R.id.surname);
+        surname.setText(getString(R.string.app_user_surname) + " : " + User.getConnectedUser().getNom());
+
+        TextView firstname = findViewById(R.id.firstname);
+        firstname.setText(getString(R.string.app_user_firstname) + " : " + User.getConnectedUser().getPrenom());
 
         //TextView mdp = findViewById(R.id.textView);
         //mdp.setText(identifiant.getPassword());
 
-        TextView mail = findViewById(R.id.my_profile_mail);
-        mail.setText(identifiant.getMail());
-*/
+        TextView mail = findViewById(R.id.mail);
+        mail.setText(getString(R.string.app_user_mail) + " : " + User.getConnectedUser().getMail());
+
+    }
+
+    /**
+     * Lance l'activité de modification du nom d'utilisateur.
+     */
+    public void changeUsername(View v) {
+        Intent intent = new Intent(this, ShowListActivity.class);
+        startActivity(intent);
+    }
+
+    /**
+     * Lance l'activité de changement de mot de passe.
+     */
+    public void changePassword(View v) {
+        Intent intent = new Intent(this, ShowListSondageActivity.class);
+        startActivity(intent);
     }
 
 }
