@@ -202,6 +202,41 @@ public class User {
     }
 
     /**
+     * Renvoie les amis de l'utilisateurs courant
+     *
+     */
+
+    public ArrayList<String> getFriends() {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        String currentUser = this.getId();
+        Cursor cursor = db.rawQuery("SELECT Emetteur AS Amis FROM RELATION WHERE Recepteur =\'"+connectedUser+ "\' AND Relation=1 UNION SELECT Recepteur AS AMIS FROM RELATION WHERE Emetteur =\'" + connectedUser + "\' AND Relation=1",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> friends = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String friend = cursor.getString(0);
+            Log.d("tagCursor",friend);
+            friends.add(friend);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return friends;
+    }
+
+
+    /**
      * Fournit l'identifiant de l'utilisateur courant.
      */
     public String getId() {

@@ -27,6 +27,7 @@ public class MainActivity extends Activity {
         // Affichage du message de bienvenue.
         TextView welcomeTxt = findViewById(R.id.welcomeTxt);
         welcomeTxt.setText(getString(R.string.main_activity_welcome_partie1) + " " + User.getConnectedUser().getPrenom());
+        
 
     }
 
