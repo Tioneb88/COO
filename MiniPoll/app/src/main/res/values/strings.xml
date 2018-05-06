@@ -23,6 +23,7 @@
     <string name="login_password_forgotten_notification">Veuillez contacter l\'administrateur de l\'application afin d\'obtenir un nouvel accès à votre compte. </string>
     <string name="login_password_wrong">Votre mot de passe est incorrect</string>
 
+    <!-- Création d'un compte -->
     <string name="newAccount_title">Création d\'un compte</string>
     <string name="newAccount_confirmation_password">Confirmation du mot de passe</string>
     <string name="newAccount_error">Ce nom d\'utilisateur existe déjà! Veuillez en choisir un autre.</string>
@@ -64,12 +65,16 @@
     <string name="change_username_title">Changement de l\'identifiant</string>
     <string name="change_username_new">Nouvel identifiant</string>
     <string name="change_username_confirmation">Confirmer avec le mot de passe</string>
+    <string name="change_username_password_wrong">Le mot de passe est incorrect !</string>
+    <string name="change_username_username_error">Cet identifiant est déjà utilisé ! Veuillez en choisir un autre.</string>
 
     <!-- Modifier le mot de passe -->
     <string name="change_password_title">Changement du mot de passe</string>
     <string name="change_password_new">Nouveau mot de passe</string>
     <string name="change_password_confirmation_new">Confirmer le nouveau mot de passe</string>
     <string name="change_password_confirmation_old">Confirmer avec l\'ancien mot de passe</string>
+    <string name="change_password_confirmation_error">Le nouveau mot de passe n\'a pas été bien confirmé !</string>
+    <string name="change_username_wrong">Le mot de passe est incorrect !</string>
 
     <!-- Gestion des amis -->
     <string name="friends_manage_title">Gestion des amis</string>

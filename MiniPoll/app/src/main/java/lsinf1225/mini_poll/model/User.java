@@ -293,7 +293,7 @@ public class User {
     }
 
     /**
-     * Ajoute un utilisateur et son mot de passe dans la base de données.
+     * Ajoute un utilisateur et son mot de passe dans la base de données. (pour la création de compte)
      */
     public boolean addUser(String id, String mdp) {
         // Récupération du  SQLiteHelper et de la base de données.
@@ -323,7 +323,6 @@ public class User {
         User.connectedUser = this;
         return true;
     }
-
 
     /**
      * Fournit l'identifiant de l'utilisateur courant.
@@ -410,10 +409,37 @@ public class User {
 
     /**
      * change l'identifiant de l'utilisateur courant.
+     *
+     * @param newUsername le nouveau nom d'utilisateur entré.
+     *
+     * @return Vrai (true) si ce nom d'utilisateur n'est pas encore utilisé (et alors le changement
+     * est effectué, false sinon.
      */
-    public void setId(String identifiant) {
+    public boolean setUsername(String newUsername) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
-        this.id = identifiant;
+        // On va chercher tous les identifiants de l'application.
+        Cursor cursor = db.rawQuery("SELECT Identifiant FROM UTILISATEUR", null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // On vérifie que l'identifiant n'est pas déjà utilisé.
+        while (!cursor.isAfterLast()) {
+            String identifiant = cursor.getString(0);
+            if(identifiant.equals(newUsername))
+            {
+                cursor.close();
+                db.close();
+                return false;
+            }
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        cursor.close();
+        db.close();
+        this.id = newUsername;
+        return true;
     }
 
     /**

@@ -14,8 +14,8 @@ import lsinf1225.mini_poll.model.User;
  * Gère l'affichage du menu principal de l'application.
  *
  * @author Margaux GERARD, Loïc QUINET, Félix DE PATOUL, Benoît MICHEL, Arnaud CLAES
- * @version 1
- * 29 avril 2018
+ * @version 2
+ * 1 mai 2018
  */
 public class MainActivity extends Activity {
 
@@ -27,8 +27,6 @@ public class MainActivity extends Activity {
         // Affichage du message de bienvenue.
         TextView welcomeTxt = findViewById(R.id.welcomeTxt);
         welcomeTxt.setText(getString(R.string.main_activity_welcome_partie1) + " " + User.getConnectedUser().getPrenom());
-
-
     }
 
 
@@ -38,7 +36,6 @@ public class MainActivity extends Activity {
      *
      * Lire http://developer.android.com/reference/android/R.attr.html#onClick
      */
-
 
 
     /**
@@ -99,22 +96,6 @@ public class MainActivity extends Activity {
         User.logout();
         finish();
     }
-
-    /**
-    public void modifier(View v) {
-        Intent intent = new Intent(this, ModifierProfilActivity.class);
-        startActivity(intent);
-    }
-
-    /**
-     * Lance l'activité de recherche d'un élément.
-     */
-    /**
-    public void search(View v) {
-        Intent intent = new Intent(this, SearchActivity.class);
-        startActivity(intent);
-    }
-    */
 
     /**
      * Désactive le bouton de retour. Désactive le retour à l'activité précédente (donc l'écran de
