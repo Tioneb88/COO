@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,24 +24,25 @@ import lsinf1225.mini_poll.model.Ami;
  *
  * @author Margaux GERARD, Loïc QUINET, Félix DE PATOUL, Benoît MICHEL, Arnaud CLAES
  * @version 1
- * 04 mai 2018
+ * 03 mai 2018
  */
 public class ShowListActivity extends Activity implements OnItemClickListener {
 
     private ArrayList<Ami> amis;
+    private ArrayList<String> listamis;
     private MyListViewAdapter myListViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_show_list_sondages);
+        setContentView(R.layout.activity_show_list);
 
         // Chargement des éléments à afficher dans la variable de classe songs
         loadAmis();
 
 
-        ListView myListView = findViewById(R.id.show_listViewSondages);
+        ScrollView myScrollView = findViewById(R.id.show_listViewAmi2);
 
         // Création de l'adapter pour faire la liaison entre les données (songs) et
         // l'affichage de chaque ligne de la liste.
@@ -48,7 +50,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
 
         // Indique que le clic d'un élément de la liste doit appeler la méthode onItemClick d
         // cette classe (this).
-        myListView.setOnItemClickListener(this);
+        //myScrollView.setOnItemClickListener(this);
 
 
 
@@ -70,14 +72,16 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         String searchQuery = getIntent().getStringExtra("searchQuery");
 
         if (searchQuery == null) {
-            amis = Ami.getAmiConnected();
+            listamis = Ami.getFriends();
+        }else {
+
         }
 
         // S'il n'y a aucun éléments dans la liste, il faut afficher un message. Ce message est différent
         // s'il y avait une requête de recherche (message du type "Aucun résultat trouvé") ou si
         // l'utilisateur vient directement du menu principal et veut tout afficher (message du type
         // "Aucun élément n'est présent dans votre collection).
-        if (amis.isEmpty()) {
+        if (listamis.isEmpty()) {
             if (searchQuery == null) {
                 MiniPollApp.notifyShort(R.string.nothing_to_show);
             } else {

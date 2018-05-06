@@ -38,13 +38,17 @@
             android:name="lsinf1225.mini_poll.activity.CreationAideActivity"
             android:label="@string/create_main_help" />
         <activity
+            android:name="lsinf1225.mini_poll.activity.CreationSondageActivity"
+            android:label="@string/create_main_survey" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowAideActivity"
+            android:label="@string/create_main_help_title" />
+        <activity
             android:name="lsinf1225.mini_poll.activity.ShowListActivity"
             android:label="@string/friends_list" />
-
         <activity
             android:name="lsinf1225.mini_poll.activity.ShowListSondageActivity"
             android:label="@string/surveys_manage_title" />
-
         <activity
             android:name="lsinf1225.mini_poll.activity.ShowSondageActivity"
             android:label="@string/poll_answer_title" />

@@ -323,6 +323,7 @@ public class User {
      * change l'identifiant de l'utilisateur courant.
      */
     public void setId(String identifiant) {
+
         this.id = identifiant;
     }
 
@@ -330,6 +331,7 @@ public class User {
      * change le password de l'utilisateur courant.
      */
     public void setPassword(String pass) {
+
         this.password= pass;
     }
 

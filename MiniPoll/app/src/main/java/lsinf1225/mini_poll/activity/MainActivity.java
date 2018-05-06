@@ -80,7 +80,7 @@ public class MainActivity extends Activity {
      * Lance l'activité de réponse aux demandes d'aide.
      */
     public void answerHelp(View v) {
-        Intent intent = new Intent(this, ReponseAideActivity.class);
+        Intent intent = new Intent(this, ShowAideActivity.class);
         startActivity(intent);
     }
 

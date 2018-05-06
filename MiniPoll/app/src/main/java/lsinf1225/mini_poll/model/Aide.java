@@ -3,6 +3,7 @@ package lsinf1225.mini_poll.model;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.SparseArray;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -115,6 +116,39 @@ public class Aide {
         db.close();
 
         return aides;
+    }
+
+
+    public static ArrayList<String> loadOptions(int naide) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        Log.d("tagText",Integer.toString(naide));
+        Cursor cursor = db.rawQuery("SELECT P.Description "+
+                "FROM OPTIONA P, AIDE S "+
+                "WHERE S.nAide = P.nAide AND S.nAide = \'"+naide+"\'", null);
+
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> options = new ArrayList<String>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String prop = cursor.getString(0);
+            options.add(prop);
+            Log.d("tagText",prop);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return options;
+
     }
 
     /**
