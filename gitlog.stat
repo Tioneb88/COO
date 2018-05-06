@@ -1,0 +1,729 @@
+commit e0b9bb794837f6b31cdd25bd5ecab3f5ab308565
+Author: Margaux GERARD <margaux.gerard@student.uclouvain.be>
+Date:   Sun May 6 10:24:48 2018 +0200
+
+    Test
+
+ .../src/main/java/lsinf1225/mini_poll/activity/ShowListActivity.java    | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 8608c4a84dd321daadddddddde17f851dc5946d4
+Author: Margaux GERARD <margauxgerard@MBP-de-Margaux.fritz.box>
+Date:   Sat May 5 18:35:40 2018 +0200
+
+    Erreur a corriger dans Ami
+
+ .../mini_poll/activity/ShowListActivity.java       | 140 +++++----------------
+ .../main/java/lsinf1225/mini_poll/model/Ami.java   |  50 ++++----
+ 2 files changed, 57 insertions(+), 133 deletions(-)
+
+commit caf6378f60d313d950a89b87adcf24d817d6a168
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Sat May 5 17:26:45 2018 +0200
+
+    avancement showSondageActivity
+
+ MiniPoll/app/src/main/AndroidManifest.xml          |   7 ++
+ MiniPoll/app/src/main/assets/BDD.sql               |   2 +-
+ .../activity/ShowListSondageActivity.java          |  37 +++++--
+ .../activity/ShowResultSondageActivity.java        |  11 ++
+ .../mini_poll/activity/ShowSondageActivity.java    |  44 ++++++++
+ .../java/lsinf1225/mini_poll/model/Sondage.java    |  75 +++++++++++++-
+ MiniPoll/app/src/main/res/layout/show_sondage.xml  | 113 ++++++++++++++++++++-
+ MiniPoll/app/src/main/res/values/strings.xml       |   2 +
+ 8 files changed, 276 insertions(+), 15 deletions(-)
+
+commit b64bb6f702a52ad2d9930560cc23e0d80294927f
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Sat May 5 14:22:59 2018 +0200
+
+    mise a jour listSondage
+
+ .../activity/ShowListSondageActivity.java          |  2 +-
+ .../java/lsinf1225/mini_poll/model/Sondage.java    | 51 ++++++++++++++++++++++
+ 2 files changed, 52 insertions(+), 1 deletion(-)
+
+commit 39abb839852231e827de26d66c089a214c838630
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Sat May 5 13:41:15 2018 +0200
+
+    ajout list sondages
+
+ MiniPoll/app/src/main/AndroidManifest.xml          |   5 +-
+ .../lsinf1225/mini_poll/activity/MainActivity.java |   2 +-
+ .../mini_poll/activity/ReponseSondageActivity.java |   8 --
+ .../activity/ShowListSondageActivity.java          | 110 +++++++++++++++++++++
+ .../mini_poll/activity/ShowSondageActivity.java    |   6 ++
+ .../activity/adapter/MySondageListViewAdapter.java | 109 ++++++++++++++++++++
+ .../java/lsinf1225/mini_poll/model/Sondage.java    |   2 +-
+ .../main/res/layout/activity_answer_sondage.xml    |   6 ++
+ .../res/layout/activity_show_list_sondages.xml     |  13 +++
+ .../src/main/res/layout/collected_sondage_row.xml  |  43 ++++++++
+ MiniPoll/app/src/main/res/layout/show_sondage.xml  |   6 ++
+ MiniPoll/app/src/main/res/values/strings.xml       |   1 +
+ 12 files changed, 299 insertions(+), 12 deletions(-)
+
+commit dbcc1cb6cf03bbddf165cbf518276780a4a5d2e7
+Author: Benoît Michel <benoitmichel.98@gmail.com>
+Date:   Fri May 4 14:02:26 2018 +0200
+
+    ...
+
+ .../src/main/java/lsinf1225/mini_poll/activity/CreationActivity.java | 1 -
+ .../src/main/java/lsinf1225/mini_poll/activity/LoginActivity.java    | 1 -
+ .../app/src/main/java/lsinf1225/mini_poll/activity/MainActivity.java | 5 -----
+ 3 files changed, 7 deletions(-)
+
+commit ebd16edbe250b2c0935d4129623c7bad831ab300
+Author: Benoît Michel <benoitmichel.98@gmail.com>
+Date:   Fri May 4 01:26:19 2018 +0200
+
+    Au cas où...
+
+ MiniPoll/app/src/main/AndroidManifest.xml          |  2 +-
+ .../mini_poll/activity/CreationActivity.java       | 21 +++++++----
+ .../mini_poll/activity/LoginActivity.java          |  5 ++-
+ .../lsinf1225/mini_poll/activity/MainActivity.java |  7 +---
+ .../app/src/main/res/layout/activity_create.xml    | 42 ++++++++++++++--------
+ .../app/src/main/res/layout/activity_login.xml     |  4 +--
+ MiniPoll/app/src/main/res/layout/activity_main.xml |  2 +-
+ MiniPoll/app/src/main/res/values/strings.xml       |  5 ++-
+ 8 files changed, 53 insertions(+), 35 deletions(-)
+
+commit 778f96031a33802a3157e1b1ebfb57081360b75c
+Author: Benoît Michel <benoitmichel.98@gmail.com>
+Date:   Thu May 3 23:46:49 2018 +0200
+
+    Menu déroulant
+
+ MiniPoll/app/src/main/AndroidManifest.xml          |   8 +-
+ .../mini_poll/activity/CreationCompteActivity.java |  13 ++
+ .../mini_poll/activity/CreationProfilActivity.java |  18 +++
+ .../lsinf1225/mini_poll/activity/MainActivity.java |   8 +
+ .../main/res/layout/activity_create_account.xml    |   2 +-
+ .../main/res/layout/activity_create_profile.xml    |   2 +-
+ MiniPoll/app/src/main/res/layout/activity_main.xml | 177 +++++++++++----------
+ MiniPoll/app/src/main/res/values/strings.xml       |   4 +-
+ 8 files changed, 147 insertions(+), 85 deletions(-)
+
+commit d44281d2c4248c7bdef2cfa021f5bea8176e42a2
+Author: Benoît Michel <benoitmichel.98@gmail.com>
+Date:   Thu May 3 20:51:17 2018 +0200
+
+    MDP oublié + nouveau compte + main menu + styles
+
+ .../app/src/main/res/drawable/main_btn_shape.xml   |  1 +
+ .../main/res/layout/activity_create_account.xml    |  2 +-
+ .../main/res/layout/activity_create_profile.xml    |  2 +-
+ .../app/src/main/res/layout/activity_login.xml     | 35 ++++++++++++++++++++--
+ MiniPoll/app/src/main/res/layout/activity_main.xml |  7 +++--
+ MiniPoll/app/src/main/res/values/colors.xml        |  8 +++--
+ MiniPoll/app/src/main/res/values/styles.xml        | 13 +++++++-
+ 7 files changed, 57 insertions(+), 11 deletions(-)
+
+commit b3c43cb8a261ed51a8f71c7dc29f1f6deb16c7c0
+Author: Benoît Michel <benoitmichel.98@gmail.com>
+Date:   Thu May 3 20:01:45 2018 +0200
+
+    Enfin
+
+ MiniPoll/app/src/main/res/drawable/main_btn_shape.xml | 18 ++++++++++++++++++
+ 1 file changed, 18 insertions(+)
+
+commit 63ff8874f18e816cd123937abc7ce3e81974fa0f
+Author: Margaux GERARD <margauxgerard@MacBook-Pro-de-Margaux.local>
+Date:   Thu May 3 19:25:39 2018 +0200
+
+    Showlist affiche bouton
+
+ .../src/main/java/lsinf1225/mini_poll/activity/ShowListActivity.java  | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 4b236ce1d063151788c9e30e25f5eeca05662cc4
+Merge: 72b1e14 9ed6537
+Author: loicq256 <loicq256@gmail.com>
+Date:   Thu May 3 17:46:10 2018 +0200
+
+    tp
+
+commit 72b1e1476f092757fd4f0aa2d0f2b29c4e7021e5
+Author: loicq256 <loicq256@gmail.com>
+Date:   Thu May 3 17:27:15 2018 +0200
+
+    Avancement
+
+ MiniPoll/app/src/main/AndroidManifest.xml          |   3 +
+ MiniPoll/app/src/main/assets/BDD.sql               |  50 ++---
+ .../activity/ConsulterProfilActivity.java          |  38 +++-
+ .../mini_poll/activity/CreationActivity.java       |   2 +-
+ .../lsinf1225/mini_poll/activity/MainActivity.java |  32 +++-
+ .../mini_poll/activity/SearchActivity.java         |  46 -----
+ .../mini_poll/activity/ShowListActivity.java       | 208 ---------------------
+ .../activity/adapter/MyListViewAdapter.java        | 107 -----------
+ .../main/res/layout/activity_consulter_profil.xml  |  39 ++++
+ MiniPoll/build.gradle                              |   2 +-
+ MiniPoll/gradle/wrapper/gradle-wrapper.properties  |   4 +-
+ 11 files changed, 133 insertions(+), 398 deletions(-)
+
+commit 9ed6537f426ff97f00b6f3110547073fc615508e
+Author: Margaux GERARD <margauxgerard@wifi-student5-2.sri.ucl.ac.be>
+Date:   Thu May 3 16:58:29 2018 +0200
+
+    ShowList + Ami + ListViewAdapter
+
+ MiniPoll/app/src/main/AndroidManifest.xml          |  13 ++
+ .../mini_poll/activity/CreationActivity.java       |  16 +--
+ .../mini_poll/activity/CreationAideActivity.java   |   4 +-
+ .../activity/CreationSondageActivity.java          |  48 +------
+ .../lsinf1225/mini_poll/activity/MainActivity.java |   2 +-
+ .../mini_poll/activity/ShowListActivity.java       |  41 ++----
+ .../activity/adapter/MyListViewAdapter.java        |  17 +--
+ .../main/java/lsinf1225/mini_poll/model/Ami.java   | 142 +++++++++++++++++++++
+ .../app/src/main/res/layout/activity_show_list.xml |  16 ++-
+ MiniPoll/app/src/main/res/values/strings.xml       |   1 +
+ 10 files changed, 204 insertions(+), 96 deletions(-)
+
+commit 7ceb620a9975a1efca537362de55c92996ffe3c8
+Author: Margaux GERARD <margauxgerard@wifi-student5-2.sri.ucl.ac.be>
+Date:   Thu May 3 15:03:39 2018 +0200
+
+    Corrections
+
+ .../mini_poll/activity/ShowDetailsActivity.java    | 13 ---------
+ .../activity/adapter/MyListViewAdapter.java        |  6 ++--
+ .../app/src/main/res/layout/activity_create.xml    | 33 ++++++++++++++++++++++
+ .../app/src/main/res/layout/activity_login.xml     | 29 -------------------
+ 4 files changed, 36 insertions(+), 45 deletions(-)
+
+commit eebdb7df214e6d8b82bd5887b33382f84ba95dde
+Merge: f5175da cdb6aee
+Author: felix <fdep98@gmail.com>
+Date:   Thu May 3 13:03:01 2018 +0200
+
+    ajout de creationsondage activity +layout modifier
+
+commit cdb6aee8edba2dba96afce10674ad1181c32e750
+Author: Margaux GERARD <margauxgerard@wifi-student5-2.sri.ucl.ac.be>
+Date:   Thu May 3 14:27:13 2018 +0200
+
+    Corrections d'erreurs
+
+ .DS_Store                                           | Bin 6148 -> 6148 bytes
+ .../mini_poll/activity/CreationActivity.java        |   2 +-
+ .../mini_poll/activity/ShowListActivity.java        |  10 +++++-----
+ .../main/java/lsinf1225/mini_poll/model/User.java   |  20 ++++++++++----------
+ .../src/main/res/drawable-hdpi/ic_down_active.png   | Bin 0 -> 766 bytes
+ .../src/main/res/drawable-hdpi/ic_down_inactive.png | Bin 0 -> 747 bytes
+ .../app/src/main/res/drawable-hdpi/ic_up_active.png | Bin 0 -> 1037 bytes
+ .../src/main/res/drawable-hdpi/ic_up_inactive.png   | Bin 0 -> 999 bytes
+ .../src/main/res/drawable-mdpi/ic_down_active.png   | Bin 0 -> 766 bytes
+ .../src/main/res/drawable-mdpi/ic_down_inactive.png | Bin 0 -> 747 bytes
+ .../app/src/main/res/drawable-mdpi/ic_up_active.png | Bin 0 -> 1037 bytes
+ .../src/main/res/drawable-mdpi/ic_up_inactive.png   | Bin 0 -> 999 bytes
+ .../src/main/res/drawable-xhdpi/ic_down_active.png  | Bin 0 -> 766 bytes
+ .../main/res/drawable-xhdpi/ic_down_inactive.png    | Bin 0 -> 747 bytes
+ .../src/main/res/drawable-xhdpi/ic_up_active.png    | Bin 0 -> 1037 bytes
+ .../src/main/res/drawable-xhdpi/ic_up_inactive.png  | Bin 0 -> 999 bytes
+ .../src/main/res/drawable-xxhdpi/ic_down_active.png | Bin 0 -> 766 bytes
+ .../main/res/drawable-xxhdpi/ic_down_inactive.png   | Bin 0 -> 747 bytes
+ .../src/main/res/drawable-xxhdpi/ic_up_active.png   | Bin 0 -> 1037 bytes
+ .../src/main/res/drawable-xxhdpi/ic_up_inactive.png | Bin 0 -> 999 bytes
+ .../main/res/drawable-xxxhdpi/ic_down_active.png    | Bin 0 -> 766 bytes
+ .../main/res/drawable-xxxhdpi/ic_down_inactive.png  | Bin 0 -> 747 bytes
+ .../src/main/res/drawable-xxxhdpi/ic_up_active.png  | Bin 0 -> 1037 bytes
+ .../main/res/drawable-xxxhdpi/ic_up_inactive.png    | Bin 0 -> 999 bytes
+ 24 files changed, 16 insertions(+), 16 deletions(-)
+
+commit f5175da865d0f4b422f7fd40a4e323731be88226
+Author: felix <fdep98@gmail.com>
+Date:   Thu May 3 13:01:57 2018 +0200
+
+    ajout de creationsondage activity +layout modifier
+
+ .../mini_poll/activity/CreationActivity.java       |  2 +-
+ .../activity/CreationSondageActivity.java          | 70 +++++++++++++++++++++-
+ .../mini_poll/activity/ModifierProfilActivity.java |  2 +-
+ .../main/res/layout/activity_creation_sondage.xml  |  6 ++
+ .../src/main/res/layout/activity_modifier_id.xml   | 37 ++++++++++++
+ MiniPoll/build.gradle                              |  2 +-
+ MiniPoll/gradle/wrapper/gradle-wrapper.properties  |  4 +-
+ 7 files changed, 117 insertions(+), 6 deletions(-)
+
+commit 170000daf2ccb3585670aba61d2de95514a2fb05
+Author: Benoît Michel <benoitmichel.98@gmail.com>
+Date:   Wed May 2 21:35:51 2018 +0200
+
+    Connexion + Création compte et profil + Menu principal
+
+ .../mini_poll/activity/CreationActivity.java       |  22 +++-
+ .../mini_poll/activity/LoginActivity.java          |  10 ++
+ .../lsinf1225/mini_poll/activity/MainActivity.java |  59 +++++++---
+ MiniPoll/app/src/main/res/drawable-hdpi/ic_go.png  | Bin 0 -> 510 bytes
+ MiniPoll/app/src/main/res/drawable-mdpi/ic_go.png  | Bin 0 -> 351 bytes
+ MiniPoll/app/src/main/res/drawable-xhdpi/ic_go.png | Bin 0 -> 688 bytes
+ .../app/src/main/res/drawable-xxhdpi/ic_go.png     | Bin 0 -> 1014 bytes
+ .../app/src/main/res/drawable-xxxhdpi/ic_go.png    | Bin 0 -> 1623 bytes
+ .../main/res/layout/activity_create_account.xml    |  74 ++++++++++++
+ .../main/res/layout/activity_create_profile.xml    | 100 ++++++++++++++++
+ .../app/src/main/res/layout/activity_login.xml     |  53 +++++++--
+ MiniPoll/app/src/main/res/layout/activity_main.xml | 129 ++++++++++++---------
+ MiniPoll/app/src/main/res/values/colors.xml        |   4 +
+ MiniPoll/app/src/main/res/values/dimens.xml        |   5 +
+ MiniPoll/app/src/main/res/values/strings.xml       |   4 +-
+ MiniPoll/app/src/main/res/values/styles.xml        |  18 +++
+ 16 files changed, 396 insertions(+), 82 deletions(-)
+
+commit c2e141b3fdf71bc9ce84ff615c1d6f669436c703
+Author: Margaux GERARD <margauxgerard@MacBook-Pro-de-Margaux.local>
+Date:   Wed May 2 15:23:12 2018 +0200
+
+    Correction de ModifierProfilActivity
+
+ .../java/lsinf1225/mini_poll/activity/ShowDetailsActivity.java   | 9 +++++++--
+ .../main/java/lsinf1225/mini_poll/activity/ShowListActivity.java | 2 +-
+ MiniPoll/app/src/main/res/layout/activity_modifier.xml           | 9 +++++++++
+ 3 files changed, 17 insertions(+), 3 deletions(-)
+
+commit b1488d717750e1fb16af60d6084caf07e054357f
+Merge: f8ba131 0064ccd
+Author: felix <fdep98@gmail.com>
+Date:   Tue May 1 07:24:41 2018 +0200
+
+    Merge branch 'master' of https://github.com/Tioneb88/COO
+
+commit f8ba13118080889cb232a043f66b19353b6d8a87
+Author: felix <fdep98@gmail.com>
+Date:   Tue May 1 07:24:26 2018 +0200
+
+    ajout de methode setusername et setpassword dans classe User +premier essai pour modifierprofilactivity
+
+ .../mini_poll/activity/ModifierProfilActivity.java | 188 ++++++++++++++++++++-
+ .../main/java/lsinf1225/mini_poll/model/User.java  |  16 +-
+ 2 files changed, 202 insertions(+), 2 deletions(-)
+
+commit 0064ccd30378345d747d717463e08710eb6a6aa1
+Author: Margaux GERARD <margauxgerard@MacBook-Pro-de-Margaux.local>
+Date:   Mon Apr 30 22:21:57 2018 +0200
+
+    Corrections d'erreurs
+
+ .../src/main/java/lsinf1225/mini_poll/model/User.java  | 18 +++++++++++++++---
+ 1 file changed, 15 insertions(+), 3 deletions(-)
+
+commit cb0627966153dc610d86e63181b002ca7b98eed5
+Author: Margaux GERARD <margauxgerard@MacBook-Pro-de-Margaux.local>
+Date:   Mon Apr 30 21:52:43 2018 +0200
+
+    Showlist
+
+ .../mini_poll/activity/ShowDetailsActivity.java    |  8 +++++
+ .../mini_poll/activity/ShowListActivity.java       | 34 +++++++++++-----------
+ .../main/java/lsinf1225/mini_poll/model/User.java  | 29 ++++++++++++++++++
+ .../app/src/main/res/layout/activity_show_list.xml | 11 ++++++-
+ MiniPoll/app/src/main/res/values/strings.xml       |  4 +--
+ 5 files changed, 66 insertions(+), 20 deletions(-)
+
+commit 188b3d17f3321a2ab76b0e4a173fc36e9844d288
+Author: Margaux GERARD <margauxgerard@MacBook-Pro-de-Margaux.local>
+Date:   Mon Apr 30 15:53:30 2018 +0200
+
+    SearchActivity + ShowActivity a termier
+
+ .../mini_poll/activity/SearchActivity.java         |  42 ++++-
+ .../mini_poll/activity/ShowListActivity.java       | 204 ++++++++++++++++++++-
+ .../activity/adapter/MyListViewAdapter.java        | 107 +++++++++++
+ .../app/src/main/res/layout/activity_search.xml    |  21 +++
+ .../app/src/main/res/layout/activity_show_list.xml |  12 ++
+ .../app/src/main/res/layout/collect_item_row.xml   |  31 ++++
+ MiniPoll/app/src/main/res/values/strings.xml       |   2 +
+ 7 files changed, 415 insertions(+), 4 deletions(-)
+
+commit 28ebea8f762bf4ac587fb9cc95120c4141d29b35
+Author: Margaux GERARD <margauxgerard@wifi-student5-945.sri.ucl.ac.be>
+Date:   Mon Apr 30 13:50:29 2018 +0200
+
+    Design main
+
+ .../app/src/main/res/layout/activity_login.xml     |  4 ++
+ MiniPoll/app/src/main/res/layout/activity_main.xml | 72 +++++++++++++++++++++-
+ 2 files changed, 73 insertions(+), 3 deletions(-)
+
+commit eb9c11d3abd1a88b716ee3eb6e23af9dcc7a98ca
+Author: Margaux GERARD <margauxgerard@wifi-student5-945.sri.ucl.ac.be>
+Date:   Mon Apr 30 13:41:46 2018 +0200
+
+    Creation des activites + main
+
+ MiniPoll/app/src/main/assets/BDD.sql               |  3 -
+ .../activity/ConsulterProfilActivity.java          |  8 ++
+ .../mini_poll/activity/CreationActivity.java       |  8 ++
+ .../mini_poll/activity/CreationAideActivity.java   |  8 ++
+ .../mini_poll/activity/CreationQuestActivity.java  |  8 ++
+ .../activity/CreationSondageActivity.java          |  8 ++
+ .../lsinf1225/mini_poll/activity/MainActivity.java | 92 +++++++++++++++++++++-
+ .../mini_poll/activity/ModifierProfilActivity.java |  8 ++
+ .../mini_poll/activity/ReponseAideActivity.java    |  8 ++
+ .../mini_poll/activity/ReponseQuestActivity.java   |  8 ++
+ .../mini_poll/activity/ReponseSondageActivity.java |  8 ++
+ .../mini_poll/activity/SearchActivity.java         |  8 ++
+ .../mini_poll/activity/ShowListActivity.java       |  8 ++
+ MiniPoll/app/src/main/res/layout/activity_main.xml |  3 +-
+ MiniPoll/app/src/main/res/values/strings.xml       |  1 +
+ 15 files changed, 180 insertions(+), 7 deletions(-)
+
+commit a9e9bbb299d27adf1dc42028c5801b8e5c80a7a7
+Merge: 53029b5 590bf5e
+Author: felix <fdep98@gmail.com>
+Date:   Mon Apr 30 11:11:24 2018 +0200
+
+    ajout assets 26/4
+
+commit 53029b52e7e4e23cb4d0cd8175137cbff894113c
+Author: felix <fdep98@gmail.com>
+Date:   Mon Apr 30 11:03:09 2018 +0200
+
+    ajout assets 26/4
+
+ MiniPoll/app/src/main/assets/BDD.sql              |  50 +++++++++++-----------
+ MiniPoll/app/src/main/assets/banc.jpg             | Bin 0 -> 33820 bytes
+ MiniPoll/app/src/main/assets/blanche.jpg          | Bin 0 -> 107516 bytes
+ MiniPoll/app/src/main/assets/bruin_0.jpg          | Bin 0 -> 89305 bytes
+ MiniPoll/app/src/main/assets/cash.jpg             | Bin 0 -> 42976 bytes
+ MiniPoll/app/src/main/assets/cine.jpg             | Bin 0 -> 65527 bytes
+ MiniPoll/app/src/main/assets/drapeau-japonais.gif | Bin 0 -> 5780 bytes
+ MiniPoll/app/src/main/assets/egypte.jpg           | Bin 0 -> 14902 bytes
+ MiniPoll/app/src/main/assets/espagne.png          | Bin 0 -> 20703 bytes
+ MiniPoll/app/src/main/assets/fel.jpg              | Bin 0 -> 63060 bytes
+ MiniPoll/app/src/main/assets/lasagne.jpg          | Bin 0 -> 78066 bytes
+ MiniPoll/app/src/main/assets/marg.jpg             | Bin 0 -> 95920 bytes
+ MiniPoll/app/src/main/assets/math-test.jpg        | Bin 0 -> 130696 bytes
+ MiniPoll/app/src/main/assets/ok.jpg               | Bin 0 -> 7986 bytes
+ MiniPoll/app/src/main/assets/painblanc.jpg        | Bin 0 -> 33218 bytes
+ MiniPoll/app/src/main/assets/patecarbo.jpg        | Bin 0 -> 111824 bytes
+ MiniPoll/app/src/main/assets/piscine.jpg          | Bin 0 -> 44304 bytes
+ MiniPoll/app/src/main/assets/pizza.jpg            | Bin 0 -> 123876 bytes
+ MiniPoll/app/src/main/assets/raclette.jpeg        | Bin 0 -> 40564 bytes
+ MiniPoll/app/src/main/assets/resto.jpg            | Bin 0 -> 15694 bytes
+ MiniPoll/app/src/main/assets/spagetti.jpg         | Bin 0 -> 8315 bytes
+ MiniPoll/app/src/main/assets/spaghetti.JPG        | Bin 0 -> 108543 bytes
+ MiniPoll/app/src/main/assets/sport.jpg            | Bin 0 -> 8579 bytes
+ MiniPoll/app/src/main/assets/tartiflette.jpg      | Bin 0 -> 197099 bytes
+ MiniPoll/app/src/main/assets/turquie.png          | Bin 0 -> 2486 bytes
+ MiniPoll/app/src/main/assets/us.png               | Bin 0 -> 8321 bytes
+ MiniPoll/app/src/main/assets/verte.jpg            | Bin 0 -> 236524 bytes
+ MiniPoll/app/src/main/assets/wok.jpg              | Bin 0 -> 56736 bytes
+ MiniPoll/app/src/main/assets/zero.png             | Bin 0 -> 5243 bytes
+ 29 files changed, 25 insertions(+), 25 deletions(-)
+
+commit 590bf5e33126b5d5c41ce7e07b51acb4dc6f7697
+Merge: 3e521ed 52c2645
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Sat Apr 28 17:02:51 2018 +0200
+
+    Merge branch 'master' of https://github.com/Tioneb88/COO
+
+commit 3e521ede304ad89e47239abae14b4f6f58f7bedd
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Sat Apr 28 16:56:14 2018 +0200
+
+    correction bug spinner
+
+ .../lsinf1225/mini_poll/activity/LoginActivity.java     |  1 +
+ .../src/main/java/lsinf1225/mini_poll/model/User.java   | 17 +++++++++--------
+ MiniPoll/app/src/main/res/values/colors.xml             | 10 +++++-----
+ MiniPoll/app/src/main/res/values/styles.xml             |  9 ++++-----
+ 4 files changed, 19 insertions(+), 18 deletions(-)
+
+commit 52c264555780684b94eb6630e04dd020e02d12c0
+Author: Margaux GERARD <margauxgerard@MBP-de-Margaux.fritz.box>
+Date:   Fri Apr 27 19:10:35 2018 +0200
+
+    Correction de styles
+
+ .DS_Store                                             | Bin 6148 -> 6148 bytes
+ MiniPoll/app/src/main/assets/BDD.sql                  |  14 +++++++-------
+ .../lsinf1225/mini_poll/activity/MainActivity.java    |   1 -
+ MiniPoll/app/src/main/res/values/styles.xml           |   7 +++----
+ 4 files changed, 10 insertions(+), 12 deletions(-)
+
+commit 6de671ab721a2b7bc49d03784b39261d35a15e3a
+Author: Margaux GERARD <margauxgerard@MacBook-Pro-de-Margaux.local>
+Date:   Thu Apr 26 16:09:24 2018 +0200
+
+    LoginActivity, Colors, String, Corrections des erreurs
+
+ .DS_Store                                          | Bin 0 -> 6148 bytes
+ MiniPoll/app/src/main/AndroidManifest.xml          |  12 +-
+ MiniPoll/app/src/main/assets/BDD.sql               |  15 +++
+ MiniPoll/app/src/main/assets/BaseDD.sqlite         | Bin 77824 -> 0 bytes
+ .../mini_poll/activity/LoginActivity.java          |  16 +--
+ .../lsinf1225/mini_poll/activity/MainActivity.java |  10 +-
+ .../main/java/lsinf1225/mini_poll/model/User.java  |   1 -
+ .../app/src/main/res/layout/activity_login.xml     |  13 +-
+ MiniPoll/app/src/main/res/layout/activity_main.xml |   2 +-
+ MiniPoll/app/src/main/res/values/colors.xml        |   8 +-
+ MiniPoll/app/src/main/res/values/strings.xml       | 146 +++++++++++++++++++++
+ 11 files changed, 200 insertions(+), 23 deletions(-)
+
+commit 6a45f6dd883f92d86cd7816d054cd314cd8d7b11
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Thu Apr 26 14:09:07 2018 +0200
+
+    suppression doublon
+
+ .../app/src/main/assets/BaseDD.sqlite              | Bin
+ .../main/java/lsinf1225/mini_poll/MiniPollApp.java |   0
+ .../java/lsinf1225/mini_poll/MySQLiteHelper.java   |  21 +-
+ .../main/java/lsinf1225/mini_poll/model/Aide.java  |   0
+ .../java/lsinf1225/mini_poll/model/Question.java   |   0
+ .../lsinf1225/mini_poll/model/Questionnaire.java   | 177 ++++-------
+ .../java/lsinf1225/mini_poll/model/Sondage.java    |   0
+ .../main/java/lsinf1225/mini_poll/model/User.java  |   4 +-
+ MiniPoll2/.gitignore                               |   9 -
+ MiniPoll2/app/.gitignore                           |   1 -
+ MiniPoll2/app/build.gradle                         |  28 --
+ MiniPoll2/app/proguard-rules.pro                   |  21 --
+ .../mini_poll/ExampleInstrumentedTest.java         |  26 --
+ MiniPoll2/app/src/main/AndroidManifest.xml         |  22 --
+ MiniPoll2/app/src/main/assets/BDD.sql              | 329 ---------------------
+ .../java/lsinf1225/mini_poll/MySQLiteHelper.java   | 164 ----------
+ .../mini_poll/activity/LoginActivity.java          | 118 --------
+ .../lsinf1225/mini_poll/activity/MainActivity.java |  13 -
+ .../lsinf1225/mini_poll/model/Questionnaire.java   | 161 ----------
+ .../main/java/lsinf1225/mini_poll/model/User.java  | 247 ----------------
+ .../res/drawable-v24/ic_launcher_foreground.xml    |  34 ---
+ .../main/res/drawable/ic_launcher_background.xml   | 170 -----------
+ .../app/src/main/res/layout/activity_login.xml     |  60 ----
+ .../app/src/main/res/layout/activity_main.xml      |  18 --
+ .../src/main/res/mipmap-anydpi-v26/ic_launcher.xml |   5 -
+ .../res/mipmap-anydpi-v26/ic_launcher_round.xml    |   5 -
+ .../app/src/main/res/mipmap-hdpi/ic_launcher.png   | Bin 3056 -> 0 bytes
+ .../src/main/res/mipmap-hdpi/ic_launcher_round.png | Bin 5024 -> 0 bytes
+ .../app/src/main/res/mipmap-mdpi/ic_launcher.png   | Bin 2096 -> 0 bytes
+ .../src/main/res/mipmap-mdpi/ic_launcher_round.png | Bin 2858 -> 0 bytes
+ .../app/src/main/res/mipmap-xhdpi/ic_launcher.png  | Bin 4569 -> 0 bytes
+ .../main/res/mipmap-xhdpi/ic_launcher_round.png    | Bin 7098 -> 0 bytes
+ .../app/src/main/res/mipmap-xxhdpi/ic_launcher.png | Bin 6464 -> 0 bytes
+ .../main/res/mipmap-xxhdpi/ic_launcher_round.png   | Bin 10676 -> 0 bytes
+ .../src/main/res/mipmap-xxxhdpi/ic_launcher.png    | Bin 9250 -> 0 bytes
+ .../main/res/mipmap-xxxhdpi/ic_launcher_round.png  | Bin 15523 -> 0 bytes
+ MiniPoll2/app/src/main/res/values/colors.xml       |   6 -
+ MiniPoll2/app/src/main/res/values/strings.xml      |   3 -
+ MiniPoll2/app/src/main/res/values/styles.xml       |  11 -
+ .../java/lsinf1225/mini_poll/ExampleUnitTest.java  |  17 --
+ MiniPoll2/build.gradle                             |  27 --
+ MiniPoll2/gradle.properties                        |  17 --
+ MiniPoll2/gradle/wrapper/gradle-wrapper.jar        | Bin 53636 -> 0 bytes
+ MiniPoll2/gradle/wrapper/gradle-wrapper.properties |   6 -
+ MiniPoll2/gradlew                                  | 160 ----------
+ MiniPoll2/gradlew.bat                              |  90 ------
+ MiniPoll2/settings.gradle                          |   1 -
+ 47 files changed, 65 insertions(+), 1906 deletions(-)
+
+commit fd86d0a353c9a5640fe5d66b4a2db431fe727419
+Author: Margaux GERARD <margauxgerard@MacBook-Pro-de-Margaux.local>
+Date:   Wed Apr 25 18:57:52 2018 +0200
+
+    J ai fini les models, si il en manque dites le
+
+ MiniPoll2/.gitignore                               |   9 +
+ MiniPoll2/app/.gitignore                           |   1 +
+ MiniPoll2/app/build.gradle                         |  28 ++
+ MiniPoll2/app/proguard-rules.pro                   |  21 ++
+ .../mini_poll/ExampleInstrumentedTest.java         |  26 ++
+ MiniPoll2/app/src/main/AndroidManifest.xml         |  22 ++
+ MiniPoll2/app/src/main/assets/BDD.sql              | 329 +++++++++++++++++++++
+ MiniPoll2/app/src/main/assets/BaseDD.sqlite        | Bin 0 -> 77824 bytes
+ .../main/java/lsinf1225/mini_poll/MiniPollApp.java |  84 ++++++
+ .../java/lsinf1225/mini_poll/MySQLiteHelper.java   | 164 ++++++++++
+ .../mini_poll/activity/LoginActivity.java          | 118 ++++++++
+ .../lsinf1225/mini_poll/activity/MainActivity.java |  13 +
+ .../main/java/lsinf1225/mini_poll/model/Aide.java  | 160 ++++++++++
+ .../java/lsinf1225/mini_poll/model/Question.java   | 160 ++++++++++
+ .../lsinf1225/mini_poll/model/Questionnaire.java   | 161 ++++++++++
+ .../java/lsinf1225/mini_poll/model/Sondage.java    | 175 +++++++++++
+ .../main/java/lsinf1225/mini_poll/model/User.java  | 247 ++++++++++++++++
+ .../res/drawable-v24/ic_launcher_foreground.xml    |  34 +++
+ .../main/res/drawable/ic_launcher_background.xml   | 170 +++++++++++
+ .../app/src/main/res/layout/activity_login.xml     |  60 ++++
+ .../app/src/main/res/layout/activity_main.xml      |  18 ++
+ .../src/main/res/mipmap-anydpi-v26/ic_launcher.xml |   5 +
+ .../res/mipmap-anydpi-v26/ic_launcher_round.xml    |   5 +
+ .../app/src/main/res/mipmap-hdpi/ic_launcher.png   | Bin 0 -> 3056 bytes
+ .../src/main/res/mipmap-hdpi/ic_launcher_round.png | Bin 0 -> 5024 bytes
+ .../app/src/main/res/mipmap-mdpi/ic_launcher.png   | Bin 0 -> 2096 bytes
+ .../src/main/res/mipmap-mdpi/ic_launcher_round.png | Bin 0 -> 2858 bytes
+ .../app/src/main/res/mipmap-xhdpi/ic_launcher.png  | Bin 0 -> 4569 bytes
+ .../main/res/mipmap-xhdpi/ic_launcher_round.png    | Bin 0 -> 7098 bytes
+ .../app/src/main/res/mipmap-xxhdpi/ic_launcher.png | Bin 0 -> 6464 bytes
+ .../main/res/mipmap-xxhdpi/ic_launcher_round.png   | Bin 0 -> 10676 bytes
+ .../src/main/res/mipmap-xxxhdpi/ic_launcher.png    | Bin 0 -> 9250 bytes
+ .../main/res/mipmap-xxxhdpi/ic_launcher_round.png  | Bin 0 -> 15523 bytes
+ MiniPoll2/app/src/main/res/values/colors.xml       |   6 +
+ MiniPoll2/app/src/main/res/values/strings.xml      |   3 +
+ MiniPoll2/app/src/main/res/values/styles.xml       |  11 +
+ .../java/lsinf1225/mini_poll/ExampleUnitTest.java  |  17 ++
+ MiniPoll2/build.gradle                             |  27 ++
+ MiniPoll2/gradle.properties                        |  17 ++
+ MiniPoll2/gradle/wrapper/gradle-wrapper.jar        | Bin 0 -> 53636 bytes
+ MiniPoll2/gradle/wrapper/gradle-wrapper.properties |   6 +
+ MiniPoll2/gradlew                                  | 160 ++++++++++
+ MiniPoll2/gradlew.bat                              |  90 ++++++
+ MiniPoll2/settings.gradle                          |   1 +
+ 44 files changed, 2348 insertions(+)
+
+commit 92fc53d2dc5457362a2b4dbe40d567a45c4c8339
+Author: Margaux GERARD <margauxgerard@wifi-student5-882.sri.ucl.ac.be>
+Date:   Wed Apr 25 17:07:58 2018 +0200
+
+    User et questionnaire
+
+ MiniPoll/.gitignore                                |   9 +
+ MiniPoll/app/.gitignore                            |   1 +
+ MiniPoll/app/build.gradle                          |  28 ++
+ MiniPoll/app/proguard-rules.pro                    |  21 ++
+ .../mini_poll/ExampleInstrumentedTest.java         |  26 ++
+ MiniPoll/app/src/main/AndroidManifest.xml          |  22 ++
+ MiniPoll/app/src/main/assets/BDD.sql               | 329 +++++++++++++++++++++
+ .../java/lsinf1225/mini_poll/MySQLiteHelper.java   | 161 ++++++++++
+ .../mini_poll/activity/LoginActivity.java          | 118 ++++++++
+ .../lsinf1225/mini_poll/activity/MainActivity.java |  13 +
+ .../lsinf1225/mini_poll/model/Questionnaire.java   | 238 +++++++++++++++
+ .../main/java/lsinf1225/mini_poll/model/User.java  | 245 +++++++++++++++
+ .../res/drawable-v24/ic_launcher_foreground.xml    |  34 +++
+ .../main/res/drawable/ic_launcher_background.xml   | 170 +++++++++++
+ .../app/src/main/res/layout/activity_login.xml     |  60 ++++
+ MiniPoll/app/src/main/res/layout/activity_main.xml |  18 ++
+ .../src/main/res/mipmap-anydpi-v26/ic_launcher.xml |   5 +
+ .../res/mipmap-anydpi-v26/ic_launcher_round.xml    |   5 +
+ .../app/src/main/res/mipmap-hdpi/ic_launcher.png   | Bin 0 -> 3056 bytes
+ .../src/main/res/mipmap-hdpi/ic_launcher_round.png | Bin 0 -> 5024 bytes
+ .../app/src/main/res/mipmap-mdpi/ic_launcher.png   | Bin 0 -> 2096 bytes
+ .../src/main/res/mipmap-mdpi/ic_launcher_round.png | Bin 0 -> 2858 bytes
+ .../app/src/main/res/mipmap-xhdpi/ic_launcher.png  | Bin 0 -> 4569 bytes
+ .../main/res/mipmap-xhdpi/ic_launcher_round.png    | Bin 0 -> 7098 bytes
+ .../app/src/main/res/mipmap-xxhdpi/ic_launcher.png | Bin 0 -> 6464 bytes
+ .../main/res/mipmap-xxhdpi/ic_launcher_round.png   | Bin 0 -> 10676 bytes
+ .../src/main/res/mipmap-xxxhdpi/ic_launcher.png    | Bin 0 -> 9250 bytes
+ .../main/res/mipmap-xxxhdpi/ic_launcher_round.png  | Bin 0 -> 15523 bytes
+ MiniPoll/app/src/main/res/values/colors.xml        |   6 +
+ MiniPoll/app/src/main/res/values/strings.xml       |   3 +
+ MiniPoll/app/src/main/res/values/styles.xml        |  11 +
+ .../java/lsinf1225/mini_poll/ExampleUnitTest.java  |  17 ++
+ MiniPoll/build.gradle                              |  27 ++
+ MiniPoll/gradle.properties                         |  17 ++
+ MiniPoll/gradle/wrapper/gradle-wrapper.jar         | Bin 0 -> 53636 bytes
+ MiniPoll/gradle/wrapper/gradle-wrapper.properties  |   6 +
+ MiniPoll/gradlew                                   | 160 ++++++++++
+ MiniPoll/gradlew.bat                               |  90 ++++++
+ MiniPoll/settings.gradle                           |   1 +
+ 39 files changed, 1841 insertions(+)
+
+commit 44e04e693327f0918d1892b3c0898dbc877fa966
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Wed Apr 25 16:42:28 2018 +0200
+
+    cleaning
+
+ bidouille.txt | 1 -
+ text          | 1 -
+ 2 files changed, 2 deletions(-)
+
+commit 2bc29c9f8e260851d0453152e1c95f083d62cfa3
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Wed Apr 25 16:20:45 2018 +0200
+
+    test... encore
+
+ bidouille.txt | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 21a133bf400efa486a7b9e3dddaf99d7ccd763b9
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Wed Apr 25 16:13:27 2018 +0200
+
+    ajout du gitignore
+
+ .gitignore | 68 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 68 insertions(+)
+
+commit 97307d308b16c9034c80b6df43df1e22a5134625
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Thu Apr 19 16:21:01 2018 +0200
+
+    nouveau fichier
+
+ bidouille.txt | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 66e3bed9fbc34a5cdd372bdefc8e2dafb360b5c8
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Thu Apr 19 16:15:13 2018 +0200
+
+    text
+
+ text | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 92a5461041ef0a453283249394c02048638d314a
+Author: loicq256 <loicq256@gmail.com>
+Date:   Thu Apr 19 16:08:03 2018 +0200
+
+    lolo the best
+
+ text | 0
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+
+commit 5ea5687d209580c4ce8193a625987937a6511da4
+Author: ArnaudC08 <arnaud.claes@student.uclouvain.be>
+Date:   Thu Apr 19 15:54:34 2018 +0200
+
+    test
+
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit c8b8424aa8bb8ebf58c09c8e7fe19a54b9aa990a
+Author: fdep98 <fdep98@gmail.com>
+Date:   Thu Apr 19 15:42:19 2018 +0200
+
+    mon nom
+
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 7795e7e31d3dd175fb80561d67ef68fc36311775
+Author: fdep98 <38107936+fdep98@users.noreply.github.com>
+Date:   Thu Apr 19 15:36:45 2018 +0200
+
+    Update README.md
+
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 06ebfa397fb813b62170a3c7db8c953f55dd894a
+Author: fdep98 <38107936+fdep98@users.noreply.github.com>
+Date:   Thu Apr 19 15:15:03 2018 +0200
+
+    Update README.md
+
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit ef6b34ac82269bdf30fffef6b373d52b4442df9c
+Author: Margaux GERARD <margauxgerard@wifi-student5-814.sri.ucl.ac.be>
+Date:   Thu Apr 19 15:00:34 2018 +0200
+
+    Coucou
+
+ README.md | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 931d70e76e0e028b2d3e055f180f05e9c6a9fce4
+Author: Tioneb88 <38530011+Tioneb88@users.noreply.github.com>
+Date:   Thu Apr 19 14:50:37 2018 +0200
+
+    Initial commit
+
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)

@@ -81,18 +81,14 @@ public class Ami {
         // Tant qu'il y a des lignes.
         while (!cursor.isAfterLast()) {
             // Récupération des informations du sondage pour chaque ligne.
-            int amiRel = cursor.getInt(2);
-            Log.d("tagCursor",Integer.toString(amiRel));
             String amiEmet = cursor.getString(0);
             Log.d("tagCursor",amiEmet);
             String amiRecept = cursor.getString(1);
             Log.d("tagCursor",amiRecept);
+            int amiRel = cursor.getInt(2);
+            Log.d("tagCursor",Integer.toString(amiRel));
             // Vérification pour savoir s'il y a déjà une instance de ce sondage.
             Ami ami = Ami.amiSparseArray.get(amiRel);
-            if (ami == null) {
-                // Si pas encore d'instance, création d'une nouvelle instance.
-                ami = new Ami(amiEmet, amiRecept, amiRel);
-            }
             // Ajout de le questionnaire à la liste.
             amis.add(ami);
             // Passe à la ligne suivante.
