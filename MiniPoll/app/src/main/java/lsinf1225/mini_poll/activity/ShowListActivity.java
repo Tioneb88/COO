@@ -23,7 +23,7 @@ import lsinf1225.mini_poll.model.Ami;
  *
  * @author Margaux GERARD, Loïc QUINET, Félix DE PATOUL, Benoît MICHEL, Arnaud CLAES
  * @version 1
- * 03 mai 2018
+ * 04 mai 2018
  */
 public class ShowListActivity extends Activity implements OnItemClickListener {
 
