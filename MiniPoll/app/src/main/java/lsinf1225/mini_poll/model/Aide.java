@@ -177,6 +177,7 @@ public class Aide {
         cursor.close();
         db.close();
 
+        // Retourne un arrayList de String qui contient toutes les descriptions des aides auxquelles l'utilisateur a acces
         return options;
 
     }

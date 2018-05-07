@@ -35,9 +35,6 @@ public class ShowAmiActivity extends Activity {
 
         String recept = getIntent().getStringExtra("recepteur");
 
-
-        setContentView(R.layout.activity_consulter_profil);
-
         TextView username = findViewById(R.id.username);
         username.setText(getString(R.string.app_user_username) + " : " + Ami.get_id(recept));
 

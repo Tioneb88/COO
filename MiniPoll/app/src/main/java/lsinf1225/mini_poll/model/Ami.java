@@ -179,7 +179,7 @@ public class Ami {
         while (!cursor.isAfterLast()) {
             // Récupération des informations du sondage pour chaque ligne.
             String nom = cursor.getString(0);
-            Log.d("tagCursor",nom);
+            //Log.d("tagCursor",nom);
             noms.add(nom);
             // Passe à la ligne suivante.
             cursor.moveToNext();
@@ -195,7 +195,7 @@ public class Ami {
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
         // Requête de selection (SELECT)
-        Cursor cursor = db.rawQuery("SELECT Prenom FROM UTILISATEUR WHERE Identifiant =\'"+Recepteur+ "\'",null);
+        Cursor cursor = db.rawQuery("SELECT Prénom FROM UTILISATEUR WHERE Identifiant =\'"+Recepteur+ "\'",null);
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
 
@@ -206,7 +206,7 @@ public class Ami {
         while (!cursor.isAfterLast()) {
             // Récupération des informations du sondage pour chaque ligne.
             String prenom = cursor.getString(0);
-            Log.d("tagCursor",prenom);
+            //Log.d("tagCursor",prenom);
             prenoms.add(prenom);
             // Passe à la ligne suivante.
             cursor.moveToNext();
@@ -233,7 +233,7 @@ public class Ami {
         while (!cursor.isAfterLast()) {
             // Récupération des informations du sondage pour chaque ligne.
             String bff = cursor.getString(0);
-            Log.d("tagCursor",bff);
+            //Log.d("tagCursor",bff);
             bffs.add(bff);
             // Passe à la ligne suivante.
             cursor.moveToNext();
@@ -260,7 +260,7 @@ public class Ami {
         while (!cursor.isAfterLast()) {
             // Récupération des informations du sondage pour chaque ligne.
             String id = cursor.getString(0);
-            Log.d("tagCursor",id);
+           // Log.d("tagCursor",id);
             ids.add(id);
             // Passe à la ligne suivante.
             cursor.moveToNext();

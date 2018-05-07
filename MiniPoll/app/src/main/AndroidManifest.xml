@@ -84,6 +84,15 @@
             android:name="lsinf1225.mini_poll.activity.CreationAideActivity"
             android:label="@string/create_main_help" />
 
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowAmiActivity"
+            android:label="@string/friends_mine" />
+
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowListAideActivity"
+            android:label="@string/help_manage_title" />
+
+
     </application>
 
 </manifest>

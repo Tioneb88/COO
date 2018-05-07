@@ -26,9 +26,11 @@ public class ShowAideActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_aide);
-        int nAide = getIntent().getIntExtra("nAide", 1);
+        int nAide = getIntent().getIntExtra("nAide", -1);
 
         TextView description = findViewById(R.id.sondageDescription);
+        //description.setText(current.getDescription());
+
         TextView option1 = findViewById(R.id.option1);
         TextView option2 = findViewById(R.id.option2);
         EditText value1 = findViewById(R.id.editText1);
@@ -36,8 +38,9 @@ public class ShowAideActivity extends Activity {
 
         propositions = Aide.loadOptions();
 
-        option1.setText(propositions.get(0));
-        option2.setText(propositions.get(1));
+
+        //option1.setText(propositions.get(0));
+        //option2.setText(propositions.get(1));
 
 
 

@@ -86,7 +86,7 @@
         android:layout_marginLeft="10dp"
         android:layout_marginStart="10dp"
         android:padding="@dimen/default_padding"
-        android:text="@string/my_profile_bff" />
+        android:text="@string/friends_mine" />
     <Button
         android:id="@+id/change_password_btn"
         style="?android:attr/borderlessButtonStyle"

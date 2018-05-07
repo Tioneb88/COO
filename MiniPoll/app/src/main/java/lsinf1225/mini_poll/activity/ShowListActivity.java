@@ -116,7 +116,7 @@ public class ShowListActivity extends Activity implements AdapterView.OnItemClic
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, ShowSondageActivity.class);
+        Intent intent = new Intent(this, ShowAmiActivity.class);
         // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
         // récupérer celui-ci.
         // Nous n'avons pas implemente la vue de details dans notre cas

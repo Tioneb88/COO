@@ -66,7 +66,7 @@ public class ShowListAideActivity extends Activity implements AdapterView.OnItem
         if (searchQuery == null) {
             aides = Aide.getAides();
         } else {
-            //sondages = Sondage.searchSongs(searchQuery);
+
         }
 
         // S'il n'y a aucun éléments dans la liste, il faut afficher un message. Ce message est différent
@@ -113,7 +113,7 @@ public class ShowListAideActivity extends Activity implements AdapterView.OnItem
          */
 
         //if (!answered) {
-        Intent intent = new Intent(this, ShowSondageActivity.class);
+        Intent intent = new Intent(this, ShowAideActivity.class);
         // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
         // récupérer celui-ci.
         intent.putExtra("nAide", aides.get(position).getNaide());
