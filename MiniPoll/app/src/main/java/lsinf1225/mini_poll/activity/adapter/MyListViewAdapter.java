@@ -34,19 +34,20 @@ public class MyListViewAdapter extends BaseAdapter {
     private final LayoutInflater mInflater;
 
     /**
-     * Liste des éléments de collection à mettr e dans la liste.
+     * Liste des éléments de collection à mettre dans la liste.
      */
     private ArrayList<Ami> amis;
+    private ArrayList<String> ami2;
 
     /**
      * Constructeur.
      *
      * @param context        Contexte de l'application.
-     * @param ami Liste des éléments de collection à placer dans la liste.
+     * @param amis Liste des éléments de collection à placer dans la liste.
      */
-    public MyListViewAdapter(Context context, ArrayList<Ami> ami) {
+    public MyListViewAdapter(Context context, ArrayList<Ami> amis) {
         mInflater = LayoutInflater.from(context);
-        this.amis = ami;
+        this.amis = amis;
     }
 
     @Override
@@ -64,7 +65,7 @@ public class MyListViewAdapter extends BaseAdapter {
     @Override
     public long getItemId(int position) {
 
-        return 42;
+        return amis.get(position).getRel();
     }
 
     /**
@@ -81,16 +82,21 @@ public class MyListViewAdapter extends BaseAdapter {
 
         if (convertView == null) {
             // Création d'un nouvelle vue avec le layout correspondant au fichier xml
-            convertView = mInflater.inflate(R.layout.activity_show_list, parent, false);
+            convertView = mInflater.inflate(R.layout.collected_sondage_row, parent, false);
         }
 
         // Récupération des deux éléments de notre vue dans le but d'y placer les données.
         TextView nameTextView = convertView.findViewById(R.id.show_row_name);
+        TextView authorTextView = convertView.findViewById(R.id.author_name);
 
         // Récupération et placement des données.
-        Ami user = amis.get(position);
-        nameTextView.setText(user.getEmet());
-        nameTextView.setText(user.getRecept());
+        Ami ami = amis.get(position);
+        ami2 = ami.get_mail(ami.getRecept());
+        nameTextView.setText(ami.getRecept());
+        authorTextView.setText(ami2.get(0));
+        //Log.e("MySondageListViewAdapter", "Rating of song " + song.getTitle() + " is " + song.getRating());
+        //Log.e("MySondageListViewAdapter", "stepsize " + ratingBar.getStepSize() + " rating " + ratingBar.getRating() + " num " + ratingBar.getNumStars());
+
         return convertView;
     }
 
@@ -101,7 +107,7 @@ public class MyListViewAdapter extends BaseAdapter {
      *
      * @param newAmi La nouvelle liste des éléments de collection à afficher.
      */
-    public void setFriends(ArrayList<Ami> newAmi) {
+    public void setAmis(ArrayList<Ami> newAmi) {
         this.amis = newAmi;
         notifyDataSetChanged();
     }

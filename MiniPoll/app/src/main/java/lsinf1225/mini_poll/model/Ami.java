@@ -107,7 +107,7 @@ public class Ami {
         return amis;
     }
 
-    public static ArrayList<String> getFriends() {
+    public static ArrayList<Ami> getFriends() {
         // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
@@ -118,14 +118,15 @@ public class Ami {
         cursor.moveToFirst();
 
         // Initialisation la liste des sondages.
-        ArrayList<String> friends = new ArrayList<>();
+        ArrayList<Ami> friends = new ArrayList<>();
 
         // Tant qu'il y a des lignes.
         while (!cursor.isAfterLast()) {
             // Récupération des informations du sondage pour chaque ligne.
             String friend = cursor.getString(0);
             Log.d("tagCursor",friend);
-            friends.add(friend);
+            Ami ami = new Ami (connectedUser, friend, 1);
+            friends.add(ami);
             // Passe à la ligne suivante.
             cursor.moveToNext();
         }
@@ -134,6 +135,33 @@ public class Ami {
         db.close();
 
         return friends;
+    }
+
+    public static ArrayList<String> get_mail (String Recepteur){
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        Cursor cursor = db.rawQuery("SELECT Mail FROM UTILISATEUR WHERE Identifiant =\'"+Recepteur+ "\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> mails = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String mail = cursor.getString(0);
+            Log.d("tagCursor",mail);
+            mails.add(mail);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return mails;
     }
 
     public static void reverseOrder() {

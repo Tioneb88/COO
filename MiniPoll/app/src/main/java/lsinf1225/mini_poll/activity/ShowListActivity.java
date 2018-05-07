@@ -5,10 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.util.Log;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
-import android.widget.ScrollView;
-import android.widget.TextView;
+//import android.widget.ScrollView;
+//import android.widget.TextView;
 
 import java.util.ArrayList;
 
@@ -28,8 +29,7 @@ import lsinf1225.mini_poll.model.Ami;
  */
 public class ShowListActivity extends Activity implements AdapterView.OnItemClickListener {
 
-    private ArrayList<Ami> amis;
-    private ArrayList<String> listamis;
+    private ArrayList<Ami> listamis;
     private MyListViewAdapter myListViewAdapter;
 
     @Override
@@ -50,8 +50,8 @@ public class ShowListActivity extends Activity implements AdapterView.OnItemClic
         //myListViewAdapter = new MyListViewAdapter(this, users);
         //myListView.setAdapter(myListViewAdapter);
 
-        myListViewAdapter = new MyListViewAdapter(this, amis);
-
+        myListViewAdapter = new MyListViewAdapter(this, listamis);
+        myListView.setAdapter(myListViewAdapter);
 
         // Indique que le clic d'un élément de la liste doit appeler la méthode onItemClick d
         // cette classe (this).
@@ -77,7 +77,7 @@ public class ShowListActivity extends Activity implements AdapterView.OnItemClic
         if (searchQuery == null) {
             listamis = Ami.getFriends();
         }else {
-
+            listamis = Ami.getFriends();
         }
 
         // S'il n'y a aucun éléments dans la liste, il faut afficher un message. Ce message est différent
@@ -105,7 +105,7 @@ public class ShowListActivity extends Activity implements AdapterView.OnItemClic
 
         loadAmis();
 
-        myListViewAdapter.setFriends(amis);
+        myListViewAdapter.setAmis(listamis);
     }
 
     /**
@@ -120,7 +120,7 @@ public class ShowListActivity extends Activity implements AdapterView.OnItemClic
         // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
         // récupérer celui-ci.
         // Nous n'avons pas implemente la vue de details dans notre cas
-        intent.putExtra("emetteur", amis.get(position).getEmet());
+        intent.putExtra("emetteur", listamis.get(position).getEmet());
         startActivity(intent);
     }
 

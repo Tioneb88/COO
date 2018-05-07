@@ -21,6 +21,7 @@ import lsinf1225.mini_poll.model.Sondage;
  * @version 1
  */
 public class ShowListSondageActivity extends Activity implements AdapterView.OnItemClickListener {
+
     private ArrayList<Sondage> sondages;
     private MySondageListViewAdapter myListViewAdapter;
 
