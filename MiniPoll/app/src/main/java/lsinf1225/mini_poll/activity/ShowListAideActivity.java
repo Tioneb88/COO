@@ -27,7 +27,7 @@ public class ShowListAideActivity extends Activity implements AdapterView.OnItem
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_show_list_sondages);
+        setContentView(R.layout.activity_show_list_aide);
 
         // Chargement des éléments à afficher dans la variable de classe songs
         loadOptions();
