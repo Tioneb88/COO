@@ -36,22 +36,22 @@ public class ShowListActivity extends Activity implements AdapterView.OnItemClic
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_show_list);
+        setContentView(R.layout.activity_show_list_aide);
 
         // Chargement des éléments à afficher dans la variable de classe amis
         loadAmis();
 
         // Afin d'avoir un affichage en continu il faudra mettre ScrollView par la suite
         ListView myListView = findViewById(R.id.show_listViewAmi);
-
+        //ScrollView myScrollListView = findViewById(R.id.show_listViewAmi2);
         // Création de l'adapter pour faire la liaison entre les données (amis) et
         // l'affichage de chaque ligne de la liste.
 
-        //myListViewAdapter = new MyListViewAdapter(this, users);
-        //myListView.setAdapter(myListViewAdapter);
-
         myListViewAdapter = new MyListViewAdapter(this, listamis);
         myListView.setAdapter(myListViewAdapter);
+
+        //myScrollListViewAdapter = new MyScrollListViewAdapter(this, listamis);
+        //myScrollListView.setAdapter(myScrollListViewAdapter);
 
         // Indique que le clic d'un élément de la liste doit appeler la méthode onItemClick d
         // cette classe (this).

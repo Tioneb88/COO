@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.ScrollView;
 
 import java.util.ArrayList;
 
@@ -22,12 +23,12 @@ import lsinf1225.mini_poll.model.Ami;
  * De cette manière il nous est possible d'utiliser un layout particulier (ici
  * collected_item_row.xml) pour chaque ligne reprenant le nom de l'élément et sa note (rating).
  *
- * @author Felix et Margaux
+ * @author Damien Mercier
  * @version 1
  * @see <a href="http://d.android.com/reference/android/widget/Adapter.html">Adapter</a>
  * @see <a href="http://d.android.com/reference/android/widget/BaseAdapter.html">BaseAdapter</a>
  */
-public class MyListViewAdapter extends BaseAdapter {
+public class MyScrollListViewAdapter extends BaseAdapter {
     /**
      * Permet d'instancier un fichier xml de layout dans une vue.
      */
@@ -45,7 +46,7 @@ public class MyListViewAdapter extends BaseAdapter {
      * @param context        Contexte de l'application.
      * @param amis Liste des éléments de collection à placer dans la liste.
      */
-    public MyListViewAdapter(Context context, ArrayList<Ami> amis) {
+    public MyScrollListViewAdapter(Context context, ArrayList<Ami> amis) {
         mInflater = LayoutInflater.from(context);
         this.amis = amis;
     }

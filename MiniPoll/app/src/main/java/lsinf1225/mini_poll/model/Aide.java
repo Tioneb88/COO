@@ -4,6 +4,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.SparseArray;
 import android.util.Log;
+import lsinf1225.mini_poll.model.User;
 
 import java.util.ArrayList;
 
@@ -125,7 +126,7 @@ public class Aide {
         // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
         String connectedUser = User.getConnectedUser().getId();
-        Cursor cursor = db.rawQuery("SELECT count(S.Npossibilites) "+
+        Cursor cursor = db.rawQuery("SELECT count(S.Noptionsa) "+
                 "FROM OPTIONA P, LIKE_LIKE S "+
                 "WHERE P.Noptionsa = S.Noptionsa AND S.Identifiant=\'"+connectedUser+"\' AND P.Naide = \'"+naide+"\'",null);
         // Placement du curseur sur la première ligne.
@@ -150,13 +151,11 @@ public class Aide {
     }
 
 
-    public static ArrayList<String> loadOptions(int Naide) {
+    public static ArrayList<String> loadOptions() {
         // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
-        Log.d("tagText",Integer.toString(Naide));
-        Cursor cursor = db.rawQuery("SELECT P.Description "+
-                "FROM OPTIONA P, AIDE S "+
-                "WHERE S.nAide = P.nAide AND S.nAide = \'"+Naide+"\'", null);
+        String connectedUser = User.getConnectedUser().getId();
+        Cursor cursor = db.rawQuery("SELECT Description FROM OPTIONA S, AIDE O WHERE S.Naide = O.Naide AND O.Identifiant=\'" + connectedUser + "\'", null);
 
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();

@@ -30,7 +30,7 @@ public class ShowListAideActivity extends Activity implements AdapterView.OnItem
         setContentView(R.layout.activity_show_list_sondages);
 
         // Chargement des éléments à afficher dans la variable de classe songs
-        loadSondages();
+        loadOptions();
 
 
         ListView myListView = findViewById(R.id.show_listViewAide);
@@ -57,7 +57,7 @@ public class ShowListAideActivity extends Activity implements AdapterView.OnItem
      *
      * !!!!!!!!!!!!!AJOUTER METHODE SEARCHSONGS (QUERY)
      */
-    private void loadSondages() {
+    private void loadOptions() {
 
         // Récupération de la requête de recherche.
         // Si aucune requête n'a été passée lors de la création de l'activité, searchQuery sera null.
@@ -92,7 +92,7 @@ public class ShowListAideActivity extends Activity implements AdapterView.OnItem
         // La liste des éléments est ici rechargées car en cas de modification d'un élément, l'ordre
         // a peut-être changé.
 
-        loadSondages();
+        loadOptions();
 
         myAideListViewAdapter.setAide(aides);
     }

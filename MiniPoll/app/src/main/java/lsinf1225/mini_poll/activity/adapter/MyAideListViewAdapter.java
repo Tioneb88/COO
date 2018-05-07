@@ -70,7 +70,10 @@ public class MyAideListViewAdapter extends BaseAdapter {
         // Si la vue n'a pas encore été créé (typiquement lors du première affichage de la liste).
         // Android recycle en effet les layout déjà chargés des éléments de la liste (par exemple
         // lors du changement de l'ordre dans la liste.)
-
+        if (convertView == null) {
+            // Création d'un nouvelle vue avec le layout correspondant au fichier xml
+            convertView = mInflater.inflate(R.layout.collected_sondage_row, parent, false);
+        }
 
         // Récupération des deux éléments de notre vue dans le but d'y placer les données.
         TextView nameTextView = convertView.findViewById(R.id.show_row_name);
