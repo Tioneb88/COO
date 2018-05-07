@@ -183,6 +183,22 @@ public class Aide {
     }
 
     /**
+     * Fournit l'instance d'un élément de collection présent dans la base de données. Si l'élément
+     * de collection n'est pas encore instancié, une instance est créée.
+     *
+     * @return L'instance de l'élément de collection.
+     *
+     * @pre L'élément correspondant à l'id donné doit exister dans la base de données.
+
+    public static Aide get(int nAide) {
+        Aide aide = Aide.aideSparseArray.get(nAide);
+        if (aide != null) {
+            return aide;
+        }
+        return new Aide(nAide);
+    }
+
+    /**
      * Fournit le numéro de l'aide.
      */
     public int getNaide() {

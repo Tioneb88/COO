@@ -81,7 +81,7 @@
     <string name="friends_manage_title">Gestion des amis</string>
     <string name="friends_list">Liste d\'amis</string>
     <string name="friends_find">Trouver un ami</string>
-    <string name="friends_mine">Mon ami</string>
+    <string name="friends_mine">Profil de mon ami</string>
     <string name="friends_error_no_item">Aucun ami dans votre liste</string>
     <string name="friends_no_result">Aucun ami ne correspond à votre recherche</string>
 

@@ -22,6 +22,8 @@ public class ShowAideActivity extends Activity {
 
     private Aide current;
     private ArrayList<String> propositions;
+    private EditText[] allScores;
+    private TextView[] allPropositions;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,13 +38,14 @@ public class ShowAideActivity extends Activity {
         EditText value1 = findViewById(R.id.editText1);
         EditText value2 = findViewById(R.id.editText2);
 
+        allScores = new EditText[]{value1, value2};
+        allPropositions = new TextView[] {description, option1, option2};
+
         propositions = Aide.loadOptions();
 
 
-        //option1.setText(propositions.get(0));
-        //option2.setText(propositions.get(1));
-
-
+        option1.setText(propositions.get(0));
+        option2.setText(propositions.get(1));
 
     }
 }
