@@ -22,7 +22,7 @@ import lsinf1225.mini_poll.model.Ami;
  * De cette manière il nous est possible d'utiliser un layout particulier (ici
  * collected_item_row.xml) pour chaque ligne reprenant le nom de l'élément et sa note (rating).
  *
- * @author Felix et Margaux
+ * @author Damien Mercier
  * @version 1
  * @see <a href="http://d.android.com/reference/android/widget/Adapter.html">Adapter</a>
  * @see <a href="http://d.android.com/reference/android/widget/BaseAdapter.html">BaseAdapter</a>
