@@ -36,22 +36,23 @@ public class ChangeUsernameActivity extends Activity {
         EditText passwordEditText = findViewById(R.id.change_username_confirm);
         String password = passwordEditText.getText().toString();
 
-        // On vérifie que le mot de passe est le bon.
-        if(!User.getConnectedUser().getPassword().equals(password)) {
+        int hint = User.getConnectedUser().setUsername(newUsername,password);
+        if(hint == -2) {
+            // Le mot de passe est incorrect.
             MiniPollApp.notifyShort(R.string.change_username_password_wrong);
         }
+        else if(hint == -1) {
+            // L'identifiant choisi est déjà utilisé par un autre utilisateur.
+            MiniPollApp.notifyShort(R.string.change_username_username_error);
+        }
+        else if(hint == 0) {
+            // Tout s'est bien passé.
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
         else {
-            // On essaie de changer l'identifiant de l'utilisateur.
-            if(!User.getConnectedUser().setUsername(newUsername))
-            {
-                // L'identifiant choisi est déjà utilisé par un autre utilisateur.
-                MiniPollApp.notifyShort(R.string.change_username_username_error);
-            }
-            else
-            {
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-            }
+            // Une erreur inattendue s'est produite.
+            MiniPollApp.notifyShort(R.string.app_error);
         }
     }
 }

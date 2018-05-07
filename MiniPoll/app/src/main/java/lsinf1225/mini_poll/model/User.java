@@ -415,12 +415,17 @@ public class User {
      * @return Vrai (true) si ce nom d'utilisateur n'est pas encore utilisé (et alors le changement
      * est effectué, false sinon.
      */
-    public boolean setUsername(String newUsername) {
-        // Récupération du  SQLiteHelper et de la base de données.
-        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+    public int setUsername(String newUsername, String password) {
+        // On vérifie le mot de passe.
+        if(!password.equals(this.getPassword()))
+        {
+            return -2;
+        }
+        // Récupération du  SQLiteHelper et de la base de données en lecture.
+        SQLiteDatabase dbR = MySQLiteHelper.get().getReadableDatabase();
 
         // On va chercher tous les identifiants de l'application.
-        Cursor cursor = db.rawQuery("SELECT Identifiant FROM UTILISATEUR", null);
+        Cursor cursor = dbR.rawQuery("SELECT Identifiant FROM UTILISATEUR", null);
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
 
@@ -430,16 +435,41 @@ public class User {
             if(identifiant.equals(newUsername))
             {
                 cursor.close();
-                db.close();
-                return false;
+                dbR.close();
+                return -1;
             }
             // Passe à la ligne suivante.
             cursor.moveToNext();
         }
         cursor.close();
-        db.close();
+        dbR.close();
+
+        // Récupération du  SQLiteHelper et de la base de données en écriture.
+        SQLiteDatabase dbW = MySQLiteHelper.get().getWritableDatabase();
+
+        dbW.execSQL("UPDATE UTILISATEUR SET Identifiant = " + newUsername +" WHERE Identifiant = " + this.getId());
+
+       /* // New value for one column
+        String title = newUsername;
+        ContentValues values = new ContentValues();
+        values.put(FeedEntry.COLUMN_NAME_TITLE, title);
+
+        // Which row to update, based on the title
+        String selection = FeedEntry.COLUMN_NAME_TITLE + " LIKE ?";
+        String[] selectionArgs = { this.getId() };
+
+        int count = db.update(
+                MySQLiteHelper.FeedEntry.TABLE_NAME,
+                values,
+                selection,
+                selectionArgs);
+
+        dbW.update();
+        */
+
+        dbW.close();
         this.id = newUsername;
-        return true;
+        return 0;
     }
 
     /**

@@ -52,6 +52,9 @@
         <activity
             android:name="lsinf1225.mini_poll.activity.ShowListActivity"
             android:label="@string/friends_list" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowAmiActivity"
+            android:label="@string/friends_mine" />
 
         <!-- Réponse à un sondage par accord -->
         <activity
@@ -64,10 +67,18 @@
             android:name="lsinf1225.mini_poll.activity.ShowResultSondageActivity"
             android:label="@string/poll_results_title" />
 
+        <!-- Réponse à un questionnaire -->
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowListQuestActivity"
+            android:label="@string/questionnary_manage_title" />
+
         <!-- Réponse à une demande d'aide -->
         <activity
             android:name="lsinf1225.mini_poll.activity.ShowAideActivity"
             android:label="@string/create_main_help_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowListAideActivity"
+            android:label="@string/help_manage_title" />
 
         <!-- Création générale -->
         <activity
@@ -83,19 +94,6 @@
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationAideActivity"
             android:label="@string/create_main_help" />
-
-        <activity
-            android:name="lsinf1225.mini_poll.activity.ShowAmiActivity"
-            android:label="@string/friends_mine" />
-
-        <activity
-            android:name="lsinf1225.mini_poll.activity.ShowListAideActivity"
-            android:label="@string/help_manage_title" />
-
-        <activity
-            android:name="lsinf1225.mini_poll.activity.ShowListQuestActivity"
-            android:label="@string/questionnary_manage_title" />
-
 
     </application>
 
