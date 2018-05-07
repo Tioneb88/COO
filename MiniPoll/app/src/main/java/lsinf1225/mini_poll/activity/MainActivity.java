@@ -69,7 +69,7 @@ public class MainActivity extends Activity {
      * Lance l'activité de réponse aux questionnaires.
      */
     public void answerQuestionnary(View v) {
-        Intent intent = new Intent(this, ReponseQuestActivity.class);
+        Intent intent = new Intent(this, ShowListQuestActivity.class);
         startActivity(intent);
     }
 

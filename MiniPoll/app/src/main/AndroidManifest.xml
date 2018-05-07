@@ -92,6 +92,10 @@
             android:name="lsinf1225.mini_poll.activity.ShowListAideActivity"
             android:label="@string/help_manage_title" />
 
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowListQuestActivity"
+            android:label="@string/questionnary_manage_title" />
+
 
     </application>
 

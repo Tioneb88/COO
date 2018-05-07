@@ -155,8 +155,8 @@ public class Aide {
         // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
         String connectedUser = User.getConnectedUser().getId();
-        Cursor cursor = db.rawQuery("SELECT Description FROM OPTIONA S, AIDE O WHERE S.Naide = O.Naide AND O.Identifiant=\'" + connectedUser + "\'", null);
-
+        //Cursor cursor = db.rawQuery("SELECT Description FROM OPTIONA S, AIDE O WHERE S.Naide = O.Naide AND O.Identifiant=\'" + connectedUser + "\'", null);
+        Cursor cursor = db.rawQuery("SELECT Description FROM PARTICIPANTS_AIDE S, AIDE O WHERE S.Naide = O.Naide AND S.Identifiant=\'" + connectedUser + "\'", null);
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
 
@@ -183,21 +183,39 @@ public class Aide {
     }
 
     /**
-     * Fournit l'instance d'un élément de collection présent dans la base de données. Si l'élément
-     * de collection n'est pas encore instancié, une instance est créée.
-     *
-     * @return L'instance de l'élément de collection.
-     *
-     * @pre L'élément correspondant à l'id donné doit exister dans la base de données.
+     * Renvoie les propositions d'un sondage
+     */
+    public static ArrayList<String> loadPropositions(int nAide) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        Log.d("tagText",Integer.toString(nAide));
+        Cursor cursor = db.rawQuery("SELECT Texte "+
+                "FROM AIDE P, OPTIONA S "+
+                "WHERE S.nAide = P.nAide AND S.nAide = \'"+nAide+"\'", null);
 
-    public static Aide get(int nAide) {
-        Aide aide = Aide.aideSparseArray.get(nAide);
-        if (aide != null) {
-            return aide;
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> possibilites = new ArrayList<String>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String prop = cursor.getString(0);
+            possibilites.add(prop);
+            Log.d("tagText",prop);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
         }
-        return new Aide(nAide);
-    }
 
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return possibilites;
+
+    }
     /**
      * Fournit le numéro de l'aide.
      */
@@ -253,7 +271,6 @@ public class Aide {
         }
         return new Aide(nAide,null,null,0);
     }
-
 
 }
 

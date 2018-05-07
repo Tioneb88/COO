@@ -25,6 +25,7 @@ public class ShowAideActivity extends Activity {
     private Aide current;
     private ArrayList<String> propositions;
     private EditText[] allScores;
+    private int nbrePossibilites = 2;
     private TextView[] allPropositions;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +34,7 @@ public class ShowAideActivity extends Activity {
         int nAide = getIntent().getIntExtra("nAide", -1);
         current = Aide.get(nAide);
 
-        TextView description = findViewById(R.id.sondageDescription);
+        TextView description = findViewById(R.id.descrAide);
         description.setText(current.getDescription());
 
         TextView option1 = findViewById(R.id.option1);
@@ -42,16 +43,24 @@ public class ShowAideActivity extends Activity {
         EditText value2 = findViewById(R.id.editText2);
 
         allScores = new EditText[]{value1, value2};
-       // allPropositions = new TextView[]{description, option1, option2};
         allPropositions = new TextView[]{option1, option2};
 
         propositions = Aide.loadOptions();
-       // propositions = Sondage.loadPropositions(nSondage);
+
+
+        propositions = Aide.loadPropositions(nAide);
+        nbrePossibilites = propositions.size();
+
+        for (int i = 0; i<nbrePossibilites; i++) {
+            allPropositions[i].setVisibility(View.VISIBLE);
+            allPropositions[i].setText(propositions.remove(0));
+            allScores[i].setVisibility(View.VISIBLE);
+        }
 
         // option1.setText(propositions.get(0));
         // option2.setText(propositions.get(1));
-        allPropositions[0].setText(propositions.get(0));
-        allPropositions[1].setText(propositions.get(1));
+        //allPropositions[0].setText(propositions.get(0));
+        //allPropositions[1].setText(propositions.get(1));
        // allPropositions[0].setText(option1);
         //allPropositions[1].setText(option2);
 
