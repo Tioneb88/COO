@@ -164,6 +164,115 @@ public class Ami {
         return mails;
     }
 
+    public static ArrayList<String> get_nom (String Recepteur){
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        Cursor cursor = db.rawQuery("SELECT Nom FROM UTILISATEUR WHERE Identifiant =\'"+Recepteur+ "\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> noms = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String nom = cursor.getString(0);
+            Log.d("tagCursor",nom);
+            noms.add(nom);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return noms;
+    }
+
+    public static ArrayList<String> get_prenom (String Recepteur){
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        Cursor cursor = db.rawQuery("SELECT Prenom FROM UTILISATEUR WHERE Identifiant =\'"+Recepteur+ "\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> prenoms = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String prenom = cursor.getString(0);
+            Log.d("tagCursor",prenom);
+            prenoms.add(prenom);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return prenoms;
+    }
+
+    public static ArrayList<String> get_bff (String Recepteur){
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        Cursor cursor = db.rawQuery("SELECT Meilleur_ami FROM UTILISATEUR WHERE Identifiant =\'"+Recepteur+ "\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> bffs = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String bff = cursor.getString(0);
+            Log.d("tagCursor",bff);
+            bffs.add(bff);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return bffs;
+    }
+
+    public static ArrayList<String> get_id (String Recepteur){
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        Cursor cursor = db.rawQuery("SELECT Identifiant FROM UTILISATEUR WHERE Identifiant =\'"+Recepteur+ "\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> ids = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String id = cursor.getString(0);
+            Log.d("tagCursor",id);
+            ids.add(id);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return ids;
+    }
+
+
     public static void reverseOrder() {
         if (Ami.order.equals("ASC")) {
             Ami.order = "DESC";

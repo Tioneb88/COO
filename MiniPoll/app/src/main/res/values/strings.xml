@@ -60,6 +60,7 @@
     <string name="my_profile_mail_mail">Mail : </string>
     <string name="my_profile_nom_nom">Nom : </string>
     <string name="my_profile_prenom_prenom">Prénom : </string>
+    <string name="my_profile_bff">Meilleur ami : </string>
 
     <!-- Modifier l'identifiant -->
     <string name="change_username_title">Changement de l\'identifiant</string>

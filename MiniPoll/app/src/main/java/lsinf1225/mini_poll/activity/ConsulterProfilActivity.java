@@ -8,6 +8,7 @@ import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.User;
 import android.content.Intent;
 import android.view.View;
+
 /**
  * Created by margauxgerard on 30/04/18.
  */

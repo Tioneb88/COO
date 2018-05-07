@@ -120,7 +120,7 @@ public class ShowListActivity extends Activity implements AdapterView.OnItemClic
         // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
         // récupérer celui-ci.
         // Nous n'avons pas implemente la vue de details dans notre cas
-        intent.putExtra("emetteur", listamis.get(position).getEmet());
+        intent.putExtra("recepteur", listamis.get(position).getRecept());
         startActivity(intent);
     }
 

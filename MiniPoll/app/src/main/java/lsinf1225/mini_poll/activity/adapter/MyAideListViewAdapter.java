@@ -1,24 +1,32 @@
 package lsinf1225.mini_poll.activity.adapter;
 
-        import android.content.Context;
-        import android.util.Log;
-        import android.view.LayoutInflater;
-        import android.view.View;
-        import android.view.ViewGroup;
-        import android.widget.BaseAdapter;
-        import android.widget.RatingBar;
-        import android.widget.TextView;
+import android.content.Context;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.RatingBar;
+import android.widget.TextView;
 
-        import java.util.ArrayList;
+import java.util.ArrayList;
 
-        import lsinf1225.mini_poll.MiniPollApp;
-        import lsinf1225.mini_poll.R;
-        import lsinf1225.mini_poll.model.Aide;
+import lsinf1225.mini_poll.MiniPollApp;
+import lsinf1225.mini_poll.R;
+import lsinf1225.mini_poll.model.Aide;
 
 /**
- * Created by margauxgerard on 6/05/18.
+ * Gère l'affichage personnalisé de notre liste.
+ * <p>
+ * Cette classe permet de créer un Adapter personnalisé pour notre liste d'éléments de collection.
+ * De cette manière il nous est possible d'utiliser un layout particulier (ici
+ * collected_item_row.xml) pour chaque ligne reprenant le nom de l'élément et sa note (rating).
+ *
+ * @author Damien Mercier
+ * @version 1
+ * @see <a href="http://d.android.com/reference/android/widget/Adapter.html">Adapter</a>
+ * @see <a href="http://d.android.com/reference/android/widget/BaseAdapter.html">BaseAdapter</a>
  */
-
 public class MyAideListViewAdapter extends BaseAdapter {
     /**
      * Permet d'instancier un fichier xml de layout dans une vue.
@@ -70,6 +78,7 @@ public class MyAideListViewAdapter extends BaseAdapter {
         // Si la vue n'a pas encore été créé (typiquement lors du première affichage de la liste).
         // Android recycle en effet les layout déjà chargés des éléments de la liste (par exemple
         // lors du changement de l'ordre dans la liste.)
+
         if (convertView == null) {
             // Création d'un nouvelle vue avec le layout correspondant au fichier xml
             convertView = mInflater.inflate(R.layout.collected_sondage_row, parent, false);
