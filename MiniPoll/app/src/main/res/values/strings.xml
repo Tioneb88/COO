@@ -41,8 +41,7 @@
     <!-- Menu principal (main) -->
     <string name="main_activity_title">Menu principal</string>
     <string name="main_activity_welcome_partie1">Bonjour </string>
-    <string name="main_activity_welcome_partie2"> ! Vous avez </string>
-    <string name="main_activity_welcome_partie3"> notifications !</string>
+    <string name="main_activity_welcome_partie2"> ! </string>
     <string name="main_activity_profile">Profil </string>
     <string name="main_activity_manage_friends">Gestion des amis </string>
     <string name="main_activity_agreement">Sondage par accord </string>

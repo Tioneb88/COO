@@ -19,7 +19,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- constraintHorizontal_bias = inutile -->
+    <!-- Identifiant -->
     <Spinner
         android:id="@+id/login_username"
         android:layout_width="match_parent"
@@ -28,13 +28,11 @@
         android:layout_marginTop="160dp"
         android:prompt="@string/app_user_username"
         android:spinnerMode="dropdown"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
-    <!-- constraintHorizontal_bias = inutile
-         imeActionId = à quoi ça sert ?? -->
+    <!-- Mot de passe -->
     <EditText
         android:id="@+id/login_password"
         android:layout_width="match_parent"
@@ -43,11 +41,9 @@
         android:layout_marginTop="10dp"
         android:ems="10"
         android:hint="@string/app_user_password"
-        android:imeActionId="6"
         android:imeActionLabel="@string/login_title"
         android:imeOptions="actionDone"
         android:inputType="textPassword"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/login_username" />
