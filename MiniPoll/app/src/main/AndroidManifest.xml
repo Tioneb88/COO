@@ -60,6 +60,7 @@
         <activity
             android:name="lsinf1225.mini_poll.activity.ShowSondageActivity"
             android:label="@string/poll_answer_title" />
+        <!-- Affichage des résutlats d'un sondage-->
         <activity
             android:name="lsinf1225.mini_poll.activity.ShowResultSondageActivity"
             android:label="@string/poll_results_title" />

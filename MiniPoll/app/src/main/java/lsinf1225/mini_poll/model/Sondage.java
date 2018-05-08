@@ -328,6 +328,70 @@ public class Sondage {
     }
 
 
+    public static ArrayList<Integer> loadScores(int nSondage, User user) {
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        Log.d("tagText",Integer.toString(nSondage));
+        ArrayList<Integer> scores = new ArrayList<Integer>();
+        //recuperation de tous les scores du sondage
+        if (user == null)
+        {
+            Cursor cursor = db.rawQuery(
+                    "SELECT sum(SC.Score) AS Score "+
+                            "FROM POSSIBILITE P, SCORE SC "+
+                            "WHERE P.Nsondage = \'"+nSondage+"\'  AND P.Npossibilites = SC.Npossibilites "+
+                            "GROUP BY P.Texte", null);
+
+            // Placement du curseur sur la première ligne.
+            cursor.moveToFirst();
+
+
+            // Tant qu'il y a des lignes.
+            while (!cursor.isAfterLast()) {
+                // Récupération des informations du sondage pour chaque ligne.
+                int score = cursor.getInt(0);
+                scores.add(score);
+                //Log.d("tagText",score);
+                // Passe à la ligne suivante.
+                cursor.moveToNext();
+            }
+
+
+            cursor.close();
+        }
+        //recuperation pour l'user specifié
+        else {
+            String userId = user.getId();
+
+            Cursor cursor = db.rawQuery(
+                    "SELECT sum(SC.Score) AS Score "+
+                            "FROM POSSIBILITE P, SCORE SC "+
+                            "WHERE P.Nsondage = \'"+nSondage+"\' AND SC.Identifiant = \'"+userId+"\'  AND P.Npossibilites = SC.Npossibilites "+
+                            "GROUP BY P.Texte", null);
+
+
+                    // Placement du curseur sur la première ligne.
+            cursor.moveToFirst();
+
+
+            // Tant qu'il y a des lignes.
+            while (!cursor.isAfterLast()) {
+                // Récupération des informations du sondage pour chaque ligne.
+                int score = cursor.getInt(0);
+                scores.add(score);
+                //Log.d("tagText",score);
+                // Passe à la ligne suivante.
+                cursor.moveToNext();
+            }
+
+            cursor.close();
+        }
+
+
+        // Fermeture de la base de données
+        db.close();
+        return scores;
+
+    }
     /**
      * Fournit l'identifiant de l'utilisateur courant qui a créé le sondage.
      */

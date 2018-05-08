@@ -73,35 +73,35 @@ public class ShowSondageActivity extends Activity {
 
     }
     public void saveScores (View v) {
+
         boolean incorrectValue = false;
-        int[] computedScores = new int[allScores.length];
-
-        //Verification des valeurs et calcul des scores
-        for (int i = 0; i<nbrePossibilites; i++){
-            int value = Integer.parseInt(allScores[i].getText().toString());
-            if (value > nbrePossibilites) {
-                incorrectValue = true;
-            }
-            int score = (nbrePossibilites+1)-value;
-            computedScores[i] = score;
-        }
-
-        ArrayList<Integer> nPropositions = Sondage.loadNumPropositions(current.getNsondage());
-
-        Score.create(nPropositions.get(3),computedScores[3]);
-
         if (incorrectValue) {
             MiniPollApp.notifyShort(R.string.surveys_manage_invalid_value);
         }
-        /**
+
         else {
+         int[] computedScores = new int[allScores.length];
+
+         //Verification des valeurs et calcul des scores
+         for (int i = 0; i<nbrePossibilites; i++){
+         int value = Integer.parseInt(allScores[i].getText().toString());
+         if (value > nbrePossibilites) {
+         incorrectValue = true;
+         }
+         int score = (nbrePossibilites+1)-value;
+         computedScores[i] = score;
+         }
+
+         ArrayList<Integer> nPropositions = Sondage.loadNumPropositions(current.getNsondage());
+
+         Score.create(nPropositions.get(3),computedScores[3]);
          Intent intent = new Intent(this, ShowResultSondageActivity.class);
             // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
             // récupérer celui-ci.
             intent.putExtra("nSondage", current.getNsondage());
             startActivity(intent);
         }
-         */
+
 
     }
 }
