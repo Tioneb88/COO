@@ -3,6 +3,7 @@ package lsinf1225.mini_poll.model;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.SparseArray;
+import android.util.Log;
 
 import java.util.ArrayList;
 
@@ -118,6 +119,52 @@ public class Questionnaire {
     }
 
     /**
+     * Fournit la liste des sondages pour l'utilisateur connecté
+     */
+    public static ArrayList<Questionnaire> getQuestConnected() {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Colonnes à récupérer
+        String[] colonnes = {COL_NQUESTIONNAIRE, COL_ID, COL_DESCRIPTION, COL_ACTIVITE};
+
+        // Requête de selection (SELECT)
+        //Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
+        String connectedUser = User.getConnectedUser().getId();
+        Cursor cursor = db.rawQuery("SELECT Description FROM PARTICIPANTS_QUESTIONNAIRE S, QUESTIONNAIRE O WHERE S.Nquestionnaire = O.Nquestionnaire AND S.Identifiant=\'" + connectedUser + "\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<Questionnaire> questionnaires = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            int nQuest = cursor.getInt(0);
+
+            // Vérification pour savoir s'il y a déjà une instance de ce sondage.
+            Questionnaire questionnaire = Questionnaire.questSparseArray.get(nQuest);
+            if (questionnaire == null) {
+                // Si pas encore d'instance, création d'une nouvelle instance.
+                questionnaire = Questionnaire.get(nQuest);
+            }
+
+            // Ajout de le questionnaire à la liste.
+            questionnaires.add(questionnaire);
+
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return questionnaires;
+    }
+
+    /**
      * Fournit l'identifiant de l'utilisateur courant qui a créé le questionnaire.
      */
     public String getId() {
@@ -156,6 +203,53 @@ public class Questionnaire {
 
         return getDescription();
     }
+    /**
+     * Fournit l'instance d'un élément de collection présent dans la base de données. Si l'élément
+     * de collection n'est pas encore instancié, une instance est créée.
+     *
+     * @return L'instance de l'élément de collection.
+     *
+     * @pre L'élément correspondant à l'id donné doit exister dans la base de données.
+     */
+    public static Questionnaire get(int nquest) {
+        Questionnaire s = Questionnaire.questSparseArray.get(nquest);
 
+        if (s != null) {
+            return s;
+        }
+        return new Questionnaire(nquest,null,null,0);
+    }
+
+    /**
+     * Retourne true si l'utilisateur a repondu au sondage, false sinon
+
+    public static boolean isAnswered (int nquest) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        String connectedUser = User.getConnectedUser().getId();
+        Cursor cursor = db.rawQuery("SELECT count(S.Noptions) "+
+                "FROM OPTIONS P, QUESTIONNAIRE S "+
+                "WHERE P.Noptions = S.Noptions AND S.Identifiant=\'"+connectedUser+"\' AND P.Nsondage = \'"+nquest+"\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Tant qu'il y a des lignes.
+        int answers=0;
+        while (!cursor.isAfterLast()) {
+            answers = cursor.getInt(0);
+            cursor.moveToNext();
+        }
+
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        if (answers >0) {
+            return true;
+        }
+        return false;
+
+    }
+     */
 }
 

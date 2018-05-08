@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.RatingBar;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -16,10 +15,18 @@ import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.Questionnaire;
 
 /**
- * Created by margauxgerard on 6/05/18.
+ * Gère l'affichage personnalisé de notre liste.
+ * <p>
+ * Cette classe permet de créer un Adapter personnalisé pour notre liste d'éléments de collection.
+ * De cette manière il nous est possible d'utiliser un layout particulier (ici
+ * collected_item_row.xml) pour chaque ligne reprenant le nom de l'élément et sa note (rating).
+ *
+ * @author Margaux
+ * @version 1
+ * @see <a href="http://d.android.com/reference/android/widget/Adapter.html">Adapter</a>
+ * @see <a href="http://d.android.com/reference/android/widget/BaseAdapter.html">BaseAdapter</a>
  */
-
-public class MyQuestListViewAdapter extends  BaseAdapter{
+public class MyQuestListViewAdapter extends BaseAdapter {
     /**
      * Permet d'instancier un fichier xml de layout dans une vue.
      */
@@ -58,7 +65,6 @@ public class MyQuestListViewAdapter extends  BaseAdapter{
 
         return questionnaires.get(position).getNquest();
     }
-
     /**
      * Remplit chaque ligne de la liste avec un layout particulier.
      * <p>
@@ -71,6 +77,11 @@ public class MyQuestListViewAdapter extends  BaseAdapter{
         // Android recycle en effet les layout déjà chargés des éléments de la liste (par exemple
         // lors du changement de l'ordre dans la liste.)
 
+        if (convertView == null) {
+            // Création d'un nouvelle vue avec le layout correspondant au fichier xml
+            convertView = mInflater.inflate(R.layout.collected_sondage_row, parent, false);
+        }
+
         // Récupération des deux éléments de notre vue dans le but d'y placer les données.
         TextView nameTextView = convertView.findViewById(R.id.show_row_name);
         TextView authorTextView = convertView.findViewById(R.id.author_name);
@@ -79,8 +90,6 @@ public class MyQuestListViewAdapter extends  BaseAdapter{
         Questionnaire questionnaire = questionnaires.get(position);
         nameTextView.setText(questionnaire.getDescription());
         authorTextView.setText("De "+questionnaire.getId());
-        //Log.e("MySondageListViewAdapter", "Rating of song " + song.getTitle() + " is " + song.getRating());
-        //Log.e("MySondageListViewAdapter", "stepsize " + ratingBar.getStepSize() + " rating " + ratingBar.getRating() + " num " + ratingBar.getNumStars());
 
         return convertView;
     }
@@ -90,11 +99,11 @@ public class MyQuestListViewAdapter extends  BaseAdapter{
      * <p>
      * Permet de changer complètement la liste des éléments affichés dans la liste.
      *
-     * @param newQuest nouvelle liste des éléments de collection à afficher.
+     * @param newQuest La nouvelle liste des éléments de collection à afficher.
      */
-    public void setSongs(ArrayList<Questionnaire> newQuest) {
+    public void setQuest(ArrayList<Questionnaire> newQuest) {
         this.questionnaires = newQuest;
         notifyDataSetChanged();
     }
-}
 
+}

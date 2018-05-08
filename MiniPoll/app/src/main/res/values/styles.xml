@@ -2,17 +2,14 @@
 
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="android:Theme.Holo.Light">
         <item name="android:textSize">20sp</item>
         <item name="android:actionBarStyle">@style/AppTheme.actionBar</item>
-        <item name="colorPrimary">@color/colorFont</item>
-        <item name="colorPrimaryDark">@color/colorDarkFont</item>
-        <item name="colorAccent">@color/colorError</item>
     </style>
 
     <style name="AppTheme.actionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid">
         <item name="android:titleTextStyle">@style/AppTheme.actionBar.title</item>
+        <item name="android:background">@color/colorFont</item>
     </style>
 
     <style name="AppTheme.actionBar.title">
@@ -26,7 +23,7 @@
         <item name="android:gravity">center_horizontal|center_vertical</item>
         <item name="android:textSize">20sp</item>
         <item name="android:textStyle">bold</item>
-        <item name="android:textColor">#000</item>
+        <item name="android:textColor">@color/colorDark</item>
         <item name="android:padding">@dimen/default_padding</item>
         <item name="android:layout_margin">10dip</item>
         <item name="android:background">@drawable/main_btn_shape</item>
@@ -34,6 +31,12 @@
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:layout_alignParentRight">true</item>
         <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
+    <style name="hint">
+        <item name="android:textStyle">italic</item>
+        <item name="android:textColor">@color/helpBlue</item>
+        <item name="android:layout_gravity">left|center_vertical</item>
     </style>
 
 </resources>

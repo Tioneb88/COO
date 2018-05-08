@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <resources>
+        <color name="colorPrimary">#3F51B5</color>
+        <color name="colorAccent">#FF4081</color>
         <!-- Barre d'action des layouts -->
         <color name="colorFont">#303F9F</color>
-        <color name="colorDarkFont">#000000</color>
 
         <!-- Autres couleurs -->
         <color name="colorFlash">#FF4081</color>
-        <color name="colorError">#FF0000</color>
 
         <!-- Utilisées -->
         <color name="helpBlue">#0000FF</color>
+        <color name="colorPrimaryDark">#303F9F</color>
+        <color name="colorDark">#000000</color>
+        <color name="colorError">#FF0000</color>
 </resources>

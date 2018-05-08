@@ -13,7 +13,8 @@
     <string name="app_user_surname">Nom</string>
     <string name="app_user_firstname">Prénom</string>
     <string name="app_user_mail">Adresse mail</string>
-    <string name="app_colon"> : </string>
+    <string name="app_user_bff">Meilleur ami</string>
+    <string name="app_error"> Une erreur inattendue est survenue ! </string>
 
     <!-- Login et connexion -->
     <string name="login_title">Se connecter</string>
@@ -40,8 +41,7 @@
     <!-- Menu principal (main) -->
     <string name="main_activity_title">Menu principal</string>
     <string name="main_activity_welcome_partie1">Bonjour </string>
-    <string name="main_activity_welcome_partie2"> ! Vous avez </string>
-    <string name="main_activity_welcome_partie3"> notifications !</string>
+    <string name="main_activity_welcome_partie2"> ! </string>
     <string name="main_activity_profile">Profil </string>
     <string name="main_activity_manage_friends">Gestion des amis </string>
     <string name="main_activity_agreement">Sondage par accord </string>
@@ -56,7 +56,7 @@
     <string name="my_profile_change_username">Changer d\'identifiant ?</string>
     <string name="my_profile_change_password">Changer de mot de passe ?</string>
     <string name="my_profile_id_id">Identifiant : </string>
-    <string name="my_profile_mdp_mdp">Mot de passe : </string>
+    <string name="my_profile_mdp">Mot de passe : **********</string>
     <string name="my_profile_mail_mail">Mail : </string>
     <string name="my_profile_nom_nom">Nom : </string>
     <string name="my_profile_prenom_prenom">Prénom : </string>
@@ -81,7 +81,7 @@
     <string name="friends_manage_title">Gestion des amis</string>
     <string name="friends_list">Liste d\'amis</string>
     <string name="friends_find">Trouver un ami</string>
-    <string name="friends_mine">Mon ami</string>
+    <string name="friends_mine">Profil de mon ami</string>
     <string name="friends_error_no_item">Aucun ami dans votre liste</string>
     <string name="friends_no_result">Aucun ami ne correspond à votre recherche</string>
 

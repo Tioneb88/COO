@@ -26,7 +26,7 @@ public class MainActivity extends Activity {
 
         // Affichage du message de bienvenue.
         TextView welcomeTxt = findViewById(R.id.welcomeTxt);
-        welcomeTxt.setText(getString(R.string.main_activity_welcome_partie1) + " " + User.getConnectedUser().getPrenom());
+        welcomeTxt.setText(getString(R.string.main_activity_welcome_partie1) + " " + User.getConnectedUser().getPrenom() + " " + getString(R.string.main_activity_welcome_partie2));
     }
 
 
@@ -69,7 +69,7 @@ public class MainActivity extends Activity {
      * Lance l'activité de réponse aux questionnaires.
      */
     public void answerQuestionnary(View v) {
-        Intent intent = new Intent(this, ReponseQuestActivity.class);
+        Intent intent = new Intent(this, ShowListQuestActivity.class);
         startActivity(intent);
     }
 
