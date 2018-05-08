@@ -273,7 +273,7 @@ public class User {
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
 
-        // Initialisation la liste des sondages.
+        // Initialisation de la liste des amis.
         ArrayList<String> friends = new ArrayList<>();
 
         // Tant qu'il y a des lignes.

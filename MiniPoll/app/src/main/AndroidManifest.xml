@@ -102,6 +102,18 @@
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationAideActivity"
             android:label="@string/create_main_help_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationAideTxtActivity"
+            android:label="@string/create_main_help_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationAidePictureActivity"
+            android:label="@string/create_main_help_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationAideTxtResumeActivity"
+            android:label="@string/create_resume_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationAidePictureResumeActivity"
+            android:label="@string/create_resume_title" />
 
     </application>
 

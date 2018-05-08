@@ -131,11 +131,13 @@
     <string name="create_main_title">Création d\'une activité</string>
 
     <string name="create_surveyORquestionnary_friends_title">Amis à sonder</string>
-    <string name="create_help_friends_title">Ami à sonder</string>
+    <string name="create_help_friends_title">Choisissez un ami à sonder : </string>
 
-    <string name="create_questionnaryORhelp_format_title">Format du sondage</string>
-    <string name="create_questionnaryORhelp_format_picture">Image</string>
-    <string name="create_questionnaryORhelp_format_text">Texte</string>
+    <string name="create_format_title">Choisissez le format du sondage : </string>
+    <string name="create_format_picture">Image</string>
+    <string name="create_format_text">Texte</string>
+
+    <string name="create_resume_title">Résumé</string>
 
     <!-- Création de sondages -->
     <string name="create_survey_choice_title">Choix possibles</string>
@@ -168,8 +170,9 @@
     <string name="create_questionnary_order_title">Visualisation de l\'ordre des questions</string>
 
     <!-- Création de demande d'aide -->
-    <string name="create_help_answers_title">Insérez les deux propositions</string>
-    <string name="create_help_answers_proposal">Proposition</string>
+    <string name="create_help_answers_title">Veuillez insérer les deux propositions : </string>
+    <string name="create_help_answers_proposal">Proposition 1</string>
+    <string name="create_help_answers_proposal2">Proposition 2</string>
 
     <string name="create_help_prefer_title">Que préfères-tu ?</string>
 
