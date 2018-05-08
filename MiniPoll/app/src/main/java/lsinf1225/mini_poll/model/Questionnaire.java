@@ -131,7 +131,8 @@ public class Questionnaire {
         // Requête de selection (SELECT)
         //Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
         String connectedUser = User.getConnectedUser().getId();
-        Cursor cursor = db.rawQuery("SELECT Description FROM PARTICIPANTS_QUESTIONNAIRE S, QUESTIONNAIRE O WHERE S.Nquestionnaire = O.Nquestionnaire AND S.Identifiant=\'" + connectedUser + "\'",null);
+        Cursor cursor = db.rawQuery("SELECT Q.NQuestionnaire, Q.Identifiant, Q.Description, Q.Activite FROM PARTICIPANTS_QUESTIONNAIRE S, QUESTIONNAIRE Q WHERE S.Nquestionnaire = Q.Nquestionnaire AND S.Identifiant=\'" + connectedUser + "\' AND Activite='0'",null);
+
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
 

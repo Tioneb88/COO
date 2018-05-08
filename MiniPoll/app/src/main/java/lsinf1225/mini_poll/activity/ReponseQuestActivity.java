@@ -5,4 +5,5 @@ package lsinf1225.mini_poll.activity;
  */
 
 public class ReponseQuestActivity {
+
 }
