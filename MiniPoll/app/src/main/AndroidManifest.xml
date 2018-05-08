@@ -91,12 +91,17 @@
         <!-- Création d'un sondage par accord -->
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationSondageActivity"
-            android:label="@string/create_main_survey" />
+            android:label="@string/create_main_survey_title" />
+
+        <!-- Création d'un questionnaire -->
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationQuestActivity"
+            android:label="@string/create_main_questionnary_title" />
 
         <!-- Création d'une demande d'aide à un ami -->
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationAideActivity"
-            android:label="@string/create_main_help" />
+            android:label="@string/create_main_help_title" />
 
     </application>
 

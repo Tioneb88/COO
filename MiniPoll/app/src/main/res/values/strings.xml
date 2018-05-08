@@ -125,12 +125,9 @@
     <string name="help_manage_choice_title">Votre choix</string>
 
     <!-- Création générale -->
-    <string name="create_main_survey_title">Création d\'un sondage pour accord</string>
+    <string name="create_main_survey_title">Sondage par accord</string>
     <string name="create_main_questionnary_title">Questionnaire</string>
     <string name="create_main_help_title">Demande d\'aide à un ami</string>
-    <string name="create_main_survey">Sondage pour accord</string>
-    <string name="create_main_questionnary">Questionnaire</string>
-    <string name="create_main_help">Demande d\'aide à un ami</string>
     <string name="create_main_title">Création d\'une activité</string>
 
     <string name="create_surveyORquestionnary_friends_title">Amis à sonder</string>

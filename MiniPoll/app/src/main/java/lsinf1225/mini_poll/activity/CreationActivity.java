@@ -2,13 +2,22 @@ package lsinf1225.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
+
+import lsinf1225.mini_poll.R;
 
 /**
  * Created by margauxgerard on 30/04/18.
  */
 
 public class CreationActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_create);
+    }
 
     /**
      * Lance l'activité de création de sondage par accord.

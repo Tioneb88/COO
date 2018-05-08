@@ -13,16 +13,21 @@ import android.widget.TextView;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created by margauxgerard on 30/04/18.
- */
+import lsinf1225.mini_poll.R;
 
 /**
- * Gère la création de sondage ainsi que l'affichage la liste des sondages possible
- * @author felix de Patoul
- * @version 1
+ * Gère la création de sondage.
+ * @author Groupe 5
+ * @version 2
  */
+
 public class CreationSondageActivity extends Activity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_creation_sondage);
+    }
 
 }
 

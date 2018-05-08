@@ -447,9 +447,10 @@ public class User {
         // Récupération du  SQLiteHelper et de la base de données en écriture.
         SQLiteDatabase dbW = MySQLiteHelper.get().getWritableDatabase();
 
-        dbW.execSQL("UPDATE UTILISATEUR SET Identifiant = " + newUsername +" WHERE Identifiant = " + this.getId());
+        //dbW.execSQL("UPDATE UTILISATEUR SET Identifiant = " + newUsername +" WHERE Identifiant = " + this.getId());
 
-       /* // New value for one column
+       /* Nouvelle idée !!
+        // New value for one column
         String title = newUsername;
         ContentValues values = new ContentValues();
         values.put(FeedEntry.COLUMN_NAME_TITLE, title);
@@ -464,6 +465,7 @@ public class User {
                 selection,
                 selectionArgs);
 
+        //Encore une autre idée !!
         dbW.update();
         */
 
@@ -475,9 +477,22 @@ public class User {
     /**
      * change le password de l'utilisateur courant.
      */
-    public void setPassword(String pass) {
+    public int setPassword(String oldPassword, String newPassword) {
+        if(password.equals(oldPassword))
+        {
+            // Récupération du  SQLiteHelper et de la base de données en écriture.
+            SQLiteDatabase dbW = MySQLiteHelper.get().getWritableDatabase();
 
-        this.password= pass;
+            //dbW.execSQL("UPDATE UTILISATEUR SET MDP = " + newPassword +" WHERE MDP = " + this.getPassword());
+
+            dbW.close();
+            this.password = newPassword;
+            return 0;
+        }
+        else
+        {
+            return -1;
+        }
     }
 
 }

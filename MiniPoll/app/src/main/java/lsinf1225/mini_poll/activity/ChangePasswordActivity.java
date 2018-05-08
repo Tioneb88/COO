@@ -19,11 +19,12 @@ public class ChangePasswordActivity extends Activity {
     }
 
     /**
-     * Vérifie si le mot de passe est correct, vérifie ensuite si le nouvel identifiant est
-     * disponible puis procède au remplacement si possible et redirige l'utilisateur vers le
-     * menu principal.
-     * Si le mot de passe est incorrect ou si le nouvel identifiant n'est pas disponible, on affiche
-     * un message d'erreur.
+     * Vérifie si le nouveau mot de passe et la confirmation sont identiques sinon, un message d'erreur
+     * s'affiche.
+     * Ensuite, procède au remplacement de l'ancien mot de passe par le nouveau si l'ancien mot de
+     * passe est correct (par l'intermédiaire de la fonction setPassword).
+     *
+     * Si l'ancien mot de passe est incorrect, on affiche un message d'erreur.
      *
      * @param v Une vue quelconque.
      */
@@ -45,17 +46,19 @@ public class ChangePasswordActivity extends Activity {
             MiniPollApp.notifyShort(R.string.change_password_confirmation_error);
         }
         else {
-            // On vérifie que l'ancien mot de passe est correct.
-            if(!User.getConnectedUser().getPassword().equals(oldPassword))
-            {
-                // Le mot de passe est incorrect.
-                MiniPollApp.notifyShort(R.string.change_username_wrong);
+            int hint = User.getConnectedUser().setPassword(oldPassword,newPassword);
+            if(hint == -1) {
+                // L'ancien mot de passe est incorrect.
+                MiniPollApp.notifyShort(R.string.change_username_password_wrong);
             }
-            else
-            {
-                User.getConnectedUser().setPassword(newPassword);
+            else if(hint == 0) {
+                // Tout s'est bien passé.
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);
+            }
+            else {
+                // Une erreur inattendue s'est produite.
+                MiniPollApp.notifyShort(R.string.app_error);
             }
         }
     }
