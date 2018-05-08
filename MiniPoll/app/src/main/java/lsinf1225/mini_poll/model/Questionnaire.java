@@ -128,10 +128,13 @@ public class Questionnaire {
         // Colonnes à récupérer
         String[] colonnes = {COL_NQUESTIONNAIRE, COL_ID, COL_DESCRIPTION, COL_ACTIVITE};
 
+
+
         // Requête de selection (SELECT)
         //Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
         String connectedUser = User.getConnectedUser().getId();
         Cursor cursor = db.rawQuery("SELECT Q.NQuestionnaire, Q.Identifiant, Q.Description, Q.Activite FROM PARTICIPANTS_QUESTIONNAIRE S, QUESTIONNAIRE Q WHERE S.Nquestionnaire = Q.Nquestionnaire AND S.Identifiant=\'" + connectedUser + "\' AND Activite='0'",null);
+       // Cursor cursor = db.rawQuery("SELECT PQ.Nquestionnaire, Q.Description"+"FROM PARTICIPANTS_QUESTIONNAIRE PQ, QUESTIONNAIRE Q"+"WHERE Q.Nquestionnaire = PQ.Nquestionnaire AND PQ.Identifiant =  AND Activite = 0",null);
 
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
@@ -220,24 +223,31 @@ public class Questionnaire {
         }
         return new Questionnaire(nquest,null,null,0);
     }
-
     /**
-     * Retourne true si l'utilisateur a repondu au sondage, false sinon
-
-    public static boolean isAnswered (int nquest) {
+     * Renvoie les propositions d'un sondage
+     */
+    public static ArrayList<String> loadPropositionsQuest(int nQuest) {
         // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
-        String connectedUser = User.getConnectedUser().getId();
-        Cursor cursor = db.rawQuery("SELECT count(S.Noptions) "+
-                "FROM OPTIONS P, QUESTIONNAIRE S "+
-                "WHERE P.Noptions = S.Noptions AND S.Identifiant=\'"+connectedUser+"\' AND P.Nsondage = \'"+nquest+"\'",null);
+        Log.d("tagText",Integer.toString(nQuest));
+        Cursor cursor = db.rawQuery("SELECT Description "+
+                "FROM QUESTIONNAIRE P, QUESTION S, PARTICIPANTS_QUESTIONNAIRE Q"+
+                "WHERE S.Nquestionnaire = P.Nquestionnaire AND Q.Nquestionnaire = \'"+nQuest+"\'"
+                + "AND P.Nquestionnaire = Q.Nquestionnaire AND Q.Identifiant = \'" + User.getConnectedUser().getId() + "\'", null);
+
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
 
+        // Initialisation la liste des sondages.
+        ArrayList<String> possibilites = new ArrayList<String>();
+
         // Tant qu'il y a des lignes.
-        int answers=0;
         while (!cursor.isAfterLast()) {
-            answers = cursor.getInt(0);
+            // Récupération des informations du sondage pour chaque ligne.
+            String prop = cursor.getString(0);
+            possibilites.add(prop);
+            Log.d("tagText",prop);
+            // Passe à la ligne suivante.
             cursor.moveToNext();
         }
 
@@ -245,12 +255,73 @@ public class Questionnaire {
         cursor.close();
         db.close();
 
-        if (answers >0) {
-            return true;
-        }
-        return false;
+        return possibilites;
 
     }
-     */
+
+    public static ArrayList<Integer> loadScoresQuest(int nQuest, User user) {
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        Log.d("tagText",Integer.toString(nQuest));
+        ArrayList<Integer> scores = new ArrayList<Integer>();
+        //recuperation de tous les scores du sondage
+        if (user == null)
+        {
+            Cursor cursor = db.rawQuery(
+                    "SELECT (count(CASE WHEN O.Veracite = 1 THEN 1 END) / count(O.Veracite))*100 " +
+                            "AS PercentageFROM REPONSE R, OPTION O, QUESTION Q, QUESTIONNAIRE QR " +
+                            "WHERE QR.Nquestionnaire = \'" + nQuest + "\' AND R.Noptions = O.Noptions " +
+                            "AND O.Nquestions = Q.Nquestions AND Q.Nquestionnaire = QR.Nquestionnaire", null);
+
+            // Placement du curseur sur la première ligne.
+            cursor.moveToFirst();
+
+
+            // Tant qu'il y a des lignes.
+            while (!cursor.isAfterLast()) {
+                // Récupération des informations du sondage pour chaque ligne.
+                int score = cursor.getInt(0);
+                scores.add(score);
+                //Log.d("tagText",score);
+                // Passe à la ligne suivante.
+                cursor.moveToNext();
+            }
+
+
+            cursor.close();
+        }
+        //recuperation pour l'user specifié
+        else {
+            String userId = user.getId();
+
+            Cursor cursor = db.rawQuery(
+                    "SELECT (count(CASE WHEN O.Veracite = 1 THEN 1 END) / count(O.Veracite))*100 " +
+                            "AS PercentageFROM REPONSE R,OPTION O,QUESTION Q,QUESTIONNAIRE QR " +
+                            "WHERE R.Identifiant = \'" + User.getConnectedUser().getId() + "\' AND QR.Nquestionnaire = \'" + nQuest + "\' " +
+                            "AND R.Noptions = O.Noptions AND O.Nquestions = Q.Nquestions AND Q.Nquestionnaire = QR.Nquestionnaire", null);
+
+            // Placement du curseur sur la première ligne.
+            cursor.moveToFirst();
+
+
+            // Tant qu'il y a des lignes.
+            while (!cursor.isAfterLast()) {
+                // Récupération des informations du sondage pour chaque ligne.
+                int score = cursor.getInt(0);
+                scores.add(score);
+                //Log.d("tagText",score);
+                // Passe à la ligne suivante.
+                cursor.moveToNext();
+            }
+
+            cursor.close();
+        }
+
+
+        // Fermeture de la base de données
+        db.close();
+        return scores;
+
+    }
+
 }
 
