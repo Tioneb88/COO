@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.AdapterView;
 
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.MySQLiteHelper;
@@ -59,4 +60,6 @@ public class ShowQuestActivity extends Activity {
 
 
     }
+
+
 }
