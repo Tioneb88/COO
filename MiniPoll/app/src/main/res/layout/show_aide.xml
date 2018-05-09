@@ -58,26 +58,30 @@
             app:layout_constraintTop_toTopOf="parent" />
 
 
-        <EditText
+        <Button
             android:id="@+id/editText1"
-            android:layout_width="126dp"
-            android:layout_height="24dp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="45dp"
             android:ems="10"
+            android:onClick="choix1"
+            android:text="@string/help_choix"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/descrAide" />
 
-        <EditText
+        <Button
             android:id="@+id/editText2"
-            android:layout_width="126dp"
-            android:layout_height="24dp"
+            android:layout_width="150dp"
+            android:layout_height="40dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:layout_marginTop="62dp"
+            android:layout_marginTop="42dp"
             android:ems="10"
+            android:onClick="choix2"
+            android:text="@string/help_choix"
             android:inputType="number"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editText1" />

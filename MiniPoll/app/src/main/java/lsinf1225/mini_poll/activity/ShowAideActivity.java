@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Button;
 import android.widget.TextView;
 
 import lsinf1225.mini_poll.MiniPollApp;
@@ -24,7 +25,7 @@ public class ShowAideActivity extends Activity {
 
     private Aide current;
     private ArrayList<String> propositions;
-    private EditText[] allScores;
+    private Button[] allScores;
     private int nbrePossibilites = 2;
     private TextView[] allPropositions;
 
@@ -39,10 +40,10 @@ public class ShowAideActivity extends Activity {
 
         TextView option1 = findViewById(R.id.option1);
         TextView option2 = findViewById(R.id.option2);
-        EditText value1 = findViewById(R.id.editText1);
-        EditText value2 = findViewById(R.id.editText2);
+        Button value1 = findViewById(R.id.editText1);
+        Button value2 = findViewById(R.id.editText2);
 
-        allScores = new EditText[]{value1, value2};
+        allScores = new Button[]{value1, value2};
         allPropositions = new TextView[]{option1, option2};
 
         propositions = Aide.loadOptions();
