@@ -112,7 +112,8 @@
 
     <!-- Gestion des questionnaires -->
     <string name="questionnary_manage_title">Questionnaires en cours</string>
-
+    <string name="questionnary_manage_title2">Questions</string>
+    <string name="questionnary">Questionnaires en cours</string>
     <string name="questionnary_manage_results_title">Résultats</string>
     <string name="questionnary_manage_results_message">Vous occupez actuellement la place </string>
     <string name="questionnary_manage_results_ranking">Classement </string>
@@ -124,6 +125,7 @@
     <string name="help_manage_question_description1">Description 1 </string>
     <string name="help_manage_question_description2">Description 2 </string>
 
+    <string name="help_choix">Je préfère ça ! </string>
     <string name="help_manage_choice_title">Votre choix</string>
 
     <!-- Création générale -->

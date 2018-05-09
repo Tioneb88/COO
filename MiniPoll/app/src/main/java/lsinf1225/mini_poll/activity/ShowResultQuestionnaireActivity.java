@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.Questionnaire;
+import lsinf1225.mini_poll.model.Question;
 import lsinf1225.mini_poll.model.User;
 
 public class ShowResultQuestionnaireActivity extends Activity{
@@ -61,7 +62,7 @@ public class ShowResultQuestionnaireActivity extends Activity{
             TextView total5 = findViewById(R.id.total5);
             TextView total6 = findViewById(R.id.total6);
 
-            propositions = Questionnaire.loadPropositionsQuest(nQuest);
+            propositions = Question.loadPropositionsQuest(nQuest);
             yourScores = Questionnaire.loadScoresQuest(nQuest, User.getConnectedUser());
             totalScores = Questionnaire.loadScoresQuest(nQuest, null);
             nbrePossibilites = propositions.size();

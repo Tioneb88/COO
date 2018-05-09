@@ -71,54 +71,6 @@ public class Questionnaire {
     }
 
     /**
-     * Fournit la liste des questionnaires.
-     */
-    public static ArrayList<Questionnaire> getQuestionnaires() {
-        // Récupération du  SQLiteHelper et de la base de données.
-        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
-
-        // Colonnes à récupérer
-        String[] colonnes = {COL_NQUESTIONNAIRE, COL_ID, COL_DESCRIPTION, COL_ACTIVITE};
-
-        // Requête de selection (SELECT)
-        Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
-
-        // Placement du curseur sur la première ligne.
-        cursor.moveToFirst();
-
-        // Initialisation la liste des questionnaires.
-        ArrayList<Questionnaire> questionnaires = new ArrayList<>();
-
-        // Tant qu'il y a des lignes.
-        while (!cursor.isAfterLast()) {
-            // Récupération des informations du questionnaire pour chaque ligne.
-            int numquest = cursor.getInt(0);
-            String userId = cursor.getString(1);
-            String qDesc = cursor.getString(2);
-            int qActi = cursor.getInt(3);
-
-            // Vérification pour savoir s'il y a déjà une instance de ce questionnaire.
-            Questionnaire quest = Questionnaire.questSparseArray.get(numquest);
-            if (quest == null) {
-                // Si pas encore d'instance, création d'une nouvelle instance.
-                quest = new Questionnaire(numquest, userId, qDesc,qActi);
-            }
-
-            // Ajout de le questionnaire à la liste.
-            questionnaires.add(quest);
-
-            // Passe à la ligne suivante.
-            cursor.moveToNext();
-        }
-
-        // Fermeture du curseur et de la base de données.
-        cursor.close();
-        db.close();
-
-        return questionnaires;
-    }
-
-    /**
      * Fournit la liste des sondages pour l'utilisateur connecté
      */
     public static ArrayList<Questionnaire> getQuestConnected() {
@@ -133,7 +85,7 @@ public class Questionnaire {
         // Requête de selection (SELECT)
         //Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
         String connectedUser = User.getConnectedUser().getId();
-        Cursor cursor = db.rawQuery("SELECT Q.NQuestionnaire, Q.Identifiant, Q.Description, Q.Activite FROM PARTICIPANTS_QUESTIONNAIRE S, QUESTIONNAIRE Q WHERE S.Nquestionnaire = Q.Nquestionnaire AND S.Identifiant=\'" + connectedUser + "\' AND Activite='0'",null);
+        Cursor cursor = db.rawQuery("SELECT Q.NQuestionnaire, Q.Identifiant, Q.Description, Q.Activite FROM PARTICIPANTS_QUESTIONNAIRE S, QUESTIONNAIRE Q WHERE S.Nquestionnaire = Q.Nquestionnaire AND S.Identifiant=\'" + connectedUser + "\'",null);
        // Cursor cursor = db.rawQuery("SELECT PQ.Nquestionnaire, Q.Description"+"FROM PARTICIPANTS_QUESTIONNAIRE PQ, QUESTIONNAIRE Q"+"WHERE Q.Nquestionnaire = PQ.Nquestionnaire AND PQ.Identifiant =  AND Activite = 0",null);
 
         // Placement du curseur sur la première ligne.
@@ -223,41 +175,7 @@ public class Questionnaire {
         }
         return new Questionnaire(nquest,null,null,0);
     }
-    /**
-     * Renvoie les propositions d'un sondage
-     */
-    public static ArrayList<String> loadPropositionsQuest(int nQuest) {
-        // Récupération du  SQLiteHelper et de la base de données.
-        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
-        Log.d("tagText",Integer.toString(nQuest));
-        Cursor cursor = db.rawQuery("SELECT Description "+
-                "FROM QUESTIONNAIRE P, QUESTION S, PARTICIPANTS_QUESTIONNAIRE Q"+
-                "WHERE S.Nquestionnaire = P.Nquestionnaire AND Q.Nquestionnaire = \'"+nQuest+"\'"
-                + "AND P.Nquestionnaire = Q.Nquestionnaire AND Q.Identifiant = \'" + User.getConnectedUser().getId() + "\'", null);
 
-        // Placement du curseur sur la première ligne.
-        cursor.moveToFirst();
-
-        // Initialisation la liste des sondages.
-        ArrayList<String> possibilites = new ArrayList<String>();
-
-        // Tant qu'il y a des lignes.
-        while (!cursor.isAfterLast()) {
-            // Récupération des informations du sondage pour chaque ligne.
-            String prop = cursor.getString(0);
-            possibilites.add(prop);
-            Log.d("tagText",prop);
-            // Passe à la ligne suivante.
-            cursor.moveToNext();
-        }
-
-        // Fermeture du curseur et de la base de données.
-        cursor.close();
-        db.close();
-
-        return possibilites;
-
-    }
 
     public static ArrayList<Integer> loadScoresQuest(int nQuest, User user) {
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
@@ -321,6 +239,57 @@ public class Questionnaire {
         db.close();
         return scores;
 
+    }
+
+    public static ArrayList<String> get_id (int Nquest){
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        Cursor cursor = db.rawQuery("SELECT Identifiant FROM QUESTIONNAIRE WHERE Nquestionnaire =\'"+Nquest+ "\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> ids = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String id = cursor.getString(0);
+            // Log.d("tagCursor",id);
+            ids.add(id);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return ids;
+    }
+
+    public static String get_descr (int Nquest){
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        Cursor cursor = db.rawQuery("SELECT Description FROM QUESTIONNAIRE WHERE Nquestionnaire =\'"+Nquest+ "\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+        String id = null;
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            id = cursor.getString(0);
+            // Log.d("tagCursor",id);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return id;
     }
 
 }
