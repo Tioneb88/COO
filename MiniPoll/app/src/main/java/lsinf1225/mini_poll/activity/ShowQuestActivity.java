@@ -13,6 +13,7 @@ import android.widget.TextView;
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.MySQLiteHelper;
 import lsinf1225.mini_poll.R;
+import lsinf1225.mini_poll.model.Option;
 import lsinf1225.mini_poll.model.Question;
 
 import java.util.ArrayList;
@@ -37,7 +38,7 @@ public class ShowQuestActivity extends Activity {
         current = Question.get(nQuest);
 
         TextView description = findViewById(R.id.descrQuest);
-        description.setText(current.getTexte());
+        description.setText(current.get_descr(nQuest));
 
 
         //TextView option1 = findViewById(R.id.descrQuest);
@@ -50,9 +51,9 @@ public class ShowQuestActivity extends Activity {
         //allScores = new TextView[]{description};
         allPropositions = new Button[] {value1, value2, value3, value4};
 
-        propositions = Question.loadPropositionsQuest(nQuest);
-        nbrePossibilites = propositions.size();
-        for (int i=0; i<nbrePossibilites;i++){
+        propositions = Question.loadPropositionsQuest(Option.get(noptions));
+        //nbrePossibilites = propositions.size();
+        for (int i=0; i<4;i++){
             allPropositions[i].setText(propositions.get(i));
         }
 

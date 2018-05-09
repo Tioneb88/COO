@@ -183,7 +183,7 @@ public class Question {
         // Requête de selection (SELECT)
         //Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
         String connectedUser = User.getConnectedUser().getId();
-        Cursor cursor = db.rawQuery("SELECT A.Nquestions, A.Nquestionnaire, A.Texte, A.Ordre FROM PARTICIPANTS_QUESTIONNAIRE S, QUESTIONNAIRE Q, QUESTION A WHERE  A.Nquestionnaire =\'"+Nquest+"\' AND S.Nquestionnaire = Q.Nquestionnaire AND S.Identifiant=\'" + connectedUser + "\'",null);
+        Cursor cursor = db.rawQuery("SELECT A.Nquestions, A.Nquestionnaire, A.Texte, A.Ordre FROM PARTICIPANTS_QUESTIONNAIRE S, QUESTIONNAIRE Q, QUESTION A WHERE  A.Nquestionnaire =\'" + Nquest + "\' AND S.Nquestionnaire = Q.Nquestionnaire AND S.Identifiant=\'" + connectedUser + "\'",null);
         // Cursor cursor = db.rawQuery("SELECT PQ.Nquestionnaire, Q.Description"+"FROM PARTICIPANTS_QUESTIONNAIRE PQ, QUESTIONNAIRE Q"+"WHERE Q.Nquestionnaire = PQ.Nquestionnaire AND PQ.Identifiant =  AND Activite = 0",null);
 
         // Placement du curseur sur la première ligne.
@@ -229,7 +229,7 @@ public class Question {
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
         Log.d("tagText",Integer.toString(nQuest));
         Cursor cursor = db.rawQuery("SELECT P.Texte "+
-                "FROM OPTION P, QUESTION Q, PARTICIPANTS_QUESTIONNAIRE Q WHERE Q.Nquestions = P.Nquestions AND Q.Identifiant = \'" + User.getConnectedUser().getId() + "\'", null);
+                "FROM OPTION P, QUESTION Q, PARTICIPANTS_QUESTIONNAIRE Z WHERE Q.Nquestions = P.Nquestions AND Q.Nquestionnaire = Z.Nquestionnaire AND Z.Identifiant = \'" + User.getConnectedUser().getId() + "\'", null);
 
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
@@ -241,8 +241,11 @@ public class Question {
         while (!cursor.isAfterLast()) {
             // Récupération des informations du sondage pour chaque ligne.
             String prop = cursor.getString(0);
-            possibilites.add(prop);
-            Log.d("tagText",prop);
+
+                    possibilites.add(prop);
+                    Log.d("tagText",prop);
+
+
             // Passe à la ligne suivante.
             cursor.moveToNext();
         }
@@ -258,7 +261,7 @@ public class Question {
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
         // Requête de selection (SELECT)
-        Cursor cursor = db.rawQuery("SELECT Texte FROM QUESTION WHERE Nquestions =\'"+Nquestion+ "\'",null);
+        Cursor cursor = db.rawQuery("SELECT Texte FROM QUESTION Q, QUESTIONNAIRE S WHERE Q.Nquestionnaire = S.Nquestionnaire AND Q.Nquestions =\'"+Nquestion+ "\'",null);
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
         String id = null;
