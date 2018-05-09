@@ -1,5 +1,8 @@
 package lsinf1225.mini_poll.activity;
 
+/**
+ * Created by margauxgerard on 9/05/18.
+ */
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,39 +14,30 @@ import java.util.ArrayList;
 
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
-import lsinf1225.mini_poll.activity.adapter.MyQuestListViewAdapter;
-import lsinf1225.mini_poll.model.Questionnaire;
+import lsinf1225.mini_poll.activity.adapter.MyQuestionListViewAdapter;
+import lsinf1225.mini_poll.model.Question;
 
-//import static lsinf1225.mini_poll.model.Questionnaire.loadQuestionnaires;
+public class ShowListQuestionActivity extends Activity implements AdapterView.OnItemClickListener {
 
-
-/**
- * Gère l'affichage des sondages auxquels doit répondre l'utilisateur connecté
- *
- * @author Margaux
- * @version 1
- */
-public class ShowListQuestActivity extends Activity implements AdapterView.OnItemClickListener {
-
-    private ArrayList<Questionnaire> questionnaires;
-    private MyQuestListViewAdapter myQuestListViewAdapter;
+    private ArrayList<Question> questions;
+    private MyQuestionListViewAdapter myQuestionListViewAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.activity_show_list_quest);
+        setContentView(R.layout.activity_show_list_question);
 
         // Chargement des éléments à afficher dans la variable de classe songs
-        loadQuestionnaires();
+        loadQuestions();
 
 
-        ListView myListView = findViewById(R.id.show_listViewQuest);
+        ListView myListView = findViewById(R.id.show_listViewQuestion);
 
         // Création de l'adapter pour faire la liaison entre les données (songs) et
         // l'affichage de chaque ligne de la liste.
-        myQuestListViewAdapter = new MyQuestListViewAdapter(this, questionnaires);
-        myListView.setAdapter(myQuestListViewAdapter);
+        myQuestionListViewAdapter = new MyQuestionListViewAdapter(this, questions);
+        myListView.setAdapter(myQuestionListViewAdapter);
 
         // Indique que le clic d'un élément de la liste doit appeler la méthode onItemClick d
         // cette classe (this).
@@ -60,14 +54,14 @@ public class ShowListQuestActivity extends Activity implements AdapterView.OnIte
      *
      * !!!!!!!!!!!!!AJOUTER METHODE SEARCHSONGS (QUERY)
      */
-    private void loadQuestionnaires() {
+    private void loadQuestions() {
 
         // Récupération de la requête de recherche.
         // Si aucune requête n'a été passée lors de la création de l'activité, searchQuery sera null.
         String searchQuery = getIntent().getStringExtra("searchQuery");
 
         if (searchQuery == null) {
-            questionnaires = Questionnaire.getQuestConnected();
+            questions = Question.getQuestionConnected();
         } else {
 
         }
@@ -76,7 +70,7 @@ public class ShowListQuestActivity extends Activity implements AdapterView.OnIte
         // s'il y avait une requête de recherche (message du type "Aucun résultat trouvé") ou si
         // l'utilisateur vient directement du menu principal et veut tout afficher (message du type
         // "Aucun élément n'est présent dans votre collection).
-        if (questionnaires.isEmpty()) {
+        if (questions.isEmpty()) {
             if (searchQuery == null) {
                 MiniPollApp.notifyShort(R.string.nothing_to_show);
             } else {
@@ -95,9 +89,9 @@ public class ShowListQuestActivity extends Activity implements AdapterView.OnIte
         // La liste des éléments est ici rechargées car en cas de modification d'un élément, l'ordre
         // a peut-être changé.
 
-        loadQuestionnaires();
+        loadQuestions();
 
-        myQuestListViewAdapter.setQuest(questionnaires);
+        myQuestionListViewAdapter.setQuestions(questions);
     }
 
     /**
@@ -115,13 +109,12 @@ public class ShowListQuestActivity extends Activity implements AdapterView.OnIte
          * Sinon vers l'interface pour répondre au sondage.
          */
 
-        Intent intent = new Intent(this, ShowListQuestionActivity.class);
+        Intent intent = new Intent(this, ShowQuestActivity.class);
         // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
         // récupérer celui-ci.
-        intent.putExtra("nQuest", questionnaires.get(position).getNquest());
+        intent.putExtra("nQuestion", questions.get(position).getNquestions());
         startActivity(intent);
 
 
     }
-
 }

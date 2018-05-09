@@ -75,6 +75,14 @@
             android:name="lsinf1225.mini_poll.activity.ShowListQuestActivity"
             android:label="@string/questionnary_manage_title" />
 
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowListQuestionActivity"
+            android:label="@string/questionnary_manage_title2" />
+
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowQuestActivity"
+            android:label="@string/questionnary" />
+
         <!-- Réponse à une demande d'aide -->
         <activity
             android:name="lsinf1225.mini_poll.activity.ShowAideActivity"

@@ -2,6 +2,7 @@ package lsinf1225.mini_poll.model;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.util.SparseArray;
 
 import java.util.ArrayList;
@@ -118,6 +119,140 @@ public class Question {
     }
 
     /**
+     * Fournit la liste des sondages pour l'utilisateur connecté
+     */
+    public static ArrayList<Question> getQuestionConnected() {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Colonnes à récupérer
+        String[] colonnes = {COL_NQUESTIONS, COL_NQUESTIONNAIRE,COL_TEXTE, COL_ORDRE};
+
+        // Requête de selection (SELECT)
+        //Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
+        String connectedUser = User.getConnectedUser().getId();
+        Cursor cursor = db.rawQuery("SELECT A.Nquestions, A.Nquestionnaire, A.Texte, A.Ordre FROM PARTICIPANTS_QUESTIONNAIRE S, QUESTIONNAIRE Q, QUESTION A WHERE Q.Nquestionnaire = A.Nquestionnaire AND S.Nquestionnaire = Q.Nquestionnaire AND S.Identifiant=\'" + connectedUser + "\'",null);
+        // Cursor cursor = db.rawQuery("SELECT PQ.Nquestionnaire, Q.Description"+"FROM PARTICIPANTS_QUESTIONNAIRE PQ, QUESTIONNAIRE Q"+"WHERE Q.Nquestionnaire = PQ.Nquestionnaire AND PQ.Identifiant =  AND Activite = 0",null);
+
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<Question> questions = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            int nQuestion = cursor.getInt(0);
+            int nQuest = cursor.getInt(1);
+            String texte = cursor.getString(2);
+            int ordre = cursor.getInt(3);
+
+            // Vérification pour savoir s'il y a déjà une instance de ce sondage.
+            Question question = Question.questionSparseArray.get(nQuestion);
+            if (question == null) {
+                // Si pas encore d'instance, création d'une nouvelle instance.
+                question = Question.get(nQuestion);
+            }
+            Question que = new Question(nQuestion,nQuest,texte,ordre);
+            // Ajout de le questionnaire à la liste.
+            questions.add(que);
+
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return questions;
+    }
+
+    /**
+     * Renvoie les propositions d'un sondage
+     */
+    public static ArrayList<String> loadPropositionsQuest(int nQuest) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        Log.d("tagText",Integer.toString(nQuest));
+        Cursor cursor = db.rawQuery("SELECT P.Texte "+
+                "FROM OPTION P, QUESTION Q, PARTICIPANTS_QUESTIONNAIRE Q WHERE Q.Nquestions = P.Nquestions AND Q.Identifiant = \'" + User.getConnectedUser().getId() + "\'", null);
+
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> possibilites = new ArrayList<String>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String prop = cursor.getString(0);
+            possibilites.add(prop);
+            Log.d("tagText",prop);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return possibilites;
+
+    }
+    public static String get_descr (int Nquestion){
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        Cursor cursor = db.rawQuery("SELECT Texte FROM QUESTION WHERE Nquestions =\'"+Nquestion+ "\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+        String id = null;
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            id = cursor.getString(0);
+            // Log.d("tagCursor",id);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return id;
+    }
+
+    public static ArrayList<String> get_descr2 (int Nquestion){
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Requête de selection (SELECT)
+        Cursor cursor = db.rawQuery("SELECT Texte FROM QUESTION WHERE Nquestions =\'"+Nquestion+ "\'",null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<String> bffs = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String bff = cursor.getString(0);
+            //Log.d("tagCursor",bff);
+            bffs.add(bff);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return bffs;
+    }
+    /**
      * Fournit le numéro de la réponse.
      */
     public int getNquestions() {
@@ -155,6 +290,23 @@ public class Question {
 
         return getTexte();
     }
+    /**
+     * Fournit l'instance d'un élément de collection présent dans la base de données. Si l'élément
+     * de collection n'est pas encore instancié, une instance est créée.
+     *
+     * @return L'instance de l'élément de collection.
+     *
+     * @pre L'élément correspondant à l'id donné doit exister dans la base de données.
+     */
+    public static Question get(int nquestion) {
+        Question s = Question.questionSparseArray.get(nquestion);
+
+        if (s != null) {
+            return s;
+        }
+        return new Question(nquestion,0,null,0);
+    }
+
 
 }
 

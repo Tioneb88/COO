@@ -110,6 +110,7 @@
 
     <!-- Gestion des questionnaires -->
     <string name="questionnary_manage_title">Questionnaires en cours</string>
+    <string name="questionnary_manage_title2">Questions</string>
     <string name="questionnary">Questionnaires en cours</string>
     <string name="questionnary_manage_results_title">Résultats</string>
     <string name="questionnary_manage_results_message">Vous occupez actuellement la place </string>

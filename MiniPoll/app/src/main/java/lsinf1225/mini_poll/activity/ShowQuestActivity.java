@@ -13,7 +13,7 @@ import android.widget.TextView;
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.MySQLiteHelper;
 import lsinf1225.mini_poll.R;
-import lsinf1225.mini_poll.model.Questionnaire;
+import lsinf1225.mini_poll.model.Question;
 
 import java.util.ArrayList;
 
@@ -23,21 +23,21 @@ import java.util.ArrayList;
 
 public class ShowQuestActivity extends Activity {
 
-    private Questionnaire current;
+    private Question current;
     private ArrayList<String> propositions;
     private int nbrePossibilites;
-    private Button[] allScores;
-    private TextView[] allPropositions;
+    private TextView[] allScores;
+    private Button[] allPropositions;
 
     protected void onCreate(Bundle savedInstanceState)  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_quest);
 
-        int nQuest = getIntent().getIntExtra("nQuest", -1);
-        current = Questionnaire.get(nQuest);
+        int nQuest = getIntent().getIntExtra("nQuestion", -1);
+        current = Question.get(nQuest);
 
         TextView description = findViewById(R.id.descrQuest);
-        description.setText(current.getDescription());
+        description.setText(current.getTexte());
 
 
         TextView option1 = findViewById(R.id.descrQuest);
@@ -47,15 +47,15 @@ public class ShowQuestActivity extends Activity {
         Button value3 = findViewById(R.id.Bouton3);
         Button value4 = findViewById(R.id.Bouton4);
 
-        allScores = new Button[]{value1, value2, value3, value4};
-        allPropositions = new TextView[] {option1};
+        allScores = new TextView[]{option1};
+        allPropositions = new Button[] {value1, value2, value3, value4};
 
-        propositions = Questionnaire.loadPropositionsQuest(nQuest);
+        propositions = Question.loadPropositionsQuest(nQuest);
         nbrePossibilites = propositions.size();
-
-        for (int i = 0; i<nbrePossibilites; i++) {
+        for (int i=0; i<nbrePossibilites;i++){
             allPropositions[i].setText(propositions.remove(0));
         }
+
 
     }
 }

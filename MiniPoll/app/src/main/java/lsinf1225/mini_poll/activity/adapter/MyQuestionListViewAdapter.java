@@ -8,11 +8,12 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
-import lsinf1225.mini_poll.model.Questionnaire;
+import lsinf1225.mini_poll.model.Question;
 
 /**
  * Gère l'affichage personnalisé de notre liste.
@@ -26,7 +27,7 @@ import lsinf1225.mini_poll.model.Questionnaire;
  * @see <a href="http://d.android.com/reference/android/widget/Adapter.html">Adapter</a>
  * @see <a href="http://d.android.com/reference/android/widget/BaseAdapter.html">BaseAdapter</a>
  */
-public class MyQuestListViewAdapter extends BaseAdapter {
+public class MyQuestionListViewAdapter extends BaseAdapter {
     /**
      * Permet d'instancier un fichier xml de layout dans une vue.
      */
@@ -35,35 +36,35 @@ public class MyQuestListViewAdapter extends BaseAdapter {
     /**
      * Liste des éléments de collection à mettre dans la liste.
      */
-    private ArrayList<Questionnaire> questionnaires;
+    private ArrayList<Question> questions;
 
     /**
      * Constructeur.
      *
      * @param context        Contexte de l'application.
-     * @param questionnaires Liste des éléments de collection à placer dans la liste.
+     * @param questions Liste des éléments de collection à placer dans la liste.
      */
-    public MyQuestListViewAdapter(Context context, ArrayList<Questionnaire> questionnaires) {
+    public MyQuestionListViewAdapter(Context context, ArrayList<Question> questions) {
         mInflater = LayoutInflater.from(context);
-        this.questionnaires = questionnaires;
+        this.questions = questions;
     }
 
     @Override
     public int getCount() {
 
-        return questionnaires.size();
+        return questions.size();
     }
 
     @Override
     public Object getItem(int position) {
 
-        return questionnaires.get(position);
+        return questions.get(position);
     }
 
     @Override
     public long getItemId(int position) {
 
-        return questionnaires.get(position).getNquest();
+        return questions.get(position).getNquestions();
     }
     /**
      * Remplit chaque ligne de la liste avec un layout particulier.
@@ -84,12 +85,10 @@ public class MyQuestListViewAdapter extends BaseAdapter {
 
         // Récupération des deux éléments de notre vue dans le but d'y placer les données.
         TextView nameTextView = convertView.findViewById(R.id.show_row_name);
-        TextView authorTextView = convertView.findViewById(R.id.author_name);
 
         // Récupération et placement des données.
-        Questionnaire questionnaire = questionnaires.get(position);
-        nameTextView.setText(questionnaire.get_descr(questionnaire.getNquest()));
-        authorTextView.setText("De "+ questionnaire.get_id(questionnaire.getNquest()));
+        Question question = questions.get(position);
+        nameTextView.setText(question.get_descr(question.getNquestions()));
 
         return convertView;
     }
@@ -101,8 +100,8 @@ public class MyQuestListViewAdapter extends BaseAdapter {
      *
      * @param newQuest La nouvelle liste des éléments de collection à afficher.
      */
-    public void setQuest(ArrayList<Questionnaire> newQuest) {
-        this.questionnaires = newQuest;
+    public void setQuestions(ArrayList<Question> newQuest) {
+        this.questions = newQuest;
         notifyDataSetChanged();
     }
 
