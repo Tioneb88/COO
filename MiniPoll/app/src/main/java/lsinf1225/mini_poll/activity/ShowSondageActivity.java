@@ -2,16 +2,12 @@ package lsinf1225.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
 import lsinf1225.mini_poll.MiniPollApp;
-import lsinf1225.mini_poll.MySQLiteHelper;
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.Score;
 import lsinf1225.mini_poll.model.Sondage;
@@ -43,12 +39,12 @@ public class ShowSondageActivity extends Activity {
         description.setText(current.getDescription());
 
 
-        TextView option1 = findViewById(R.id.option1);
-        TextView option2 = findViewById(R.id.option2);
-        TextView option3 = findViewById(R.id.option3);
-        TextView option4 = findViewById(R.id.option4);
-        TextView option5 = findViewById(R.id.option5);
-        TextView option6 = findViewById(R.id.option6);
+        TextView option1 = findViewById(R.id.option_sond1);
+        TextView option2 = findViewById(R.id.option_sond2);
+        TextView option3 = findViewById(R.id.option_sond3);
+        TextView option4 = findViewById(R.id.option_sond4);
+        TextView option5 = findViewById(R.id.option_sond5);
+        TextView option6 = findViewById(R.id.option_sond6);
 
         EditText value1 = findViewById(R.id.editText1);
         EditText value2 = findViewById(R.id.editText2);
@@ -75,33 +71,54 @@ public class ShowSondageActivity extends Activity {
     public void saveScores (View v) {
 
         boolean incorrectValue = false;
+        boolean tooFewScores = false;
+        int answersCount = nbrePossibilites;
+        ArrayList<Integer> computedScores = new ArrayList<Integer>();
+
+        //Verification des valeurs et calcul des scores
+        for (int i = 0; i < nbrePossibilites && ( incorrectValue == false || tooFewScores == false); i++) {
+            String text = allScores[i].getText().toString();
+            //si valeur null, une reponse qui n'a pas été donnée
+            if (text.equals("")) {
+                answersCount--;
+                if (answersCount < current.getNbreChoix()) {
+                    tooFewScores = true;
+                }
+            } else {
+                int value = Integer.parseInt(allScores[i].getText().toString());
+                if (value > nbrePossibilites) {
+                    incorrectValue = true;
+                }
+                int score = (nbrePossibilites + 1) - value;
+                computedScores.add(i, score);
+            }
+
+        }
+        if (answersCount > current.getNbreChoix()) {
+            MiniPollApp.notifyShort(R.string.surveys_manage_too_much_scores);
+        }
+        else if (tooFewScores) {
+            MiniPollApp.notifyShort(R.string.surveys_manage_too_few_scores);
+        }
+
         if (incorrectValue) {
             MiniPollApp.notifyShort(R.string.surveys_manage_invalid_value);
         }
 
         else {
-         int[] computedScores = new int[allScores.length];
+            ArrayList<Integer> nPropositions = Sondage.loadNumPropositions(current.getNsondage());
 
-         //Verification des valeurs et calcul des scores
-         for (int i = 0; i<nbrePossibilites; i++){
-         int value = Integer.parseInt(allScores[i].getText().toString());
-         if (value > nbrePossibilites) {
-         incorrectValue = true;
-         }
-         int score = (nbrePossibilites+1)-value;
-         computedScores[i] = score;
-         }
+            for (int i = 0; i <nbrePossibilites; i++) {
+                Score.create(nPropositions.get(i),computedScores.get(i));
+            }
 
-         ArrayList<Integer> nPropositions = Sondage.loadNumPropositions(current.getNsondage());
-
-         Score.create(nPropositions.get(3),computedScores[3]);
-         Intent intent = new Intent(this, ShowResultSondageActivity.class);
+            Intent intent = new Intent(this, ShowResultSondageActivity.class);
             // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
             // récupérer celui-ci.
             intent.putExtra("nSondage", current.getNsondage());
             startActivity(intent);
-        }
 
+        }
 
     }
 }

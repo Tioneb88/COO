@@ -29,7 +29,7 @@
             app:layout_constraintTop_toBottomOf="@+id/option1" />
 
         <TextView
-            android:id="@+id/option3"
+            android:id="@+id/option6"
             android:layout_width="163dp"
             android:layout_height="45dp"
             android:layout_marginEnd="8dp"
@@ -45,7 +45,7 @@
             app:layout_constraintTop_toBottomOf="@+id/option2" />
 
         <TextView
-            android:id="@+id/option4"
+            android:id="@+id/option3"
             android:layout_width="163dp"
             android:layout_height="45dp"
             android:layout_marginEnd="8dp"
@@ -58,10 +58,10 @@
             app:layout_constraintEnd_toStartOf="@+id/you4"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/option3" />
+            app:layout_constraintTop_toBottomOf="@+id/option6" />
 
         <TextView
-            android:id="@+id/option5"
+            android:id="@+id/option6"
             android:layout_width="163dp"
             android:layout_height="45dp"
             android:layout_marginEnd="8dp"
@@ -74,7 +74,7 @@
             app:layout_constraintEnd_toStartOf="@+id/you5"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/option4" />
+            app:layout_constraintTop_toBottomOf="@+id/option3" />
 
         <TextView
             android:id="@+id/option6"
@@ -90,7 +90,7 @@
             app:layout_constraintEnd_toStartOf="@+id/you6"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/option5" />
+            app:layout_constraintTop_toBottomOf="@+id/option6" />
 
         <TextView
             android:id="@+id/questDescription"

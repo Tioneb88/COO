@@ -114,22 +114,22 @@ public class ShowListSondageActivity extends Activity implements AdapterView.OnI
          * Sinon vers l'interface pour répondre au sondage.
          */
 
-        //if (!answered) {
+        if (!answered) {
             Intent intent = new Intent(this, ShowSondageActivity.class);
             // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
             // récupérer celui-ci.
             intent.putExtra("nSondage", sondages.get(position).getNsondage());
             startActivity(intent);
-        //}
-        /**
+        }
+
         else {
             Intent intent = new Intent(this, ShowResultSondageActivity.class);
             // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
             // récupérer celui-ci.
-            intent.putExtra("s_id", sondages.get(position).getNsondage());
+            intent.putExtra("nSondage", sondages.get(position).getNsondage());
             startActivity(intent);
         }
-         */
+
 
     }
 

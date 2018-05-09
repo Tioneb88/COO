@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.Questionnaire;
 import lsinf1225.mini_poll.model.User;
@@ -43,9 +42,9 @@ public class ShowResultQuestionnaireActivity extends Activity{
 
             TextView option1 = findViewById(R.id.option1);
             TextView option2 = findViewById(R.id.option2);
-            TextView option3 = findViewById(R.id.option3);
-            TextView option4 = findViewById(R.id.option4);
-            TextView option5 = findViewById(R.id.option5);
+            TextView option3 = findViewById(R.id.option6);
+            TextView option4 = findViewById(R.id.option3);
+            TextView option5 = findViewById(R.id.option6);
             TextView option6 = findViewById(R.id.option6);
 
             TextView you1 = findViewById(R.id.you1);

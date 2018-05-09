@@ -392,6 +392,38 @@ public class Sondage {
         return scores;
 
     }
+
+    public static ArrayList<String> loadUsersNotAnsweredYet(int nSondage) {
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        Log.d("tagText", Integer.toString(nSondage));
+        ArrayList<String> users = new ArrayList<String>();
+        //recuperation de tous les scores du sondage
+
+
+        Cursor cursor = db.rawQuery("SELECT P.Identifiant "+
+                        "FROM PARTICIPANTS_SONDAGE P "+
+                        "WHERE P.Nsondage = \'"+nSondage+"\' AND P.Identifiant NOT IN ( "+
+                        "SELECT SC.Identifiant "+
+                        "FROM SCORE SC, POSSIBILITE P "+
+                        "WHERE SC.Npossibilites = P.Npossibilites AND P.Nsondage = \'"+nSondage+"\')",null);
+
+
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String user = cursor.getString(0);
+            users.add(user);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+
+        return users;
+    }
+
     /**
      * Fournit l'identifiant de l'utilisateur courant qui a créé le sondage.
      */

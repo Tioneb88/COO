@@ -114,6 +114,13 @@
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationAidePictureResumeActivity"
             android:label="@string/create_resume_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationSondageActivityFriends"
+            android:label="@string/create_survey_send" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.CreationSondageActivitySummary"
+            android:label="@string/create_resume_title" />
+
 
     </application>
 

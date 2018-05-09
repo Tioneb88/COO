@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.Sondage;
 import lsinf1225.mini_poll.model.User;
@@ -41,12 +40,12 @@ public class ShowResultSondageActivity extends Activity {
         description.setText(currentSondage.getDescription());
 
 
-        TextView option1 = findViewById(R.id.option1);
-        TextView option2 = findViewById(R.id.option2);
-        TextView option3 = findViewById(R.id.option3);
-        TextView option4 = findViewById(R.id.option4);
-        TextView option5 = findViewById(R.id.option5);
-        TextView option6 = findViewById(R.id.option6);
+        TextView option1 = findViewById(R.id.option_result1);
+        TextView option2 = findViewById(R.id.option_result2);
+        TextView option3 = findViewById(R.id.option_result3);
+        TextView option4 = findViewById(R.id.option_result4);
+        TextView option5 = findViewById(R.id.option_result5);
+        TextView option6 = findViewById(R.id.option_result6);
 
         TextView you1 = findViewById(R.id.you1);
         TextView you2 = findViewById(R.id.you2);
@@ -80,6 +79,11 @@ public class ShowResultSondageActivity extends Activity {
             allTotal[i].setVisibility(View.VISIBLE);
             allTotal[i].setText(Integer.toString(totalScores.remove(0)));
         }
+
+        TextView waiting = findViewById(R.id.waiting);
+        ArrayList<String> usersEnAttente = new ArrayList<String>();
+        usersEnAttente = Sondage.loadUsersNotAnsweredYet(currentSondage.getNsondage());
+        waiting.setText("Réponses en attentes: "+usersEnAttente.size());
 
 
     }
