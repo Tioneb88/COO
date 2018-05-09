@@ -88,7 +88,7 @@ public class MyQuestionListViewAdapter extends BaseAdapter {
 
         // Récupération et placement des données.
         Question question = questions.get(position);
-        nameTextView.setText(question.get_descr(question.getNquestions()));
+        nameTextView.setText(Question.get_descr(question.getNquestions()));
 
         return convertView;
     }

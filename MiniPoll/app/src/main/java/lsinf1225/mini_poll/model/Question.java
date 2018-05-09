@@ -169,6 +169,58 @@ public class Question {
         return questions;
     }
 
+
+    /**
+     * Fournit la liste des sondages pour l'utilisateur connecté
+     */
+    public static ArrayList<Question> getQuestionConnected1(int Nquest) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Colonnes à récupérer
+        String[] colonnes = {COL_NQUESTIONS, COL_NQUESTIONNAIRE,COL_TEXTE, COL_ORDRE};
+
+        // Requête de selection (SELECT)
+        //Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
+        String connectedUser = User.getConnectedUser().getId();
+        Cursor cursor = db.rawQuery("SELECT A.Nquestions, A.Nquestionnaire, A.Texte, A.Ordre FROM PARTICIPANTS_QUESTIONNAIRE S, QUESTIONNAIRE Q, QUESTION A WHERE  A.Nquestionnaire =\'"+Nquest+"\' AND S.Nquestionnaire = Q.Nquestionnaire AND S.Identifiant=\'" + connectedUser + "\'",null);
+        // Cursor cursor = db.rawQuery("SELECT PQ.Nquestionnaire, Q.Description"+"FROM PARTICIPANTS_QUESTIONNAIRE PQ, QUESTIONNAIRE Q"+"WHERE Q.Nquestionnaire = PQ.Nquestionnaire AND PQ.Identifiant =  AND Activite = 0",null);
+
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des sondages.
+        ArrayList<Question> questions = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            int nQuestion = cursor.getInt(0);
+            int nQuest = cursor.getInt(1);
+            String texte = cursor.getString(2);
+            int ordre = cursor.getInt(3);
+
+            // Vérification pour savoir s'il y a déjà une instance de ce sondage.
+            Question question = Question.questionSparseArray.get(nQuestion);
+            if (question == null) {
+                // Si pas encore d'instance, création d'une nouvelle instance.
+                question = Question.get(nQuestion);
+            }
+            Question que = new Question(nQuestion,nQuest,texte,ordre);
+            // Ajout de le questionnaire à la liste.
+            questions.add(que);
+
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return questions;
+    }
+
     /**
      * Renvoie les propositions d'un sondage
      */

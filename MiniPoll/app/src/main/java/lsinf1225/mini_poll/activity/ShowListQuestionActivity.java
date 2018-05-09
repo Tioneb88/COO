@@ -27,9 +27,10 @@ public class ShowListQuestionActivity extends Activity implements AdapterView.On
         super.onCreate(savedInstanceState);
 
         setContentView(R.layout.activity_show_list_question);
+        int nQuest = getIntent().getIntExtra("nQuest", -1);
 
         // Chargement des éléments à afficher dans la variable de classe songs
-        loadQuestions();
+        loadQuestions(nQuest);
 
 
         ListView myListView = findViewById(R.id.show_listViewQuestion);
@@ -54,14 +55,14 @@ public class ShowListQuestionActivity extends Activity implements AdapterView.On
      *
      * !!!!!!!!!!!!!AJOUTER METHODE SEARCHSONGS (QUERY)
      */
-    private void loadQuestions() {
+    private void loadQuestions(int Nquest) {
 
         // Récupération de la requête de recherche.
         // Si aucune requête n'a été passée lors de la création de l'activité, searchQuery sera null.
         String searchQuery = getIntent().getStringExtra("searchQuery");
 
         if (searchQuery == null) {
-            questions = Question.getQuestionConnected();
+            questions = Question.getQuestionConnected1(Nquest);
         } else {
 
         }
@@ -88,8 +89,8 @@ public class ShowListQuestionActivity extends Activity implements AdapterView.On
         super.onResume();
         // La liste des éléments est ici rechargées car en cas de modification d'un élément, l'ordre
         // a peut-être changé.
-
-        loadQuestions();
+        int nQuest = getIntent().getIntExtra("nQuest", -1);
+        loadQuestions(nQuest);
 
         myQuestionListViewAdapter.setQuestions(questions);
     }

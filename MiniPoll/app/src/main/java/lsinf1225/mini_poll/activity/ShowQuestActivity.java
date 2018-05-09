@@ -40,20 +40,20 @@ public class ShowQuestActivity extends Activity {
         description.setText(current.getTexte());
 
 
-        TextView option1 = findViewById(R.id.descrQuest);
+        //TextView option1 = findViewById(R.id.descrQuest);
 
         Button value1 = findViewById(R.id.Bouton1);
         Button value2 = findViewById(R.id.Bouton2);
         Button value3 = findViewById(R.id.Bouton3);
         Button value4 = findViewById(R.id.Bouton4);
 
-        allScores = new TextView[]{option1};
+        //allScores = new TextView[]{description};
         allPropositions = new Button[] {value1, value2, value3, value4};
 
         propositions = Question.loadPropositionsQuest(nQuest);
         nbrePossibilites = propositions.size();
         for (int i=0; i<nbrePossibilites;i++){
-            allPropositions[i].setText(propositions.remove(0));
+            allPropositions[i].setText(propositions.get(i));
         }
 
 
