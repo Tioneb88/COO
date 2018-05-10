@@ -25,7 +25,7 @@ import java.util.ArrayList;
  * Created by margauxgerard on 7/05/18.
  */
 
-public class ShowQuestActivity extends Activity {
+public class ShowQuestActivity extends Activity implements AdapterView.OnItemClickListener {
 
     private Question current;
     private ArrayList<String> propositions;
