@@ -36,7 +36,7 @@ public class ChangeUsernameActivity extends Activity {
         EditText passwordEditText = findViewById(R.id.change_username_confirm);
         String password = passwordEditText.getText().toString();
 
-        int hint = User.getConnectedUser().setUsername(newUsername,password);
+        int hint = User.getConnectedUser().updateUsername(newUsername,password);
         if(hint == -2) {
             // Le mot de passe est incorrect.
             MiniPollApp.notifyShort(R.string.change_username_password_wrong);

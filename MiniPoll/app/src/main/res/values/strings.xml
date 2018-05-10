@@ -37,6 +37,7 @@
     <string name="create_mail">Adresse mail*</string>
     <string name="create_picture">Photo de profil</string>
     <string name="create_advice">* champs obligatoires</string>
+    <string name="create_error">Veuillez remplir tous les champs obligatoires !</string>
 
     <!-- Menu principal (main) -->
     <string name="main_activity_title">Menu principal</string>

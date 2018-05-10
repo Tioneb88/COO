@@ -94,7 +94,7 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {
-            MiniPollApp.notifyShort(R.string.login_password_wrong);
+            MiniPollApp.notifyLong(R.string.login_password_wrong);
         }
     }
 

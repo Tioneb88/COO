@@ -1,5 +1,6 @@
 package lsinf1225.mini_poll.model;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
@@ -25,20 +26,21 @@ import lsinf1225.mini_poll.MySQLiteHelper;
  */
 public class User {
 
-    public static final String COL_NOM = "Nom";
     public static final String COL_ID = "Identifiant";
-    public static final String COL_PRENOM = "Prénom";
     public static final String COL_MDP = "MDP";
+    public static final String COL_NOM = "Nom";
+    public static final String COL_PRENOM = "Prénom";
     public static final String COL_MAIL = "Mail";
     public static final String COL_PHOTO = "Photo";
     public static final String COL_BFF = "Meilleur_ami";
+
     public static final String BDD_TABLE = "UTILISATEUR";
 
     /**
      * Contient les instances déjà existantes des utilisateurs afin d'éviter de créer deux instances
      * du même utilisateur.
      */
-    public static SparseArray<User> userSparseArray = new SparseArray<>();
+    // public static SparseArray<User> userSparseArray = new SparseArray<>();
     /**
      * Utilisateur actuellement connecté à l'application. Correspond à null si aucun utilisateur
      * n'est connecté.
@@ -87,9 +89,8 @@ public class User {
      *
      * @note Ce constructeur est privé (donc utilisable uniquement depuis cette classe). Cela permet
      * d'éviter d'avoir deux instances différentes d'un même utilisateur.
-     * => modifié pour pouvoir créer des nouveaux utilisateurs.
      */
-    public User(String userId, String userNom, String userPrenom, String userPassword, String userMail, String userPhoto, String userBff) {
+    private User(String userId, String userNom, String userPrenom, String userPassword, String userMail, String userPhoto, String userBff) {
 
         this.id = userId;
         this.nom = userNom;
@@ -102,7 +103,7 @@ public class User {
         //User.userSparseArray.put(userMail, this);
     }
 
-     /**
+    /**
      * Constructeur de notre élément de collection. Initialise une instance de l'élément présent
      * dans la base de données.
      *
@@ -119,6 +120,105 @@ public class User {
     public static User getConnectedUser() {
 
         return User.connectedUser;
+    }
+
+    /**
+     * Fournit l'identifiant de l'utilisateur courant.
+     */
+    public String getId() {
+
+        return id;
+    }
+
+    /**
+     * Fournit une représentation textuelle de l'utilisateur courant. (Ici le nom)
+     *
+     * @note Cette méthode est utilisée par l'adaptateur ArrayAdapter afin d'afficher la liste des
+     * utilisateurs. (Voir LoginActivity).
+     */
+    public String toString() {
+
+        return getId();
+    }
+
+    /**
+     * Fournit le nom de l'utilisateur courant.
+     */
+    public String getNom() {
+
+        return nom;
+    }
+
+    /**
+     * Fournit le prénom de l'utilisateur courant.
+     */
+    public String getPrenom() {
+
+        return prenom;
+    }
+
+    /**
+     * Fournit le mot de passe de l'utilisateur courant.
+     */
+    public String getPassword() {
+
+        return password;
+    }
+
+    /**
+     * Fournit le mail de l'utilisateur courant.
+     */
+    public String getMail() {
+
+        return mail;
+    }
+
+    /**
+     * Fournit le chemin de la photo de l'utilisateur courant.
+     */
+    public String getPhoto() {
+
+        return photo;
+    }
+
+    /**
+     * Fournit l'identifiant du meilleur de l'utilisateur courant.
+     */
+    public String getBff() {
+
+        return bff;
+    }
+
+    /**
+     * Change le password de l'utilisateur courant.
+     */
+    public void setUsername(String username) {
+
+        this.id = username;
+    }
+
+    /**
+     * Change le password de l'utilisateur courant.
+     */
+    public void setPassword(String password) {
+
+        this.password = password;
+    }
+
+    /**
+     * Connecte l'utilisateur courant.
+     *
+     * @param passwordToTry le mot de passe entré.
+     *
+     * @return Vrai (true) si l'utilisateur à l'autorisation de se connecter, false sinon.
+     */
+    public boolean login(String passwordToTry) {
+        if (this.password.equals(passwordToTry)) {
+            // Si le mot de passe est correct, modification de l'utilisateur connecté.
+            User.connectedUser = this;
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -215,7 +315,7 @@ public class User {
     }
 
     public static String getUsersString( String Id, String selection, String[] selectionArgs) {
-         // Critère de sélection : appartient à l'utilisateur courant.
+        // Critère de sélection : appartient à l'utilisateur courant.
         selection = COL_ID + " = ?";
         selectionArgs = new String[]{String.valueOf(Id)};
 
@@ -293,9 +393,9 @@ public class User {
     }
 
     /**
-     * Ajoute un utilisateur et son mot de passe dans la base de données. (pour la création de compte)
+     * Vérifie si le nom d'utilisateur est déjà utilisé dans l'application.
      */
-    public boolean addUser(String id, String mdp) {
+    public static boolean checkUsername(String id) {
         // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
@@ -316,96 +416,45 @@ public class User {
             // Passe à la ligne suivante.
             cursor.moveToNext();
         }
-        // On ajoute l'identifiant et le mot de passe dans la base de données.
-        db.execSQL("INSERT INTO UTILISATEUR (Identifiant, MDP) VALUES (id, mdp)");
         cursor.close();
         db.close();
-        User.connectedUser = this;
         return true;
     }
 
     /**
-     * Fournit l'identifiant de l'utilisateur courant.
+     * Ajoute un utilisateur et ses informations dans la base de données. (pour la création de compte)
      */
-    public String getId() {
+    public static void addUser(String id, String password, String name, String firstname, String mail) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
-        return id;
+        // Nouvelles informations
+        ContentValues user = new ContentValues();
+        user.put(COL_ID, id);
+        user.put(COL_MDP, password);
+        user.put(COL_NOM, name);
+        user.put(COL_PRENOM, firstname);
+        user.put(COL_MAIL, mail);
+
+        // Insertion dans la base de données
+        db.insert(BDD_TABLE, null, user);
+
+        // Mise à jour de l'utilisateur connecté
+        User.connectedUser = new User(id, name, firstname, password, mail, null, null);
     }
 
     /**
-     * Fournit le nom de l'utilisateur courant.
+     * Supprime un utilisateur et ses informations dans la base de données.
      */
-    public String getNom() {
+    public static void delete() {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
-        return nom;
+        db.delete(BDD_TABLE, "Identifiant = " + User.getConnectedUser().getId(), null);
+
+        User.connectedUser = null;
     }
 
-    /**
-     * Fournit le prénom de l'utilisateur courant.
-     */
-    public String getPrenom() {
-
-        return prenom;
-    }
-
-    /**
-     * Fournit le mot de passe de l'utilisateur courant.
-     */
-    public String getPassword() {
-
-        return password;
-    }
-
-    /**
-     * Fournit le mail de l'utilisateur courant.
-     */
-    public String getMail() {
-
-        return mail;
-    }
-
-    /**
-     * Fournit le chemin de la photo de l'utilisateur courant.
-     */
-    public String getPhoto() {
-
-        return photo;
-    }
-
-    /**
-     * Fournit l'identifiant du meilleur de l'utilisateur courant.
-     */
-    public String getBff() {
-
-        return bff;
-    }
-
-    /**
-     * Connecte l'utilisateur courant.
-     *
-     * @param passwordToTry le mot de passe entré.
-     *
-     * @return Vrai (true) si l'utilisateur à l'autorisation de se connecter, false sinon.
-     */
-    public boolean login(String passwordToTry) {
-        if (this.password.equals(passwordToTry)) {
-            // Si le mot de passe est correct, modification de l'utilisateur connecté.
-            User.connectedUser = this;
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Fournit une représentation textuelle de l'utilisateur courant. (Ici le nom)
-     *
-     * @note Cette méthode est utilisée par l'adaptateur ArrayAdapter afin d'afficher la liste des
-     * utilisateurs. (Voir LoginActivity).
-     */
-    public String toString() {
-
-        return getId();
-    }
 
     /**
      * change l'identifiant de l'utilisateur courant.
@@ -415,39 +464,34 @@ public class User {
      * @return Vrai (true) si ce nom d'utilisateur n'est pas encore utilisé (et alors le changement
      * est effectué, false sinon.
      */
-    public int setUsername(String newUsername, String password) {
+    public int updateUsername(String newUsername, String password) {
         // On vérifie le mot de passe.
         if(!password.equals(this.getPassword()))
         {
             return -2;
         }
-        // Récupération du  SQLiteHelper et de la base de données en lecture.
-        SQLiteDatabase dbR = MySQLiteHelper.get().getReadableDatabase();
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
-        // On va chercher tous les identifiants de l'application.
-        Cursor cursor = dbR.rawQuery("SELECT Identifiant FROM UTILISATEUR", null);
-        // Placement du curseur sur la première ligne.
-        cursor.moveToFirst();
+        // On vérifie que le nom d'utilisateur n'est pas déjà utilisé.
+        boolean unused = checkUsername(newUsername);
 
-        // On vérifie que l'identifiant n'est pas déjà utilisé.
-        while (!cursor.isAfterLast()) {
-            String identifiant = cursor.getString(0);
-            if(identifiant.equals(newUsername))
-            {
-                cursor.close();
-                dbR.close();
-                return -1;
+        if(unused) {
+            // Nouvelle information
+            ContentValues newValues = new ContentValues();
+            newValues.put(COL_ID, newUsername);
+
+            // Mise à jour dans la base de données
+            int count = db.update(BDD_TABLE, newValues, COL_ID + "=" + this.getId(), null);
+            if (count == 1) {
+                // seule 1 colonne a été mise à jour
+                this.setUsername(newUsername);
+                return 0;
             }
-            // Passe à la ligne suivante.
-            cursor.moveToNext();
         }
-        cursor.close();
-        dbR.close();
+        return -1;
 
-        // Récupération du  SQLiteHelper et de la base de données en écriture.
-        SQLiteDatabase dbW = MySQLiteHelper.get().getWritableDatabase();
-
-        //dbW.execSQL("UPDATE UTILISATEUR SET Identifiant = " + newUsername +" WHERE Identifiant = " + this.getId());
+        //db.execSQL("UPDATE UTILISATEUR SET Identifiant = " + newUsername +" WHERE Identifiant = " + this.getId());
 
        /* Nouvelle idée !!
         // New value for one column
@@ -468,31 +512,32 @@ public class User {
         //Encore une autre idée !!
         dbW.update();
         */
-
-        dbW.close();
-        this.id = newUsername;
-        return 0;
     }
 
     /**
-     * change le password de l'utilisateur courant.
+     * Vérifie le mot de passe puis le met à jour si celui-ci est correct.
      */
-    public int setPassword(String oldPassword, String newPassword) {
-        if(password.equals(oldPassword))
+    public int updatePassword(String oldPassword, String newPassword) {
+        if(User.getConnectedUser().getPassword().equals(oldPassword))
         {
-            // Récupération du  SQLiteHelper et de la base de données en écriture.
-            SQLiteDatabase dbW = MySQLiteHelper.get().getWritableDatabase();
+            // Récupération du  SQLiteHelper et de la base de données.
+            SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
-            //dbW.execSQL("UPDATE UTILISATEUR SET MDP = " + newPassword +" WHERE MDP = " + this.getPassword());
+            ContentValues newValues = new ContentValues();
+            newValues.put(COL_MDP, newPassword);
 
-            dbW.close();
-            this.password = newPassword;
-            return 0;
+            int count = db.update(BDD_TABLE, newValues, COL_ID + "=" + this.getId(), null);
+            if (count == 1) {
+                // seule 1 colonne a été mise à jour
+                this.setPassword(newPassword);
+                return 0;
+            }
+
+            //db.execSQL("UPDATE UTILISATEUR SET MDP = " + newPassword +" WHERE Identifiant = " + this.getId());
+
+            //db.close();
         }
-        else
-        {
-            return -1;
-        }
+        return -1;
     }
 
 }

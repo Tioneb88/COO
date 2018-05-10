@@ -35,16 +35,21 @@ public class CreationCompteActivity extends Activity{
         if(!password.equals(confirm)) {
             MiniPollApp.notifyShort(R.string.newAccount_notification);
         }
+        else if(username.isEmpty() || password.isEmpty())
+        {
+            MiniPollApp.notifyShort(R.string.create_error);
+        }
         else {
-            // On essaie d'ajouter l'utilisateur et son mot de passe à la base de données.
-            User user = new User(username,null, "John", "password", "invalidmail@false.com", null, null);
-            if(!user.addUser(username, password))
+            // On vérifie que le nom d'utilisateur n'est pas déjà utilisé.
+            if(!User.checkUsername(username))
             {
                 MiniPollApp.notifyShort(R.string.newAccount_error);
             }
             else
             {
                 Intent intent = new Intent(this, CreationProfilActivity.class);
+                intent.putExtra("username",username);
+                intent.putExtra("password", password);
                 startActivity(intent);
             }
         }

@@ -46,7 +46,7 @@ public class ChangePasswordActivity extends Activity {
             MiniPollApp.notifyShort(R.string.change_password_confirmation_error);
         }
         else {
-            int hint = User.getConnectedUser().setPassword(oldPassword,newPassword);
+            int hint = User.getConnectedUser().updatePassword(oldPassword,newPassword);
             if(hint == -1) {
                 // L'ancien mot de passe est incorrect.
                 MiniPollApp.notifyShort(R.string.change_username_password_wrong);

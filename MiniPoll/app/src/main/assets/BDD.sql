@@ -253,6 +253,8 @@ INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_a
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('gegedu78', 'Chanteux', 'Géraldine', 'touxopharm', 'geraldine.chanteux@student.uclouvain.be', NULL, NULL);
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('phephe', 'Goffinet', 'Ophélie', '#presqueparfaite', 'ophelie.goffinet@student.uclouvain.be', NULL, NULL);
 INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('Moustikman', 'Dupont', 'Jean', '5140Ligny', 'jean.dupont@student.uclouvain.be', NULL, NULL);
+INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('Tio', 'Michel', 'Benoît', 'easy', 'b.michel@student.uclouvain.be', NULL, NULL);
+INSERT INTO UTILISATEUR (Identifiant, Nom, Prénom, MDP, Mail, Photo, Meilleur_ami) VALUES ('Néo', 'Smith', 'John', 'matrix', 'néo.smith@student.uclouvain.be', NULL, NULL);
 
 
 COMMIT TRANSACTION;
