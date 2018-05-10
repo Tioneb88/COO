@@ -52,11 +52,16 @@ public class ShowQuestActivity extends Activity {
         //allScores = new TextView[]{description};
         allPropositions = new Button[] {value1, value2, value3, value4};
 
+        //==========================================================================
+        //Remarque Arnaud: cela m'empêchait de compiler donc j'ai mis en commentaires
+        //==========================================================================
+        /*
         propositions = Question.loadPropositionsQuest(Option.get(noptions));
         //nbrePossibilites = propositions.size();
         for (int i=0; i<4;i++){
             allPropositions[i].setText(propositions.get(i));
         }
+        */
 
 
     }

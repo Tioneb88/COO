@@ -145,6 +145,7 @@
     <string name="create_resume_title">Résumé</string>
     <string name="create_next">Suivant</string>
     <string name="create_next_element">+</string>
+    <string name="create_send">Envoyer</string>
 
     <!-- Création de sondages -->
     <string name="create_survey_choice_title">Choix possibles</string>
