@@ -56,16 +56,16 @@ public class ConsulterProfilActivity extends Activity {
         }
 
         TextView username = findViewById(R.id.username);
-        username.setText(getString(R.string.app_user_username) + " : " + User.getConnectedUser().getId());
+        username.setText(getString(R.string.app_user_username) + User.getConnectedUser().getId());
 
         TextView surname = findViewById(R.id.surname);
-        surname.setText(getString(R.string.app_user_surname) + " : " + User.getConnectedUser().getNom());
+        surname.setText(getString(R.string.app_user_surname) + User.getConnectedUser().getNom());
 
         TextView firstname = findViewById(R.id.firstname);
-        firstname.setText(getString(R.string.app_user_firstname) + " : " + User.getConnectedUser().getPrenom());
+        firstname.setText(getString(R.string.app_user_firstname) + User.getConnectedUser().getPrenom());
 
         TextView mail = findViewById(R.id.mail);
-        mail.setText(getString(R.string.app_user_mail) + " : " + User.getConnectedUser().getMail());
+        mail.setText(getString(R.string.app_user_mail) + User.getConnectedUser().getMail());
 
         //Affichage du meilleur ami s'il y en a un sinon, on met une barre (/).
         if(User.getConnectedUser().getBff() == null)

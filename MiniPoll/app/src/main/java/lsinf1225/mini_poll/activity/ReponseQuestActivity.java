@@ -32,30 +32,33 @@ public class ReponseQuestActivity extends Activity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_list_question);
 
-        //int nquestions = getIntent().getIntExtra("nquestions",-1);
-        //int noptions = getIntent().getIntExtra("nOptions", -1);
-        //int nclique= getIntent().getIntExtra("nclique",0);
+        //Recupère les valeur passéee en arguments:
+        // On récupère les informations de l'activité précédente.
+        Intent prev = getIntent();
+        int nquestions = prev.getIntExtra("nquestions",-1);
+        int noptions = prev.getIntExtra("nOptions", -1);
+        int nclique= prev.getIntExtra("nclique",0);
 
         //Recupère les argument passés avec un Bundle
 
-        Intent intent1 = getIntent();
-        Bundle extras1 = intent1.getExtras();
-        int nquestions = extras1.getInt("nquestions");
+        //Intent intent1 = getIntent();
+        //Bundle extras1 = intent1.getExtras();
+        //int nquestions = extras1.getInt("nquestions");
 
-        Intent intent2 = getIntent();
-        Bundle extras2 = intent2.getExtras();
-        int noptions = extras2.getInt("noptions");
+        //Intent intent2 = getIntent();
+        //Bundle extras2 = intent2.getExtras();
+        //int noptions = extras2.getInt("noptions");
 
-        Intent intent3 = getIntent();
-        Bundle extras3 = intent3.getExtras();
-        int nclique = extras3.getInt("nclique");
+        //Intent intent3 = getIntent();
+        //Bundle extras3 = intent3.getExtras();
+        //int nclique = extras3.getInt("nclique");
 
 
         // Met l'options choisie dans le base de donnée
 
         enregistrer=ReponseQuest.mettredansbd(nquestions,noptions);
 
-        if(nclique<5){
+        if(nclique<=5){
             Intent intent = new Intent(this, ShowListQuestionActivity.class);
             startActivity(intent);
         }

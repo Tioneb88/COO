@@ -81,6 +81,7 @@ public class ShowSondageActivity extends Activity {
             //si valeur null, une reponse qui n'a pas été donnée
             if (text.equals("")) {
                 answersCount--;
+                computedScores.add(0);
                 if (answersCount < current.getNbreChoix()) {
                     tooFewScores = true;
                 }
@@ -89,20 +90,38 @@ public class ShowSondageActivity extends Activity {
                 if (value > nbrePossibilites) {
                     incorrectValue = true;
                 }
-                int score = (nbrePossibilites + 1) - value;
-                computedScores.add(i, score);
+                int score = (current.getNbreChoix() + 1) - value;
+                computedScores.add(score);
             }
 
         }
-        if (answersCount > current.getNbreChoix()) {
-            MiniPollApp.notifyShort(R.string.surveys_manage_too_much_scores);
-        }
-        else if (tooFewScores) {
-            MiniPollApp.notifyShort(R.string.surveys_manage_too_few_scores);
+
+        //Vérification des doublons
+        boolean doublon = false;
+        for (int i = 0; i<computedScores.size()-1 && !doublon;i++) {
+            int score = computedScores.get(i);
+            for (int j = i+1; j<computedScores.size() && !doublon; j++) {
+                int currentScore = computedScores.get(j);
+                if (score == currentScore && score != 0) {
+                    doublon = true;
+                }
+            }
         }
 
-        if (incorrectValue) {
-            MiniPollApp.notifyShort(R.string.surveys_manage_invalid_value);
+
+
+        if (answersCount > current.getNbreChoix()) {
+            MiniPollApp.notifyLong(R.string.surveys_manage_too_much_scores);
+        }
+        else if (tooFewScores) {
+            MiniPollApp.notifyLong(R.string.surveys_manage_too_few_scores);
+        }
+
+        else if (incorrectValue) {
+            MiniPollApp.notifyLong(R.string.surveys_manage_invalid_value);
+        }
+        else if (doublon) {
+            MiniPollApp.notifyLong(R.string.surveys_manage_doublons);
         }
 
         else {

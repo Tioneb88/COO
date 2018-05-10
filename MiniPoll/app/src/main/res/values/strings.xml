@@ -108,9 +108,10 @@
 
     <string name="surveys_manage_finalresults_title">Résultat final</string>
     <string name="surveys_manage_save">Enregistrer</string>
-    <string name="surveys_manage_invalid_value">Un score attribué a une valeur incorrecte.</string>
-    <string name="surveys_manage_too_few_scores">Vous avez attribué trop peu de scores à ce sondage. </string>
-    <string name="surveys_manage_too_much_scores">Vous avez attribué trop de scores à ce sondage.</string>
+    <string name="surveys_manage_invalid_value">Un classement attribué a une valeur incorrecte.</string>
+    <string name="surveys_manage_too_few_scores">Vous avez classé trop peu de possibilités. </string>
+    <string name="surveys_manage_too_much_scores">Vous avez classé trop de possibilités.</string>
+    <string name="surveys_manage_doublons">Vous avez attribué deux fois le même classement à une option.</string>
 
     <!-- Gestion des questionnaires -->
     <string name="questionnary_manage_title">Questionnaires en cours</string>
@@ -119,6 +120,7 @@
     <string name="questionnary_manage_results_title">Résultats</string>
     <string name="questionnary_manage_results_message">Vous occupez actuellement la place </string>
     <string name="questionnary_manage_results_ranking">Classement </string>
+    <string name="deja_repondu_a_cette_question">Vous avez déjà donné une réponse à cette question </string>
 
     <!-- Gestion des demandes d'aide -->
     <string name="help_manage_title">Demandes d\'aide en cours</string>
@@ -147,6 +149,7 @@
     <string name="create_resume_title">Résumé</string>
 
     <string name="create_next_element">+</string>
+    <string name="create_send">Envoyer</string>
 
     <!-- Création de sondages -->
     <string name="create_survey_choice_title">Choix possibles</string>

@@ -2,9 +2,16 @@ package lsinf1225.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
@@ -27,6 +34,34 @@ public class MainActivity extends Activity {
         // Affichage du message de bienvenue.
         TextView welcomeTxt = findViewById(R.id.welcomeTxt);
         welcomeTxt.setText(getString(R.string.main_activity_welcome_partie1) + " " + User.getConnectedUser().getId() + " " + getString(R.string.main_activity_welcome_partie2));
+
+        //Affichage de la photo
+        String photoFile = User.getConnectedUser().getPhoto();
+
+        if(photoFile != null) {
+            // Récupérer l'AssetManager
+            AssetManager manager = getAssets();
+
+            // lire un Bitmap depuis Assets
+            InputStream open = null;
+            try {
+                open = manager.open(photoFile);
+                Bitmap bitmap = BitmapFactory.decodeStream(open);
+                // Assigner le bitmap à une ImageView dans cette mise en page
+                ImageView view = (ImageView) findViewById(R.id.main_picture);
+                view.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            } finally {
+                if (open != null) {
+                    try {
+                        open.close();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }
     }
 
 
