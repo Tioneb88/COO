@@ -439,7 +439,7 @@ public class Sondage {
         // Requête de selection (SELECT)
         //Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
         String connectedUser = User.getConnectedUser().getId();
-        Cursor cursor = db.rawQuery("SELECT S.Nsondage, S.Identifiant, S.Nbrechoix, S.Description, S.Activite  FROM PARTICIPANTS_SONDAGE PS, SONDAGE S " + "WHERE PS.Nsondage = S.Nsondage AND PS.Identifiant =\'"+connectedUser+"\' AND Activite='0'",null);
+        Cursor cursor = db.rawQuery("SELECT S.Nsondage, S.Identifiant, S.Nbrechoix, S.Description, S.Activite  FROM PARTICIPANTS_SONDAGE PS, SONDAGE S " + "WHERE PS.Nsondage = S.Nsondage AND PS.Identifiant =\'"+connectedUser+"\' AND Activite='1'",null);
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
 

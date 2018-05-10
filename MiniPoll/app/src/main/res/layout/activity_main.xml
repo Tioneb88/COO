@@ -9,122 +9,142 @@
     android:layout_height="wrap_content"
     tools:context="lsinf1225.mini_poll.activity.MainActivity">
 
-    <TextView
-        android:id="@+id/welcomeTxt"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_marginLeft="10dp"
-        android:layout_marginStart="10dp"
-        android:padding="@dimen/default_padding"
-        android:text="@string/main_activity_welcome_partie1"
-        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="80dp"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeTxt"
-        android:layout_centerInParent="true">
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        app:layout_constraintTop_toBottomOf="@+id/welcomeTxt">
 
-        <LinearLayout
+        <android.support.constraint.ConstraintLayout
+            android:id="@+id/linearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center" >
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/welcomeTxt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:padding="@dimen/default_padding"
+                android:text="@string/main_activity_welcome_partie1"
+                android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="5dp" />
 
             <Button
                 android:id="@+id/main_profile_btn"
-                style="@style/main_btn"
-                android:layout_width="match_parent"
+                android:layout_width="196dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
+                android:layout_marginEnd="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginTop="32dp"
                 android:onClick="seeProfile"
                 android:text="@string/main_activity_profile"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/welcomeTxt" />
+
 
             <Button
                 android:id="@+id/main_friends_btn"
-                style="@style/main_btn"
-                android:layout_width="match_parent"
+                android:layout_width="195dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="10dp"
+                android:layout_marginEnd="28dp"
+                android:layout_marginRight="28dp"
+                android:layout_marginTop="20dp"
                 android:onClick="seeFriends"
                 android:text="@string/main_activity_manage_friends"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/main_profile_btn" />
+
 
             <Button
                 android:id="@+id/main_agreement_btn"
                 style="@style/main_btn"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="24dp"
                 android:onClick="answerAgreement"
                 android:text="@string/main_activity_agreement"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/main_friends_btn" />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
             <Button
                 android:id="@+id/main_questionnary_btn"
                 style="@style/main_btn"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:onClick="answerQuestionnary"
                 android:text="@string/main_activity_questionnary"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/main_agreement_btn" />
 
             <Button
                 android:id="@+id/main_help_btn"
                 style="@style/main_btn"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="10dp"
                 android:onClick="answerHelp"
                 android:text="@string/main_activity_help"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/main_questionnary_btn" />
 
             <Button
                 android:id="@+id/main_create_btn"
                 style="@style/main_btn"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
+                android:layout_marginBottom="78dp"
+                android:layout_marginTop="78dp"
                 android:onClick="create_poll"
                 android:text="@string/main_activity_create"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/main_help_btn" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/main_help_btn" />
 
             <Button
                 android:id="@+id/main_logout_btn"
                 style="@style/main_btn"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginTop="30dp"
                 android:onClick="logout"
                 android:text="@string/main_activity_offline"
-                app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/main_create_btn" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        </LinearLayout>
+            <ImageView
+                android:id="@+id/main_picture"
+                android:layout_width="123dp"
+                android:layout_height="135dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:src="@android:drawable/ic_menu_camera"
+                app:layout_constraintEnd_toStartOf="@+id/main_friends_btn"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/welcomeTxt" />
+
+            <View
+                android:id="@+id/divider3"
+                android:layout_width="0dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="24dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/main_friends_btn" />
+
+        </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
 

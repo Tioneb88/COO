@@ -238,7 +238,7 @@ INSERT INTO SCORE (Identifiant, Npossibilites, Score) VALUES ('gegedu78', '12', 
 -- Table : SONDAGE
 DROP TABLE IF EXISTS SONDAGE;
 CREATE TABLE SONDAGE  (Nsondage int(50) not null unique primary key, Identifiant not null , Nbrechoix int(50) not null, Description char(255) not null, Activite boolean not null, foreign key (Identifiant) references UTILISATEUR);
-INSERT INTO SONDAGE (Nsondage, Identifiant, Nbrechoix, Description, Activite) VALUES ('1', 'fel98', '4', 'On fait quoi ce soir?', '0');
+INSERT INTO SONDAGE (Nsondage, Identifiant, Nbrechoix, Description, Activite) VALUES ('1', 'fel98', '4', 'On fait quoi ce soir?', '1');
 INSERT INTO SONDAGE (Nsondage, Identifiant, Nbrechoix, Description, Activite) VALUES ('2', 'margauxgerard', '6', 'On mange quoi au souper commu de demain soir ?', '1');
 INSERT INTO SONDAGE (Nsondage, Identifiant, Nbrechoix, Description, Activite) VALUES ('3', 'Hiboule', '5', 'On part ou en vacances?', '1');
 

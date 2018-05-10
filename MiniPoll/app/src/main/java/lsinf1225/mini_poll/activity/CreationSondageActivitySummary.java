@@ -47,11 +47,26 @@ public class CreationSondageActivitySummary extends Activity {
         boolean possibiliteOk = false;
         boolean participantsOk = false;
         int nSondage = Sondage.create(nbreChoix, description);
+
+        //DEBUG
         Sondage s = Sondage.get(nSondage);
         Log.d("creationSondage",s.getDescription());
+        Log.d("creationSondage",Integer.toString(nSondage));
+
+
+
         if (nSondage !=0) {
             possibiliteOk = Sondage.addPossibilites(nSondage, options);
             participantsOk = Sondage.addParticipants(nSondage,participants);
+
+            ArrayList<Sondage> sondages = Sondage.getSondagesConnected();
+            for (int i = 0;i<sondages.size();i++) {
+                Log.d("creationSondage","sondage "+i+" :"+sondages.get(i).getDescription());
+            }
+            ArrayList<String> users = Sondage.loadUsersNotAnsweredYet(nSondage);
+            for (int i = 0;i<users.size();i++) {
+                Log.d("creationSondage",users.get(i));
+            }
         }
         if (nSondage == 0 || !possibiliteOk || !participantsOk) {
             Log.d("creationSondage","Erreur lors de la creation du sondage");

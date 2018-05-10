@@ -4,14 +4,15 @@
         <color name="colorPrimary">#3f51b5</color>
         <color name="colorAccent">#FF4081</color>
         <!-- Barre d'action des layouts -->
-        <color name="colorFont">#303F9F</color>
+        <color name="colorFont">#14a1dd</color>
 
         <!-- Autres couleurs -->
         <color name="colorFlash">#FF4081</color>
 
         <!-- Utilisées -->
-        <color name="helpBlue">#0000FF</color>
-        <color name="colorPrimaryDark">#303F9F</color>
+        <color name="helpBlue">#4db1d8</color>
+        <color name="colorPrimaryDark">#4cb0d8</color>
         <color name="colorDark">#000000</color>
         <color name="colorError">#FF0000</color>
+        <color name="colorTitle">#ffffff</color>
 </resources>
