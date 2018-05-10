@@ -32,6 +32,7 @@ public class CreationSondageActivity extends Activity {
     private EditText description;
     private EditText nbreChoix;
     private Button[] allButtons;
+    private Button[] removeButtons;
     private int optionsCount=2;
 
 
@@ -57,31 +58,81 @@ public class CreationSondageActivity extends Activity {
         Button bt5 = findViewById(R.id.button5);
 
         allButtons = new Button[] {bt2, bt3, bt4, bt5};
+
+        Button btR1 = findViewById(R.id.buttonRemove);
+        Button btR2 = findViewById(R.id.buttonRemove1);
+        Button btR3 = findViewById(R.id.buttonRemove2);
+        Button btR4 = findViewById(R.id.buttonRemove3);
+
+        removeButtons = new Button[] {btR1, btR2, btR3, btR4};
     }
 
     public void next2 (View v) {
         allOptions[2].setVisibility(View.VISIBLE);
         allButtons[0].setVisibility(View.INVISIBLE);
         allButtons[1].setVisibility(View.VISIBLE);
-        optionsCount = 3;
+        removeButtons[0].setVisibility(View.VISIBLE);
+        optionsCount++;
 
     }
     public void next3 (View v) {
         allOptions[3].setVisibility(View.VISIBLE);
         allButtons[1].setVisibility(View.INVISIBLE);
         allButtons[2].setVisibility(View.VISIBLE);
-        optionsCount = 4 ;
+        removeButtons[0].setVisibility(View.INVISIBLE);
+        removeButtons[1].setVisibility(View.VISIBLE);
+        optionsCount++;
     }
     public void next4 (View v) {
         allOptions[4].setVisibility(View.VISIBLE);
         allButtons[2].setVisibility(View.INVISIBLE);
         allButtons[3].setVisibility(View.VISIBLE);
-        optionsCount = 5;
+        removeButtons[1].setVisibility(View.INVISIBLE);
+        removeButtons[2].setVisibility(View.VISIBLE);
+        optionsCount++;
     }
     public void next5 (View v) {
         allOptions[5].setVisibility(View.VISIBLE);
         allButtons[3].setVisibility(View.INVISIBLE);
-        optionsCount = 6;
+        removeButtons[2].setVisibility(View.INVISIBLE);
+        removeButtons[3].setVisibility(View.VISIBLE);
+        optionsCount++;
+    }
+
+    public void previous1 (View v) {
+        allOptions[2].setVisibility(View.INVISIBLE);
+        allButtons[1].setVisibility(View.INVISIBLE);
+        allButtons[0].setVisibility(View.VISIBLE);
+        removeButtons[0].setVisibility(View.INVISIBLE);
+        optionsCount--;
+    }
+
+    public void previous2 (View v) {
+        removeButtons[1].setVisibility(View.INVISIBLE);
+        removeButtons[0].setVisibility(View.VISIBLE);
+        allButtons[2].setVisibility(View.INVISIBLE);
+        allButtons[1].setVisibility(View.VISIBLE);
+        allOptions[3].setVisibility(View.INVISIBLE);
+        optionsCount--;
+
+    }
+
+    public void previous3 (View v) {
+        removeButtons[2].setVisibility(View.INVISIBLE);
+        removeButtons[1].setVisibility(View.VISIBLE);
+        allButtons[3].setVisibility(View.INVISIBLE);
+        allButtons[2].setVisibility(View.VISIBLE);
+        allOptions[4].setVisibility(View.INVISIBLE);
+        optionsCount--;
+
+    }
+
+    public void previous4 (View v) {
+        removeButtons[3].setVisibility(View.INVISIBLE);
+        removeButtons[2].setVisibility(View.VISIBLE);
+        allButtons[3].setVisibility(View.VISIBLE);
+        allOptions[5].setVisibility(View.INVISIBLE);
+        optionsCount--;
     }
 
     public void toAddFriend (View v) {
@@ -118,7 +169,7 @@ public class CreationSondageActivity extends Activity {
 
         //Validation
         if (incorrectValue) {
-            MiniPollApp.notifyShort(R.string.surveys_manage_invalid_value);
+            MiniPollApp.notifyShort(R.string.create_survey_error);
         }
         else {
             Intent intent = new Intent(this, CreationSondageActivityFriends.class);
