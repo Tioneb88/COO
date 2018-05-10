@@ -55,17 +55,19 @@ public class ShowQuestActivity extends Activity implements AdapterView.OnItemCli
         //allScores = new TextView[]{description};
         allPropositions = new Button[] {value1, value2, value3, value4};
 
+        /*propositions = Question.loadPropositionsQuest(Option.get(noptions));
+=======
         //==========================================================================
         //Remarque Arnaud: cela m'empêchait de compiler donc j'ai mis en commentaires
         //==========================================================================
         /*
         propositions = Question.loadPropositionsQuest(Option.get(noptions));
+>>>>>>> b7e3c3ff0f162a21ca84f7705deff85eb7b0fd4c
         //nbrePossibilites = propositions.size();
         for (int i=0; i<4;i++){
             allPropositions[i].setText(propositions.get(i));
         }
         */
-
 
     }
 
@@ -99,5 +101,4 @@ public class ShowQuestActivity extends Activity implements AdapterView.OnItemCli
 
 
     }
-
 }

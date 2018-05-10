@@ -479,7 +479,7 @@ public class User {
             ContentValues newValues = new ContentValues();
             newValues.put(COL_MDP, newPassword);
 
-            int count = db.update(BDD_TABLE, newValues, COL_ID + "='" + this.getId()+"'", null);
+            int count = db.update(BDD_TABLE, newValues, COL_ID + "='" + this.getId() + "'", null);
             if (count == 1) {
                 // seule 1 colonne a été mise à jour
                 this.setPassword(newPassword);

@@ -1,5 +1,6 @@
 package lsinf1225.mini_poll.model;
 
+import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.SparseArray;
@@ -26,11 +27,20 @@ import lsinf1225.mini_poll.MySQLiteHelper;
  */
 public class Aide {
 
+    //colonne commune
     private static final String COL_NAIDE = "Naide";
+
+    //table AIDE
+    private static final String BDD_TABLE = "AIDE";
     private static final String COL_ID = "Identifiant";
     private static final String COL_DESCRIPTION = "Description";
     private static final String COL_ACTIVITE = "Activite";
-    private static final String BDD_TABLE = "AIDE";
+
+    //table OPTIONA
+    private static final String BDD_TABLE_OPTIONS = "OPTIONA";
+    private static final String COL_NOPTIONSA = "NoptionsA";
+    private static final String COL_TEXTE = "Texte";
+    private static final String COL_IMAGE = "Image";
 
     /**
      * Contient les instances déjà existantes des questionnaires afin d'éviter de créer deux instances
@@ -272,5 +282,76 @@ public class Aide {
         return new Aide(nAide,null,null,0);
     }
 
+    /**
+     * Va chercher le dernier numéro d'identification unique de demande d'aide.
+     */
+    public static int nextAideId() {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // On va chercher tous les identifiants de l'application.
+        Cursor cursor = db.rawQuery("SELECT Naide FROM AIDE ORDER BY Naide DESC", null );
+
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+        int Naide = cursor.getInt(0);
+
+        cursor.close();
+        db.close();
+        return Naide+1;
+    }
+
+    /**
+     * Va chercher le dernier numéro d'identification unique d'option de demande d'aide.
+     */
+    public static int nextOptionId() {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // On va chercher tous les identifiants de l'application.
+        Cursor cursor = db.rawQuery("SELECT NoptionsA FROM OPTIONA ORDER BY NoptionsA DESC", null );
+
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+        int NoptionA = cursor.getInt(0);
+
+        cursor.close();
+        db.close();
+        return NoptionA+1;
+    }
+
+    /**
+     * Ajoute un utilisateur et ses informations dans la base de données. (pour la création de compte)
+     */
+    public static void createHelp(String id, String description, String proposal, String proposal2, String friend) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Récupération des identifiants uniques de demandes d'aide et d'options de demande d'aide.
+        int nextAideId = nextAideId();
+        int nextOptionId = nextOptionId();
+
+        // Nouvelles informations
+        ContentValues aide = new ContentValues();
+        aide.put(COL_NAIDE, nextAideId);
+        aide.put(COL_ID, id);
+        aide.put(COL_DESCRIPTION, description);
+        aide.put(COL_ACTIVITE, 1);
+
+        ContentValues optionA = new ContentValues();
+        optionA.put(COL_NOPTIONSA, nextOptionId);
+        optionA.put(COL_NAIDE, nextAideId);
+        optionA.put(COL_TEXTE, proposal);
+
+        ContentValues optionB = new ContentValues();
+        optionB.put(COL_NOPTIONSA, nextOptionId+1);
+        optionB.put(COL_NAIDE, nextAideId);
+        optionB.put(COL_TEXTE, proposal2);
+
+        // Insertion dans la base de données
+        db.insert(BDD_TABLE, null, aide);
+        db.insert(BDD_TABLE_OPTIONS, null, optionA);
+        db.insert(BDD_TABLE_OPTIONS, null, optionB);
+    }
 }
 
