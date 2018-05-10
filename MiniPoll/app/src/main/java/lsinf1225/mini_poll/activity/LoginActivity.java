@@ -95,7 +95,7 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
             startActivity(intent);
         } else {
             MiniPollApp.notifyLong(R.string.login_password_wrong);
-        }
+    }
     }
 
     /**

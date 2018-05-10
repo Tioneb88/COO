@@ -1,6 +1,7 @@
 package lsinf1225.mini_poll.model;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.SparseArray;
 
@@ -92,5 +93,34 @@ public class ReponseQuest {
         return true;
     }
 
+    /**
+     * Vérifie si le nom d'utilisateur est déjà utilisé dans l'application.
+     */
+    public static boolean isAnswered(String id, int nquestions) {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        String[] colonnes = {COL_ID, COL_NQUESTIONS};
+
+        // On va chercher tous les identifiants de l'application.
+        Cursor cursor = db.rawQuery("SELECT colonnes FROM REPONSE", null);
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // On vérifie que l'identifiant n'est pas déjà utilisé.
+        while (!cursor.isAfterLast()) {
+            String identifiant = cursor.getString(0);
+            int nquest= cursor.getInt(1);
+            if(identifiant.equals(id) && nquest==nquestions)
+            {
+                return true;
+            }
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+        cursor.close();
+        db.close();
+        return false;
+    }
 
 }

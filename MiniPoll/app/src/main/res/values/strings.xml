@@ -118,6 +118,7 @@
     <string name="questionnary_manage_results_title">Résultats</string>
     <string name="questionnary_manage_results_message">Vous occupez actuellement la place </string>
     <string name="questionnary_manage_results_ranking">Classement </string>
+    <string name="deja_repondu_a_cette_question">Vous avez déjà donné une réponse à cette question </string>
 
     <!-- Gestion des demandes d'aide -->
     <string name="help_manage_title">Demandes d\'aide en cours</string>
