@@ -1,7 +1,6 @@
 package lsinf1225.mini_poll.activity.adapter;
 
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,6 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.Question;
 
@@ -84,7 +82,7 @@ public class MyQuestionListViewAdapter extends BaseAdapter {
         }
 
         // Récupération des deux éléments de notre vue dans le but d'y placer les données.
-        TextView nameTextView = convertView.findViewById(R.id.show_row_name);
+        TextView nameTextView = convertView.findViewById(R.id.user_id_row);
 
         // Récupération et placement des données.
         Question question = questions.get(position);

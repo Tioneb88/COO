@@ -88,6 +88,13 @@ public class ShowResultSondageActivity extends Activity {
 
     }
 
+    public void showParticipants(View v) {
+        Intent intent = new Intent (this, ShowListUsersActivity.class);
+        ArrayList<String> participants = Sondage.loadUsers(currentSondage.getNsondage());
+        intent.putExtra("usersIds",participants);
+        startActivity(intent);
+    }
+
     /**
      * Désactive le bouton de retour. Désactive le retour à l'activité précédente (donc l'écran de
      * connexion dans ce cas-ci) et affiche un message indiquant qu'il faut se déconnecter.

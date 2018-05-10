@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
@@ -88,7 +89,9 @@ public class MainActivity extends Activity {
      * Lance l'activité de consultation et de modification de la liste d'amis.
      */
     public void seeFriends(View v) {
-        Intent intent = new Intent(this, ShowListActivity.class);
+        Intent intent = new Intent(this, ShowListUsersActivity.class);
+        ArrayList<String> friends = User.getConnectedUser().getFriends();
+        intent.putExtra("usersIds",friends);
         startActivity(intent);
     }
 

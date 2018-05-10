@@ -128,6 +128,12 @@
         <activity
             android:name="lsinf1225.mini_poll.activity.CreationSondageActivitySummary"
             android:label="@string/create_resume_title" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ShowListUsersActivity"
+            android:label="@string/friends_list" />
+        <activity
+            android:name="lsinf1225.mini_poll.activity.ConsulterProfilUserActivity"
+            android:label="@string/his_profile_title" />
 
 
     </application>

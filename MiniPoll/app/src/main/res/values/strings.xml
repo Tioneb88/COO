@@ -54,6 +54,7 @@
 
     <!-- Profil -->
     <string name="my_profile_title">Mon profil</string>
+    <string name="his_profile_title">Profil</string>
     <string name="my_profile_change_username">Changer d\'identifiant ?</string>
     <string name="my_profile_change_password">Changer de mot de passe ?</string>
     <string name="my_profile_id_id">Identifiant : </string>
@@ -95,6 +96,7 @@
     <string name="poll_answer_title">Réponse</string>
     <string name="poll_results_title">Résultats</string>
     <string name="nothing_to_show">Aucun élément à afficher</string>
+    <string name="poll_participants">Participants</string>
 
     <!-- Gestion des sondages -->
     <string name="surveys_manage_title">Sondages en cours</string>
@@ -107,6 +109,7 @@
 
     <string name="surveys_manage_finalresults_title">Résultat final</string>
     <string name="surveys_manage_save">Enregistrer</string>
+
     <string name="surveys_manage_invalid_value">Un classement attribué a une valeur incorrecte.</string>
     <string name="surveys_manage_too_few_scores">Vous avez classé trop peu de possibilités. </string>
     <string name="surveys_manage_too_much_scores">Vous avez classé trop de possibilités.</string>

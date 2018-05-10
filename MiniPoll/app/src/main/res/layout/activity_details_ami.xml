@@ -68,7 +68,7 @@
         app:layout_constraintTop_toBottomOf="@+id/surname" />
 
     <TextView
-        android:id="@+id/mail"
+        android:id="@+id/mail_row"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -100,6 +100,6 @@
         android:text="@string/my_profile_change_password"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mail" />
+        app:layout_constraintTop_toBottomOf="@+id/mail_row" />
 
 </android.support.constraint.ConstraintLayout>

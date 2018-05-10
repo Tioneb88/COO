@@ -90,17 +90,10 @@ public class User {
      * @note Ce constructeur est privé (donc utilisable uniquement depuis cette classe). Cela permet
      * d'éviter d'avoir deux instances différentes d'un même utilisateur.
      */
-    private User(String userId, String userNom, String userPrenom, String userPassword, String userMail, String userPhoto, String userBff) {
+    private User(String userId) {
 
         this.id = userId;
-        this.nom = userNom;
-        this.password = userPassword;
-        this.prenom = userPrenom;
-        this.mail = userMail;
-        this.photo = userPhoto;
-        this.bff = userBff;
-        //User.userSparseArray.put(userId, this);
-        //User.userSparseArray.put(userMail, this);
+        loadData();
     }
 
     /**
@@ -237,7 +230,7 @@ public class User {
         // meilleur ami de l'utilisateur car ce n'est pas ce qui le caratérise le mieux.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
         // Colonnes à récupérer
-        String[] colonnes = {COL_ID, COL_NOM, COL_PRENOM, COL_MDP, COL_MAIL, COL_PHOTO, COL_BFF};
+        String[] colonnes = {COL_ID};
 
         // Requête de selection (SELECT)
         Cursor cursor = db.query(BDD_TABLE, colonnes, null, null, null, null, null);
@@ -250,22 +243,8 @@ public class User {
 
         // Tant qu'il y a des lignes.
         while (!cursor.isAfterLast()) {
-            // Récupération des informations de l'utilisateur pour chaque ligne.
             String userId = cursor.getString(0);
-            String userNom = cursor.getString(1);
-            String userPrenom = cursor.getString(2);
-            String userPassword = cursor.getString(3);
-            String userMail = cursor.getString(4);
-            String userPhoto = cursor.getString(5);
-            String userBff = cursor.getString(6);
-
-            // Vérification pour savoir s'il y a déjà une instance de cet utilisateur.
-            //User user = User.userSparseArray.get(userId);
-            User user=null;
-            if (user == null) {
-                // Si pas encore d'instance, création d'une nouvelle instance.
-                user = new User(userId, userNom, userPrenom,userPassword, userMail,userPhoto, userBff);
-            }
+            User user = new User (userId);
 
             // Ajout de l'utilisateur à la liste.
             users.add(user);
@@ -292,36 +271,11 @@ public class User {
      * @pre L'élément correspondant à l'id donné doit exister dans la base de données.
      */
     public static User get(String ciId) {
-        /*User ci = User.userSparseArray.get(Integer.parseInt(ciId));
-        if (ci != null) {
-            return ci;
-        }*/
-        String name= searchString(ciId, "Nom");
-        String prenom= searchString(ciId, "Prénom");
-        String mail= searchString(ciId, "Mail");
-        String mdp= searchString(ciId, "MDP");
-        String bff= searchString(ciId, "Meilleur_ami");
-        String photo= searchString(ciId, "Photo");
-        return new User( ciId, name, prenom, mdp, mail, photo ,bff);
+        return new User(ciId);
     }
 
-    public static String searchString(String Id, String searchQuery){
-        // Critères de sélection (partie WHERE) : appartiennent à l'utilisateur courant et ont un nom
-        // correspondant à la requête de recherche.
-        String selection = COL_ID + " = ? AND " + COL_NOM + " LIKE ?";
-        String[] selectionArgs = new String[]{String.valueOf(Id), "%" + searchQuery + "%"};
 
-        return getUsersString(Id, selection, selectionArgs);
-    }
 
-    public static String getUsersString( String Id, String selection, String[] selectionArgs) {
-        // Critère de sélection : appartient à l'utilisateur courant.
-        selection = COL_ID + " = ?";
-        selectionArgs = new String[]{String.valueOf(Id)};
-
-        // Le critère de sélection est passé à la sous-méthode de récupération des éléments.
-        return getUsersString(Id, selection, selectionArgs);
-    }
     /*
      * Inverse l'ordre de tri (ASC pour ascendant et DESC pour descendant).
      */
@@ -380,7 +334,6 @@ public class User {
         while (!cursor.isAfterLast()) {
             // Récupération des informations du sondage pour chaque ligne.
             String friend = cursor.getString(0);
-            Log.d("tagCursor",friend);
             friends.add(friend);
             // Passe à la ligne suivante.
             cursor.moveToNext();
@@ -440,7 +393,7 @@ public class User {
         db.insert(BDD_TABLE, null, user);
 
         // Mise à jour de l'utilisateur connecté
-        User.connectedUser = new User(id, name, firstname, password, mail, null, null);
+        User.connectedUser = new User(id);
     }
 
     /**
@@ -538,6 +491,44 @@ public class User {
             //db.close();
         }
         return -1;
+    }
+
+
+    /**
+     * (Re)charge les informations depuis la base de données.
+     *
+     * @pre L'id de l'élément est indiqué dans this.id et l'élément existe dans la base de données.
+     * @post Les informations de l'élément sont chargées dans les variables d'instance de la
+     * classe.
+     */
+    private void loadData() {
+        // Récupération de la base de données en mode "lecture".
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Colonnes pour lesquelles il nous faut les données.
+        String[] columns = new String[]{ COL_MDP, COL_NOM, COL_PRENOM, COL_MAIL, COL_PHOTO, COL_BFF};
+
+        // Critères de sélection de la ligne :
+        String selection = COL_ID + " = ? ";
+        String[] selectionArgs = new String[]{String.valueOf(id)};
+
+        // Requête SELECT à la base de données.
+        Cursor c = db.query(BDD_TABLE, columns, selection, selectionArgs, null, null, null);
+
+        c.moveToFirst();
+        while (!c.isAfterLast()) {
+            this.password = c.getString(0);
+            this.nom = c.getString(1);
+            this.prenom = c.getString(2);
+            this.mail = c.getString(3);
+            this.photo = c.getString(4);
+            this.bff = c.getString(5);
+            c.moveToNext();
+        }
+
+        // Fermeture du curseur et de la base de données.
+        c.close();
+        db.close();
     }
 
 }

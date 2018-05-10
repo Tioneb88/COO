@@ -19,7 +19,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="16dp"
-            android:text="@string/create_survey_choice_description"
+            android:text="@string/poll_manage_question_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -168,12 +168,12 @@
             android:layout_marginEnd="52dp"
             android:layout_marginRight="52dp"
             android:layout_marginTop="80dp"
-            android:background="@color/colorPrimary"
+            android:background="@color/helpBlue"
+            android:onClick="next2"
             android:text="@string/create_next_element"
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:visibility="visible"
-            android:onClick="next2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/nbre_choix"
             tools:text="+" />

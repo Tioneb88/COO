@@ -108,7 +108,7 @@ tools:context="lsinf1225.mini_poll.activity.ConsulterProfilActivity">
             app:layout_constraintTop_toBottomOf="@+id/surname" />
 
         <TextView
-            android:id="@+id/mail"
+            android:id="@+id/mail_row"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
@@ -127,7 +127,7 @@ tools:context="lsinf1225.mini_poll.activity.ConsulterProfilActivity">
             android:layout_marginStart="10dp"
             android:padding="@dimen/default_padding"
             android:text="@string/app_user_bff"
-            app:layout_constraintTop_toBottomOf="@+id/mail" />
+            app:layout_constraintTop_toBottomOf="@+id/mail_row" />
 
     </LinearLayout>
 

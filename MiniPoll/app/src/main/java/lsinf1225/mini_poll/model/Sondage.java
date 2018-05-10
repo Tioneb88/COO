@@ -228,6 +228,39 @@ public class Sondage {
     }
 
     /**
+     * Retourne la liste des utilisateurs participant au sondage
+     * @param nSondage
+     * @return ArrayList<String> contenant les utilisateurs en question
+     */
+    public static ArrayList<String> loadUsers(int nSondage) {
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        Log.d("tagText", Integer.toString(nSondage));
+        ArrayList<String> users = new ArrayList<String>();
+        //recuperation de tous les scores du sondage
+
+
+        Cursor cursor = db.rawQuery("SELECT P.Identifiant "+
+                "FROM PARTICIPANTS_SONDAGE P "+
+                "WHERE P.Nsondage = \'"+nSondage+"\'",null);
+
+
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String user = cursor.getString(0);
+            users.add(user);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+
+        return users;
+    }
+
+    /**
      * Méthode d'accès aux scores d'un sondage
      * @param nSondage
      * @param user

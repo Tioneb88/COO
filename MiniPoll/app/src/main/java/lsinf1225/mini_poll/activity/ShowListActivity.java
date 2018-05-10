@@ -42,7 +42,7 @@ public class ShowListActivity extends Activity implements AdapterView.OnItemClic
         loadAmis();
 
         // Afin d'avoir un affichage en continu il faudra mettre ScrollView par la suite
-        ListView myListView = findViewById(R.id.show_listViewAmi);
+        ListView myListView = findViewById(R.id.show_listViewUser);
 
         // Création de l'adapter pour faire la liaison entre les données (amis) et
         // l'affichage de chaque ligne de la liste.

@@ -20,15 +20,18 @@ import java.io.InputStream;
  * Created by margauxgerard on 30/04/18.
  */
 
-public class ConsulterProfilActivity extends Activity {
+public class ConsulterProfilUserActivity extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_consulter_profil);
+        setContentView(R.layout.activity_consulter_profil_user);
 
+        Intent intent = getIntent();
+        String userIdentifiant = intent.getStringExtra("userId");
+        User currentUser = User.get(userIdentifiant);
         //Affichage de la photo
-        String photoFile = User.getConnectedUser().getPhoto();
+        String photoFile = currentUser.getPhoto();
 
         if(photoFile != null) {
             // Récupérer l'AssetManager
@@ -40,7 +43,7 @@ public class ConsulterProfilActivity extends Activity {
                 open = manager.open(photoFile);
                 Bitmap bitmap = BitmapFactory.decodeStream(open);
                 // Assigner le bitmap à une ImageView dans cette mise en page
-                ImageView view = (ImageView) findViewById(R.id.my_profile_picture);
+                ImageView view = (ImageView) findViewById(R.id.my_profile_picture_autre);
                 view.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -55,46 +58,32 @@ public class ConsulterProfilActivity extends Activity {
             }
         }
 
-        TextView username = findViewById(R.id.username);
-        username.setText(getString(R.string.app_user_username) + User.getConnectedUser().getId());
+        TextView username = findViewById(R.id.username_autre);
+        username.setText(getString(R.string.app_user_username) + currentUser.getId());
 
-        TextView surname = findViewById(R.id.surname);
-        surname.setText(getString(R.string.app_user_surname) + User.getConnectedUser().getNom());
+        TextView surname = findViewById(R.id.surname_autre);
+        surname.setText(getString(R.string.app_user_surname) + currentUser.getNom());
 
-        TextView firstname = findViewById(R.id.firstname);
-        firstname.setText(getString(R.string.app_user_firstname) + User.getConnectedUser().getPrenom());
+        TextView firstname = findViewById(R.id.firstname_autre);
+        firstname.setText(getString(R.string.app_user_firstname) + currentUser.getPrenom());
 
-        TextView mail = findViewById(R.id.mail_row);
-        mail.setText(getString(R.string.app_user_mail) + User.getConnectedUser().getMail());
+        TextView mail = findViewById(R.id.mail_autre);
+        mail.setText(getString(R.string.app_user_mail) + currentUser.getMail());
 
         //Affichage du meilleur ami s'il y en a un sinon, on met une barre (/).
         if(User.getConnectedUser().getBff() == null)
         {
-            TextView bff = findViewById(R.id.bff);
+            TextView bff = findViewById(R.id.bff_autre);
             bff.setText(getString(R.string.app_user_bff) + " : /");
         }
         else
         {
-            TextView bff = findViewById(R.id.bff);
-            bff.setText(getString(R.string.app_user_bff) + " : " + User.getConnectedUser().getBff());
+            TextView bff = findViewById(R.id.bff_autre);
+            bff.setText(getString(R.string.app_user_bff) + " : " + currentUser.getBff());
         }
 
     }
 
-    /**
-     * Lance l'activité de modification du nom d'utilisateur.
-     */
-    public void changeUsername(View v) {
-        Intent intent = new Intent(this, ChangeUsernameActivity.class);
-        startActivity(intent);
-    }
 
-    /**
-     * Lance l'activité de changement de mot de passe.
-     */
-    public void changePassword(View v) {
-        Intent intent = new Intent(this, ChangePasswordActivity.class);
-        startActivity(intent);
-    }
 
 }
