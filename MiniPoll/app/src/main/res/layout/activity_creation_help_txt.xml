@@ -9,6 +9,20 @@
     android:layout_height="match_parent"
     tools:context="lsinf1225.mini_poll.activity.CreationAideTxtActivity" >
 
+    <EditText
+        android:id="@+id/create_help_txt_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="80dp"
+        android:hint="@string/create_description"
+        android:imeActionLabel="@string/create_description"
+        android:imeOptions="actionDone"
+        android:inputType="text"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/create_help_txt"
         android:layout_width="match_parent"
@@ -19,7 +33,7 @@
         android:layout_marginStart="10dp"
         android:text="@string/create_help_answers_title"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/create_help_txt_description" />
 
     <EditText
         android:id="@+id/create_help_txt_proposal"

@@ -55,16 +55,22 @@ public class CreationAideActivity extends Activity {
         Spinner formatSpinner = findViewById(R.id.create_help_format_spinner);
         String chosenFormat = formatSpinner.getSelectedItem().toString();
 
+        // On récupère l'ami choisi par l'utilisateur.
+        Spinner friendSpinner = findViewById(R.id.create_help_friend_spinner);
+        String chosenFriend = friendSpinner.getSelectedItem().toString();
+
         if(chosenFormat.equals(getString(R.string.create_format_text)))
         {
             // Format texte
             Intent intent = new Intent(this, CreationAideTxtActivity.class);
+            intent.putExtra("chosenFriend", chosenFriend);
             startActivity(intent);
         }
         else
         {
             // Format image
             Intent intent = new Intent(this, CreationAidePictureActivity.class);
+            intent.putExtra("chosenFriend", chosenFriend);
             startActivity(intent);
         }
     }

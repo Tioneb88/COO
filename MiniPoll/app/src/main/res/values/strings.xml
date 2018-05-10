@@ -8,6 +8,7 @@
     <string name="app_back">Précédent</string>
     <string name="app_modification">Modifier</string>
     <string name="app_confirmation">Confirmer</string>
+    <string name="app_create">Créer</string>
     <string name="app_user_username">Identifiant</string>
     <string name="app_user_password">Mot de passe</string>
     <string name="app_user_surname">Nom</string>
@@ -134,6 +135,7 @@
     <string name="create_main_questionnary_title">Questionnaire</string>
     <string name="create_main_help_title">Demande d\'aide à un ami</string>
     <string name="create_main_title">Création d\'une activité</string>
+    <string name="create_next">Suivant</string>
 
     <string name="create_surveyORquestionnary_friends_title">Amis à sonder</string>
     <string name="create_help_friends_title">Choisissez un ami à sonder : </string>
@@ -143,7 +145,7 @@
     <string name="create_format_text">Texte</string>
 
     <string name="create_resume_title">Résumé</string>
-    <string name="create_next">Suivant</string>
+
     <string name="create_next_element">+</string>
 
     <!-- Création de sondages -->
@@ -180,10 +182,12 @@
     <string name="create_questionnary_order_title">Visualisation de l\'ordre des questions</string>
 
     <!-- Création de demande d'aide -->
+    <string name="create_description">Description </string>
     <string name="create_help_answers_title">Veuillez insérer les deux propositions : </string>
     <string name="create_help_answers_proposal">Proposition 1</string>
     <string name="create_help_answers_proposal2">Proposition 2</string>
 
-    <string name="create_help_prefer_title">Que préfères-tu ?</string>
+    <string name="create_help_friend_chosen">Ami invité à t\'aider </string>
+    <string name="create_help_proposal_error">Veuillez choisir deux propositions différentes ! </string>
 
 </resources>
