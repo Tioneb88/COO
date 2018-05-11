@@ -8,6 +8,9 @@ import android.view.View;
 import lsinf1225.mini_poll.R;
 
 /**
+ *
+ * Classe permettant d'afficher un menu redirigeant vers les différentes outils de création de sondage
+ * Cette classe n'est pas utilisée car nous n'avons pas implémenté plus d'un outil de création de sondage.
  * Created by margauxgerard on 30/04/18.
  */
 
@@ -27,19 +30,24 @@ public class CreationActivity extends Activity {
         startActivity(intent);
     }
 
+
     /**
      * Lance l'activité de création de questionnaire.
      */
+    /*
     public void createQuestionnary(View v) {
         Intent intent = new Intent(this, CreationQuestActivity.class);
         startActivity(intent);
     }
+    */
 
     /**
      * Lance l'activité de création de demande d'aide à un ami.
      */
+
     public void createHelp(View v) {
         Intent intent = new Intent(this, CreationAideActivity.class);
         startActivity(intent);
     }
+
 }

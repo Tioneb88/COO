@@ -16,7 +16,8 @@ import lsinf1225.mini_poll.model.User;
 
 public class ShowResultQuestionnaireActivity extends Activity{
     /**
-     * Gère l'affichage des résultats d'un sondage pour l'utilisateur connecté s'il a déjà répondu
+     * Class pas utilisée dans l'apk
+     * Gère l'affichage des résultats d'un questionnaire pour l'utilisateur connecté s'il a déjà répondu
      *
      * @author Margaux GERARD
      * @version 1

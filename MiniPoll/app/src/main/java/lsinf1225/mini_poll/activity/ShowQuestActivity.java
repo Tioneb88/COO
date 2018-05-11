@@ -22,6 +22,8 @@ import lsinf1225.mini_poll.model.User;
 import java.util.ArrayList;
 
 /**
+ * Classe pas utilisée dans l'apk
+ * Permet d'afficher une question
  * Created by margauxgerard on 7/05/18.
  */
 

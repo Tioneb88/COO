@@ -21,6 +21,8 @@ import lsinf1225.mini_poll.model.Questionnaire;
 
 
 /**
+ * Classe non utilisée dans l'apk.
+ * Classe permettant la création d'une réponse à un questionnaire
  * Created by margauxgerard on 30/04/18.
  */
 

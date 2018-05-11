@@ -13,11 +13,7 @@ import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.Questionnaire;
 
 /**
- * Gère l'affichage personnalisé de notre liste.
- * <p>
- * Cette classe permet de créer un Adapter personnalisé pour notre liste d'éléments de collection.
- * De cette manière il nous est possible d'utiliser un layout particulier (ici
- * collected_item_row.xml) pour chaque ligne reprenant le nom de l'élément et sa note (rating).
+ * Gère l'affichage personnalisé d'objets questionnaires
  *
  * @author Margaux
  * @version 1

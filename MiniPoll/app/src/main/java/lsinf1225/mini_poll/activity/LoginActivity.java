@@ -6,6 +6,7 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -121,15 +122,22 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
         //User user = (User) userSpinner.getSelectedItem();
         String userId = autoComplete.getText().toString();
         User user = User.get(userId);
-        EditText passwordEditText = findViewById(R.id.login_password);
-        String password = passwordEditText.getText().toString();
+        Log.d("usererror",user.toString());
+        if (user.getPassword()==null) {
+            MiniPollApp.notifyLong(R.string.login_id_wrong);
+        }
+        else {
+            EditText passwordEditText = findViewById(R.id.login_password);
+            String password = passwordEditText.getText().toString();
 
-        if (user.login(password)) {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
-        } else {
-            MiniPollApp.notifyLong(R.string.login_password_wrong);
-    }
+            if (user.login(password)) {
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            } else {
+                MiniPollApp.notifyLong(R.string.login_password_wrong);
+            }
+
+        }
     }
 
     /**

@@ -17,6 +17,8 @@ import android.widget.RatingBar;
 import java.util.ArrayList;
 
 /**
+ * Classe non utilisée dans l'apk
+ * Classe permettant l'affichage d'une demande d'aide
  * Created by margauxgerard on 6/05/18.
  *  Gère l'affichage de l'interface de participation à une aide pour l'utilisateur connecté
  */

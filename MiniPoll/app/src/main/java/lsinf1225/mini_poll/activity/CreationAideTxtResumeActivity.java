@@ -11,6 +11,10 @@ import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.Aide;
 import lsinf1225.mini_poll.model.User;
 
+/**
+ *
+ * Gère l'affichage d'un résumé lors de la création d'une demande d'aide avec un format text
+ */
 public class CreationAideTxtResumeActivity extends Activity {
 
     @Override

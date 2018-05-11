@@ -50,13 +50,6 @@
             android:name="lsinf1225.mini_poll.activity.ChangePasswordActivity"
             android:label="@string/change_password_title" />
 
-        <!-- Gestion des amis -->
-        <activity
-            android:name="lsinf1225.mini_poll.activity.ShowListActivity"
-            android:label="@string/friends_list" />
-        <activity
-            android:name="lsinf1225.mini_poll.activity.ShowAmiActivity"
-            android:label="@string/friends_mine" />
 
         <!-- Réponse à un sondage par accord -->
         <activity
@@ -102,9 +95,6 @@
             android:label="@string/create_main_survey_title" />
 
         <!-- Création d'un questionnaire -->
-        <activity
-            android:name="lsinf1225.mini_poll.activity.CreationQuestActivity"
-            android:label="@string/create_main_questionnary_title" />
 
         <!-- Création d'une demande d'aide à un ami -->
         <activity

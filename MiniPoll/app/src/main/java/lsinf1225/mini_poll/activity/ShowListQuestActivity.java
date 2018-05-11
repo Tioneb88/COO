@@ -18,7 +18,8 @@ import lsinf1225.mini_poll.model.Questionnaire;
 
 
 /**
- * Gère l'affichage des sondages auxquels doit répondre l'utilisateur connecté
+ * Classe pas utilisée dans l'apk
+ * Gère l'affichage des questionnaires auxquels doit répondre l'utilisateur connecté
  *
  * @author Margaux
  * @version 1

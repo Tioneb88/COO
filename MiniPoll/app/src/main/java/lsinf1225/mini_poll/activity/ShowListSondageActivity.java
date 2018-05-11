@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.util.Log;
+
 import java.util.ArrayList;
 
 import lsinf1225.mini_poll.MiniPollApp;
@@ -31,14 +31,12 @@ public class ShowListSondageActivity extends Activity implements AdapterView.OnI
 
         setContentView(R.layout.activity_show_list_sondages);
 
-        // Chargement des éléments à afficher dans la variable de classe songs
+        // Chargement des éléments à afficher dans la variable de classe sondages
         loadSondages();
 
 
+        //Initialisation du listview et de son adapter
         ListView myListView = findViewById(R.id.show_listViewSondages);
-
-        // Création de l'adapter pour faire la liaison entre les données (songs) et
-        // l'affichage de chaque ligne de la liste.
         myListViewAdapter = new MySondageListViewAdapter(this, sondages);
         myListView.setAdapter(myListViewAdapter);
 
@@ -57,7 +55,7 @@ public class ShowListSondageActivity extends Activity implements AdapterView.OnI
      * recherche est passée lors du lancement de l'activité, effectue la recherche et charge la
      * liste des résultats.
      *
-     * !!!!!!!!!!!!!AJOUTER METHODE SEARCHSONGS (QUERY)
+     *
      */
     private void loadSondages() {
 
@@ -96,7 +94,7 @@ public class ShowListSondageActivity extends Activity implements AdapterView.OnI
 
         loadSondages();
 
-        myListViewAdapter.setSongs(sondages);
+        myListViewAdapter.setSondages(sondages);
     }
 
     /**

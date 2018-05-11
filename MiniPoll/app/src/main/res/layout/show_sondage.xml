@@ -80,7 +80,6 @@
             android:id="@+id/option_sond6"
             android:layout_width="185dp"
             android:layout_height="45dp"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
@@ -88,12 +87,10 @@
             android:layout_marginTop="8dp"
             android:text="TextView"
             android:visibility="invisible"
-            app:layout_constraintBottom_toTopOf="@+id/enregistrerScores"
             app:layout_constraintEnd_toStartOf="@+id/editText3"
             app:layout_constraintHorizontal_bias="0.556"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/option_sond5"
-            app:layout_constraintVertical_bias="0.06" />
+            app:layout_constraintTop_toBottomOf="@+id/option_sond5" />
 
         <TextView
             android:id="@+id/sondageDescription"
@@ -120,7 +117,7 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="8dp"
             android:text="TextView"
             android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/editText3"
@@ -212,19 +209,16 @@
         <Button
             android:id="@+id/enregistrerScores"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
+            android:layout_height="41dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="8dp"
             android:onClick="saveScores"
             android:text="@string/surveys_manage_save"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/option6" />
+            app:layout_constraintTop_toBottomOf="@+id/option_sond6" />
 
         <View
             android:id="@+id/divider"

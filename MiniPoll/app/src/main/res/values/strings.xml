@@ -25,6 +25,7 @@
     <string name="login_password_forgotten">Mot de passe oublié ?</string>
     <string name="login_password_forgotten_notification">Veuillez contacter l\'administrateur de l\'application afin d\'obtenir un nouvel accès à votre compte. </string>
     <string name="login_password_wrong">Votre mot de passe est incorrect</string>
+    <string name="login_id_wrong">L\'identifiant soumis est incorrect</string>
     <string name="login_label">Login</string>
 
     <!-- Création d'un compte -->

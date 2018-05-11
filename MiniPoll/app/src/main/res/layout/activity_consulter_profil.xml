@@ -44,21 +44,6 @@ tools:context="lsinf1225.mini_poll.activity.ConsulterProfilActivity">
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/my_profile_picture" />
 
-        <Button
-            android:id="@+id/change_username_btn"
-            style="?android:attr/borderlessButtonStyle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:onClick="changeUsername"
-            android:textColor="@color/helpBlue"
-            android:textSize="12sp"
-            android:textStyle="italic"
-            android:text="@string/my_profile_change_username"
-            app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintRight_toRightOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/username" />
-
         <TextView
             android:id="@+id/password_title"
             android:layout_width="match_parent"

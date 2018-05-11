@@ -7,6 +7,11 @@ import android.view.View;
 
 import lsinf1225.mini_poll.R;
 
+/**
+ * Pas utilisé dans l'.apk
+ * Gère la création d'une demande d'aide qui a spécifié un format de type Image
+ */
+
 public class CreationAidePictureActivity extends Activity {
 
     @Override

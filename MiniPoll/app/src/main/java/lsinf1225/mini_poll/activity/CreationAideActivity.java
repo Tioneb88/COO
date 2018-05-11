@@ -13,6 +13,7 @@ import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.User;
 
 /**
+ *
  * Gère la création de demande d'aide.
  * @author Groupe 5
  * @version 2
@@ -30,30 +31,30 @@ public class CreationAideActivity extends Activity {
 
         // On récupère les spinner du layout.
         friendSpinner = findViewById(R.id.create_help_friend_spinner);
-        formatSpinner = findViewById(R.id.create_help_format_spinner);
+        //formatSpinner = findViewById(R.id.create_help_format_spinner);
 
         // Obtention de la liste des amis de l'utilisateur courant.
         ArrayList<String> friends = User.getConnectedUser().getFriends();
 
         // On crée et on remplit une liste des différents formats.
-        ArrayList<String> formats = new ArrayList<String>();
-        formats.add(getString(R.string.create_format_text));
-        formats.add(getString(R.string.create_format_picture));
+        //ArrayList<String> formats = new ArrayList<String>();
+        //formats.add(getString(R.string.create_format_text));
+        //formats.add(getString(R.string.create_format_picture));
 
         // Création des ArrayAdapter en utilisant la liste des amis et des formats et un layout pour le spinner existant dans Android.
         ArrayAdapter<String> adapterFriend = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, friends);
-        ArrayAdapter<String> adapterFormat = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, formats);
+        //ArrayAdapter<String> adapterFormat = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, formats);
 
         // On lie les adapter au spinner.
         friendSpinner.setAdapter(adapterFriend);
-        formatSpinner.setAdapter(adapterFormat);
+        //formatSpinner.setAdapter(adapterFormat);
     }
 
     public void next(View v) {
 
         // On récupère le format choisi par l'utilisateur.
-        Spinner formatSpinner = findViewById(R.id.create_help_format_spinner);
-        String chosenFormat = formatSpinner.getSelectedItem().toString();
+        //Spinner formatSpinner = findViewById(R.id.create_help_format_spinner);
+        String chosenFormat = "Texte";
 
         // On récupère l'ami choisi par l'utilisateur.
         Spinner friendSpinner = findViewById(R.id.create_help_friend_spinner);

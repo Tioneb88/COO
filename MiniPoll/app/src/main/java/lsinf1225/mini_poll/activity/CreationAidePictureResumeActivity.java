@@ -7,6 +7,10 @@ import android.view.View;
 
 import lsinf1225.mini_poll.R;
 
+/**
+ * Pas utilisé dans l'.apk
+ * Gère l'affichage d'un résumé lors de la création d'une demande d'aide avec un format image
+ */
 public class CreationAidePictureResumeActivity extends Activity {
 
     @Override

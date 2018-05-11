@@ -104,18 +104,22 @@ public class MainActivity extends Activity {
     /**
      * Lance l'activité de réponse aux questionnaires.
      */
+    /**
     public void answerQuestionnary(View v) {
         Intent intent = new Intent(this, ShowListQuestActivity.class);
         startActivity(intent);
     }
+     */
 
     /**
      * Lance l'activité de réponse aux demandes d'aide.
      */
+
     public void answerHelp(View v) {
         Intent intent = new Intent(this, ShowListAideActivity.class);
         startActivity(intent);
     }
+
 
     /**
      * Lance l'activité de création de sondage.

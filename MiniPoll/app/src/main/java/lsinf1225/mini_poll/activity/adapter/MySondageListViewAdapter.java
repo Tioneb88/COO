@@ -98,7 +98,7 @@ public class MySondageListViewAdapter extends BaseAdapter {
      *
      * @param newSong La nouvelle liste des éléments de collection à afficher.
      */
-    public void setSongs(ArrayList<Sondage> newSong) {
+    public void setSondages(ArrayList<Sondage> newSong) {
         this.sondages = newSong;
         notifyDataSetChanged();
     }

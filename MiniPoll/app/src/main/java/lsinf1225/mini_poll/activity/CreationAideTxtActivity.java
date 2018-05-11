@@ -9,6 +9,10 @@ import android.widget.EditText;
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
 
+/**
+ *
+ * Gère l'affichage de la création d'une demande d'aide avec un format de type texte
+ */
 public class CreationAideTxtActivity extends Activity{
 
     @Override

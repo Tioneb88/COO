@@ -76,28 +76,16 @@
                 app:layout_constraintTop_toBottomOf="@+id/divider3" />
 
             <Button
-                android:id="@+id/main_questionnary_btn"
-                style="@style/main_btn"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:onClick="answerQuestionnary"
-                android:text="@string/main_activity_questionnary"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/main_agreement_btn" />
-
-            <Button
                 android:id="@+id/main_help_btn"
                 style="@style/main_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:onClick="answerHelp"
                 android:text="@string/main_activity_help"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/main_questionnary_btn" />
+                app:layout_constraintTop_toBottomOf="@+id/main_agreement_btn" />
 
             <Button
                 android:id="@+id/main_create_btn"

@@ -58,30 +58,19 @@
         app:layout_constraintTop_toBottomOf="@+id/create_firstname" />
 
     <Button
-        android:id="@+id/create_photo_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="30dp"
-        android:onClick="photo"
-        android:text="@string/create_picture"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_mail" />
-
-    <Button
         android:id="@+id/create_next_btn"
         style="?android:attr/borderlessButtonStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="112dp"
         android:drawableEnd="@drawable/ic_go"
         android:drawableRight="@drawable/ic_go"
-        android:layout_marginTop="40dp"
         android:onClick="create"
         android:text="@string/app_next"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/create_photo_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/create_mail" />
 
     <TextView
         android:id="@+id/create_advice"

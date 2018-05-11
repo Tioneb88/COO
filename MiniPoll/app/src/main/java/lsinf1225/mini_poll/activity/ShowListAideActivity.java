@@ -105,19 +105,20 @@ public class ShowListAideActivity extends Activity implements AdapterView.OnItem
      */
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        boolean answered = Aide.isAnswered(aides.get(position).getNaide());
+        //boolean answered = Aide.isAnswered(aides.get(position).getNaide());
 
         /**
          * Si l'utilisateur a déjà répondu, il est renvoyé vers les résultats de l'aide en cours
          * Sinon vers l'interface pour répondre a l'aide.
          */
 
-        //if (!answered) {
+        /**
         Intent intent = new Intent(this, ShowAideActivity.class);
         // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
         // récupérer celui-ci.
         intent.putExtra("nAide", aides.get(position).getNaide());
         startActivity(intent);
+         */
 
     }
 }

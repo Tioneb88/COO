@@ -1,6 +1,8 @@
 package lsinf1225.mini_poll.activity;
 
 /**
+ * Classe pas utilisée dans l'apk
+ * Gère l'affichage de questions dans une listview
  * Created by margauxgerard on 9/05/18.
  */
 import android.app.Activity;

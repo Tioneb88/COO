@@ -10,6 +10,11 @@ import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.User;
 
+/**
+ * Classe permettant le changement du mot de passe
+ */
+
+
 public class ChangePasswordActivity extends Activity {
 
     @Override

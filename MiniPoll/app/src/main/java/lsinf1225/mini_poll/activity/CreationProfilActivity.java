@@ -10,6 +10,9 @@ import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.User;
 
+/**
+ * Gère la création d'un nouveau compte utilisateur (étape 2)
+ */
 public class CreationProfilActivity extends Activity{
 
     @Override
@@ -48,8 +51,5 @@ public class CreationProfilActivity extends Activity{
         }
     }
 
-    public void photo(View v) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+
 }

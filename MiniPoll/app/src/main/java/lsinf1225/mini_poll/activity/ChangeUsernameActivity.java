@@ -10,6 +10,10 @@ import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.User;
 
+/**
+ * CLASSE NON UTILISEE CAR NE FONCTIONNE PAS
+ * Classe permettant de changer l'identifiant d'un utiliser
+ */
 public class ChangeUsernameActivity extends Activity {
 
     @Override

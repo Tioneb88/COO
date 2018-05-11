@@ -10,6 +10,10 @@ import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.User;
 
+/**
+ * Classe permettant la création d'un nouveau compte utilisateur
+ */
+
 public class CreationCompteActivity extends Activity{
 
     @Override

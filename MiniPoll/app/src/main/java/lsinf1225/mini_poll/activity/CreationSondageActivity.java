@@ -35,6 +35,8 @@ public class CreationSondageActivity extends Activity {
 
         description = findViewById(R.id.text_description);
         nbreChoix = findViewById(R.id.nbre_choix);
+
+        //Champs d'input pour chaque option
         EditText option1 = findViewById(R.id.option1);
         EditText option2 = findViewById(R.id.option2);
         EditText option3 = findViewById(R.id.option3);
@@ -44,6 +46,7 @@ public class CreationSondageActivity extends Activity {
 
         allOptions = new EditText[]{option1, option2, option3, option4, option5, option6};
 
+        //Boutons pour ajouter un champ input
         Button bt2 = findViewById(R.id.button2);
         Button bt3 = findViewById(R.id.button3);
         Button bt4 = findViewById(R.id.button4);
@@ -51,6 +54,7 @@ public class CreationSondageActivity extends Activity {
 
         allButtons = new Button[] {bt2, bt3, bt4, bt5};
 
+        //Boutons pour enlever un champ input
         Button btR1 = findViewById(R.id.buttonRemove);
         Button btR2 = findViewById(R.id.buttonRemove1);
         Button btR3 = findViewById(R.id.buttonRemove2);

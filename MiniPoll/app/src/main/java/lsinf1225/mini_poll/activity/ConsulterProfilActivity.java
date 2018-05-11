@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
+ * Classe permettant de consulter le profil de l'utilisateur connecté
  * Created by margauxgerard on 30/04/18.
  */
 
@@ -85,10 +86,12 @@ public class ConsulterProfilActivity extends Activity {
     /**
      * Lance l'activité de modification du nom d'utilisateur.
      */
+    /**
     public void changeUsername(View v) {
         Intent intent = new Intent(this, ChangeUsernameActivity.class);
         startActivity(intent);
     }
+     */
 
     /**
      * Lance l'activité de changement de mot de passe.
