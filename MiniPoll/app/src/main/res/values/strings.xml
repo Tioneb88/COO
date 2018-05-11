@@ -16,6 +16,7 @@
     <string name="app_user_mail">Adresse mail</string>
     <string name="app_user_bff">Meilleur ami</string>
     <string name="app_error"> Une erreur inattendue est survenue ! </string>
+    <string name="app_logo"> Logo de l'application </string>
 
     <!-- Login et connexion -->
     <string name="login_title">Se connecter</string>
@@ -59,11 +60,11 @@
     <string name="his_profile_title">Profil</string>
     <string name="my_profile_change_username">Changer d\'identifiant ?</string>
     <string name="my_profile_change_password">Changer de mot de passe ?</string>
-    <string name="my_profile_id_id">Identifiant : </string>
+    <string name="my_profile_id">Identifiant : </string>
     <string name="my_profile_mdp">Mot de passe : **********</string>
-    <string name="my_profile_mail_mail">Mail : </string>
-    <string name="my_profile_nom_nom">Nom : </string>
-    <string name="my_profile_prenom_prenom">Prénom : </string>
+    <string name="my_profile_mail">Mail : </string>
+    <string name="my_profile_nom">Nom : </string>
+    <string name="my_profile_prenom">Prénom : </string>
     <string name="my_profile_bff">Meilleur ami : </string>
     <string name="my_profile_picture">Ma photo de profil </string>
 

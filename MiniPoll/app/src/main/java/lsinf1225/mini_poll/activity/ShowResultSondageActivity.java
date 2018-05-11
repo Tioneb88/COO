@@ -40,6 +40,7 @@ public class ShowResultSondageActivity extends Activity {
         description.setText(currentSondage.getDescription());
 
 
+        //Options à afficher
         TextView option1 = findViewById(R.id.option_result1);
         TextView option2 = findViewById(R.id.option_result2);
         TextView option3 = findViewById(R.id.option_result3);
@@ -47,6 +48,7 @@ public class ShowResultSondageActivity extends Activity {
         TextView option5 = findViewById(R.id.option_result5);
         TextView option6 = findViewById(R.id.option_result6);
 
+        //Scores de l'utilisateur
         TextView you1 = findViewById(R.id.you1);
         TextView you2 = findViewById(R.id.you2);
         TextView you3 = findViewById(R.id.you3);
@@ -54,6 +56,7 @@ public class ShowResultSondageActivity extends Activity {
         TextView you5 = findViewById(R.id.you5);
         TextView you6 = findViewById(R.id.you6);
 
+        //Scores totaux
         TextView total1 = findViewById(R.id.total1);
         TextView total2 = findViewById(R.id.total2);
         TextView total3 = findViewById(R.id.total3);
@@ -70,6 +73,7 @@ public class ShowResultSondageActivity extends Activity {
         allYou = new TextView[] {you1, you2, you3, you4, you5, you6};
         allTotal = new TextView[] {total1, total2, total3,total4, total5, total6};
 
+        //Affichage des scores pour chaque possibilite
         for (int i = 0; i<nbrePossibilites; i++) {
             allPropositions[i].setVisibility(View.VISIBLE);
             allPropositions[i].setText(propositions.remove(0));
@@ -86,6 +90,11 @@ public class ShowResultSondageActivity extends Activity {
 
 
     }
+
+    /**
+     * Permet d'ouvrir une activité affichant les utilisateurs participants au sondage.
+     * @param v
+     */
 
     public void showParticipants(View v) {
         Intent intent = new Intent (this, ShowListUsersActivity.class);

@@ -12,6 +12,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_centerVertical="true"
         app:layout_constraintTop_toBottomOf="@+id/welcomeTxt">
@@ -35,10 +36,11 @@
 
             <Button
                 android:id="@+id/main_profile_btn"
+                style="@style/user_btn"
                 android:layout_width="196dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="28dp"
-                android:layout_marginRight="28dp"
+                android:layout_marginRight="15dp"
                 android:layout_marginTop="32dp"
                 android:onClick="seeProfile"
                 android:text="@string/main_activity_profile"
@@ -48,10 +50,11 @@
 
             <Button
                 android:id="@+id/main_friends_btn"
+                style="@style/user_btn"
                 android:layout_width="195dp"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="28dp"
-                android:layout_marginRight="28dp"
+                android:layout_marginRight="15dp"
                 android:layout_marginTop="20dp"
                 android:onClick="seeFriends"
                 android:text="@string/main_activity_manage_friends"

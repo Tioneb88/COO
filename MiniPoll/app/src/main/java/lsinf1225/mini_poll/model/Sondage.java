@@ -643,7 +643,7 @@ public class Sondage {
 
     /**
      * Retourne l'identifiant du dernier sondage actuellement dans la bd.
-     * @return
+     * @return l'identifiant unique du dernier sondage créé.
      */
     public static int getLatestSondage(){
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
@@ -653,13 +653,8 @@ public class Sondage {
                 "LIMIT 1",null);
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
-
-        // Tant qu'il y a des lignes.
-        int nSondage=0;
-        while (!cursor.isAfterLast()) {
-            nSondage = cursor.getInt(0);
-            cursor.moveToNext();
-        }
+        // Récupération de l'identifiant
+        int nSondage=cursor.getInt(0);
 
         // Fermeture du curseur et de la base de données.
         cursor.close();
@@ -669,7 +664,7 @@ public class Sondage {
 
     /**
     * Retourne l'identifiant de la derniere possibilite actuellement dans la bd.
-    * @return
+    * @return l'identifiant unique de la dernière possibilité créée.
     */
     public static int getLatestPossibilite(){
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
@@ -679,13 +674,8 @@ public class Sondage {
                 "LIMIT 1",null);
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
-
-        // Tant qu'il y a des lignes.
-        int nPoss=0;
-        while (!cursor.isAfterLast()) {
-            nPoss = cursor.getInt(0);
-            cursor.moveToNext();
-        }
+        // Récupération de l'identifiant
+        int nPoss=cursor.getInt(0);
 
         // Fermeture du curseur et de la base de données.
         cursor.close();

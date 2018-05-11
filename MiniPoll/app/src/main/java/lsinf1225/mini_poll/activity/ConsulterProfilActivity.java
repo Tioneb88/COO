@@ -30,42 +30,43 @@ public class ConsulterProfilActivity extends Activity {
         //Affichage de la photo
         String photoFile = User.getConnectedUser().getPhoto();
 
-        if(photoFile != null) {
-            // Récupérer l'AssetManager
-            AssetManager manager = getAssets();
+        if(photoFile == null) {
+            photoFile = "default.jpg";
+        }
+        // Récupérer l'AssetManager
+        AssetManager manager = getAssets();
 
-            // lire un Bitmap depuis Assets
-            InputStream open = null;
-            try {
-                open = manager.open(photoFile);
-                Bitmap bitmap = BitmapFactory.decodeStream(open);
-                // Assigner le bitmap à une ImageView dans cette mise en page
-                ImageView view = (ImageView) findViewById(R.id.my_profile_picture);
-                view.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (open != null) {
-                    try {
-                        open.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+        // lire un Bitmap depuis Assets
+        InputStream open = null;
+        try {
+            open = manager.open(photoFile);
+            Bitmap bitmap = BitmapFactory.decodeStream(open);
+            // Assigner le bitmap à une ImageView dans cette mise en page
+            ImageView view = (ImageView) findViewById(R.id.my_profile_picture);
+            view.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (open != null) {
+                try {
+                    open.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }
 
         TextView username = findViewById(R.id.username);
-        username.setText(getString(R.string.app_user_username) + User.getConnectedUser().getId());
+        username.setText(getString(R.string.my_profile_id) + User.getConnectedUser().getId());
 
         TextView surname = findViewById(R.id.surname);
-        surname.setText(getString(R.string.app_user_surname) + User.getConnectedUser().getNom());
+        surname.setText(getString(R.string.my_profile_nom) + User.getConnectedUser().getNom());
 
         TextView firstname = findViewById(R.id.firstname);
-        firstname.setText(getString(R.string.app_user_firstname) + User.getConnectedUser().getPrenom());
+        firstname.setText(getString(R.string.my_profile_prenom) + User.getConnectedUser().getPrenom());
 
         TextView mail = findViewById(R.id.mail_row);
-        mail.setText(getString(R.string.app_user_mail) + User.getConnectedUser().getMail());
+        mail.setText(getString(R.string.my_profile_mail) + User.getConnectedUser().getMail());
 
         //Affichage du meilleur ami s'il y en a un sinon, on met une barre (/).
         if(User.getConnectedUser().getBff() == null)

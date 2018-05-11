@@ -6,10 +6,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="lsinf1225.mini_poll.activity.ConsulterProfilActivity">
+    tools:context="lsinf1225.mini_poll.activity.ConsulterProfilUserActivity">
 
     <ImageView
-        android:id="@+id/my_profile_picture_autre"
+        android:id="@+id/profile_picture"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:layout_gravity="center_horizontal"

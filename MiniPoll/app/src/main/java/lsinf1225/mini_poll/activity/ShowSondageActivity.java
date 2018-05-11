@@ -39,7 +39,7 @@ public class ShowSondageActivity extends Activity {
         TextView description = findViewById(R.id.sondageDescription);
         description.setText(current.getDescription());
 
-
+        //labels des options
         TextView option1 = findViewById(R.id.option_sond1);
         TextView option2 = findViewById(R.id.option_sond2);
         TextView option3 = findViewById(R.id.option_sond3);
@@ -47,6 +47,7 @@ public class ShowSondageActivity extends Activity {
         TextView option5 = findViewById(R.id.option_sond5);
         TextView option6 = findViewById(R.id.option_sond6);
 
+        //Champs d'input
         EditText value1 = findViewById(R.id.editText1);
         EditText value2 = findViewById(R.id.editText2);
         EditText value3 = findViewById(R.id.editText3);
@@ -69,6 +70,11 @@ public class ShowSondageActivity extends Activity {
 
 
     }
+
+    /**
+     * Méthode de création au sein de la BDD des propositions soumises par l'utilisateur pour le sondage courant
+     * @param v
+     */
     public void saveScores (View v) {
 
         boolean incorrectValue = false;

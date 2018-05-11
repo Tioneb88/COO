@@ -16,9 +16,14 @@ import lsinf1225.mini_poll.R;
 
 import lsinf1225.mini_poll.model.User;
 
+
+/**
+ * Permet d'afficher une liste d'utilisateurs sous forme d'une liste view
+ * @author Claes Arnaud
+ */
 public class ShowListUsersActivity extends Activity implements AdapterView.OnItemClickListener {
 
-    private ArrayList<String> usersName;
+    private ArrayList<String> usersName; //liste des identifiants d'utilisateurs concernés
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

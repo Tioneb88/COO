@@ -37,6 +37,21 @@
         <item name="android:layout_centerHorizontal">true</item>
     </style>
 
+    <style name="user_btn">
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_horizontal|center_vertical</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/colorTitle</item>
+        <item name="android:colorBackground">@color/colorFont</item>
+        <item name="android:padding">@dimen/default_padding</item>
+        <item name="android:layout_alignParentLeft">true</item>
+        <item name="android:layout_alignParentRight">true</item>
+        <item name="android:layout_centerHorizontal">true</item>
+    </style>
+
     <style name="hint">
         <item name="android:textStyle">italic</item>
         <item name="android:textColor">@color/helpBlue</item>

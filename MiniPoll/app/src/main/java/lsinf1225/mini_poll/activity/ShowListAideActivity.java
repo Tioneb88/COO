@@ -15,7 +15,7 @@ import lsinf1225.mini_poll.activity.adapter.MyAideListViewAdapter;
 import lsinf1225.mini_poll.model.Aide;
 
 /**
- * Created by margauxgerard on 6/05/18.
+ * Affiche la liste des aides auquel peut répondre l'utilisateur courant.
  */
 
 public class ShowListAideActivity extends Activity implements AdapterView.OnItemClickListener {
