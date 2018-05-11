@@ -7,3 +7,5 @@ L’application ne demande pas d’autorisations particulières pour pouvoir cor
 
 Certaines classes au sein du projet ne sont pas accessible à travers l'apk. Il s'agit des classes incomplètes que nous avons jugé bon de mettre de côté pour la mise à disposition du prototype.
 Néanmoins, cette partie du code est toujours accessible et démontre nos tentatives d'implémentations d'autres fonctionnalités.
+
+ATTENTION: le fichier .gitignore va peut être nuire à la bonne réception du fichier apk en cas de pull.
