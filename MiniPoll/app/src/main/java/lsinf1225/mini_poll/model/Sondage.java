@@ -60,6 +60,11 @@ public class Sondage {
      */
     private int activite;
 
+    /**
+     * Possibilites du sondage
+     */
+    private ArrayList<String> possibilites;
+
 
     /**
      * Constructeur de notre élément de collection. Initialise une instance de l'élément présent
@@ -115,11 +120,18 @@ public class Sondage {
     }
 
     /**
-     * Fournit l'activité du questionnaire pour savoir si il est ouvert ou fermé.
+     * Fournit l'activité du sondage pour savoir si il est ouvert ou fermé.
      */
     public int getActivite() {
 
         return activite;
+    }
+
+    /**
+     * Fournit les propositions du sondage
+     */
+    public ArrayList<String> getPossibilites() {
+        return this.possibilites;
     }
 
     /**
@@ -131,65 +143,13 @@ public class Sondage {
     }
 
 
-
     //========================================================================
     //========================================================================
-    // METHODES D'ACCES A LA BASE DE DONNEES
+    // METHODES DE "CALCUL" SUR BASE DE LA BDD
+    //  - Calcul des utilisateurs n'ayant pas encore répondu au sondage
+    //  - Calcul des scores pour chaque sondage
     //========================================================================
     //========================================================================
-
-    /**
-     * Fournit l'instance d'un élément de collection présent dans la base de données. Si l'élément
-     * de collection n'est pas encore instancié, une instance est créée.
-     *
-     * @return L'instance de l'élément de collection.
-     *
-     * @pre L'élément correspondant à l'id donné doit exister dans la base de données.
-     */
-    public static Sondage get(int nSondage) {
-        Sondage s = Sondage.sondSparseArray.get(nSondage);
-        if (s != null) {
-            return s;
-        }
-        return new Sondage(nSondage);
-    }
-
-
-    /**
-     * (Re)charge les informations depuis la base de données.
-     *
-     * @pre L'id de l'élément est indiqué dans this.id et l'élément existe dans la base de données.
-     * @post Les informations de l'élément sont chargées dans les variables d'instance de la
-     * classe.
-     */
-    private void loadData() {
-        // Récupération de la base de données en mode "lecture".
-        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
-
-        // Colonnes pour lesquelles il nous faut les données.
-        String[] columns = new String[]{COL_ID,COL_NBRECHOIX, COL_DESCRIPTION, COL_ACTIVITE};
-
-        // Critères de sélection de la ligne :
-        String selection = COL_NSONDAGE + " = ? ";
-        String[] selectionArgs = new String[]{String.valueOf(nsondage)};
-
-        // Requête SELECT à la base de données.
-        Cursor c = db.query(BDD_TABLE, columns, selection, selectionArgs, null, null, null);
-
-        // Placement du curseur sur le  premier résultat (ici le seul puisque l'objet est unique).
-        c.moveToFirst();
-
-        // Copie des données de la ligne vers les variables d'instance de l'objet courant.
-        this.id = c.getString(0);
-        this.nbrechoix = c.getInt(1);
-        this.description = c.getString(2);
-        this.activite = c.getInt(3);
-        // Fermeture du curseur
-        c.close();
-
-    }
-
-
 
     /**
      * Retourne la liste des utilisateurs n'ayant pas encore répondu au sondage
@@ -228,39 +188,6 @@ public class Sondage {
     }
 
     /**
-     * Retourne la liste des utilisateurs participant au sondage
-     * @param nSondage
-     * @return ArrayList<String> contenant les utilisateurs en question
-     */
-    public static ArrayList<String> loadUsers(int nSondage) {
-        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
-        Log.d("tagText", Integer.toString(nSondage));
-        ArrayList<String> users = new ArrayList<String>();
-        //recuperation de tous les scores du sondage
-
-
-        Cursor cursor = db.rawQuery("SELECT P.Identifiant "+
-                "FROM PARTICIPANTS_SONDAGE P "+
-                "WHERE P.Nsondage = \'"+nSondage+"\'",null);
-
-
-        // Placement du curseur sur la première ligne.
-        cursor.moveToFirst();
-
-
-        // Tant qu'il y a des lignes.
-        while (!cursor.isAfterLast()) {
-            // Récupération des informations du sondage pour chaque ligne.
-            String user = cursor.getString(0);
-            users.add(user);
-            // Passe à la ligne suivante.
-            cursor.moveToNext();
-        }
-
-        return users;
-    }
-
-    /**
      * Méthode d'accès aux scores d'un sondage
      * @param nSondage
      * @param user
@@ -268,7 +195,7 @@ public class Sondage {
      * Si un utilisateur est spécifié, ne renvoie que les scores relatifs à cet utilisateur.
      * Sinon renvoie les scores pour tous les utilisateurs agrégés par possibilité de réponse
      */
-    public static ArrayList<Integer> loadScores(int nSondage, User user) {
+    public static ArrayList<Integer> getScores(int nSondage, User user) {
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
         ArrayList<Integer> scores = new ArrayList<Integer>();
         //recuperation de tous les scores du sondage
@@ -333,12 +260,110 @@ public class Sondage {
     }
 
 
+    //========================================================================
+    //========================================================================
+    // METHODES D'ACCES A LA BASE DE DONNEES
+    //========================================================================
+    //========================================================================
+
+    /**
+     * Fournit l'instance d'un élément de collection présent dans la base de données. Si l'élément
+     * de collection n'est pas encore instancié, une instance est créée.
+     *
+     * @return L'instance de l'élément de collection.
+     *
+     * @pre L'élément correspondant à l'id donné doit exister dans la base de données.
+     */
+    public static Sondage get(int nSondage) {
+        Sondage s = Sondage.sondSparseArray.get(nSondage);
+        if (s != null) {
+            return s;
+        }
+        return new Sondage(nSondage);
+    }
+
+
+    /**
+     * (Re)charge les informations depuis la base de données.
+     *
+     * @pre L'id de l'élément est indiqué dans this.id et l'élément existe dans la base de données.
+     * @post Les informations de l'élément sont chargées dans les variables d'instance de la
+     * classe.
+     */
+    private void loadData() {
+        // Récupération de la base de données en mode "lecture".
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Colonnes pour lesquelles il nous faut les données.
+        String[] columns = new String[]{COL_ID,COL_NBRECHOIX, COL_DESCRIPTION, COL_ACTIVITE};
+
+        // Critères de sélection de la ligne :
+        String selection = COL_NSONDAGE + " = ? ";
+        String[] selectionArgs = new String[]{String.valueOf(nsondage)};
+
+        // Requête SELECT à la base de données.
+        Cursor c = db.query(BDD_TABLE, columns, selection, selectionArgs, null, null, null);
+
+        // Placement du curseur sur le  premier résultat (ici le seul puisque l'objet est unique).
+        c.moveToFirst();
+
+        // Copie des données de la ligne vers les variables d'instance de l'objet courant.
+        this.id = c.getString(0);
+        this.nbrechoix = c.getInt(1);
+        this.description = c.getString(2);
+        this.activite = c.getInt(3);
+        // Fermeture du curseur
+        c.close();
+
+    }
+
+
+
+
+
+    /**
+     * Retourne la liste des utilisateurs participant au sondage
+     * @param nSondage
+     * @return ArrayList<String> contenant les utilisateurs en question
+     */
+    public static ArrayList<String> loadUsers(int nSondage) {
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        Log.d("tagText", Integer.toString(nSondage));
+        ArrayList<String> users = new ArrayList<String>();
+        //recuperation de tous les scores du sondage
+
+
+        Cursor cursor = db.rawQuery("SELECT P.Identifiant "+
+                "FROM PARTICIPANTS_SONDAGE P "+
+                "WHERE P.Nsondage = \'"+nSondage+"\'",null);
+
+
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations du sondage pour chaque ligne.
+            String user = cursor.getString(0);
+            users.add(user);
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+
+        return users;
+    }
+
+
+
+
     /**
      * Methode d'accès aux propositions d'un sondage.
-     * @param nSondage
+     * @param
      * @return Retourne sous forme d'un ArrayList de String les propositions d'un sondage.
      */
-    public static ArrayList<String> loadPropositions(int nSondage) {
+    public void loadPropositions() {
+        int nSondage = this.getNsondage();
         // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
         Log.d("tagText",Integer.toString(nSondage));
@@ -366,7 +391,7 @@ public class Sondage {
         cursor.close();
         db.close();
 
-        return possibilites;
+        this.possibilites = possibilites;
 
     }
 
@@ -404,7 +429,6 @@ public class Sondage {
         db.close();
 
         return possibilites;
-
     }
 
     /**

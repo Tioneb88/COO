@@ -98,14 +98,14 @@
         <TextView
             android:id="@+id/sondageDescription"
             android:layout_width="337dp"
-            android:layout_height="43dp"
+            android:layout_height="52dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="16dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.516"
@@ -120,13 +120,13 @@
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             android:text="TextView"
             android:visibility="invisible"
             app:layout_constraintEnd_toStartOf="@+id/editText3"
             app:layout_constraintHorizontal_bias="0.556"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
+            app:layout_constraintTop_toBottomOf="@+id/consigne" />
 
         <EditText
             android:id="@+id/editText3"
@@ -203,18 +203,17 @@
             android:layout_height="45dp"
             android:layout_marginEnd="44dp"
             android:layout_marginRight="44dp"
-            android:layout_marginTop="16dp"
             android:ems="10"
             android:inputType="number"
             android:visibility="invisible"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
+            app:layout_constraintTop_toBottomOf="@+id/consigne" />
 
         <Button
             android:id="@+id/enregistrerScores"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="28dp"
+            android:layout_marginBottom="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginLeft="8dp"
             android:layout_marginRight="8dp"
@@ -235,5 +234,16 @@
             android:background="?android:attr/listDivider"
             app:layout_constraintTop_toBottomOf="@+id/sondageDescription"
             tools:layout_editor_absoluteX="8dp" />
+
+        <TextView
+            android:id="@+id/consigne"
+            android:layout_width="335dp"
+            android:layout_height="74dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
+            android:text="TextView"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

@@ -3,7 +3,6 @@ package lsinf1225.mini_poll.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -64,9 +63,10 @@ public class ShowResultSondageActivity extends Activity {
         TextView total5 = findViewById(R.id.total5);
         TextView total6 = findViewById(R.id.total6);
 
-        propositions = Sondage.loadPropositions(nSondage);
-        yourScores = Sondage.loadScores(nSondage, User.getConnectedUser());
-        totalScores = Sondage.loadScores(nSondage, null);
+        currentSondage.loadPropositions();
+        propositions = currentSondage.getPossibilites();
+        yourScores = Sondage.getScores(nSondage, User.getConnectedUser());
+        totalScores = Sondage.getScores(nSondage, null);
         nbrePossibilites = propositions.size();
 
         allPropositions = new TextView[] {option1, option2, option3,option4, option5, option6};

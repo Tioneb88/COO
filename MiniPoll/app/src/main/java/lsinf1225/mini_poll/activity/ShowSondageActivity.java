@@ -58,7 +58,8 @@ public class ShowSondageActivity extends Activity {
         allScores = new EditText[]{value1, value2, value3, value4, value5, value6};
         allPropositions = new TextView[] {option1, option2, option3,option4, option5, option6};
 
-        propositions = Sondage.loadPropositions(nSondage);
+        current.loadPropositions();
+        propositions = current.getPossibilites();
         nbrePossibilites = propositions.size();
 
         for (int i = 0; i<nbrePossibilites; i++) {
@@ -66,6 +67,9 @@ public class ShowSondageActivity extends Activity {
             allPropositions[i].setText(propositions.remove(0));
             allScores[i].setVisibility(View.VISIBLE);
         }
+
+        TextView consigne = findViewById(R.id.consigne);
+        consigne.setText("Réalisez un top "+current.getNbreChoix()+" de vos options préférées");
 
 
 
