@@ -153,6 +153,7 @@
     <string name="create_resume_title">Résumé</string>
 
     <string name="create_next_element">+</string>
+    <string name="remove_previous_element">-</string>
     <string name="create_send">Envoyer</string>
 
     <!-- Création de sondages -->
@@ -169,6 +170,7 @@
     <string name="create_survey_number_choice">Nombre de choix à faire</string>
     <string name = "create_survey_add_friends">Choisissez les amis qui participeront au sondage</string>
     <string name = "create_survey_send">Choix des amis</string>
+    <string name ="create_survey_error">Le nombre de choix possibles a une valeur incorrecte.</string>
 
     <!-- Création de questionnaires -->
     <string name="create_questionnary_questionsList_title">Liste des questions</string>
