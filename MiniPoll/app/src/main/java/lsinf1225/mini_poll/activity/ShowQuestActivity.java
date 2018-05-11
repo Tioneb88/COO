@@ -34,7 +34,7 @@ public class ShowQuestActivity extends Activity implements AdapterView.OnItemCli
     private Button[] allPropositions;
     private int nclique=0;
 
-    protected void onCreate(Bundle savedInstanceState)  {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.show_quest);
 
@@ -53,10 +53,13 @@ public class ShowQuestActivity extends Activity implements AdapterView.OnItemCli
         Button value4 = findViewById(R.id.Bouton4);
 
         //allScores = new TextView[]{description};
-        allPropositions = new Button[] {value1, value2, value3, value4};
+        allPropositions = new Button[]{value1, value2, value3, value4};
+        propositions = Question.loadPropositionsQuest(nQuest);
+        for (int i = 0; i < 4; i++) {
+            allPropositions[i].setText(propositions.get(i));
+        }
+    }
 
-        /*propositions = Question.loadPropositionsQuest(Option.get(noptions));
-=======
         //==========================================================================
         //Remarque Arnaud: cela m'empêchait de compiler donc j'ai mis en commentaires
         //==========================================================================
@@ -69,7 +72,6 @@ public class ShowQuestActivity extends Activity implements AdapterView.OnItemCli
         }
         */
 
-    }
 
     /**
      * Lance l'activité de réponse s'il y a un click
@@ -98,7 +100,6 @@ public class ShowQuestActivity extends Activity implements AdapterView.OnItemCli
         else {
             MiniPollApp.notifyLong(R.string.deja_repondu_a_cette_question);
         }
-
 
     }
 }

@@ -18,24 +18,20 @@
             android:layout_height="64dp"
             android:layout_alignParentTop="true"
             android:layout_marginEnd="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
-            android:text="Aide à un ami"
+            android:text="Réponses possibles"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 
-
         <Button
             android:id="@+id/Bouton1"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="44dp"
-            android:layout_marginRight="44dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginTop="8dp"
             android:ems="10"
             android:inputType="number"
             android:textColor="#000000"
@@ -44,50 +40,38 @@
 
         <Button
             android:id="@+id/Bouton2"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="44dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="44dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginTop="40dp"
             android:ems="10"
             android:inputType="number"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintTop_toBottomOf="@+id/Bouton1" />
 
         <Button
             android:id="@+id/Bouton3"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginLeft="40dp"
-            android:layout_marginRight="8dp"
-            android:layout_marginStart="40dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginTop="40dp"
             android:ems="10"
             android:inputType="number"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.076"
             app:layout_constraintTop_toBottomOf="@+id/Bouton2" />
 
         <Button
             android:id="@+id/Bouton4"
-            android:layout_width="60dp"
-            android:layout_height="45dp"
-            android:layout_marginEnd="44dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginRight="44dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
+            android:layout_width="250dp"
+            android:layout_height="50dp"
+            android:layout_marginEnd="70dp"
+            android:layout_marginTop="40dp"
             android:ems="10"
             android:inputType="number"
             android:textColor="#000000"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintTop_toBottomOf="@+id/Bouton3" />
 
 

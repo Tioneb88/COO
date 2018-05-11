@@ -230,8 +230,7 @@ public class Question {
         // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
         Log.d("tagText",Integer.toString(nQuest));
-        Cursor cursor = db.rawQuery("SELECT P.Texte "+
-                "FROM OPTION P, QUESTION Q, PARTICIPANTS_QUESTIONNAIRE Z WHERE Q.Nquestions = P.Nquestions AND Q.Nquestionnaire = Z.Nquestionnaire AND Z.Identifiant = \'" + User.getConnectedUser().getId() + "\'", null);
+        Cursor cursor = db.rawQuery("SELECT P.Texte FROM OPTION P, QUESTION Q WHERE Q.Nquestions = P.Nquestions AND Q.Nquestions=\'" + nQuest + "\'", null);
 
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
