@@ -44,7 +44,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
      * @note Le numéro de version doit changer de manière monotone.
      */
 
-    private static final int BDD_VERSION = 11;
+    private static final int BDD_VERSION = 12;
 
 
 

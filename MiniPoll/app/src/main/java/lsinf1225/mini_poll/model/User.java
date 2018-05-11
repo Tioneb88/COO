@@ -430,41 +430,134 @@ public class User {
         boolean unused = checkUsername(newUsername);
 
         if(unused) {
-            // Nouvelle information
-            ContentValues newValues = new ContentValues();
-            newValues.put(COL_ID, newUsername);
+            //table Utilisateur
+            Log.d("errorDB", "identifiant Utilisateur :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Aide".
+            ContentValues utilisateurValues = new ContentValues();
+            utilisateurValues.put(COL_ID, newUsername);
 
             // Mise à jour dans la base de données
-            int count = db.update(BDD_TABLE, newValues, COL_ID + "=" + this.getId(), null);
-            if (count == 1) {
-                // seule 1 colonne a été mise à jour
+            int count_user = db.update(BDD_TABLE, utilisateurValues, COL_ID + "='" + this.getId()+"'", null);
+
+
+            //table Sondage
+            Log.d("errorDB", "identifiant Sondage :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Sondage".
+            ContentValues sondageValues = new ContentValues();
+            sondageValues.put(COL_ID, newUsername);
+
+            // Mise à jour dans la base de données
+            int count_sondage = db.update("SONDAGE", sondageValues, COL_ID + "='" + this.getId()+"'", null);
+
+
+            //table Score
+            Log.d("errorDB", "identifiant Score :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Score".
+            ContentValues scoreValues = new ContentValues();
+            scoreValues.put(COL_ID, newUsername);
+
+            // Mise à jour dans la base de données
+            int count_score = db.update("SCORE", scoreValues, COL_ID + "='" + this.getId()+"'", null);
+
+
+            //table Reponse
+            Log.d("errorDB", "identifiant Reponse :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Reponse".
+            ContentValues reponseValues = new ContentValues();
+            reponseValues.put(COL_ID, newUsername);
+
+            // Mise à jour dans la base de données
+            int count_reponse = db.update("REPONSE", reponseValues, COL_ID + "='" + this.getId()+"'", null);
+
+
+            //table Relation
+            Log.d("errorDB", "identifiant Relation_emetteur :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Relation".
+            ContentValues relationValuesE = new ContentValues();
+            relationValuesE.put("Emetteur", newUsername);
+
+            // Mise à jour dans la base de données
+            int count_relation_emetteur = db.update("RELATION", relationValuesE, "Emetteur" + "='" + this.getId()+"'", null);
+
+            //table Relation
+            Log.d("errorDB", "identifiant Relation_recepteur :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Relation".
+            ContentValues relationValuesR = new ContentValues();
+            relationValuesR.put("Recepteur", newUsername);
+
+            // Mise à jour dans la base de données
+            int count_relation_recepteur = db.update("RELATION", relationValuesR, "Recepteur" + "='" + this.getId()+"'", null);
+
+
+            //table Questionnaire
+            Log.d("errorDB", "identifiant Questionnaire :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Questionnaire".
+            ContentValues questionnaireValues = new ContentValues();
+            questionnaireValues.put(COL_ID, newUsername);
+
+            // Mise à jour dans la base de données
+            int count_questionnaire = db.update("QUESTIONNAIRE", questionnaireValues, COL_ID + "='" + this.getId()+"'", null);
+
+
+            //table Participants_sondage
+            Log.d("errorDB", "identifiant Participants_sondage :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Participants_sondage".
+            ContentValues particiantsValuesS = new ContentValues();
+            particiantsValuesS.put(COL_ID, newUsername);
+
+            // Mise à jour dans la base de données
+            int count_particiants_sondage = db.update("PARTICIPANTS_SONDAGE", particiantsValuesS, COL_ID + "='" + this.getId()+"'", null);
+
+
+            //table Participants_questionnaire
+            Log.d("errorDB", "identifiant Participants_questionnaire :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Participants_questionnaire".
+            ContentValues particiantsValuesQ = new ContentValues();
+            particiantsValuesQ.put(COL_ID, newUsername);
+
+            // Mise à jour dans la base de données
+            int count_particiants_questionnaire = db.update("PARTICIPANTS_QUESTIONNAIRE", particiantsValuesQ, COL_ID + "='" + this.getId()+"'", null);
+
+
+            //table Participants_aide
+            Log.d("errorDB", "identifiant Participants_aide :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Participants_aide".
+            ContentValues particiantsValuesA = new ContentValues();
+            particiantsValuesA.put(COL_ID, newUsername);
+
+            // Mise à jour dans la base de données
+            int count_particiants_aide = db.update("PARTICIPANTS_AIDE", particiantsValuesA, COL_ID + "='" + this.getId()+"'", null);
+
+
+            //table Like_Like
+            Log.d("errorDB", "identifiant Like_Like :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Like_Like".
+            ContentValues likeValues = new ContentValues();
+            likeValues.put(COL_ID, newUsername);
+
+            // Mise à jour dans la base de données
+            int count_like = db.update("LIKE_LIKE", likeValues, COL_ID + "='" + this.getId()+"'", null);
+
+
+            //table Aide
+            Log.d("errorDB", "identifiant Aide :"+newUsername);
+            // Définition des valeurs pour le nouvel élément dans la table "Aide".
+            ContentValues aideValues = new ContentValues();
+            aideValues.put(COL_ID, newUsername);
+
+            // Mise à jour dans la base de données
+            int count_aide = db.update("AIDE", aideValues, COL_ID + "='" + this.getId()+"'", null);
+
+
+
+            // Vérification du bon déroulement
+            if (count_user == 1 && count_sondage >= 0 && count_score >= 0 && count_reponse >= 0 && count_relation_emetteur >= 0 && count_relation_recepteur >= 0 && count_questionnaire >= 0 && count_particiants_sondage >= 0 && count_particiants_questionnaire >= 0 && count_particiants_aide >= 0 && count_like >= 0 && count_aide >= 0) {
+                // un nombre positif de colonnes mises à jour par table
                 this.setUsername(newUsername);
                 return 0;
             }
         }
         return -1;
-
-        //db.execSQL("UPDATE UTILISATEUR SET Identifiant = " + newUsername +" WHERE Identifiant = " + this.getId());
-
-       /* Nouvelle idée !!
-        // New value for one column
-        String title = newUsername;
-        ContentValues values = new ContentValues();
-        values.put(FeedEntry.COLUMN_NAME_TITLE, title);
-
-        // Which row to update, based on the title
-        String selection = FeedEntry.COLUMN_NAME_TITLE + " LIKE ?";
-        String[] selectionArgs = { this.getId() };
-
-        int count = db.update(
-                MySQLiteHelper.FeedEntry.TABLE_NAME,
-                values,
-                selection,
-                selectionArgs);
-
-        //Encore une autre idée !!
-        dbW.update();
-        */
     }
 
     /**
