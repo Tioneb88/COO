@@ -3,27 +3,19 @@ package lsinf1225.mini_poll.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
+
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
-import android.widget.ListView;
-import android.widget.SeekBar;
-import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.concurrent.TimeUnit;
 
 import lsinf1225.mini_poll.MiniPollApp;
 import lsinf1225.mini_poll.R;
 
 /**
- * Gère la création de sondage.
- * @author Groupe 5
+ * Classe qui gère la première activité de sondage permettant l'ajout d'une question, d'un nbre de choix à faire
+ * ainsi que des options de réponse.
+ * @author Claes Arnaud
  * @version 2
  */
 
@@ -67,6 +59,7 @@ public class CreationSondageActivity extends Activity {
         removeButtons = new Button[] {btR1, btR2, btR3, btR4};
     }
 
+    //Méthodes d'interface d'apparition/disparition des champs
     public void next2 (View v) {
         allOptions[2].setVisibility(View.VISIBLE);
         allButtons[0].setVisibility(View.INVISIBLE);
@@ -135,8 +128,15 @@ public class CreationSondageActivity extends Activity {
         optionsCount--;
     }
 
+
+    /**
+     * Méthode d'accès à l'activité suivante qui demande d'ajouter des amis.
+     * Les paramètres actuellement enregistrés sont fournis à l'activité suivante par l'intermédiaire d'un bundle dans l'intent
+     * @param v
+     */
     public void toAddFriend (View v) {
         boolean incorrectValue = false;
+        boolean duplicateValue = false;
 
         //recuperation des options
         String[] optionsSubmitted = new String[optionsCount];
@@ -144,6 +144,12 @@ public class CreationSondageActivity extends Activity {
             String text = allOptions[i].getText().toString();
             if (text.equals("")) {
                 incorrectValue=true;
+            }
+            for (int j = i+1; j<optionsCount; j++) {
+                String nextText = allOptions[j].getText().toString();
+                if (text.equals(nextText)) {
+                    duplicateValue = true;
+                }
             }
             optionsSubmitted[i] = text;
         }
@@ -167,9 +173,12 @@ public class CreationSondageActivity extends Activity {
             incorrectValue = true;
         }
 
-        //Validation
+        //Validation du nombre de choix à faire
         if (incorrectValue) {
             MiniPollApp.notifyShort(R.string.create_survey_error);
+        }
+        else if (duplicateValue) {
+            MiniPollApp.notifyShort(R.string.create_survey_error_duplicate);
         }
         else {
             Intent intent = new Intent(this, CreationSondageActivityFriends.class);
@@ -181,6 +190,8 @@ public class CreationSondageActivity extends Activity {
             startActivity(intent);
         }
     }
+
+
 
 }
 

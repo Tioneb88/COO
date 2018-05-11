@@ -169,8 +169,10 @@ INSERT INTO RELATION (Emetteur, Recepteur, Relation) VALUES ('Hiboule', 'gegedu7
 INSERT INTO RELATION (Emetteur, Recepteur, Relation) VALUES ('Hiboule', 'phephe', '1');
 INSERT INTO RELATION (Emetteur, Recepteur, Relation) VALUES ('margauxgerard', 'phephe', '1');
 INSERT INTO RELATION (Emetteur, Recepteur, Relation) VALUES ('gegedu78', 'phephe', '1');
-INSERT INTO RELATION (Emetteur, Recepteur, Relation) VALUES ('gegedu78', 'margauxgerard', '0');
+INSERT INTO RELATION (Emetteur, Recepteur, Relation) VALUES ('gegedu78', 'margauxgerard', '1');
 INSERT INTO RELATION (Emetteur, Recepteur, Relation) VALUES ('Moustikman', 'margauxgerard', '0');
+INSERT INTO RELATION (Emetteur, Recepteur, Relation) VALUES ('fel98', 'Hiboule', '1');
+INSERT INTO RELATION (Emetteur, Recepteur, Relation) VALUES ('fel98', 'Moustikman', '1');
 
 -- Table : REPONSE
 DROP TABLE IF EXISTS REPONSE;

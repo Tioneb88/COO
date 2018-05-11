@@ -53,8 +53,7 @@ public class ChangePasswordActivity extends Activity {
             }
             else if(hint == 0) {
                 // Tout s'est bien passé.
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
+                finish();
             }
             else {
                 // Une erreur inattendue s'est produite.

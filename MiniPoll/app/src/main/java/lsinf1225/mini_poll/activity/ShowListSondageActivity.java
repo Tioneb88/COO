@@ -137,8 +137,10 @@ public class ShowListSondageActivity extends Activity implements AdapterView.OnI
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent (this, MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+        overridePendingTransition(0, 0);
     }
 
 }

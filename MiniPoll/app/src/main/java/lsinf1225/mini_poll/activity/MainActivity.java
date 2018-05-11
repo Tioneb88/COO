@@ -66,13 +66,10 @@ public class MainActivity extends Activity {
     }
 
 
-    /*
-     * @note Les méthodes show, search, add et logout sont appelées lors d'un clic sur les boutons
-     * correspondant grâce à l'attribut onClick présent dans les fichiers de layout.
-     *
-     * Lire http://developer.android.com/reference/android/R.attr.html#onClick
-     */
 
+    //=====================================================
+    // Méthodes d'accès aux différentes activités du menu
+    //=====================================================
 
     /**
      * Lance l'activité de consultation et de modification du profil.
@@ -132,9 +129,11 @@ public class MainActivity extends Activity {
      */
     public void logout(View v) {
         User.logout();
+        //Intent intent = new Intent(this, LoginActivity.class);
+        //startActivity(intent);
         Intent intent = new Intent(this, LoginActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
-       // finish();
     }
 
     /**
@@ -147,21 +146,5 @@ public class MainActivity extends Activity {
         // rien dans cette méthode si ce n'est afficher un message à l'utilisateur.
         MiniPollApp.notifyShort(R.string.main_back_button_disable);
     }
-
-    /**
-     * Lance l'activité de vue des détails d'un élément de collection lors du clic sur un élément de
-     * la liste.
-     *
-     * @param position Position de l'élément dans la liste.
-     */
-    /*
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(this, ConsulterProfilActivity.class);
-        // L'id de l'élément de collection est passé en argument afin que la vue de détails puisse
-        // récupérer celui-ci.
-        intent.putExtra("s_id", User.getConnectedUser().getId());
-        startActivity(intent);
-    }
-    */
 
 }

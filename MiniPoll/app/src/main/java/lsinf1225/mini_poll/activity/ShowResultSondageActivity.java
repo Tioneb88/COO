@@ -74,7 +74,6 @@ public class ShowResultSondageActivity extends Activity {
             allPropositions[i].setVisibility(View.VISIBLE);
             allPropositions[i].setText(propositions.remove(0));
             allYou[i].setVisibility(View.VISIBLE);
-            Log.d("tagdebug",Integer.toString(yourScores.get(0)));
             allYou[i].setText(Integer.toString(yourScores.remove(0)));
             allTotal[i].setVisibility(View.VISIBLE);
             allTotal[i].setText(Integer.toString(totalScores.remove(0)));
@@ -101,7 +100,9 @@ public class ShowResultSondageActivity extends Activity {
      */
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, ShowListSondageActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);
+
     }
 }

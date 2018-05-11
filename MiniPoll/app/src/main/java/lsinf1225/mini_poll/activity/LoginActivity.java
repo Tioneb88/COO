@@ -7,6 +7,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -26,27 +27,20 @@ import lsinf1225.mini_poll.model.User;
  */
 public class LoginActivity extends Activity implements TextView.OnEditorActionListener {
 
-    private Spinner userSpinner;
+    //private Spinner userSpinner;
+    private AutoCompleteTextView autoComplete;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        /*
-         @note : Le titre de l'activité de lancement donné dans l'AndroidManifest.xml est repris
-         comme nom du lanceur de l'application par Android. Pour ce premier écran, on va donc
-         utiliser la méthode setTitle afin de définir le titre de l'activité (s'il est différent du
-         titre de l'application).
-         */
+
         setTitle(R.string.login_title);
 
+        autoComplete = findViewById(R.id.autoCompleteTextView);
 
-        /*
-         * @note La liste des utilisateurs est affichée dans un Spinner, pour en savoir plus lisez
-         * http://d.android.com/guide/topics/ui/controls/spinner.html
-         */
-        userSpinner = findViewById(R.id.login_username);
+        //userSpinner = findViewById(R.id.login_username);
 
         // Obtention de la liste des utilisateurs.
         ArrayList<User> users = User.getUtilisateurs();
@@ -54,7 +48,9 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
         // Création d'un ArrayAdapter en utilisant la liste des utilisateurs et un layout pour le spinner existant dans Android.
         ArrayAdapter<User> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, users);
         // On lie l'adapter au spinner.
-        userSpinner.setAdapter(adapter);
+        //userSpinner.setAdapter(adapter);
+
+        autoComplete.setAdapter(adapter);
 
 
         // On indique qu'il faut appeler onEditorAction de cette classe lorsqu'une action (valider ici)
@@ -86,7 +82,9 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
      */
     public void login(View v) {
         // Lorsqu'on clique sur le bouton "Se connecter" on qu'on valide depuis le clavier.
-        User user = (User) userSpinner.getSelectedItem();
+        //User user = (User) userSpinner.getSelectedItem();
+        String userId = autoComplete.getText().toString();
+        User user = User.get(userId);
         EditText passwordEditText = findViewById(R.id.login_password);
         String password = passwordEditText.getText().toString();
 
@@ -130,5 +128,16 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
             return true;
         }
         return false;
+    }
+
+    /**
+     * Désactive le bouton de retour. Désactive le retour à l'activité précédente (donc l'écran de
+     * connexion dans ce cas-ci) et affiche un message indiquant qu'il faut se déconnecter.
+     */
+    @Override
+    public void onBackPressed() {
+
+        //MiniPollApp.notifyShort(R.string.main_back_button_disable);
+        finish();
     }
 }

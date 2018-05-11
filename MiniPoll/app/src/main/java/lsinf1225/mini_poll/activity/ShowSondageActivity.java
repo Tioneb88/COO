@@ -3,6 +3,7 @@ package lsinf1225.mini_poll.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -128,7 +129,7 @@ public class ShowSondageActivity extends Activity {
             ArrayList<Integer> nPropositions = Sondage.loadNumPropositions(current.getNsondage());
 
             for (int i = 0; i <nbrePossibilites; i++) {
-                Score.create(nPropositions.get(i),computedScores.get(i));
+                boolean result = Score.create(nPropositions.get(i),computedScores.get(i));
             }
 
             Intent intent = new Intent(this, ShowResultSondageActivity.class);

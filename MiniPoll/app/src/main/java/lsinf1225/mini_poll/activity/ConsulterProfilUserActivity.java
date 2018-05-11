@@ -17,7 +17,8 @@ import java.io.IOException;
 import java.io.InputStream;
 
 /**
- * Created by margauxgerard on 30/04/18.
+ * Cette classe permet d'afficher le profil d'un utilisateur dont l'identifiant est fourni dans l'intent
+ * @author Claes Arnaud
  */
 
 public class ConsulterProfilUserActivity extends Activity {
@@ -27,9 +28,11 @@ public class ConsulterProfilUserActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_consulter_profil_user);
 
+        //Recuperation de l'user
         Intent intent = getIntent();
         String userIdentifiant = intent.getStringExtra("userId");
         User currentUser = User.get(userIdentifiant);
+
         //Affichage de la photo
         String photoFile = currentUser.getPhoto();
 

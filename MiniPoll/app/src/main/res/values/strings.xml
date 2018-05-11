@@ -24,6 +24,7 @@
     <string name="login_password_forgotten">Mot de passe oublié ?</string>
     <string name="login_password_forgotten_notification">Veuillez contacter l\'administrateur de l\'application afin d\'obtenir un nouvel accès à votre compte. </string>
     <string name="login_password_wrong">Votre mot de passe est incorrect</string>
+    <string name="login_label">Login</string>
 
     <!-- Création d'un compte -->
     <string name="newAccount_title">Création d\'un compte</string>
@@ -170,6 +171,7 @@
     <string name = "create_survey_add_friends">Choisissez les amis qui participeront au sondage</string>
     <string name = "create_survey_send">Choix des amis</string>
     <string name ="create_survey_error">Le nombre de choix possibles a une valeur incorrecte.</string>
+    <string name="create_survey_error_duplicate">Deux options ou plus ont le même nom.</string>
 
     <!-- Création de questionnaires -->
     <string name="create_questionnary_questionsList_title">Liste des questions</string>

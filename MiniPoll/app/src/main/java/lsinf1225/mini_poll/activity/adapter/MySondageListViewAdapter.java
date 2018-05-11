@@ -13,13 +13,9 @@ import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.Sondage;
 
 /**
- * Gère l'affichage personnalisé de notre liste.
- * <p>
- * Cette classe permet de créer un Adapter personnalisé pour notre liste d'éléments de collection.
- * De cette manière il nous est possible d'utiliser un layout particulier (ici
- * collected_item_row.xml) pour chaque ligne reprenant le nom de l'élément et sa note (rating).
+ * Gère l'affichage personnalisé d'une liste de sondages
  *
- * @author Damien Mercier
+ * @author Claes Arnaud
  * @version 1
  * @see <a href="http://d.android.com/reference/android/widget/Adapter.html">Adapter</a>
  * @see <a href="http://d.android.com/reference/android/widget/BaseAdapter.html">BaseAdapter</a>

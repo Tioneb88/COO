@@ -270,7 +270,6 @@ public class Sondage {
      */
     public static ArrayList<Integer> loadScores(int nSondage, User user) {
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
-        Log.d("tagText",Integer.toString(nSondage));
         ArrayList<Integer> scores = new ArrayList<Integer>();
         //recuperation de tous les scores du sondage
         if (user == null)

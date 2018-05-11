@@ -13,7 +13,13 @@ import java.util.ArrayList;
 
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.Sondage;
-import lsinf1225.mini_poll.model.User;
+
+/**
+ * Classe qui gère la dernière activité de création de sondage. Elle résumé les premières informations soumises (sauf les utilisateurs choisis).
+ * C'est en validant cette activité que la requête SQL est formulée pour créer le sondage (et les entités liées).
+ * @author Claes Arnaud
+ * @version 1
+ */
 
 public class CreationSondageActivitySummary extends Activity {
 
@@ -43,17 +49,19 @@ public class CreationSondageActivitySummary extends Activity {
 
 
     }
+
+    /**
+     * Méthode de création des entrées dans la base de donnée pour ajouter le sondage.
+     * Ajoute par défaut le créateur au sein des participants.
+     * Renvoie à la liste des sondages auquel l'utilisateur participe.
+     * @param v
+     */
     public void sendSurvey(View v){
         boolean possibiliteOk = false;
         boolean participantsOk = false;
         int nSondage = Sondage.create(nbreChoix, description);
 
-        //DEBUG
         Sondage s = Sondage.get(nSondage);
-        Log.d("creationSondage",s.getDescription());
-        Log.d("creationSondage",Integer.toString(nSondage));
-
-
 
         if (nSondage !=0) {
             possibiliteOk = Sondage.addPossibilites(nSondage, options);
@@ -73,8 +81,11 @@ public class CreationSondageActivitySummary extends Activity {
         }
         else {
             Intent intent = new Intent(this, ShowListSondageActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
+            //finish();
         }
 
     }
+
 }

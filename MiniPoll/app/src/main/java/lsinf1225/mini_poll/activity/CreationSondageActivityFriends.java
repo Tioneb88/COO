@@ -15,6 +15,14 @@ import java.util.List;
 import lsinf1225.mini_poll.R;
 import lsinf1225.mini_poll.model.User;
 
+/**
+ * Classe qui gère la seconde activité de création de sondage qui demande à l'utilisateur de spécifier les
+ * participants du sondage.
+ *
+ * @author Claes Arnaud
+ * @version 1
+ */
+
 public class CreationSondageActivityFriends extends Activity {
 
     private ListView lv;
@@ -29,9 +37,17 @@ public class CreationSondageActivityFriends extends Activity {
         lv.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
     }
 
+    /**
+     * Méthode d'accès à la troisième activité de création de sondage résumant les informations sélectionnées
+     * Toutes les informations acquises sont transmises par un bundle dans l'activité suivante.
+     * @param v
+     */
+
     public void toSummary(View v) {
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
+
+        //Ajout des utilisateurs sélectionnés
         SparseBooleanArray checked = lv.getCheckedItemPositions();
         ArrayList<String> usersSelected = new ArrayList<String>();
         for (int i = 0; i<checked.size(); i++) {
@@ -48,4 +64,5 @@ public class CreationSondageActivityFriends extends Activity {
         startActivity(nextIntent);
 
     }
+
 }
