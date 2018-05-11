@@ -33,45 +33,46 @@ public class ConsulterProfilUserActivity extends Activity {
         //Affichage de la photo
         String photoFile = currentUser.getPhoto();
 
-        if(photoFile != null) {
-            // Récupérer l'AssetManager
-            AssetManager manager = getAssets();
+        if(photoFile == null) {
+            photoFile = "default.jpg";
+        }
+        // Récupérer l'AssetManager
+        AssetManager manager = getAssets();
 
-            // lire un Bitmap depuis Assets
-            InputStream open = null;
-            try {
-                open = manager.open(photoFile);
-                Bitmap bitmap = BitmapFactory.decodeStream(open);
-                // Assigner le bitmap à une ImageView dans cette mise en page
-                ImageView view = (ImageView) findViewById(R.id.my_profile_picture_autre);
-                view.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (open != null) {
-                    try {
-                        open.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+        // lire un Bitmap depuis Assets
+        InputStream open = null;
+        try {
+            open = manager.open(photoFile);
+            Bitmap bitmap = BitmapFactory.decodeStream(open);
+            // Assigner le bitmap à une ImageView dans cette mise en page
+            ImageView view = (ImageView) findViewById(R.id.profile_picture);
+            view.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (open != null) {
+                try {
+                    open.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }
 
         TextView username = findViewById(R.id.username_autre);
-        username.setText(getString(R.string.app_user_username) + currentUser.getId());
+        username.setText(getString(R.string.my_profile_id) + currentUser.getId());
 
         TextView surname = findViewById(R.id.surname_autre);
-        surname.setText(getString(R.string.app_user_surname) + currentUser.getNom());
+        surname.setText(getString(R.string.my_profile_nom) + currentUser.getNom());
 
         TextView firstname = findViewById(R.id.firstname_autre);
-        firstname.setText(getString(R.string.app_user_firstname) + currentUser.getPrenom());
+        firstname.setText(getString(R.string.my_profile_prenom) + currentUser.getPrenom());
 
         TextView mail = findViewById(R.id.mail_autre);
-        mail.setText(getString(R.string.app_user_mail) + currentUser.getMail());
+        mail.setText(getString(R.string.my_profile_mail) + currentUser.getMail());
 
         //Affichage du meilleur ami s'il y en a un sinon, on met une barre (/).
-        if(User.getConnectedUser().getBff() == null)
+        if(currentUser.getBff() == null)
         {
             TextView bff = findViewById(R.id.bff_autre);
             bff.setText(getString(R.string.app_user_bff) + " : /");
@@ -81,9 +82,5 @@ public class ConsulterProfilUserActivity extends Activity {
             TextView bff = findViewById(R.id.bff_autre);
             bff.setText(getString(R.string.app_user_bff) + " : " + currentUser.getBff());
         }
-
     }
-
-
-
 }

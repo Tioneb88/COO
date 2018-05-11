@@ -27,20 +27,11 @@ import lsinf1225.mini_poll.MySQLiteHelper;
  */
 public class Aide {
 
-    //colonne commune
     private static final String COL_NAIDE = "Naide";
-
-    //table AIDE
     private static final String BDD_TABLE = "AIDE";
     private static final String COL_ID = "Identifiant";
     private static final String COL_DESCRIPTION = "Description";
     private static final String COL_ACTIVITE = "Activite";
-
-    //table OPTIONA
-    private static final String BDD_TABLE_OPTIONS = "OPTIONA";
-    private static final String COL_NOPTIONSA = "NoptionsA";
-    private static final String COL_TEXTE = "Texte";
-    private static final String COL_IMAGE = "Image";
 
     /**
      * Contient les instances déjà existantes des questionnaires afin d'éviter de créer deux instances
@@ -285,73 +276,113 @@ public class Aide {
     /**
      * Va chercher le dernier numéro d'identification unique de demande d'aide.
      */
-    public static int nextAideId() {
+    public static int lastAideId() {
         // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
         // On va chercher tous les identifiants de l'application.
-        Cursor cursor = db.rawQuery("SELECT Naide FROM AIDE ORDER BY Naide DESC", null );
+        Cursor cursor = db.rawQuery("SELECT A.Naide FROM AIDE A ORDER BY A.Naide DESC LIMIT 1", null );
 
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
+        // Récupération de l'identifiant unique.
         int Naide = cursor.getInt(0);
 
+        // Fermeture du curseur et de la base de données.
         cursor.close();
         db.close();
-        return Naide+1;
+        return Naide;
     }
 
     /**
      * Va chercher le dernier numéro d'identification unique d'option de demande d'aide.
      */
-    public static int nextOptionId() {
+    public static int lastOptionId() {
         // Récupération du  SQLiteHelper et de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
         // On va chercher tous les identifiants de l'application.
-        Cursor cursor = db.rawQuery("SELECT NoptionsA FROM OPTIONA ORDER BY NoptionsA DESC", null );
+        Cursor cursor = db.rawQuery("SELECT O.NoptionsA FROM OPTIONA O ORDER BY O.NoptionsA DESC LIMIT 1", null );
 
         // Placement du curseur sur la première ligne.
         cursor.moveToFirst();
+        // Récupération de l'identifiant unique.
         int NoptionA = cursor.getInt(0);
 
+        // Fermeture du curseur et de la base de données.
         cursor.close();
         db.close();
-        return NoptionA+1;
+        return NoptionA;
     }
 
     /**
-     * Ajoute un utilisateur et ses informations dans la base de données. (pour la création de compte)
+     * Ajoute une demande d'aide et ses informations dans la base de données.
      */
-    public static void createHelp(String id, String description, String proposal, String proposal2, String friend) {
+    public static int createHelp(String id, String description, String proposal, String proposal2, String friend) {
         // Récupération du  SQLiteHelper et de la base de données.
-        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+        SQLiteDatabase db = MySQLiteHelper.get().getWritableDatabase();
 
-        // Récupération des identifiants uniques de demandes d'aide et d'options de demande d'aide.
-        int nextAideId = nextAideId();
-        int nextOptionId = nextOptionId();
+        // Récupération des identifiants uniques de demandes d'aide.
+        int nextAideId = lastAideId() + 1;
 
-        // Nouvelles informations
+        Log.d("errorDB", "numero Aide :"+Integer.toString(nextAideId));
+        // Définition des valeurs pour le nouvel élément dans la table "Aide".
         ContentValues aide = new ContentValues();
         aide.put(COL_NAIDE, nextAideId);
         aide.put(COL_ID, id);
         aide.put(COL_DESCRIPTION, description);
         aide.put(COL_ACTIVITE, 1);
 
-        ContentValues optionA = new ContentValues();
-        optionA.put(COL_NOPTIONSA, nextOptionId);
-        optionA.put(COL_NAIDE, nextAideId);
-        optionA.put(COL_TEXTE, proposal);
+        // Insertion dans la base de données
+        int result_aide = (int) db.insert(BDD_TABLE, null, aide);
+        if (result_aide == -1) {
+            return -1;
+        }
 
-        ContentValues optionB = new ContentValues();
-        optionB.put(COL_NOPTIONSA, nextOptionId+1);
-        optionB.put(COL_NAIDE, nextAideId);
-        optionB.put(COL_TEXTE, proposal2);
+        Log.d("errorDB", "numero Participants_aide :"+Integer.toString(nextAideId));
+        // Définition des valeurs pour le nouvel élément dans la table "Aide".
+        ContentValues participants_aide = new ContentValues();
+        participants_aide.put(COL_NAIDE, nextAideId);
+        participants_aide.put(COL_ID, friend);
 
         // Insertion dans la base de données
-        db.insert(BDD_TABLE, null, aide);
-        db.insert(BDD_TABLE_OPTIONS, null, optionA);
-        db.insert(BDD_TABLE_OPTIONS, null, optionB);
+        int result_participants = (int) db.insert("PARTICIPANTS_AIDE", null, participants_aide);
+        if (result_participants == -1) {
+            return -2;
+        }
+
+        // Récupération des identifiants uniques des options de demande d'aide.
+        int nextOptionId = lastOptionId() + 1;
+
+        Log.d("errorDB", "numero OptionA :"+Integer.toString(nextOptionId));
+        // Définition des valeurs pour le nouvel élément dans la table "OptionA".
+        ContentValues optionA = new ContentValues();
+        optionA.put("NoptionsA", nextOptionId);
+        optionA.put(COL_NAIDE, nextAideId);
+        optionA.put("Texte", proposal);
+
+        // Insertion dans la base de données
+        int result_optionA = (int) db.insert("OPTIONA", null, optionA);
+        if (result_optionA == -1) {
+            return -3;
+        }
+
+        nextOptionId += 1;
+
+        Log.d("errorDB", "numero OptionA :"+Integer.toString(nextOptionId));
+        // Définition des valeurs pour le nouvel élément dans la table "OptionA".
+        ContentValues optionB = new ContentValues();
+        optionB.put("NoptionsA", nextOptionId+1);
+        optionB.put(COL_NAIDE, nextAideId);
+        optionB.put("Texte", proposal2);
+
+        // Insertion dans la base de données
+        int result_optionB = (int) db.insert("OPTIONA", null, optionB);
+        if (result_optionB == -4) {
+            return -3;
+        }
+
+        return 0;
     }
 }
 

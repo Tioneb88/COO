@@ -3,6 +3,7 @@ package lsinf1225.mini_poll.activity;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -38,27 +39,45 @@ public class CreationAideTxtResumeActivity extends Activity {
         proposal2.setText(getString(R.string.create_help_answers_proposal2) + " : " + chosenProposal2);
     }
 
-    public void confirm(View v) {
+    public void create(View v) {
         // Récupération du contenu de l'activité précédente.
         Intent prev = getIntent();
         String chosenFriend = prev.getStringExtra("chosenFriend");
-        String description = prev.getStringExtra("description");
+        String chosenDescription = prev.getStringExtra("description");
         String chosenProposal = prev.getStringExtra("proposal");
         String chosenProposal2 = prev.getStringExtra("proposal2");
 
-        Aide.createHelp(User.getConnectedUser().getId(), description, chosenProposal, chosenProposal2, chosenFriend);
-
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        int error = Aide.createHelp(User.getConnectedUser().getId(), chosenDescription, chosenProposal, chosenProposal2, chosenFriend);
+        if(error == -4)
+        {
+            Log.d("creationAide","Erreur lors de la creation de la deuxième proposition.");
+        }
+        else if(error == -3)
+        {
+            Log.d("creationAide","Erreur lors de la creation de la première proposition.");
+        }
+        else if(error == -2)
+        {
+            Log.d("creationAide","Erreur lors de la creation du participant.");
+        }
+        else if(error == -1)
+        {
+            Log.d("creationAide","Erreur lors de la creation de la demande d'aide.");
+        }
+        else
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 
-    public void modify(View v) {
+    public void modificate(View v) {
         // Récupération du contenu de l'activité précédente.
         Intent prev = getIntent();
         String chosenFriend = prev.getStringExtra("chosenFriend");
 
         Intent intent = new Intent(this, CreationAideTxtActivity.class);
-        //intent.putExtra("chosenFriend",chosenFriend);
+        intent.putExtra("chosenFriend",chosenFriend);
         startActivity(intent);
     }
 }

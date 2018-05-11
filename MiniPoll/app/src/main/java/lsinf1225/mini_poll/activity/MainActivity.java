@@ -39,27 +39,28 @@ public class MainActivity extends Activity {
         //Affichage de la photo
         String photoFile = User.getConnectedUser().getPhoto();
 
-        if(photoFile != null) {
-            // Récupérer l'AssetManager
-            AssetManager manager = getAssets();
+        if(photoFile == null) {
+            photoFile = "default.jpg";
+        }
+        // Récupérer l'AssetManager
+        AssetManager manager = getAssets();
 
-            // lire un Bitmap depuis Assets
-            InputStream open = null;
-            try {
-                open = manager.open(photoFile);
-                Bitmap bitmap = BitmapFactory.decodeStream(open);
-                // Assigner le bitmap à une ImageView dans cette mise en page
-                ImageView view = (ImageView) findViewById(R.id.main_picture);
-                view.setImageBitmap(bitmap);
-            } catch (IOException e) {
-                e.printStackTrace();
-            } finally {
-                if (open != null) {
-                    try {
-                        open.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
+        // lire un Bitmap depuis Assets
+        InputStream open = null;
+        try {
+            open = manager.open(photoFile);
+            Bitmap bitmap = BitmapFactory.decodeStream(open);
+            // Assigner le bitmap à une ImageView dans cette mise en page
+            ImageView view = (ImageView) findViewById(R.id.main_picture);
+            view.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (open != null) {
+                try {
+                    open.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
             }
         }

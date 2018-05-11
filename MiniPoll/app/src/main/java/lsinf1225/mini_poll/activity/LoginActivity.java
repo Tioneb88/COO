@@ -2,15 +2,21 @@ package lsinf1225.mini_poll.activity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.AssetManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 
 import lsinf1225.mini_poll.MiniPollApp;
@@ -32,6 +38,29 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        // Récupérer l'AssetManager
+        AssetManager manager = getAssets();
+
+        // lire un Bitmap depuis Assets
+        InputStream open = null;
+        try {
+            open = manager.open("logo.jpg");
+            Bitmap bitmap = BitmapFactory.decodeStream(open);
+            // Assigner le bitmap à une ImageView dans cette mise en page
+            ImageView view = (ImageView) findViewById(R.id.login_logo);
+            view.setImageBitmap(bitmap);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            if (open != null) {
+                try {
+                    open.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
 
         /*
          @note : Le titre de l'activité de lancement donné dans l'AndroidManifest.xml est repris
