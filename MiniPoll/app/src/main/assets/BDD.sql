@@ -9,7 +9,7 @@ BEGIN TRANSACTION;
 -- Table : AIDE
 DROP TABLE IF EXISTS AIDE;
 CREATE TABLE AIDE (Naide int(50) not null unique primary key, Identifiant char(255) not null, Description char(255) not null, Activite boolean not null, foreign key (Identifiant) references UTILISATEUR);
-INSERT INTO AIDE (Naide, Identifiant, Description, Activite) VALUES ('1', 'fel98', 'Quelle couleur la robe ?', '0');
+INSERT INTO AIDE (Naide, Identifiant, Description, Activite) VALUES ('1', 'fel98', 'Quelle couleur la robe ?', '1');
 INSERT INTO AIDE (Naide, Identifiant, Description, Activite) VALUES ('2', 'margauxgerard', 'Tu préfères manger quoi ?', '1');
 INSERT INTO AIDE (Naide, Identifiant, Description, Activite) VALUES ('3', 'gegedu78', 'Alors ton test de math ?', '1');
 INSERT INTO AIDE (Naide, Identifiant, Description, Activite) VALUES ('4', 'Hiboule', 'Tu préfères me rembourser comment ?', '1');

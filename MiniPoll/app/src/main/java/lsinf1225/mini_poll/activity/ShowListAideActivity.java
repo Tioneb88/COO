@@ -64,7 +64,7 @@ public class ShowListAideActivity extends Activity implements AdapterView.OnItem
         String searchQuery = getIntent().getStringExtra("searchQuery");
 
         if (searchQuery == null) {
-            aides = Aide.getAides();
+            aides = Aide.getAidesConnected();
         } else {
 
         }

@@ -121,6 +121,60 @@ public class Aide {
     }
 
     /**
+     * Fournit la liste des aides.
+     */
+    public static ArrayList<Aide> getAidesConnected() {
+        // Récupération du  SQLiteHelper et de la base de données.
+        SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
+
+        // Colonnes à récupérer
+        String[] colonnes = {COL_NAIDE, COL_ID,COL_DESCRIPTION, COL_ACTIVITE};
+
+        String connectedUser = User.getConnectedUser().getId();
+
+        // Requête de selection (SELECT)
+        Cursor cursor = db.rawQuery("SELECT A.Naide, A.Identifiant, A.Description, A.Activite  " +
+                "FROM PARTICIPANTS_AIDE PA, AIDE A " +
+                "WHERE PA.Naide = A.Naide AND PA.Identifiant =\'"+connectedUser+"\' AND Activite='1'", null);
+
+        // Placement du curseur sur la première ligne.
+        cursor.moveToFirst();
+
+        // Initialisation la liste des aides.
+        ArrayList<Aide> aides = new ArrayList<>();
+
+        // Tant qu'il y a des lignes.
+        while (!cursor.isAfterLast()) {
+            // Récupération des informations de l'aide pour chaque ligne.
+            int nAide = cursor.getInt(0);
+            String userId = cursor.getString(1);
+            String sDesc = cursor.getString(2);
+            int sActi = cursor.getInt(3);
+
+            // Vérification pour savoir s'il y a déjà une instance de cette aide.
+            Aide aide = Aide.aideSparseArray.get(nAide);
+            if (aide == null) {
+                // Si pas encore d'instance, création d'une nouvelle instance.
+                aide = new Aide(nAide, userId, sDesc, sActi);
+            }
+
+            // Ajout de l'aide à la liste.
+            aides.add(aide);
+
+            // Passe à la ligne suivante.
+            cursor.moveToNext();
+        }
+
+        // Fermeture du curseur et de la base de données.
+        cursor.close();
+        db.close();
+
+        return aides;
+    }
+
+
+
+    /**
      * Retourne true si l'utilisateur a repondu au sondage, false sinon
      */
     public static boolean isAnswered (int naide) {
